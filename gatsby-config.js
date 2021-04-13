@@ -1,13 +1,19 @@
+const metadata = require("./config/metadata.json");
+
+const siteUrl = `https://debtcollectionlab.org`;
+
 module.exports = {
   siteMetadata: {
-    title: "Debt Collection Lab",
+    siteUrl,
+    canonicalUrl: siteUrl,
+    ...metadata,
   },
   plugins: [
     "gatsby-plugin-netlify-cms",
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        trackingId: "",
+        id: "GTM-KCG3842",
       },
     },
     "gatsby-plugin-react-helmet",
@@ -18,14 +24,28 @@ module.exports = {
         icon: "src/images/icon.png",
       },
     },
-    "gatsby-plugin-mdx",
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          default: require.resolve("./src/layouts/default.js"),
+        },
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "pages",
-        path: "./src/pages/",
+        path: `${__dirname}/content/pages`,
       },
       __key: "pages",
     },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/content/pages`,
+      },
+    },
+    "gatsby-theme-material-ui",
   ],
 };

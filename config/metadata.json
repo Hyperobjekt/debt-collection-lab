@@ -1,0 +1,31 @@
+{
+  "title": "Debt Collection Lab",
+  "description": "description here",
+  "keywords": ["Debt"],
+  "image": "image/metaImage.png",
+  "logo": "image/logo.png",
+  "icon": "image/icon.png",
+  "menuLinks": [
+    {
+      "name": "Home",
+      "link": "/"
+    },
+    {
+      "name": "About",
+      "link": "/about"
+    },
+    {
+      "name": "Lawsuit Tracker",
+      "link": "/lawsuit-tracker"
+    },
+    {
+      "name": "Arts & Storytelling",
+      "link": "/arts-storytelling"
+    }
+  ],
+  "social": {
+    "email": "info@debtcollectionlab.org",
+    "twitter": "debtcollectionlab",
+    "facebook": "debtcollectionlab"
+  }
+}
