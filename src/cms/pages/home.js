@@ -1,16 +1,10 @@
-// import seo from "@/cms/partials/seo";
+import seo from "../partials/seo";
 
 const page = {
   file: "content/pages/index.mdx",
   label: "Home",
   name: "Home",
   fields: [
-    {
-      label: "Layout",
-      name: "layout",
-      widget: "hidden",
-      default: "contact",
-    },
     {
       label: "Type",
       name: "type",
@@ -24,7 +18,7 @@ const page = {
       default: "",
       required: false,
     },
-    // seo,
+    seo,
   ],
 };
 

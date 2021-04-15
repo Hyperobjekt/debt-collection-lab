@@ -8,6 +8,7 @@ CMS.init({
     load_config_file: false,
     backend: {
       name: "git-gateway",
+      repo: "Hyperobjekt/debt-collection-lab",
       branch: "production",
     },
     media_folder: "/static/img",
