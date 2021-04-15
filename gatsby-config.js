@@ -9,6 +9,7 @@ module.exports = {
     ...metadata,
   },
   plugins: [
+    "gatsby-plugin-styled-components",
     "gatsby-plugin-netlify-cms",
     {
       resolve: "gatsby-plugin-google-tagmanager",
