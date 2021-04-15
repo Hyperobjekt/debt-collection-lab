@@ -1,19 +1,22 @@
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
-import purple from "@material-ui/core/colors/purple";
-import green from "@material-ui/core/colors/green";
+import { createMuiTheme } from "@material-ui/core/styles";
 import { deepmerge } from "@material-ui/utils";
+import { COLORS } from "./constants";
 
 /** Color palette for theme */
 const palette = {
   primary: {
-    main: purple[500],
+    main: COLORS.primary,
   },
   secondary: {
-    main: green[500],
+    main: COLORS.secondary,
   },
   text: {
     primary: "#222",
     secondary: "#666",
+  },
+  background: {
+    default: COLORS.default,
+    paper: COLORS.paper,
   },
 };
 
@@ -36,6 +39,9 @@ const overrides = {
         borderRadius: theme.shape.borderRadius,
         fontFamily: ["monospace"].join(","),
       },
+      "[data-reach-skip-nav-link]:focus": {
+        zIndex: `9999!important`,
+      },
     },
   },
   /**
@@ -56,6 +62,11 @@ const overrides = {
         paddingLeft: 0,
         paddingRight: 0,
       },
+    },
+  },
+  MuiLink: {
+    root: {
+      color: theme.palette.secondary.main,
     },
   },
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import components from "./mdx";
+import components from "../components/mdx";
 import { MDXProvider } from "@mdx-js/react";
 
 export default function Providers({ children }) {

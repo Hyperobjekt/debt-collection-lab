@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Typography,
   Button,
   Link,
   List,
@@ -10,11 +9,15 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Box,
   withStyles,
-  Container,
 } from "@material-ui/core";
 import { styled } from "@material-ui/core/styles";
-
+import Container from "./layout/container";
+import Typography from "./typography";
+import { Hero, Block, Callout } from "./sections";
+import ResponsiveBox from "./layout/responsive-box";
+import { FullLawsuitTable } from "../lawsuit-tracker/table";
 const headingStyles = {
   root: {
     // marginTop: "1.5em",
@@ -112,4 +115,11 @@ export default {
   button: Button,
   a: Link,
   code: CodeInline,
+  Hero,
+  Block,
+  Typography,
+  Box: ResponsiveBox,
+  Callout,
+  Button,
+  FullLawsuitTable,
 };

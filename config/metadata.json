@@ -1,26 +1,22 @@
 {
   "title": "Debt Collection Lab",
   "description": "description here",
-  "keywords": ["Debt"],
-  "image": "image/metaImage.png",
-  "logo": "image/logo.png",
-  "icon": "image/icon.png",
+  "keywords": "Debt",
+  "image": "https://via.placeholder.com/1200x630",
+  "logo": "https://via.placeholder.com/200x40",
+  "icon": "https://via.placeholder.com/64x64",
   "menuLinks": [
     {
-      "name": "Home",
-      "link": "/"
-    },
-    {
-      "name": "About",
-      "link": "/about"
-    },
-    {
-      "name": "Lawsuit Tracker",
+      "name": "Debt Collection Tracker",
       "link": "/lawsuit-tracker"
     },
     {
-      "name": "Arts & Storytelling",
-      "link": "/arts-storytelling"
+      "name": "Arts and Storytelling",
+      "link": "/arts-and-storytelling"
+    },
+    {
+      "name": "About Us",
+      "link": "/about"
     }
   ],
   "social": {

@@ -1,1 +1,106 @@
-# Hello World
+---
+title: Home
+---
+
+<Hero>
+  <Box
+    xs={{ fontSize: 24 }}
+    sm={{ fontSize: 40 }}
+    component="p"
+    textAlign="center"
+    maxWidth={600}
+  >
+    More than 70 million adults in America have had a debt turned over to a
+    private debt collector.
+  </Box>
+</Hero>
+
+<Block>
+<Box display="flex" alignItems="center">
+  <Box mr={8}>
+    <img src="https://via.placeholder.com/360x240" alt="placeholder" />
+  </Box>
+  <Box width={1 / 3}>
+    <Typography>
+      Millions have been threatened with jail, tens of thousands have been
+      summoned to court in a single county in a single . The greatest
+      indignities fall on lower-income debtors and on those who are Black or
+      Latinx. During the process of debt collection, individuals learn that they
+      can be treated as if they have no right to respect or to redress.
+    </Typography>
+  </Box>
+</Box>
+
+<Box m={4} display="flex" justifyContent="right">
+  <Box
+    maxWidth={240}
+    ml="auto"
+    component="p"
+    display="flex"
+    flexDirection="column"
+  >
+    <Typography variant="h1" component="span">
+      90%
+    </Typography>
+    <Typography variant="h6" component="span">
+      of debtors summoned to court are without legal counsel
+    </Typography>
+  </Box>
+</Box>
+
+<Box maxWidth={460} mr="auto" component="p">
+  <Typography variant="h3" component="p">
+    We are changing the narrative about debt collection
+  </Typography>
+</Box>
+
+<Callout mt={4}>
+  <Box maxWidth={600}>
+    <Typography variant="h4" component="h2" align="center">
+      We are building a public facing resource for debtors and their advocates.
+    </Typography>
+  </Box>
+  <Box maxWidth={460} m={3}>
+    <Typography align="center">
+      We can see in real time where debt collection lawsuits are happening so
+      that there is time to do something about it.
+    </Typography>
+  </Box>
+  <Button color="primary" variant="contained">
+    Go to the Debt Collection Tracker
+  </Button>
+</Callout>
+
+<Callout image="https://via.placeholder.com/300x250" placement="right">
+  <Typography variant="h4" component="h2">
+    Arts and Storytelling
+  </Typography>
+  <Box mt={3} mb={3} maxWidth={420}>
+    <Typography>
+      We are using the arts and different storytelling traditions to
+      interrogate, transform, and spread new dignifying narratives for debt
+      justice.
+    </Typography>
+  </Box>
+  <Button color="primary" variant="contained">
+    Explore Arts and Storytelling
+  </Button>
+</Callout>
+
+<Callout>
+  <Box maxWidth={600}>
+    <Typography variant="h4" component="h2" align="center">
+      Who we are
+    </Typography>
+  </Box>
+  <Box maxWidth={460} m={3}>
+    <Typography align="center">
+      Find out about the members of The Debt Collection Lab
+    </Typography>
+  </Box>
+  <Button color="primary" variant="contained">
+    Learn About Us
+  </Button>
+</Callout>
+
+</Block>
