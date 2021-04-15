@@ -9,7 +9,6 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Box,
   withStyles,
 } from "@material-ui/core";
 import { styled } from "@material-ui/core/styles";
@@ -94,7 +93,7 @@ export const CodeInline = styled("code")({
   borderRadius: 4,
 });
 
-export default {
+const components = {
   section: Container,
   h1: H1,
   h2: H2,
@@ -123,3 +122,5 @@ export default {
   Button,
   FullLawsuitTable,
 };
+
+export default components;

@@ -26,7 +26,6 @@ export default function Table({ columns: userColumns, data, className, view }) {
     return true;
   });
 
-  let prevRowDepth = 0;
   let prevParentRow = null;
 
   return (
@@ -57,20 +56,22 @@ export default function Table({ columns: userColumns, data, className, view }) {
               showMoreText = (
                 <>
                   Top 5 counties shown above, go to the{" "}
-                  <a href="#">{prevParentRow.name} report</a> to see all
-                  counties.
+                  <a href={prevParentRow.name.toLowerCase()}>
+                    {prevParentRow.name} report
+                  </a>{" "}
+                  to see all counties.
                 </>
               );
               if (prevParentRow && prevParentRow.name === "Texas") {
                 showMoreText = (
                   <>
                     State level data is unavailable for Texas, only the{" "}
-                    <a href="#">Harris county report</a> is available.
+                    <a href="/counties/harris-county">Harris county report</a>{" "}
+                    is available.
                   </>
                 );
               }
             }
-            prevRowDepth = row.depth;
             if (row.depth === 0) prevParentRow = row.original;
             return (
               <>

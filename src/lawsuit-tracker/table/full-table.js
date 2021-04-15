@@ -11,10 +11,8 @@ import {
 } from "./utils";
 import TrendLine from "./trend-line";
 import Table from "./table";
-import Container from "../../components/layout/container";
 import { Block } from "../../components/sections";
 
-const VIEWS = ["nested", "states", "counties "];
 const VALID_TYPES = ["name", "lawsuits", "default_judgements"];
 const FORMATTER = d3.format(",~d");
 const FORMAT_NUM = (v) => (v === null ? "-" : FORMATTER(v));
@@ -117,26 +115,35 @@ function FullTable() {
     });
   }, [setData, setLoaded]);
 
-  // re-shape the source data
+  const stateCount = sourceData && shapeStatesCounties(sourceData).length;
+  const countyCount =
+    sourceData &&
+    shapeStatesCounties(sourceData).reduce((count, current) => {
+      count += current.subRows.length;
+      return count;
+    }, 0);
 
-  return (
+  // re-shape the source data
+  return loaded ? (
     <Block>
       <TableContainer>
         <div className="side">
           <div className="heading">
             <h1>An Overview of Debt Collection Lawsuits</h1>
             <p>
-              In the 5 states we track, the table shows an overview of debt
-              collection lawsuits. View the report for individual states or
-              counties to get a more detailed view, including charts and maps.
+              In the {stateCount} states and {countyCount} counties we track,
+              the table shows an overview of debt collection lawsuits. View the
+              report for individual states or counties to get a more detailed
+              view, including charts and maps.
             </p>
             <p>Last updated: April 12, 2021</p>
           </div>
           <div className="controls">
             <div className="control">
-              <label>Search:</label>
+              <label htmlFor="search">Search:</label>
               <br />
               <input
+                id="search"
                 placeholder="counties or states"
                 type="text"
                 value={filter}
@@ -154,7 +161,7 @@ function FullTable() {
                   onClick={handleViewChange}
                   checked={view === "nested"}
                 />
-                <label for="nested_radio">States + Counties</label>
+                <label htmlFor="nested_radio">States + Counties</label>
               </div>
               <div className="control__radio">
                 <input
@@ -165,7 +172,7 @@ function FullTable() {
                   onClick={handleViewChange}
                   checked={view === "states"}
                 />
-                <label for="states_radio">States</label>
+                <label htmlFor="states_radio">States</label>
               </div>
               <div className="control__radio">
                 <input
@@ -176,7 +183,7 @@ function FullTable() {
                   onClick={handleViewChange}
                   checked={view === "counties"}
                 />
-                <label for="counties_radio">Counties</label>
+                <label htmlFor="counties_radio">Counties</label>
               </div>
             </div>
           </div>
@@ -189,6 +196,8 @@ function FullTable() {
         />
       </TableContainer>
     </Block>
+  ) : (
+    "Loading"
   );
 }
 

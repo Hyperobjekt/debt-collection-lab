@@ -9,7 +9,6 @@ import Footer from "./footer";
 
 import Seo from "../seo";
 import { withStyles } from "@material-ui/core";
-import Container from "./container";
 import { SEO_KEYS } from "../../constants";
 
 const Page = withStyles((theme) => ({

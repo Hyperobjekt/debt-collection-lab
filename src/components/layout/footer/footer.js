@@ -55,7 +55,7 @@ const Footer = ({ classes, className, children, pageContext, ...props }) => {
         </Typography>
         <Box>
           <Logo />
-          <Navigation links={siteMetadata.menuLinks} />
+          <Navigation LinkComponent={Link} links={siteMetadata.menuLinks} />
         </Box>
       </Container>
       <Container className={classes.row2}>

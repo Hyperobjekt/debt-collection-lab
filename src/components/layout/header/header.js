@@ -6,6 +6,7 @@ import Container from "../container";
 import DesktopNavigation from "./desktop-navigation";
 import MobileNavigation from "./mobile-navigation";
 import Logo from "../logo";
+import { Link } from "gatsby-material-ui-components";
 
 const StyledHeader = withStyles((theme) => ({
   root: {
@@ -27,7 +28,10 @@ const Header = (props) => {
     <StyledHeader sticky stickyOffset={0} {...props}>
       <ContentContainer>
         <Logo />
-        <DesktopNavigation links={siteMetadata.menuLinks} />
+        <DesktopNavigation
+          LinkComponent={Link}
+          links={siteMetadata.menuLinks}
+        />
         <MobileNavigation links={siteMetadata.menuLinks} />
       </ContentContainer>
     </StyledHeader>
