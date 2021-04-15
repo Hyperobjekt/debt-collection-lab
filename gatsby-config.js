@@ -1,6 +1,6 @@
 const metadata = require("./config/metadata.json");
 
-const siteUrl = `https://debtcollectionlab.org`;
+const siteUrl = `https://debt-collection-lab.netlify.app`;
 
 module.exports = {
   siteMetadata: {
@@ -10,7 +10,13 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-styled-components",
-    "gatsby-plugin-netlify-cms",
+    {
+      resolve: "gatsby-plugin-netlify-cms",
+      options: {
+        manualInit: true,
+        modulePath: `${__dirname}/src/cms/cms.js`,
+      },
+    },
     {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
