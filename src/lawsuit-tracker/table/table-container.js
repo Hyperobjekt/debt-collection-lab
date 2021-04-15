@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export default styled.div`
   @media (min-width: 960px) {
+    position: relative;
     display: flex;
+    align-items: flex-start;
   }
 
   .controls {
@@ -16,7 +18,7 @@ export default styled.div`
       max-width: 320px;
       margin-right: 2rem;
       position: sticky;
-      top: 0;
+      top: 80px;
       h1 {
         margin-top: 0;
         line-height: 1.1;
@@ -59,7 +61,7 @@ export default styled.div`
     }
     th {
       position: sticky;
-      top: 0;
+      top: 64px;
       background: #fff;
       text-align: left;
       font-size: 1.125rem;

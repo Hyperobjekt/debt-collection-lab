@@ -134,7 +134,12 @@ export function shapeCounties(sourceData) {
         Number(c.confirmed_cases) * (Math.random() * 0.3 + 0.7)
       ),
     }))
-    .filter((d) => AVAILABLE.indexOf(d.state) > -1);
+    .filter((d) => AVAILABLE.indexOf(d.state) > -1)
+    .filter((d) => {
+      if (d.state !== "Texas") return true;
+      if (d.name === "Harris County") return true;
+      return false;
+    });
 }
 
 export async function makeData() {
