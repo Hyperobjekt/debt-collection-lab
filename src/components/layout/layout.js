@@ -10,6 +10,8 @@ import Footer from "./footer";
 import Seo from "../seo";
 import { withStyles } from "@material-ui/core";
 import { SEO_KEYS } from "../../constants";
+import GridDemo from "./grid-demo";
+import Container from "./container";
 
 const Page = withStyles((theme) => ({
   root: {
@@ -37,6 +39,9 @@ const Layout = ({ children, pageContext, ...props }) => {
       <Main>
         <SkipNavContent />
         {children}
+        <Container mb={6}>
+          <GridDemo />
+        </Container>
       </Main>
       <Footer />
     </Page>

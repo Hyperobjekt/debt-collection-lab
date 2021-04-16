@@ -65,6 +65,7 @@ export default styled.div`
       background: #fff;
       text-align: left;
       font-size: 1.125rem;
+      height: 48px;
     }
     th {
     }
@@ -82,6 +83,9 @@ export default styled.div`
       svg {
         display: block;
       }
+    }
+    td {
+      height: 40px;
     }
 
     .row--1 td:first-child {

@@ -6,6 +6,24 @@ const Box = styled(ResponsiveBox)({
   margin: `auto`,
   width: `100%`,
   flexDirection: "column",
+  position: "relative",
+  boxShadow: `inset 0 0 0 1px rgba(255,0,0,0.2)`,
+  "&:before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    minHeight: "100%",
+    zIndex: 3000000,
+    opacity: 0.33,
+    backgroundSize: `1rem 1rem`,
+    backgroundPosition: `0px 0px`,
+    pointerEvents: `none`,
+    // mixBlendMode: `difference`,
+    // mix-blend-mode: multiply;
+    backgroundImage: `linear-gradient( transparent 0%, transparent 93.749%, cyan 93.75%, cyan 100%), linear-gradient( 90deg, transparent 0%, transparent 93.749%, cyan 93.75%, cyan 100%)`,
+  },
 });
 
 /**
