@@ -17,11 +17,17 @@ const seo = {
       required: false,
     },
     {
+      label: "Meta Keywords",
+      name: "keywords",
+      widget: "text",
+      required: false,
+    },
+    {
       label: "Image",
       name: "image",
       widget: "image",
       required: true,
-      default: "/img/shareable-default.jpg",
+      default: "/images/metaImage.png",
     },
   ],
 };

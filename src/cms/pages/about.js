@@ -1,9 +1,9 @@
 import seo from "../partials/seo";
 
 const page = {
-  file: "content/pages/index.mdx",
-  label: "Home",
-  name: "Home",
+  file: "content/pages/about.mdx",
+  label: "About Us",
+  name: "About Us",
   extension: "mdx",
   format: "frontmatter",
   fields: [

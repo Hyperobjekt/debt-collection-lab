@@ -1,9 +1,9 @@
 import seo from "../partials/seo";
 
 const page = {
-  file: "content/pages/index.mdx",
-  label: "Home",
-  name: "Home",
+  file: "content/pages/arts-and-storytelling.mdx",
+  label: "Art & Storytelling",
+  name: "Art & Storytelling",
   extension: "mdx",
   format: "frontmatter",
   fields: [

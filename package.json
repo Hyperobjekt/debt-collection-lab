@@ -33,6 +33,7 @@
     "gatsby-plugin-styled-components": "^4.3.0",
     "gatsby-source-filesystem": "^3.2.0",
     "gatsby-theme-material-ui": "^2.0.1",
+    "jss": "^10.6.0",
     "lodash.pick": "^4.4.0",
     "netlify-cms-app": "^2.14.40",
     "react": "^17.0.1",
