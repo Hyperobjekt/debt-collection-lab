@@ -1,6 +1,5 @@
 import home from "./home";
 import about from "./about";
-import lawsuitTracker from "./lawsuit-tracker";
 import storytelling from "./storytelling";
 
 const pages = {
@@ -11,7 +10,7 @@ const pages = {
   editor: {
     preview: false,
   },
-  files: [home, about, lawsuitTracker, storytelling],
+  files: [home, about, storytelling],
 };
 
 export default pages;
