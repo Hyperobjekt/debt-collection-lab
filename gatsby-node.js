@@ -60,7 +60,6 @@ const createSourceNodes = (
   activity.end();
 };
 
-
 /**
  * Parses a row from the lawsuits csv
  * @param {object} row
@@ -83,7 +82,7 @@ const lawsuitParser = (row) => {
 
 const createCountyPages = async ({ graphql, actions }) => {
   const CountyTemplate = require.resolve(
-    `./src/lawsuit-tracker/layouts/county.js`
+    `./src/lawsuit-tracker/layouts/county/layout.js`
   );
   const { createPage } = actions;
   const result = await graphql(`
@@ -100,7 +99,7 @@ const createCountyPages = async ({ graphql, actions }) => {
   counties.forEach(({ geoid, name }) => {
     if (name) {
       const stateName = getStateNameForFips(geoid);
-      const slugStateName = slugify(stateName)
+      const slugStateName = slugify(stateName);
       const pageName = slugify(name);
       createPage({
         path: `/lawsuit-tracker/${slugStateName}/${pageName}/`,
@@ -118,7 +117,7 @@ const createCountyPages = async ({ graphql, actions }) => {
 
 const createStatePages = async ({ graphql, actions }) => {
   const StateTemplate = require.resolve(
-    `./src/lawsuit-tracker/layouts/state.js`
+    `./src/lawsuit-tracker/layouts/state/layout.js`
   );
   const { createPage } = actions;
   const result = await graphql(`
@@ -150,7 +149,7 @@ const createStatePages = async ({ graphql, actions }) => {
 
 const createLawsuitTrackerIndex = async ({ graphql, actions }) => {
   const IndexTemplate = require.resolve(
-    `./src/lawsuit-tracker/layouts/index.js`
+    `./src/lawsuit-tracker/layouts/index/layout.js`
   );
   const { createPage } = actions;
   createPage({
