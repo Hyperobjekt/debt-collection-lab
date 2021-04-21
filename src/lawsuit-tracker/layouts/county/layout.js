@@ -9,7 +9,11 @@ import {
   DemographicChartSection,
   TableSection,
 } from "../../sections";
-import { getTrackerUrl, lawsuitHistoryToXY } from "../../utils";
+import {
+  getTopCollectorsData,
+  getTrackerUrl,
+  getLawsuitChartData,
+} from "../../utils";
 import { Link } from "gatsby-material-ui-components";
 import Breadcrumb from "../../../components/layout/breadcrumb";
 
@@ -58,12 +62,12 @@ export default function TrackerCountyLayout({
       <LawsuitsChartSection
         title="Debt Collection By Year"
         description="This chart can be used to compare debt collection lawsuits across years."
-        data={lawsuitHistoryToXY(data.lawsuit_history)}
+        data={getLawsuitChartData(data)}
       />
       <DebtCollectorsSection
         title="Top Debt Collectors"
         description="These are the debt collectors responsible for the most filings in the past year."
-        data={data.top_collectors}
+        data={getTopCollectorsData(data)}
       />
       <LawsuitsMapSection
         title="Geography of Debt Collection Lawsuits"
@@ -73,7 +77,7 @@ export default function TrackerCountyLayout({
       <TableSection
         title="Overview of Lawsuits by Census Tract"
         description={``}
-        data={data.tracts}
+        data={[data]}
       />
       <DemographicChartSection
         title="Debt Collection Lawsuits by Neighborhood Demographics"

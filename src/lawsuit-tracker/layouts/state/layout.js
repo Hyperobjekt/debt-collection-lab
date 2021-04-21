@@ -9,7 +9,7 @@ import {
   DemographicChartSection,
   TableSection,
 } from "../../sections";
-import { getTrackerUrl } from "../../utils";
+import { getTopCollectorsData, getTrackerUrl } from "../../utils";
 import Breadcrumb from "../../../components/layout/breadcrumb";
 
 export default function TrackerCountyLayout({
@@ -57,7 +57,7 @@ export default function TrackerCountyLayout({
       <DebtCollectorsSection
         title="Top Debt Collectors"
         description="These are the debt collectors responsible for the most filings in the past year."
-        data={data.top_collectors}
+        data={getTopCollectorsData(data)}
       />
       <LawsuitsMapSection
         title="Geography of Debt Collection Lawsuits"
@@ -67,7 +67,8 @@ export default function TrackerCountyLayout({
       <TableSection
         title="Overview of Lawsuits by Census Tract"
         description={``}
-        data={data.counties}
+        views={["counties"]}
+        data={[data]}
       />
       {children}
       {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}

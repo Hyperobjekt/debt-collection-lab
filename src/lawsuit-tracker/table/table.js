@@ -173,10 +173,13 @@ export default function Table({ columns: userColumns, data, className, view }) {
               </>
             );
           })}
-          {view === "counties" && (
+          {(view === "counties" || view === "tracts") && (
             <TableRow className="row--more">
-              <TableCell colSpan="5">
-                The top 25 counties are listed above{" "}
+              <TableCell align="center" colSpan="5">
+                <Typography variant="caption">
+                  The top {view} are listed above, use the search to find a
+                  specific location.{" "}
+                </Typography>
               </TableCell>
             </TableRow>
           )}

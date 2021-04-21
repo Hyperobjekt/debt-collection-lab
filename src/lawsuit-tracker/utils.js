@@ -1,5 +1,6 @@
 import { slugify } from "../utils";
 import * as d3 from "d3";
+import titleCase from "title-case";
 
 /**
  * Creates a comparator for sorting an object property containing numbers
@@ -104,6 +105,18 @@ export function shapeCounties(sourceData) {
   }, []);
 }
 
+export function shapeTracts(sourceData) {
+  return sourceData.reduce((tracts, currentCounty) => {
+    return [
+      ...tracts,
+      ...currentCounty.tracts.map((c) => ({
+        ...c,
+        county: currentCounty.name,
+      })),
+    ];
+  }, []);
+}
+
 export const getTrackerUrl = (data) => {
   let result = "/lawsuit-tracker/";
   if (data.state) result += slugify(data.state) + "/";
@@ -159,6 +172,24 @@ export const getTotals = (data) => {
   return { stateCount, countyCount, lawsuitTotal };
 };
 
-export const lawsuitHistoryToXY = (data) => {
-  return data.map((d) => ({ x: d.month, y: d.lawsuits }));
+export const getLawsuitChartData = (data) => {
+  return data.lawsuit_history.map((d) => ({ x: d.month, y: d.lawsuits }));
 };
+
+const uppercase = ["LLC", "LVNV"];
+export const getTopCollectorsData = (data) => {
+  const collectors = data.top_collectors.map((d) => ({
+    amount: Number(d.amount),
+    lawsuits: Number(d.lawsuits),
+    collector: titleCase(d.collector.slice(0, -1).substring(1))
+      .split(" ")
+      .map((w) =>
+        uppercase.indexOf(w.toUpperCase()) > -1 ? w.toUpperCase() : w
+      )
+      .join(" "),
+  }));
+  const percent = d3.sum(collectors, (d) => d.lawsuits) / data.lawsuits;
+  return { total: data.lawsuits, collectors, percent };
+};
+
+export const formatPercent = d3.format(".1%");
