@@ -1,6 +1,17 @@
 import React, { useCallback, useState } from "react";
 import Typography from "../../components/typography";
-import { TableSortLabel, withStyles } from "@material-ui/core";
+import {
+  Box,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  InputAdornment,
+  Radio,
+  RadioGroup,
+  TableSortLabel,
+  TextField,
+  withStyles,
+} from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import {
   applyFilter,
@@ -16,9 +27,14 @@ import * as d3 from "d3";
 import { Button } from "gatsby-material-ui-components";
 import Table from "../table/table";
 import TrendLine from "../table/trend-line";
+import SearchIcon from "@material-ui/icons/Search";
 
 const SectionBlock = withStyles((theme) => ({
-  root: {},
+  root: {
+    "& .controls": {
+      marginTop: theme.spacing(3),
+    },
+  },
 }))(TwoColBlock);
 
 const getShaperForView = (view) => {
@@ -193,11 +209,63 @@ const TableSection = ({
 
   const leftContent = (
     <>
-      <Typography variant="sectionTitle" component="h3">
-        {title}
-      </Typography>
-      {description && <Typography>{description}</Typography>}
-      {children}
+      <Box>
+        <Typography variant="sectionTitle" component="h3">
+          {title}
+        </Typography>
+        <Typography>{description}</Typography>
+        {children}
+      </Box>
+      <div className="controls">
+        <div className="control">
+          <TextField
+            id="outlined-search"
+            label="Search"
+            placeholder="Find a place"
+            type="search"
+            variant="outlined"
+            value={filter}
+            fullWidth
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+            onChange={handleFilter}
+          />
+        </div>
+        {views.length > 1 && (
+          <div className="control">
+            <FormControl component="fieldset">
+              <FormLabel component="legend">View</FormLabel>
+              <RadioGroup
+                aria-label="view type"
+                name="view"
+                value={view}
+                onChange={handleViewChange}
+              >
+                <FormControlLabel
+                  value="nested"
+                  control={<Radio />}
+                  label="States + Counties"
+                />
+                <FormControlLabel
+                  value="states"
+                  control={<Radio />}
+                  label="States"
+                />
+                <FormControlLabel
+                  value="counties"
+                  control={<Radio />}
+                  label="Counties"
+                />
+              </RadioGroup>
+            </FormControl>
+          </div>
+        )}
+      </div>
     </>
   );
   const rightContent = (

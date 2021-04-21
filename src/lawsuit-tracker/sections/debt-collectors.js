@@ -3,7 +3,7 @@ import Typography from "../../components/typography";
 import { Grid, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import * as d3 from "d3";
-import { formatPercent } from "../utils";
+import { formatInt, formatPercent } from "../utils";
 
 const SectionBlock = withStyles((theme) => ({
   root: {},
@@ -22,7 +22,12 @@ const DebtCollectorsSection = ({
       <Typography variant="sectionTitle" component="h3">
         {title}
       </Typography>
-      {description && <Typography>{description}</Typography>}
+      {description && <Typography paragraph>{description}</Typography>}
+      <Typography paragraph>
+        Out of {formatInt(data.collector_total)} debt collectors in {data.name},
+        the top 5 ({formatPercent(5 / data.collector_total)}) are responsible
+        for {formatPercent(data.percent)} of lawsuits.
+      </Typography>
       {children}
     </>
   );
@@ -33,24 +38,21 @@ const DebtCollectorsSection = ({
         <ol>
           <li>Highlight debt collector proportion as part of a whole</li>
         </ol>
-        <Typography>Solution</Typography>
+        <Typography>Specification</Typography>
         <ul>
           <li>
-            <strong>Option 1:</strong>
             <a href="https://www.d3-graph-gallery.com/donut">Donut</a> (or pie)
-            chart with top 5 collectors, and "other" category.
+            chart
           </li>
+          <li>areas corresponding to top 5 collectors, and "other" category</li>
+          <li>legend corresponding values on right to area color</li>
         </ul>
       </Grid>
       <Grid item sm={6}>
-        <Typography>
-          The top 5 debt collectors are responsible for{" "}
-          {formatPercent(data.percent)} of lawsuits.
-        </Typography>
         <ol>
           {data.collectors.map((c) => (
             <li key={c.collector} style={{ marginBottom: 8 }}>
-              <strong>{c.collector}:</strong> {c.lawsuits} (
+              <strong>{c.collector}:</strong> {formatInt(c.lawsuits)} (
               {formatPercent(c.lawsuits / data.total)})
             </li>
           ))}

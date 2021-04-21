@@ -13,6 +13,7 @@ import {
   getTopCollectorsData,
   getTrackerUrl,
   getLawsuitChartData,
+  getLocationHeroData,
 } from "../../utils";
 import { Link } from "gatsby-material-ui-components";
 import Breadcrumb from "../../../components/layout/breadcrumb";
@@ -48,12 +49,7 @@ export default function TrackerCountyLayout({
 
   return (
     <Layout pageContext={context} {...props}>
-      <LocationHero
-        name={data.name}
-        totalCount={data.lawsuits}
-        percentWithoutRep={data.no_rep_percent}
-        percentComparison={""}
-      >
+      <LocationHero {...getLocationHeroData(data)}>
         <Breadcrumb
           links={breadcrumb}
           style={{ position: "absolute", top: 8 }}
@@ -61,7 +57,6 @@ export default function TrackerCountyLayout({
       </LocationHero>
       <LawsuitsChartSection
         title="Debt Collection By Year"
-        description="This chart can be used to compare debt collection lawsuits across years."
         data={getLawsuitChartData(data)}
       />
       <DebtCollectorsSection
@@ -76,7 +71,7 @@ export default function TrackerCountyLayout({
       />
       <TableSection
         title="Overview of Lawsuits by Census Tract"
-        description={``}
+        description={`The table to the right shows data for the ${data.tracts.length} census tracts in ${data.name}.  Use the search below to find a specific tract.`}
         data={[data]}
       />
       <DemographicChartSection
@@ -106,6 +101,7 @@ export const query = graphql`
           collector
           lawsuits
         }
+        collector_total
         lawsuit_history {
           lawsuits
           month

@@ -1,5 +1,6 @@
 const d3 = require("d3");
 const { getStateNameForFips, loadCsv, slugify } = require("./scripts/utils");
+const titleCase = require("title-case");
 
 const MONTH_PARSE = d3.timeParse("%m/%Y");
 
@@ -61,6 +62,14 @@ const createSourceNodes = (
   activity.end();
 };
 
+const getCollectorName = (collector) => {
+  const uppercase = ["LLC", "LVNV"];
+  return titleCase(collector.slice(0, -1).substring(1))
+    .split(" ")
+    .map((w) => (uppercase.indexOf(w.toUpperCase()) > -1 ? w.toUpperCase() : w))
+    .join(" ");
+};
+
 /**
  * Parses a row from the lawsuits csv
  * @param {object} row
@@ -82,11 +91,12 @@ const lawsuitParser = (row) => {
     top_collectors: row.collectors.split("|").map((v) => {
       const values = v.split(";");
       return {
-        collector: values[0],
-        lawsuits: values[1],
-        amount: values[2],
+        collector: getCollectorName(values[0]),
+        lawsuits: Number(values[1]),
+        amount: Number(values[2]),
       };
     }),
+    collector_total: Number(row.collector_total),
     default_judgement: Number(row.default_judgement),
     no_rep_percent: Number(row.no_rep_percent),
   };

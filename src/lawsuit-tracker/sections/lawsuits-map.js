@@ -7,14 +7,8 @@ const SectionBlock = withStyles((theme) => ({
   root: {},
 }))(TwoColBlock);
 
-const LawsuitsMapSection = ({
-  title,
-  description,
-  data,
-  children,
-  ...props
-}) => {
-  const leftContent = (
+const MapContent = ({ title, description }) => {
+  return (
     <>
       <Typography variant="sectionTitle" component="h3">
         {title}
@@ -24,10 +18,12 @@ const LawsuitsMapSection = ({
         Lawsuit filings since March 2020:
       </Typography>
       <img src="https://via.placeholder.com/280x48" />
-      {children}
     </>
   );
-  const rightContent = (
+};
+
+const MapVisual = () => {
+  return (
     <Grid container spacing={3} style={{ background: "#ccc", height: 400 }}>
       <Grid item md={6}>
         <Typography>Visual Goals</Typography>
@@ -38,28 +34,45 @@ const LawsuitsMapSection = ({
             majority, median household income)
           </li>
         </ol>
-        <Typography>Unknowns</Typography>
-        <ul>
-          <li>
-            <strong>time frame:</strong> should the map highlight pandemic time
-            frame, entire timeframe of data set, or allow year selection?
-          </li>
-        </ul>
       </Grid>
       <Grid item md={6}>
-        <Typography>Solution</Typography>
+        <Typography>Specification</Typography>
         <ul>
           <li>
             Choropleth map with shapes representing census tracts (or counties
-            on state pages) that are shaded based on the number of lawsuits for
-            the indicated time frame
+            on state pages)
+          </li>
+          <li>
+            shapes are colored corresponding to the number of lawsuits since
+            March 2020
+          </li>
+          <li>
+            hovering a county or tract shows a tooltip with the county / tract
+            name.
+          </li>
+          <li>
+            hovering a tract shows the racial breakdown as well as median
+            household income below the tract name
+          </li>
+          <li>
+            has a gradient legend on the left that shows the values that
+            correspond to the colors used on the map
           </li>
         </ul>
       </Grid>
       {/* <Grid item>Data: {JSON.stringify(data)}</Grid> */}
     </Grid>
   );
-  return <SectionBlock left={leftContent} right={rightContent} {...props} />;
+};
+
+const LawsuitsMapSection = ({ title, description, data, ...props }) => {
+  return (
+    <SectionBlock
+      left={<MapContent {...{ title, description }} />}
+      right={<MapVisual />}
+      {...props}
+    />
+  );
 };
 
 export default LawsuitsMapSection;

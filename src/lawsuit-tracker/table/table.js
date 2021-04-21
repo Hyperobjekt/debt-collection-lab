@@ -152,7 +152,6 @@ export default function Table({ columns: userColumns, data, className, view }) {
                   {...row.getRowProps()}
                 >
                   {row.cells.map((cell) => {
-                    console.log("cell!", cell, cell.getCellProps());
                     return (
                       <TableCell
                         {...cell.getCellProps()}

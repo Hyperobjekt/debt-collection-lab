@@ -25,12 +25,23 @@ function aggregateLawsuits(data) {
 
   // shape top 5 debt collectors
   const lawsuitsByCollector = d3
-    .groups(data, (d) => d.plaintiff)
+    .groups(data, (d) =>
+      d.plaintiff
+        .toLowerCase()
+        .replace("inc.", "inc")
+        .replace("llc.", "llc")
+        .replace(",", "")
+        .replace(" assignee of credit one bank n.a.", "")
+    )
     .map(([collector, lawsuits]) => [
       `'${collector}'`,
       lawsuits.length,
       d3.sum(lawsuits, (d) => d.amount),
-    ])
+    ]);
+
+  const collectorTotal = lawsuitsByCollector.length;
+
+  const topCollectors = lawsuitsByCollector
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5)
     .map((d) => d.join(";"))
@@ -42,7 +53,8 @@ function aggregateLawsuits(data) {
     lawsuits: data.length,
     lawsuits_date: DATE_FORMAT(monthDates[monthDates.length - 1]),
     lawsuit_history: values,
-    collectors: `"${lawsuitsByCollector}"`,
+    collectors: `"${topCollectors}"`,
+    collector_total: collectorTotal,
     amount: d3.sum(data, (d) => d.amount),
     default_judgement: data.filter((d) => d.decided && !d.representation)
       .length,

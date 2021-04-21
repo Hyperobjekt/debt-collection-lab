@@ -6,10 +6,13 @@ import {
   LawsuitsChartSection,
   LawsuitsMapSection,
   DebtCollectorsSection,
-  DemographicChartSection,
   TableSection,
 } from "../../sections";
-import { getTopCollectorsData, getTrackerUrl } from "../../utils";
+import {
+  getLocationHeroData,
+  getTopCollectorsData,
+  getTrackerUrl,
+} from "../../utils";
 import Breadcrumb from "../../../components/layout/breadcrumb";
 
 export default function TrackerCountyLayout({
@@ -38,12 +41,7 @@ export default function TrackerCountyLayout({
   ];
   return (
     <Layout pageContext={context} {...props}>
-      <LocationHero
-        name={data.name}
-        totalCount={data.lawsuits}
-        percentWithoutRep={data.no_rep_percent}
-        percentComparison={""}
-      >
+      <LocationHero {...getLocationHeroData(data)}>
         <Breadcrumb
           links={breadcrumb}
           style={{ position: "absolute", top: 8 }}
@@ -51,12 +49,10 @@ export default function TrackerCountyLayout({
       </LocationHero>
       <LawsuitsChartSection
         title="Debt Collection By Year"
-        description="This chart can be used to compare debt collection lawsuits across years."
         data={data.lawsuit_history}
       />
       <DebtCollectorsSection
         title="Top Debt Collectors"
-        description="These are the debt collectors responsible for the most filings in the past year."
         data={getTopCollectorsData(data)}
       />
       <LawsuitsMapSection
@@ -65,8 +61,8 @@ export default function TrackerCountyLayout({
         data={data.counties}
       />
       <TableSection
-        title="Overview of Lawsuits by Census Tract"
-        description={``}
+        title="Overview of Lawsuits by County"
+        description={`The table to the right shows data for the ${data.counties.length} counties in ${data.name}.  Use the search below to find a specific county.`}
         views={["counties"]}
         data={[data]}
       />
@@ -91,6 +87,7 @@ export const query = graphql`
           collector
           lawsuits
         }
+        collector_total
         lawsuit_history {
           lawsuits
           month

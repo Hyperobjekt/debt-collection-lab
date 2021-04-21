@@ -29,33 +29,36 @@ const DemographicChartSection = ({
         <Typography>Visual Goals</Typography>
         <ol>
           <li>
-            identify which racial groups are most impacted by debt collection
-            lawsuits over a given time period
+            identify which neighborhoods, by racial majority, are most impacted
+            by debt collection lawsuits over a given time period
           </li>
           <li>
-            identify how the impact in the given time period compares to a
-            historical average (e.g. 2021 vs (2018-2019 average)
+            identify how the impact during the pandemic compares to the average
+            of previous years (2018-2019 average)
           </li>
         </ol>
-        <Typography>Unknowns</Typography>
-        <ul>
-          <li>
-            <strong>Time frame:</strong> since beginning of pandemic, current
-            calendary year, or other?
-          </li>
-        </ul>
       </Grid>
       <Grid item md={6}>
-        <Typography>Solution</Typography>
+        <Typography>Specification</Typography>
         <ul>
+          <li>Grouped bar chart </li>
+          <li>X axis representing months, from March 2020 - present</li>
           <li>
-            Grouped bar chart (
+            Each month has up to 5 bars, each corresponding to the number of
+            lawsuits filed by census tract racial majority (Asian, Black,
+            Latinx, white, other)
+          </li>
+          <li>
+            Has a button group that allows to toggle between raw count values
+            and relative to average based 2018-2019 data.(
             <a href="https://evictionlab.org/eviction-tracking/bridgeport-ct/#eviction-filings-by-neighborhood-demographics">
               like eviction lab
             </a>
-            ), X axis representing pre-determined time period (e.g. March 2020 -
-            present). User has option to toggle between count values and
-            comparison to average (2018-2019).
+            )
+          </li>
+          <li>
+            tooltip that reads out values for all racial groups for the
+            corresponding hovered month
           </li>
         </ul>
       </Grid>

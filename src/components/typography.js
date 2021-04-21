@@ -15,6 +15,18 @@ const style = (theme) => ({
       marginTop: theme.spacing(3),
     },
   },
+  number: {
+    fontWeight: 700,
+    fontSize: theme.typography.pxToRem(48),
+    lineHeight: 1,
+    margin: 0,
+  },
+  numberSecondary: {
+    fontWeight: 500,
+    fontSize: theme.typography.pxToRem(32),
+    lineHeight: 1,
+    margin: 0,
+  },
   grey: {
     color: "#555",
   },
