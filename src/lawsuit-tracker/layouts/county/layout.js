@@ -55,14 +55,13 @@ export default function TrackerCountyLayout({
           style={{ position: "absolute", top: 8 }}
         />
       </LocationHero>
+      <DebtCollectorsSection
+        title="Top Debt Collectors"
+        data={getTopCollectorsData(data)}
+      />
       <LawsuitsChartSection
         title="Debt Collection By Year"
         data={getLawsuitChartData(data)}
-      />
-      <DebtCollectorsSection
-        title="Top Debt Collectors"
-        description="These are the debt collectors responsible for the most filings in the past year."
-        data={getTopCollectorsData(data)}
       />
       <LawsuitsMapSection
         title="Geography of Debt Collection Lawsuits"
