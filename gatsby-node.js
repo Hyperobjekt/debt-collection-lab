@@ -12,6 +12,7 @@ function getCounties(data) {
   const counties = data.filter((d) => d.geoid.length === 5);
   return counties.map((c) => ({
     ...c,
+    state: getStateNameForFips(c.geoid),
     tracts: data.filter(
       (d) => d.geoid.length > 5 && d.geoid.indexOf(c.geoid) === 0
     ),
@@ -27,9 +28,9 @@ function getStates(data) {
   const states = data.filter((d) => d.geoid.length === 2);
   return states.map((s) => ({
     ...s,
-    counties: data.filter(
-      (d) => d.geoid.length === 5 && d.geoid.indexOf(s.geoid) === 0
-    ),
+    counties: data
+      .filter((d) => d.geoid.length === 5 && d.geoid.indexOf(s.geoid) === 0)
+      .map((c) => ({ ...c, state: s.name })),
   }));
 }
 
@@ -71,10 +72,21 @@ const lawsuitParser = (row) => {
     name: row.name,
     lawsuits: Number(row.lawsuits),
     lawsuits_date: MONTH_PARSE(row.lawsuits_date),
-    lawsuit_history: row.lawsuit_history.split("|").map((v) => ({
-      month: v.split(";")[0],
-      lawsuits: Number(v.split(";")[1]),
-    })),
+    lawsuit_history: row.lawsuit_history
+      .split("|")
+      .map((v) => ({
+        month: v.split(";")[0],
+        lawsuits: Number(v.split(";")[1]),
+      }))
+      .filter((d) => d.month.indexOf("1969") === -1),
+    top_collectors: row.collectors.split("|").map((v) => {
+      const values = v.split(";");
+      return {
+        collector: values[0],
+        lawsuits: values[1],
+        amount: values[2],
+      };
+    }),
     default_judgement: Number(row.default_judgement),
     no_rep_percent: Number(row.no_rep_percent),
   };

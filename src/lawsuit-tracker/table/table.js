@@ -1,5 +1,70 @@
+import {
+  TableContainer as MuiTableContainer,
+  Table as MuiTable,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  withStyles,
+} from "@material-ui/core";
+import { Link } from "gatsby-material-ui-components";
 import React from "react";
 import { useTable, useExpanded } from "react-table";
+import Typography from "../../components/typography";
+import { getTrackerUrl } from "../utils";
+
+const TableContainer = withStyles((theme) => ({
+  root: {
+    position: "relative",
+    // sticky headers
+    [theme.breakpoints.up("md")]: {
+      overflowX: "visible",
+      "& th": {
+        position: "sticky",
+        top: 64,
+        zIndex: 10,
+        background: "#fff",
+        boxShadow: `0 1px 0 #ccc`,
+      },
+    },
+    // decrease default padding
+    "& .MuiTableCell-root": {
+      padding: theme.spacing(1),
+      "&:first-child": {
+        paddingLeft: theme.spacing(2),
+      },
+      "&:last-child": {
+        paddingRight: theme.spacing(0),
+      },
+    },
+    // highlight state rows in nested table
+    "& .table--nested .MuiTableRow-root.row--0": {
+      background: "#eee",
+      "& .MuiTableCell-root": {
+        fontWeight: 500,
+        fontSize: theme.typography.pxToRem(16),
+      },
+    },
+    // row hover states
+    "& .MuiTableRow-root": {
+      transition: theme.transitions.create(["background-color"], {
+        duration: theme.transitions.duration.short,
+      }),
+      backgroundColor: "rgba(0,0,0,0)",
+      "&:hover": {
+        backgroundColor: "rgba(0,0,0,0.025)",
+      },
+    },
+    // indent nested rows
+    "& .MuiTableRow-root.row--1 .MuiTableCell-root:first-child": {
+      paddingLeft: theme.spacing(3),
+    },
+    // align trend line
+    "& .MuiTableCell-root.col--trend svg": {
+      marginTop: 4,
+    },
+  },
+}))(MuiTableContainer);
 
 export default function Table({ columns: userColumns, data, className, view }) {
   const {
@@ -29,18 +94,23 @@ export default function Table({ columns: userColumns, data, className, view }) {
   let prevParentRow = null;
 
   return (
-    <>
-      <table className={className} {...getTableProps()}>
-        <thead>
+    <TableContainer>
+      <MuiTable className={className} {...getTableProps()}>
+        <TableHead>
           {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
+            <TableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+                <TableCell
+                  {...column.getHeaderProps()}
+                  {...(column.cellProps || {})}
+                >
+                  {column.render("Header")}
+                </TableCell>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
+        </TableHead>
+        <TableBody {...getTableBodyProps()}>
           {truncatedRows.map((row, i) => {
             prepareRow(row);
             let nextRow =
@@ -54,49 +124,64 @@ export default function Table({ columns: userColumns, data, className, view }) {
             let showMoreText = "";
             if (showMore) {
               showMoreText = (
-                <>
+                <Typography variant="caption">
                   Top 5 counties shown above, go to the{" "}
-                  <a href={prevParentRow.name.toLowerCase()}>
+                  <Link to={getTrackerUrl(prevParentRow)}>
                     {prevParentRow.name} report
-                  </a>{" "}
+                  </Link>{" "}
                   to see all counties.
-                </>
+                </Typography>
               );
               if (prevParentRow && prevParentRow.name === "Texas") {
                 showMoreText = (
-                  <>
+                  <Typography variant="caption">
                     State level data is unavailable for Texas, only the{" "}
-                    <a href="/counties/harris-county">Harris county report</a>{" "}
+                    <Link to="/counties/harris-county">
+                      Harris county report
+                    </Link>{" "}
                     is available.
-                  </>
+                  </Typography>
                 );
               }
             }
             if (row.depth === 0) prevParentRow = row.original;
             return (
               <>
-                <tr className={`row row--${row.depth}`} {...row.getRowProps()}>
+                <TableRow
+                  className={`row row--${row.depth}`}
+                  {...row.getRowProps()}
+                >
                   {row.cells.map((cell) => {
+                    console.log("cell!", cell, cell.getCellProps());
                     return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                      <TableCell
+                        {...cell.getCellProps()}
+                        {...(cell.column.cellProps || {})}
+                      >
+                        {cell.render("Cell")}
+                      </TableCell>
                     );
                   })}
-                </tr>
+                </TableRow>
                 {showMore && (
-                  <tr className="row--more">
-                    <td colSpan="5">{showMoreText}</td>
-                  </tr>
+                  <TableRow className="row--more">
+                    <TableCell align="center" colSpan="5">
+                      {showMoreText}
+                    </TableCell>
+                  </TableRow>
                 )}
               </>
             );
           })}
           {view === "counties" && (
-            <tr className="row--more">
-              <td colSpan="5">The top 25 counties are listed above </td>
-            </tr>
+            <TableRow className="row--more">
+              <TableCell colSpan="5">
+                The top 25 counties are listed above{" "}
+              </TableCell>
+            </TableRow>
           )}
-        </tbody>
-      </table>
-    </>
+        </TableBody>
+      </MuiTable>
+    </TableContainer>
   );
 }

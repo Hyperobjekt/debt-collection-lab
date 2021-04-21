@@ -3,7 +3,6 @@
 const d3 = require("d3");
 const { loadCsv, writeFile } = require("./utils");
 
-const DATE_PARSE = d3.timeParse("%m/%d/%Y");
 const DATE_FORMAT = d3.timeFormat("%m/%Y");
 const MONTH_PARSE = d3.timeParse("%m/%Y");
 const STATE_SELECTOR = (d) => d.id.substring(0, 2);
@@ -17,11 +16,24 @@ function getName(id, name) {
 }
 
 function aggregateLawsuits(data) {
-  // group by month
+  // shape lawsuit history
   const lawsuitsByMonth = d3.group(data, (d) => d.date);
   const monthDates = Array.from(lawsuitsByMonth.keys()).sort((a, b) => a - b);
   const values = monthDates
     .map((v) => [DATE_FORMAT(v), lawsuitsByMonth.get(v).length].join(";"))
+    .join("|");
+
+  // shape top 5 debt collectors
+  const lawsuitsByCollector = d3
+    .groups(data, (d) => d.plaintiff)
+    .map(([collector, lawsuits]) => [
+      `'${collector}'`,
+      lawsuits.length,
+      d3.sum(lawsuits, (d) => d.amount),
+    ])
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5)
+    .map((d) => d.join(";"))
     .join("|");
 
   return {
@@ -30,18 +42,11 @@ function aggregateLawsuits(data) {
     lawsuits: data.length,
     lawsuits_date: DATE_FORMAT(monthDates[monthDates.length - 1]),
     lawsuit_history: values,
+    collectors: `"${lawsuitsByCollector}"`,
+    amount: d3.sum(data, (d) => d.amount),
     default_judgement: data.filter((d) => d.decided && !d.representation)
       .length,
     no_rep_percent: data.filter((d) => !d.representation).length / data.length,
-  };
-}
-
-function aggregateCollectors(data) {
-  const byCollector = data.group(data, (d) => d.plaintiff);
-  return {
-    location_id: data[0].id,
-    location_name: getName(data[0].id, data[0].name),
-    lawsuits: data.length,
   };
 }
 
@@ -68,9 +73,10 @@ function aggregateByCollector(data, selector = (d) => d.id) {
   }, []);
 }
 
-
-
-const dateToMonthDate = (date) => MONTH_PARSE(DATE_FORMAT(DATE_PARSE(date)));
+const dateToMonthDate = (date, dateFormat = "%m/%d/%Y") => {
+  const dateParse = d3.timeParse(dateFormat);
+  return MONTH_PARSE(DATE_FORMAT(dateParse(date)));
+};
 
 const jsonToCsv = (jsonData) => {
   const headers = Object.keys(jsonData[0]).join(",");
@@ -79,26 +85,51 @@ const jsonToCsv = (jsonData) => {
 };
 
 async function shapeIndiana() {
-  const path = "./data/indiana.csv";
+  const path = "./data/18-lawsuits.csv";
   const parser = (d) => ({
     id: d.id,
     name: d.name,
     plaintiff: d.plaintiff,
     decided: d.status.toLowerCase() === "decided",
     date: dateToMonthDate(d.date),
+    amount: Math.random() * 4900 + 100,
     representation: d.attorney.toLowerCase() !== "na",
   });
-
   const data = loadCsv(path, parser);
-  // await writeDataFile(JSON.stringify(data, null, 2), "./output/parsed.json");
   const debtData = [
     ...aggregateBySelector(data, STATE_SELECTOR),
     ...aggregateBySelector(data, COUNTY_SELECTOR),
     ...aggregateBySelector(data, TRACT_SELECTOR),
   ];
-  // await writeDataFile(JSON.stringify(shapedData, null, 2), "./output/tmp.json");
+  return debtData;
+}
+
+async function shapeConnecticut() {
+  const path = "./data/09-lawsuits.csv";
+  const parser = (d) => ({
+    id: d.id,
+    name: d.name,
+    plaintiff: d.plaintiff,
+    decided: true,
+    date: dateToMonthDate(d.date, "%Y-%m-%d"),
+    amount: Number(d.amount),
+    representation: d.attorney.toLowerCase() !== "no",
+  });
+  const data = loadCsv(path, parser).filter((d) => d.id !== "NA");
+  const debtData = [
+    ...aggregateBySelector(data, STATE_SELECTOR),
+    ...aggregateBySelector(data, COUNTY_SELECTOR),
+    ...aggregateBySelector(data, TRACT_SELECTOR),
+  ];
+  return debtData;
+}
+
+async function shape() {
+  const indiana = await shapeIndiana();
+  const connecticut = await shapeConnecticut();
+  const debtData = [...connecticut, ...indiana];
   await writeFile(jsonToCsv(debtData), "./static/data/lawsuits.csv");
   console.log("written!");
 }
 
-shapeIndiana();
+shape();

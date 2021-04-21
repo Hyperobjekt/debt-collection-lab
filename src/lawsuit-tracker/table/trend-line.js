@@ -1,27 +1,28 @@
 import React from "react";
 import * as d3 from "d3";
 
-const genData = () => {
-  const data = [];
-  for (let i = 0, v = 2; i < 50; ++i) {
-    v += Math.random() - 0.5;
-    v = Math.max(Math.min(v, 4), 0);
-    data.push({ step: i, value: v });
-  }
-  return data;
-};
-const walkY = d3.scaleLinear().domain([0, 4]).range([28, 2]);
-
-const walkX = d3.scaleLinear().domain([0, 49]).range([0, 150]);
-
-export default function TrendLine() {
+export default function TrendLine({ range, data }) {
+  const height = 22;
+  const y = d3
+    .scaleLinear()
+    .domain(d3.extent(data, (d) => d.y))
+    .range([height, 2]);
+  const x = d3.scaleUtc().domain(range).range([0, 150]);
+  // define the area
+  var area = d3
+    .area()
+    .x((d) => x(d.x))
+    .y0(height)
+    .y1((d) => y(d.y));
   const line = d3
     .line()
-    .x((d) => walkX(d.step))
-    .y((d) => walkY(d.value));
+    .curve(d3.curveCardinal)
+    .x((d) => x(d.x))
+    .y((d) => y(d.y));
   return (
-    <svg width="150" height="30">
-      <path d={line(genData())} fill="none" strokeWidth={2} stroke="#000" />
+    <svg width="150" height={height + 2}>
+      <path d={area(data)} fill="rgba(0,0,0,0.1)" stroke="none" />
+      <path d={line(data)} fill="none" strokeWidth={2} stroke="#000" />
     </svg>
   );
 }

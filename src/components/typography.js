@@ -4,6 +4,17 @@ import clsx from "clsx";
 import { forwardRef } from "react";
 
 const style = (theme) => ({
+  sectionTitle: {
+    fontWeight: 700,
+    fontSize: theme.typography.pxToRem(28),
+    lineHeight: 1.25,
+    [theme.breakpoints.up("md")]: {
+      maxWidth: 320,
+    },
+    "& + .MuiTypography-root": {
+      marginTop: theme.spacing(3),
+    },
+  },
   grey: {
     color: "#555",
   },
