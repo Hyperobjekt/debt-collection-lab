@@ -14,6 +14,7 @@ import {
   getTrackerUrl,
   getLawsuitChartData,
   getLocationHeroData,
+  getDemographicChartData,
 } from "../../utils";
 import { Link } from "gatsby-material-ui-components";
 import Breadcrumb from "../../../components/layout/breadcrumb";
@@ -60,7 +61,7 @@ export default function TrackerCountyLayout({
         data={getTopCollectorsData(data)}
       />
       <LawsuitsChartSection
-        title="Debt Collection By Year"
+        title="Debt Collection Lawsuits By Year"
         data={getLawsuitChartData(data)}
       />
       <LawsuitsMapSection
@@ -76,7 +77,7 @@ export default function TrackerCountyLayout({
       <DemographicChartSection
         title="Debt Collection Lawsuits by Neighborhood Demographics"
         description="Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority.  The chart shows the number of lawsuits by racial/ethnic majority"
-        data={data.tracts}
+        data={getDemographicChartData(data)}
       />
       {children}
       {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}

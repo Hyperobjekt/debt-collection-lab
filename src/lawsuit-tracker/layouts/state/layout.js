@@ -9,6 +9,7 @@ import {
   TableSection,
 } from "../../sections";
 import {
+  getLawsuitChartData,
   getLocationHeroData,
   getTopCollectorsData,
   getTrackerUrl,
@@ -52,8 +53,8 @@ export default function TrackerCountyLayout({
         data={getTopCollectorsData(data)}
       />
       <LawsuitsChartSection
-        title="Debt Collection By Year"
-        data={data.lawsuit_history}
+        title="Debt Collection Lawsuits By Year"
+        data={getLawsuitChartData(data)}
       />
       <LawsuitsMapSection
         title="Geography of Debt Collection Lawsuits"

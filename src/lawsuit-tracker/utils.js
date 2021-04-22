@@ -123,13 +123,11 @@ export const getTrackerUrl = (data) => {
   return result;
 };
 
-const monthParse = d3.timeParse("%m/%Y");
-
 export const getEarliestDate = (data) => {
   return data.reduce((start, current) => {
     // ignore invalid dates
     if (current.month.indexOf("1969") > -1) return start;
-    const d = monthParse(current.month);
+    const d = parseMonthYear(current.month);
     return +d < +start ? d : start;
   }, new Date(8640000000000000));
 };
@@ -138,7 +136,7 @@ export const getLatestDate = (data) => {
   return data.reduce((end, current) => {
     // ignore invalid dates
     if (current.month.indexOf("1969") > -1) return end;
-    const d = monthParse(current.month);
+    const d = parseMonthYear(current.month);
     return +d > +end ? d : end;
   }, new Date(-8640000000000000));
 };
@@ -182,7 +180,56 @@ export const getLocationHeroData = (data) => {
 };
 
 export const getLawsuitChartData = (data) => {
-  return data.lawsuit_history.map((d) => ({ x: d.month, y: d.lawsuits }));
+  // shape 2020 data
+  const g2020 = data.lawsuit_history.map((d) => ({
+    group: formatYear(parseMonthYear(d.month)),
+    x: formatShortMonth(parseMonthYear(d.month)),
+    y: d.lawsuits,
+  }));
+  // generate sample years bases on 2020 values
+  const g2019 = g2020.map((d) => ({
+    group: "2019",
+    x: d.x,
+    y: (Math.random() * 0.5 + 0.75) * d.y,
+  }));
+  const g2018 = g2020.map((d) => ({
+    group: "2018",
+    x: d.x,
+    y: (Math.random() * 0.5 + 0.75) * d.y,
+  }));
+  // only jan / feb / march for 2021
+  const g2021 = g2020
+    .map((d) => ({
+      group: "2021",
+      x: d.x,
+      y:
+        ["Jan", "Feb", "Mar"].indexOf(d.x) > -1
+          ? (Math.random() * 0.5 + 0.75) * d.y
+          : 0,
+    }))
+    .filter((d) => d.y > 0);
+  // one big array for all chart data
+  const chartData = [...g2018, ...g2019, ...g2020, ...g2021];
+  // get the average value for each month
+  const monthlyAverages = d3
+    .groups(chartData, (d) => d.x)
+    .map((d) => [d[0], d3.sum(d[1], (v) => v.y / d[1].length)]);
+  // pull the month with the highest average
+  const topMonth = monthlyAverages.sort((a, b) => b[1] - a[1])[0];
+  // get the average yearly filings
+  const avgYearly = d3.sum(monthlyAverages, (d) => d[1]);
+  // calculate the % of the top month's lawsuits of the yearly average
+  const topMonthPercent = topMonth[1] / avgYearly;
+  // format the top month name as
+  const topMonthName = d3.timeFormat("%B")(
+    d3.timeParse("%b/%Y")(`${topMonth[0]}/2020`)
+  );
+  return {
+    chartData,
+    avgYearly,
+    topMonthName,
+    topMonthPercent,
+  };
 };
 
 export const getLawsuitMapData = (data) => {
@@ -190,7 +237,36 @@ export const getLawsuitMapData = (data) => {
 };
 
 export const getDemographicChartData = (data) => {
-  return data;
+  const GROUPS = ["Asian", "Black", "Latinx", "White", "Other"];
+  const MONTHS = [
+    "03/2020",
+    "04/2020",
+    "05/2020",
+    "06/2020",
+    "07/2020",
+    "08/2020",
+    "09/2020",
+    "10/2020",
+    "11/2020",
+    "12/2020",
+    "01/2021",
+    "02/2021",
+    "03/2021",
+  ];
+  let chartData = [];
+
+  for (let i = 0; i < MONTHS.length; i++) {
+    for (let j = 0; j < GROUPS.length; j++) {
+      chartData.push({
+        group: GROUPS[j],
+        x: parseMonthYear(MONTHS[i]),
+        y: Math.random() * 500 + 50,
+      });
+    }
+  }
+  return {
+    chartData,
+  };
 };
 
 export const getTopCollectorsData = (data) => {
@@ -205,7 +281,10 @@ export const getTopCollectorsData = (data) => {
   };
 };
 
+export const parseMonthYear = d3.timeParse("%m/%Y");
 export const formatPercent = d3.format(".1%");
 export const formatInt = d3.format(",d");
+export const formatYear = d3.timeFormat("%Y");
+export const formatShortMonth = d3.timeFormat("%b");
 export const formatMonthYear = d3.timeFormat("%B %Y");
 export const formatShortMonthYear = d3.timeFormat("%b '%y");
