@@ -55,7 +55,7 @@ const LocationHero = ({
             {formatPercent(percentWithoutRep)}
           </Typography>
           <Typography variant="caption">
-            defendants did not have legal representation
+            of defendants did not have legal representation
           </Typography>
         </Box>
         <Box className={classes.stat}>
@@ -63,7 +63,7 @@ const LocationHero = ({
             {formatPercent(percentDefault)}
           </Typography>
           <Typography variant="caption">
-            of lawsuits with default judgements
+            of lawsuits resulted in default judgments
           </Typography>
         </Box>
       </Box>
