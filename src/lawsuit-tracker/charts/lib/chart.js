@@ -1302,11 +1302,53 @@ Chart.prototype.addVoronoi = function (overrides) {
 };
 
 Chart.prototype.addDonut = function (overrides) {
+  var _this = this;
+  const options = { ...this.options, ...overrides };
   const createSelection = (parentSelection) => {
-    return parentSelection.append("g").attr("class", "chart__donut");
+    return parentSelection
+      .append("g")
+      .attr("class", "chart__donut")
+      .attr(
+        "transform",
+        `translate(${_this.getInnerWidth() / 2} ${_this.getInnerHeight() / 2})`
+      );
   };
+  const createRenderer = (selection, chart) => () => {
+    _this.colorScale = d3
+      .scaleOrdinal()
+      .domain(chart.data.map((d) => d.group))
+      .range(options.colors);
+    const pie = d3
+      .pie()
+      .padAngle(0.005)
+      .sort(null)
+      .value((d) => d.value);
+    const radius = Math.min(chart.getInnerWidth(), chart.getInnerHeight()) / 2;
+    const arc = d3
+      .arc()
+      .innerRadius(radius * 0.67)
+      .outerRadius(radius - 1);
+    const arcs = pie(chart.data);
+    console.log("arcs", arcs);
+    const arcSelection = selection.selectAll("path").data(arcs);
+    const arcEnter = arcSelection
+      .enter()
+      .append("path")
+      // .attr("d", (d, i) => arc(startArcs[i]))
+      .attr("fill", (d) => _this.colorScale(d.data.group));
 
-  const createRenderer = (selection, chart) => {};
+    arcEnter
+      .transition()
+      .duration(1000)
+      .attrTween("d", function (d) {
+        var i = d3.interpolate(d.startAngle + 0.01, d.endAngle);
+        return function (t) {
+          d.endAngle = i(t);
+          return arc(d);
+        };
+      });
+  };
+  this.addElement("donut", "data", createSelection, createRenderer);
   return this;
 };
 

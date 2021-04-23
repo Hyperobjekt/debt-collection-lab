@@ -15,6 +15,7 @@ import {
   getLawsuitChartData,
   getLocationHeroData,
   getDemographicChartData,
+  getLawsuitMapData,
 } from "../../utils";
 import { Link } from "gatsby-material-ui-components";
 import Breadcrumb from "../../../components/layout/breadcrumb";
@@ -25,6 +26,7 @@ export default function TrackerCountyLayout({
   ...props
 }) {
   const data = props.data.allCounties.nodes[0];
+  const geojson = props.data.allGeojsonJson.nodes[0];
   const context = {
     ...pageContext,
     frontmatter: {},
@@ -67,7 +69,7 @@ export default function TrackerCountyLayout({
       <LawsuitsMapSection
         title="Geography of Debt Collection Lawsuits"
         description={`${data.name} is split into ${data.tracts.length} census tracts.  On the map you can see the number of lawsuits corresponding to each census tract.`}
-        data={data.tracts}
+        data={getLawsuitMapData(data, geojson, "tracts")}
       />
       <TableSection
         title="Overview of Lawsuits by Census Tract"
@@ -86,7 +88,21 @@ export default function TrackerCountyLayout({
 }
 
 export const query = graphql`
-  query($geoid: String!) {
+  query($geoid: String!, $state: String!) {
+    allGeojsonJson(filter: { name: { eq: $state }, region: { eq: "tracts" } }) {
+      nodes {
+        features {
+          properties {
+            GEOID
+          }
+          geometry {
+            type
+            coordinates
+          }
+          type
+        }
+      }
+    }
     allCounties(filter: { geoid: { eq: $geoid } }) {
       nodes {
         geoid

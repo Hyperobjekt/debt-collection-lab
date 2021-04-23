@@ -232,8 +232,23 @@ export const getLawsuitChartData = (data) => {
   };
 };
 
-export const getLawsuitMapData = (data) => {
-  return data;
+export const getLawsuitMapData = (data, geojson, region) => {
+  const childData = data[region];
+  const features = geojson.features
+    .map((f) => {
+      const match = childData.find((d) => d.geoid === f.properties.GEOID);
+      return match
+        ? {
+            ...f,
+            properties: {
+              ...f.properties,
+              value: match.lawsuits,
+            },
+          }
+        : null;
+    })
+    .filter((v) => !!v);
+  return { type: "FeatureCollection", features };
 };
 
 export const getDemographicChartData = (data) => {
@@ -270,14 +285,26 @@ export const getDemographicChartData = (data) => {
 };
 
 export const getTopCollectorsData = (data) => {
-  const percent =
-    d3.sum(data.top_collectors, (d) => d.lawsuits) / data.lawsuits;
+  const topLawsuits = d3.sum(data.top_collectors, (d) => d.lawsuits);
+  const topPercent = topLawsuits / data.lawsuits;
+  const chartData = data.top_collectors.map((d) => ({
+    ...d,
+    group: d.collector,
+    value: d.lawsuits / data.lawsuits,
+  }));
+  chartData.push({
+    group: "Other",
+    value: (data.lawsuits - topLawsuits) / data.lawsuits,
+    lawsuits: data.lawsuits - topLawsuits,
+  });
   return {
     total: data.lawsuits,
     collectors: data.top_collectors,
-    percent,
+    topLawsuits,
+    topPercent,
     collector_total: data.collector_total,
     name: data.name,
+    chartData,
   };
 };
 

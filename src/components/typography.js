@@ -27,6 +27,10 @@ const style = (theme) => ({
     lineHeight: 1,
     margin: 0,
   },
+  legendLabel: {
+    fontSize: theme.typography.pxToRem(14),
+    fontWeight: 500,
+  },
   grey: {
     color: "#555",
   },

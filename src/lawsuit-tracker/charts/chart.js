@@ -192,7 +192,9 @@ const Chart = ({
   height = 420,
   options,
   chart,
+  labelFormatter = (d) => d,
   theme = {},
+  className,
   ...props
 }) => {
   const elRef = useRef(null);
@@ -201,7 +203,7 @@ const Chart = ({
   const mergedTheme = useMemo(
     () => ({
       ...defaultTheme,
-      theme,
+      ...theme,
     }),
     [theme]
   );
@@ -217,7 +219,7 @@ const Chart = ({
       if (!chart.colorScale) return;
       const labels = chart.colorScale
         .domain()
-        .map((d) => [d, chart.colorScale(d)]);
+        .map((d) => [labelFormatter(d, chart), chart.colorScale(d)]);
       // TODO: do a more accurate check if labels have changed
       if (labels.length !== legendLabels.length) setLegendLabels(labels);
     },
@@ -242,9 +244,15 @@ const Chart = ({
   return (
     <>
       <Global theme={mergedTheme} />
-      <ChartContainer theme={mergedTheme} {...props}>
-        <div style={{ width, height }} className="chart" ref={elRef} />
-        {legendLabels.length && <ChartLegend labels={legendLabels} />}
+      <ChartContainer
+        className={clsx("chart", className)}
+        theme={mergedTheme}
+        {...props}
+      >
+        <div style={{ width, height }} className="chart__body" ref={elRef} />
+        {legendLabels.length && (
+          <ChartLegend className="chart__legend" labels={legendLabels} />
+        )}
       </ChartContainer>
     </>
   );
