@@ -51,8 +51,8 @@ const MapVisual = () => {
             name.
           </li>
           <li>
-            hovering a tract shows the racial breakdown as well as median
-            household income below the tract name
+            hovering a tract shows census data for % race/ethnicity as well as
+            median household income
           </li>
           <li>
             has a gradient legend on the left that shows the values that
