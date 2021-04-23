@@ -13,9 +13,12 @@ const ChartLegend = ({ labels, className, ...props }) => {
       {...props}
     >
       {labels.map((l, i) => (
-        <Grid key={l} className="legend__item" justify="center" item xs>
-          <div className={`legend__color legend__color--${i}`} />
-          <Typography className="legend__label">{l}</Typography>
+        <Grid key={l[0]} className="legend__item" justify="center" item xs>
+          <div
+            className={`legend__color legend__color--${i}`}
+            style={{ background: l[1] }}
+          />
+          <Typography className="legend__label">{l[0]}</Typography>
         </Grid>
       ))}
     </Grid>

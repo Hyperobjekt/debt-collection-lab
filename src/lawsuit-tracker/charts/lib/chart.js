@@ -600,98 +600,133 @@ Chart.prototype.addHoverDot = function () {
  * Adds groups of bars to the chart
  * @param {function} selector function that takes the chart data and returns the bar data
  */
-Chart.prototype.addBarGroups = function () {
-  // console.log('addBarGroups')
+Chart.prototype.addBarGroups = function (overrides) {
   var _this = this;
-  this.selections["bargroups"] = this.selections["data"]
-    .append("g")
-    .attr("class", "chart__bargroups");
 
-  this.updaters["bargroups"] = function () {
-    // console.log('updater for bargroups')
-    var barData = d3
-      .groups(_this.data, (d) => d.x)
-      .map((d) => ({
-        group: d[0],
-        values: d[1].map((d) => ({ ...d, x: d.group, y: d.y })),
-      }));
-    var spacing = _this.options.barSpacing || 0;
-    var typeNames = barData[0].values.map((d) => d.x);
+  const options = { ...this.options, ...overrides };
 
-    _this.groupScale = _this.xScale;
-
-    _this.barScale = d3
-      .scaleBand()
-      .domain(typeNames)
-      .range([0, _this.groupScale.bandwidth()])
-      .round(0)
-      .padding(0);
-
-    var parentSelection = _this.selections["bargroups"]
-      .selectAll(".chart__bar--group")
-      .data(barData);
-
-    // groups enter render
-    var groupSelection = parentSelection
-      .enter()
-      .append("g")
-      .attr("id", function (d) {
-        return "bar-group" + d.group;
-      })
-      .attr("class", function (d) {
-        return "chart__bar--group " + d.group;
-      })
-      .attr("transform", function (d) {
-        return "translate(" + _this.groupScale(d.group) + ",0)";
-      })
-      .merge(parentSelection)
-      .attr("transform", function (d) {
-        return "translate(" + _this.groupScale(d.group) + ",0)";
-      });
-
-    var barDataSelection = groupSelection
-      .selectAll(".chart__bar")
-      .data(function (d) {
-        return d.values;
-      });
-
-    var barsSelection = barDataSelection
-      .enter()
-      .append("rect")
-      .attr("class", function (d, i) {
-        return "chart__bar chart__bar--bar" + i;
-      })
-      .attr("width", function (d) {
-        return _this.barScale.bandwidth() - spacing;
-      })
-      .attr("x", function (d) {
-        return _this.barScale(d.x);
-      })
-      .attr("height", 0)
-      .attr("y", function (d) {
-        return _this.getInnerHeight();
-      });
-
-    // bar updates render
-    barsSelection
-      .merge(barDataSelection)
-      .transition()
-      .duration(1000)
-      .attr("width", function (d) {
-        return _this.barScale.bandwidth() - spacing;
-      })
-      .attr("x", function (d) {
-        return _this.barScale(d.x);
-      })
-      .attr("y", function (d) {
-        return _this.yScale(d.y);
-      })
-      .attr("height", function (d) {
-        return _this.getInnerHeight() - _this.yScale(d.y);
-      })
-      .attr("fill", (d, i) => d.color || _this.options.colors[i]);
+  const createSelection = (parentSelection) => {
+    return parentSelection.append("g").attr("class", "chart__bargroups");
   };
 
+  const createRenderer = (selection, chart) => {
+    return function () {
+      // shape data for bar groups
+      var barData = d3
+        .groups(_this.data, (d) => d.x)
+        .map((d) => ({
+          group: d[0],
+          values: d[1].map((d) => ({ ...d, x: d.group, y: d.y })),
+        }));
+      var spacing = _this.options.barSpacing || 0;
+      var typeNames = barData[0].values.map((d) => d.x);
+
+      _this.colorScale = d3
+        .scaleOrdinal()
+        .domain(typeNames)
+        .range(options.colors);
+
+      _this.groupScale = _this.xScale;
+
+      _this.barScale = d3
+        .scaleBand()
+        .domain(typeNames)
+        .range([0, _this.groupScale.bandwidth()])
+        .round(0)
+        .padding(0);
+
+      // make bar groups
+      var parentSelection = selection
+        .selectAll(".chart__bar--group")
+        .data(barData);
+      var groupSelection = parentSelection
+        .enter()
+        .append("g")
+        .attr("id", function (d) {
+          return "bar-group" + d.group;
+        })
+        .attr("class", function (d) {
+          return "chart__bar--group " + d.group;
+        })
+        .attr("transform", function (d) {
+          return "translate(" + _this.groupScale(d.group) + ",0)";
+        })
+        .merge(parentSelection)
+        .attr("transform", function (d) {
+          return "translate(" + _this.groupScale(d.group) + ",0)";
+        });
+
+      if (options.renderTooltip) {
+        // make overlay bar groups for tooltips
+        var groupAreaSelection = selection
+          .selectAll(".chart__bar-area")
+          .data(barData);
+        groupAreaSelection
+          .enter()
+          .append("rect")
+          .attr("fill", "transparent")
+          .attr("class", "chart__bar-area")
+          .on("mousemove", function (event, d) {
+            console.log("hover bar group!", event, d);
+            chart.setHovered(d);
+            chart.showTooltip(event, options.renderTooltip);
+          })
+          .on("mouseout", function () {
+            console.log("hover out bar group!");
+            chart.setHovered(null);
+            chart.hideTooltip();
+          })
+          .merge(groupAreaSelection)
+          .attr("x", function (d, i) {
+            return _this.groupScale(d.group) - 4;
+          })
+          .attr("y", 0)
+          .attr("height", _this.getInnerHeight())
+          .attr("width", _this.groupScale.bandwidth() + 8);
+      }
+
+      // make bars
+      var barDataSelection = groupSelection
+        .selectAll(".chart__bar")
+        .data(function (d) {
+          return d.values;
+        });
+      barDataSelection
+        .enter()
+        .append("rect")
+        .attr("class", function (d, i) {
+          return "chart__bar chart__bar--bar" + i;
+        })
+        .attr("width", function (d) {
+          return _this.barScale.bandwidth() - spacing;
+        })
+        .attr("x", function (d) {
+          return _this.barScale(d.x);
+        })
+        .attr("height", 0)
+        .attr("y", function (d) {
+          return _this.getInnerHeight();
+        })
+        .merge(barDataSelection)
+        .transition()
+        .duration(1000)
+        .attr("width", function (d) {
+          return _this.barScale.bandwidth() - spacing;
+        })
+        .attr("x", function (d) {
+          return _this.barScale(d.x);
+        })
+        .attr("y", function (d) {
+          return _this.yScale(d.y);
+        })
+        .attr("height", function (d) {
+          return _this.getInnerHeight() - _this.yScale(d.y);
+        })
+        .attr("fill", (d, i) => _this.colorScale(d.group));
+    };
+  };
+
+  this.addElement("bargroups", "data", createSelection, createRenderer);
   return this;
 };
 
@@ -826,7 +861,7 @@ Chart.prototype.addBandedBars = function (overrides) {
  */
 Chart.prototype.addLines = function (overrides) {
   var _this = this;
-  var options = overrides || {};
+  var options = { ...this.options, ...overrides };
   options.delay = overrides.delay || 0;
   options.duration = overrides.duration || 2000;
   options.linesId = overrides.linesId || "lines";
@@ -840,6 +875,9 @@ Chart.prototype.addLines = function (overrides) {
       ];
     };
   _this.lineData = options.selector(_this.data);
+  const typeNames = d3.groups(_this.data, (d) => d.group).map((d) => d[0]);
+  _this.colorScale = d3.scaleOrdinal().domain(typeNames).range(options.colors);
+
   if (_this.getSelection(options.linesId))
     throw new Error(
       "addLines: selection already exists for given linesId " + options.linesId
@@ -881,6 +919,9 @@ Chart.prototype.addLines = function (overrides) {
         .duration(options.duration)
         .delay(options.delay)
         .attr("d", line)
+        .attr("stroke", function (d) {
+          return _this.colorScale(d[0][2]);
+        })
         .style("stroke-dasharray", function () {
           // need to increase the dasharray to prevent line from cutting off
           var ratio = chart.lastWidth
@@ -1230,6 +1271,7 @@ Chart.prototype.addVoronoi = function (overrides) {
           return d ? "M" + d.join("L") + "Z" : null;
         })
         .on("mousemove", function (event, d) {
+          console.log("HOVER", d);
           chart.setHovered(d.data);
           chart
             .getSelection("root")
@@ -1256,6 +1298,15 @@ Chart.prototype.addVoronoi = function (overrides) {
     };
   }
   this.addElement("voronoi", "data", createSelection, createRenderer);
+  return this;
+};
+
+Chart.prototype.addDonut = function (overrides) {
+  const createSelection = (parentSelection) => {
+    return parentSelection.append("g").attr("class", "chart__donut");
+  };
+
+  const createRenderer = (selection, chart) => {};
   return this;
 };
 

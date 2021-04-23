@@ -1,4 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import useDidUpdate from "@rooks/use-did-update";
@@ -121,43 +127,11 @@ const ChartContainer = styled.div`
     stroke: ${getThemeKey("gridLines.stroke")};
   }
 
-  /** CHART BARS */
-  .chart__bar--bar0 {
-    fill: ${getThemeKey("colors.0")};
-  }
-  .chart__bar--bar1 {
-    fill: ${getThemeKey("colors.1")};
-  }
-  .chart__bar--bar2 {
-    fill: ${getThemeKey("colors.2")};
-  }
-  .chart__bar--bar3 {
-    fill: ${getThemeKey("colors.3")};
-  }
-  .chart__bar--bar4 {
-    fill: ${getThemeKey("colors.4")};
-  }
-
   /** CHART LINES */
   .chart__line {
     fill: none;
     stroke-width: 2;
     stroke-dasharray: 0;
-  }
-  .chart__line--0 {
-    stroke: ${getThemeKey("colors.0")};
-  }
-  .chart__line--1 {
-    stroke: ${getThemeKey("colors.1")};
-  }
-  .chart__line--2 {
-    stroke: ${getThemeKey("colors.2")};
-  }
-  .chart__line--3 {
-    stroke: ${getThemeKey("colors.3")};
-  }
-  .chart__line--4 {
-    stroke: ${getThemeKey("colors.4")};
   }
   .chart__line--hovered {
     stroke-width: 5;
@@ -184,21 +158,6 @@ const ChartContainer = styled.div`
     height: 16px;
     margin-right: 8px;
   }
-  .legend__color--0 {
-    background: ${getThemeKey("colors.0")};
-  }
-  .legend__color--1 {
-    background: ${getThemeKey("colors.1")};
-  }
-  .legend__color--2 {
-    background: ${getThemeKey("colors.2")};
-  }
-  .legend__color--3 {
-    background: ${getThemeKey("colors.3")};
-  }
-  .legend__color--4 {
-    background: ${getThemeKey("colors.4")};
-  }
 `;
 
 const defaultTheme = {
@@ -220,7 +179,7 @@ const defaultTheme = {
     stroke: "#eee",
     strokeWidth: 1,
   },
-  colors: ["#000", "#444", "#777", "#aaa", "#ddd"].reverse(),
+  colors: ["#000", "#444", "#777", "#aaa", "#ddd"],
   tooltip: {
     background: `rgba(0, 0, 0, 0.87)`,
     color: "#fff",
@@ -232,32 +191,60 @@ const Chart = ({
   width = "100%",
   height = 420,
   options,
-  labels,
   chart,
   theme = {},
   ...props
 }) => {
   const elRef = useRef(null);
   const chartRef = useRef(null);
+  const [legendLabels, setLegendLabels] = useState([]);
+  const mergedTheme = useMemo(
+    () => ({
+      ...defaultTheme,
+      theme,
+    }),
+    [theme]
+  );
+  const mergedOptions = useMemo(
+    () => ({
+      ...options,
+      colors: mergedTheme.colors,
+    }),
+    [options, mergedTheme]
+  );
+  const updateLabels = useCallback(
+    (chart) => {
+      if (!chart.colorScale) return;
+      const labels = chart.colorScale
+        .domain()
+        .map((d) => [d, chart.colorScale(d)]);
+      // TODO: do a more accurate check if labels have changed
+      if (labels.length !== legendLabels.length) setLegendLabels(labels);
+    },
+    [legendLabels, setLegendLabels]
+  );
 
   useDidUpdate(() => {
     if (chartRef.current) {
-      chartRef.current.update({ data, options });
+      console.log("did update");
+      chartRef.current.update({ data, options: mergedOptions });
+      updateLabels(chartRef.current);
     }
-  }, [data, options]);
+  }, [data, mergedOptions, updateLabels]);
 
   useEffect(() => {
     if (elRef.current) {
-      chartRef.current = chart(elRef.current, data, options);
+      chartRef.current = chart(elRef.current, data, mergedOptions);
+      updateLabels(chartRef.current);
     }
   }, []);
 
   return (
     <>
-      <Global theme={{ ...defaultTheme, ...theme }} />
-      <ChartContainer theme={{ ...defaultTheme, ...theme }} {...props}>
+      <Global theme={mergedTheme} />
+      <ChartContainer theme={mergedTheme} {...props}>
         <div style={{ width, height }} className="chart" ref={elRef} />
-        {labels && <ChartLegend labels={labels} />}
+        {legendLabels.length && <ChartLegend labels={legendLabels} />}
       </ChartContainer>
     </>
   );

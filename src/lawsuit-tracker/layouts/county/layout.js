@@ -75,7 +75,7 @@ export default function TrackerCountyLayout({
         data={[data]}
       />
       <DemographicChartSection
-        title="Debt Collection Lawsuits by Neighborhood Demographics"
+        title="Debt Collection Lawsuits by Census Tract Racial Majority"
         description="Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority.  The chart shows the number of lawsuits by racial/ethnic majority"
         data={getDemographicChartData(data)}
       />

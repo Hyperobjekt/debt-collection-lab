@@ -56,7 +56,17 @@ function createFigure(root, data, options) {
         },
       })
       // adds the bars
-      .addBarGroups()
+      .addBarGroups({
+        renderTooltip: (data) => {
+          return (
+            '<h1 class="tooltip__title">' +
+            data.group +
+            "</h1>" +
+            '<div class="tooltip__item">' +
+            "</div>"
+          );
+        },
+      })
       .render()
   );
 }
