@@ -2,6 +2,12 @@ import React, { useEffect } from "react";
 import DeckGL from "@deck.gl/react";
 import { useMapState } from "./hooks/useMapStore";
 import "mapbox-gl/dist/mapbox-gl.css";
+// import mapboxgl from "mapbox-gl";
+
+// // prevents failing build because of mapbox: https://github.com/mapbox/mapbox-gl-js/issues/10173
+// // @ts-ignore
+// // eslint-disable-next-line import/no-webpack-loader-syntax
+// mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const DeckGLMap = React.forwardRef(
   ({ children, initialViewport, bounds, ...props }, ref) => {

@@ -51,5 +51,12 @@
     "title-case": "^2.1.1",
     "viewport-mercator-project": "^7.0.2",
     "zustand": "^3.4.1"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie 11",
+    "not chrome < 51",
+    "not safari < 10"
+  ]
 }
