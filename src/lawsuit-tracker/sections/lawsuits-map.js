@@ -1,75 +1,86 @@
 import React from "react";
 import Typography from "../../components/typography";
-import { Grid, withStyles } from "@material-ui/core";
+import { Box, Grid, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
+import ChoroplethMap from "../map/ChoroplethMap";
+import * as counties from "../../../data/09-counties.json";
+import * as d3 from "d3";
+import { formatInt } from "../utils";
 
 const SectionBlock = withStyles((theme) => ({
   root: {},
 }))(TwoColBlock);
 
-const MapContent = ({ title, description }) => {
+const LawsuitMap = ({ data, colorScale }) => {
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "100%",
+        minHeight: 420,
+      }}
+    >
+      <ChoroplethMap data={data} colorScale={colorScale} />
+    </div>
+  );
+};
+
+const MapContent = ({ title, description, colorScale }) => {
+  const colors = colorScale.range().join(",");
+  const values = colorScale.domain();
+  const gradient = `linear-gradient(90deg, ${colors})`;
   return (
     <>
       <Typography variant="sectionTitle" component="h3">
         {title}
       </Typography>
       {description && <Typography>{description}</Typography>}
-      <Typography variant="caption">
+      <Typography style={{ marginTop: 24, display: "block" }} variant="caption">
         Lawsuit filings since March 2020:
       </Typography>
-      <img src="https://via.placeholder.com/280x48" />
+      <Box style={{ width: 280 }}>
+        <div style={{ background: gradient, width: 280, height: 16 }} />
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          style={{
+            borderTop: `1px solid #ccc`,
+            marginTop: 2,
+            height: 5,
+            marginRight: 1,
+            marginLeft: 1,
+            boxShadow: `1px 0 0 #ccc, -1px 0 0 #ccc`,
+          }}
+        >
+          <Typography
+            style={{ transform: `translate(-50%, 4px)` }}
+            variant="caption"
+          >
+            {formatInt(values[0])}
+          </Typography>
+          <Typography
+            style={{ transform: `translate(50%, 4px)` }}
+            variant="caption"
+          >
+            {formatInt(values[1])}
+          </Typography>
+        </Box>
+      </Box>
     </>
   );
 };
 
-const MapVisual = () => {
-  return (
-    <Grid container spacing={3} style={{ background: "#ccc", height: 400 }}>
-      <Grid item md={6}>
-        <Typography>Visual Goals</Typography>
-        <ol>
-          <li>identify neighborhoods where debt collection is concentrated</li>
-          <li>
-            highlight associated demographics within neighborhoods (racial
-            majority, median household income)
-          </li>
-        </ol>
-      </Grid>
-      <Grid item md={6}>
-        <Typography>Specification</Typography>
-        <ul>
-          <li>
-            Choropleth map with shapes representing census tracts (or counties
-            on state pages)
-          </li>
-          <li>
-            shapes are colored corresponding to the number of lawsuits since
-            March 2020
-          </li>
-          <li>
-            hovering a county or tract shows a tooltip with the county / tract
-            name.
-          </li>
-          <li>
-            hovering a tract shows census data for % race/ethnicity as well as
-            median household income
-          </li>
-          <li>
-            has a gradient legend on the left that shows the values that
-            correspond to the colors used on the map
-          </li>
-        </ul>
-      </Grid>
-      {/* <Grid item>Data: {JSON.stringify(data)}</Grid> */}
-    </Grid>
-  );
-};
-
 const LawsuitsMapSection = ({ title, description, data, ...props }) => {
+  const colorScale = d3
+    .scaleLinear()
+    .domain(d3.extent(data.features, (d) => d.properties.value))
+    .range(["#eee", "#999"]);
+
   return (
     <SectionBlock
-      left={<MapContent {...{ title, description }} />}
-      right={<MapVisual />}
+      left={<MapContent {...{ title, description, colorScale }} />}
+      right={<LawsuitMap data={data} colorScale={colorScale} />}
       {...props}
     />
   );

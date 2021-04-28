@@ -2,10 +2,28 @@ import React from "react";
 import Typography from "../../components/typography";
 import { Grid, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
+import GroupedBarChart from "../charts/grouped-bar-chart";
+import LineChart from "../charts/line-chart";
 
 const SectionBlock = withStyles((theme) => ({
   root: {},
 }))(TwoColBlock);
+
+const DemographicChart = ({ data }) => {
+  return (
+    <>
+      <LineChart
+        data={data}
+        options={{
+          barSpacing: 1,
+          groupPadding: 0.25,
+          xFormat: "%b '%y",
+          margin: [8, 8, 48, 40],
+        }}
+      />
+    </>
+  );
+};
 
 const DemographicChartSection = ({
   title,
@@ -64,7 +82,13 @@ const DemographicChartSection = ({
       </Grid>
     </Grid>
   );
-  return <SectionBlock left={leftContent} right={rightContent} {...props} />;
+  return (
+    <SectionBlock
+      left={leftContent}
+      right={<DemographicChart data={data.chartData} />}
+      {...props}
+    />
+  );
 };
 
 export default DemographicChartSection;

@@ -47,6 +47,14 @@ module.exports = {
         path: `${__dirname}/content/pages`,
       },
     },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./data/geojson`,
+        typeName: `Geo`,
+      },
+    },
     "gatsby-theme-material-ui",
   ],
 };

@@ -1,19 +1,82 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Typography from "../../components/typography";
-import { Grid, withStyles } from "@material-ui/core";
+import { Grid, makeStyles, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import * as d3 from "d3";
 import { formatInt, formatPercent } from "../utils";
+import DonutChart from "../charts/donut-chart";
 
 const SectionBlock = withStyles((theme) => ({
   root: {},
 }))(TwoColBlock);
 
+const useChartStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    "& .chart__body": {
+      flex: 0,
+    },
+    "& .chart__legend": {
+      flex: 0,
+      minWidth: 280,
+      flexDirection: "column",
+      alignItems: "flex-start",
+      justifyContent: "center",
+    },
+    "& .legend .legend__item": {
+      alignItems: "flex-start",
+      flexGrow: 0,
+      marginBottom: theme.spacing(1),
+    },
+    "& .legend .legend__label": {
+      fontSize: theme.typography.pxToRem(14),
+    },
+    "& .legend .legend__color": {
+      marginTop: 3,
+    },
+  },
+}));
+
+const TopCollectorsChart = ({ data }) => {
+  const labelFormatter = (label, chart) => {
+    const value = data.find((d) => d.group === label);
+    return (
+      <>
+        <Typography weight="bold" variant="legendLabel">
+          {label}
+        </Typography>
+        {formatInt(value.lawsuits)} lawsuits ({formatPercent(value.value)})
+      </>
+    );
+  };
+  const classes = useChartStyles();
+  return (
+    <>
+      <DonutChart
+        className={classes.root}
+        data={data}
+        width={320}
+        height={320}
+        theme={{
+          background: "transparent",
+          frame: { stroke: "none" },
+          colors: ["#000", "#444", "#777", "#aaa", "#ddd", "#f0f0f0"],
+        }}
+        labelFormatter={labelFormatter}
+        options={{
+          margin: [0, 32, 0, 0],
+        }}
+      />
+    </>
+  );
+};
+
 const DebtCollectorsSection = ({
   title,
   description,
   data,
-  total,
   children,
   ...props
 }) => {
@@ -26,41 +89,20 @@ const DebtCollectorsSection = ({
       <Typography paragraph>
         Out of {formatInt(data.collector_total)} debt collectors in {data.name},
         the top 5 ({formatPercent(5 / data.collector_total)}) are responsible
-        for {formatPercent(data.percent)} of lawsuits.
+        for {formatInt(data.topLawsuits)} ({formatPercent(data.topPercent)}) of{" "}
+        {formatInt(data.total)} lawsuits.
       </Typography>
       {children}
     </>
   );
-  const rightContent = (
-    <Grid container spacing={3}>
-      <Grid item sm={6} style={{ background: "#ccc" }}>
-        <Typography>Visual Goals</Typography>
-        <ol>
-          <li>Highlight debt collector proportion as part of a whole</li>
-        </ol>
-        <Typography>Specification</Typography>
-        <ul>
-          <li>
-            <a href="https://www.d3-graph-gallery.com/donut">Donut</a> (or pie)
-            chart
-          </li>
-          <li>areas corresponding to top 5 collectors, and "other" category</li>
-          <li>legend corresponding values on right to area color</li>
-        </ul>
-      </Grid>
-      <Grid item sm={6}>
-        <ol>
-          {data.collectors.map((c) => (
-            <li key={c.collector} style={{ marginBottom: 8 }}>
-              <strong>{c.collector}:</strong> {formatInt(c.lawsuits)} (
-              {formatPercent(c.lawsuits / data.total)})
-            </li>
-          ))}
-        </ol>
-      </Grid>
-    </Grid>
+
+  return (
+    <SectionBlock
+      left={leftContent}
+      right={<TopCollectorsChart data={data.chartData} />}
+      {...props}
+    />
   );
-  return <SectionBlock left={leftContent} right={rightContent} {...props} />;
 };
 
 export default DebtCollectorsSection;

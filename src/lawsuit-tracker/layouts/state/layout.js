@@ -9,6 +9,8 @@ import {
   TableSection,
 } from "../../sections";
 import {
+  getLawsuitChartData,
+  getLawsuitMapData,
   getLocationHeroData,
   getTopCollectorsData,
   getTrackerUrl,
@@ -21,6 +23,7 @@ export default function TrackerCountyLayout({
   ...props
 }) {
   const data = props.data.allStates.nodes[0];
+  const geojson = props.data.allGeojsonJson.nodes[0];
   const context = {
     ...pageContext,
     frontmatter: {},
@@ -52,13 +55,13 @@ export default function TrackerCountyLayout({
         data={getTopCollectorsData(data)}
       />
       <LawsuitsChartSection
-        title="Debt Collection By Year"
-        data={data.lawsuit_history}
+        title="Debt Collection Lawsuits By Year"
+        data={getLawsuitChartData(data)}
       />
       <LawsuitsMapSection
         title="Geography of Debt Collection Lawsuits"
         description={`${data.name} is split into ${data.counties.length} counties.  On the map you can see the number of lawsuits corresponding to each census tract.`}
-        data={data.counties}
+        data={getLawsuitMapData(data, geojson, "counties")}
       />
       <TableSection
         title="Overview of Lawsuits by County"
@@ -73,7 +76,23 @@ export default function TrackerCountyLayout({
 }
 
 export const query = graphql`
-  query($geoid: String!) {
+  query($geoid: String!, $state: String!) {
+    allGeojsonJson(
+      filter: { name: { eq: $state }, region: { eq: "counties" } }
+    ) {
+      nodes {
+        features {
+          properties {
+            GEOID
+          }
+          geometry {
+            type
+            coordinates
+          }
+          type
+        }
+      }
+    }
     allStates(filter: { geoid: { eq: $geoid } }) {
       nodes {
         geoid

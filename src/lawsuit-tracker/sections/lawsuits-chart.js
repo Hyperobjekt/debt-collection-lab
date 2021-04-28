@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import Typography from "../../components/typography";
 import { Grid, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
+import GroupedBarChart from "../charts/grouped-bar-chart";
+import { formatPercent } from "../utils";
 
 const SectionBlock = withStyles((theme) => ({
   root: {},
 }))(TwoColBlock);
+
+const LawsuitsChart = ({ data }) => {
+  return (
+    <>
+      <GroupedBarChart
+        data={data}
+        options={{
+          barSpacing: 1,
+          groupPadding: 0.25,
+          margin: [8, 2, 40, 40],
+        }}
+      />
+    </>
+  );
+};
 
 const LawsuitsChartSection = ({
   title,
@@ -21,10 +38,10 @@ const LawsuitsChartSection = ({
       </Typography>
       {description && <Typography paragraph>{description}</Typography>}
       <Typography paragraph>
-        On average, <code>MONTH_NAME</code> is the month with the most debt
-        collection lawsuits filed, accounting for <code>PERCENT_TOTAL</code> of
-        the filings for the year. Since the pandemic started, debt collection
-        lawsuits have
+        On average, {data.topMonthName} is the month with the most debt
+        collection lawsuits filed, accounting for{" "}
+        {formatPercent(data.topMonthPercent)} of the filings for the year. Since
+        the pandemic started, debt collection lawsuits have
         <code>INCREASED / DECREASED</code> by <code>PERCENT_DIFF</code> from the
         average of previous years.
       </Typography>
@@ -68,10 +85,17 @@ const LawsuitsChartSection = ({
           </li>
         </ul>
       </Grid>
-      {/* <Grid item>Data: {JSON.stringify(data)}</Grid> */}
+      <Grid item>Data: {JSON.stringify(data)}</Grid>
     </Grid>
   );
-  return <SectionBlock left={leftContent} right={rightContent} {...props} />;
+
+  return (
+    <SectionBlock
+      left={leftContent}
+      right={<LawsuitsChart data={data.chartData} />}
+      {...props}
+    />
+  );
 };
 
 export default LawsuitsChartSection;

@@ -14,6 +14,8 @@ import {
   getTrackerUrl,
   getLawsuitChartData,
   getLocationHeroData,
+  getDemographicChartData,
+  getLawsuitMapData,
 } from "../../utils";
 import { Link } from "gatsby-material-ui-components";
 import Breadcrumb from "../../../components/layout/breadcrumb";
@@ -24,6 +26,7 @@ export default function TrackerCountyLayout({
   ...props
 }) {
   const data = props.data.allCounties.nodes[0];
+  const geojson = props.data.allGeojsonJson.nodes[0];
   const context = {
     ...pageContext,
     frontmatter: {},
@@ -60,13 +63,13 @@ export default function TrackerCountyLayout({
         data={getTopCollectorsData(data)}
       />
       <LawsuitsChartSection
-        title="Debt Collection By Year"
+        title="Debt Collection Lawsuits By Year"
         data={getLawsuitChartData(data)}
       />
       <LawsuitsMapSection
         title="Geography of Debt Collection Lawsuits"
         description={`${data.name} is split into ${data.tracts.length} census tracts.  On the map you can see the number of lawsuits corresponding to each census tract.`}
-        data={data.tracts}
+        data={getLawsuitMapData(data, geojson, "tracts")}
       />
       <TableSection
         title="Overview of Lawsuits by Census Tract"
@@ -74,9 +77,9 @@ export default function TrackerCountyLayout({
         data={[data]}
       />
       <DemographicChartSection
-        title="Debt Collection Lawsuits by Neighborhood Demographics"
+        title="Debt Collection Lawsuits by Census Tract Racial Majority"
         description="Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority.  The chart shows the number of lawsuits by racial/ethnic majority"
-        data={data.tracts}
+        data={getDemographicChartData(data)}
       />
       {children}
       {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
@@ -85,7 +88,21 @@ export default function TrackerCountyLayout({
 }
 
 export const query = graphql`
-  query($geoid: String!) {
+  query($geoid: String!, $state: String!) {
+    allGeojsonJson(filter: { name: { eq: $state }, region: { eq: "tracts" } }) {
+      nodes {
+        features {
+          properties {
+            GEOID
+          }
+          geometry {
+            type
+            coordinates
+          }
+          type
+        }
+      }
+    }
     allCounties(filter: { geoid: { eq: $geoid } }) {
       nodes {
         geoid
