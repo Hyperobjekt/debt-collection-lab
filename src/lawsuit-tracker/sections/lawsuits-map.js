@@ -1,6 +1,6 @@
 import React from "react";
 import Typography from "../../components/typography";
-import { Box, Grid, withStyles } from "@material-ui/core";
+import { Box, Grid, makeStyles, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import ChoroplethMap from "../map/ChoroplethMap";
 import * as counties from "../../../data/09-counties.json";
@@ -8,19 +8,32 @@ import * as d3 from "d3";
 import { formatInt } from "../utils";
 
 const SectionBlock = withStyles((theme) => ({
-  root: {},
+  root: {
+    position: "relative",
+    background: theme.palette.background.alt,
+    minHeight: 420,
+  },
 }))(TwoColBlock);
 
+const useMapStyles = makeStyles((theme) => ({
+  container: {
+    position: "relative",
+    minHeight: 420,
+    [theme.breakpoints.up("md")]: {
+      position: "absolute",
+      width: `calc(((100vw - 100%) / 2) + 63%)`,
+      height: "100%",
+      right: 0,
+      top: 0,
+      bottom: 0,
+    },
+  },
+}));
+
 const LawsuitMap = ({ data, colorScale }) => {
+  const classes = useMapStyles();
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100%",
-        minHeight: 420,
-      }}
-    >
+    <div className={classes.container}>
       <ChoroplethMap data={data} colorScale={colorScale} />
     </div>
   );
@@ -75,7 +88,8 @@ const LawsuitsMapSection = ({ title, description, data, ...props }) => {
   const colorScale = d3
     .scaleLinear()
     .domain(d3.extent(data.features, (d) => d.properties.value))
-    .range(["#eee", "#999"]);
+    .range(["#F5F5F0", "#9E7850"])
+    .nice();
 
   return (
     <SectionBlock

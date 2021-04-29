@@ -8,6 +8,10 @@ const styles = (theme) => ({
   container: {
     alignItems: "end",
   },
+  content: {
+    maxWidth: 600,
+    marginLeft: "auto",
+  },
   divider: {
     margin: theme.spacing(3, 0),
   },
@@ -36,38 +40,41 @@ const LocationHero = ({
 }) => {
   return (
     <Hero ContainerProps={{ className: classes.container }} {...props}>
-      <Typography weight="bold" variant="h2">
-        {name}
-      </Typography>
-      <Divider className={classes.divider} />
-      <Box display="flex" flexDirection="row">
-        <Box className={classes.stat}>
-          <Typography variant="numberSecondary">
-            {formatInt(totalCount)}
-          </Typography>
-          <Typography variant="caption">
-            lawsuits from {formatMonthYear(dateRange[0])} to{" "}
-            {formatMonthYear(dateRange[1])}
-          </Typography>
+      <Box className={classes.content}>
+        <Typography weight="bold" variant="h2">
+          {name}
+        </Typography>
+        <Divider className={classes.divider} />
+        <Box display="flex" flexDirection="row">
+          <Box className={classes.stat}>
+            <Typography color="primary" variant="numberSecondary">
+              {formatInt(totalCount)}
+            </Typography>
+            <Typography variant="body2">
+              lawsuits from {formatMonthYear(dateRange[0])} to{" "}
+              {formatMonthYear(dateRange[1])}
+            </Typography>
+          </Box>
+          <Box className={classes.stat}>
+            <Typography color="primary" variant="numberSecondary">
+              {formatPercent(percentWithoutRep)}
+            </Typography>
+            <Typography variant="body2">
+              of defendants did not have legal representation
+            </Typography>
+          </Box>
+          <Box className={classes.stat}>
+            <Typography color="primary" variant="numberSecondary">
+              {formatPercent(percentDefault)}
+            </Typography>
+            <Typography variant="body2">
+              of lawsuits resulted in default judgments
+            </Typography>
+          </Box>
         </Box>
-        <Box className={classes.stat}>
-          <Typography variant="numberSecondary">
-            {formatPercent(percentWithoutRep)}
-          </Typography>
-          <Typography variant="caption">
-            of defendants did not have legal representation
-          </Typography>
-        </Box>
-        <Box className={classes.stat}>
-          <Typography variant="numberSecondary">
-            {formatPercent(percentDefault)}
-          </Typography>
-          <Typography variant="caption">
-            of lawsuits resulted in default judgments
-          </Typography>
-        </Box>
+        <Divider className={classes.divider} />
       </Box>
-      <Divider className={classes.divider} />
+
       {children}
     </Hero>
   );

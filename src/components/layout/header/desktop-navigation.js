@@ -5,14 +5,14 @@ export default withStyles((theme) => ({
   root: {
     display: "none",
     [theme.breakpoints.up("md")]: {
-      display: "block"
-    }
+      display: "block",
+    },
   },
   list: {
     display: "flex",
     flexDirection: "row",
   },
   link: {
-    color: theme.palette.primary.contrastText,
+    color: theme.palette.text.light,
   },
 }))(Navigation);

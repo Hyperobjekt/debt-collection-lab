@@ -1,13 +1,14 @@
-import React, { useCallback } from "react";
+import React from "react";
 import Typography from "../../components/typography";
-import { Grid, makeStyles, withStyles } from "@material-ui/core";
+import { makeStyles, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
-import * as d3 from "d3";
 import { formatInt, formatPercent } from "../utils";
 import DonutChart from "../charts/donut-chart";
 
 const SectionBlock = withStyles((theme) => ({
-  root: {},
+  root: {
+    background: theme.palette.background.alt,
+  },
 }))(TwoColBlock);
 
 const useChartStyles = makeStyles((theme) => ({
@@ -34,7 +35,8 @@ const useChartStyles = makeStyles((theme) => ({
       fontSize: theme.typography.pxToRem(14),
     },
     "& .legend .legend__color": {
-      marginTop: 3,
+      marginTop: 2,
+      borderRadius: "100%",
     },
   },
 }));
@@ -62,7 +64,14 @@ const TopCollectorsChart = ({ data }) => {
         theme={{
           background: "transparent",
           frame: { stroke: "none" },
-          colors: ["#000", "#444", "#777", "#aaa", "#ddd", "#f0f0f0"],
+          colors: [
+            "#6A9A83",
+            "#BC5421",
+            "#BFDCE0",
+            "#DEAC4E",
+            "#888494",
+            "#C7C0A9",
+          ],
         }}
         labelFormatter={labelFormatter}
         options={{

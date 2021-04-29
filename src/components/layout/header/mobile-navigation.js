@@ -14,7 +14,8 @@ const MobileLinks = withStyles((theme) => ({
     flex: 1,
   },
   link: {
-    color: theme.palette.primary.main,
+    color: theme.palette.text.light,
+    fontSize: theme.typography.pxToRem(18),
     padding: theme.spacing(2, 3),
     width: "100%",
     flex: 1,
@@ -28,9 +29,14 @@ const styles = (theme) => ({
       display: "none",
     },
   },
-  button: {},
+  button: {
+    color: theme.palette.text.light,
+  },
   drawer: {
-    "& .MuiDrawer-paper": { minWidth: 320 },
+    "& .MuiDrawer-paper": {
+      minWidth: 320,
+      background: theme.palette.background.dark,
+    },
   },
 });
 

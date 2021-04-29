@@ -56,5 +56,13 @@ module.exports = {
       },
     },
     "gatsby-theme-material-ui",
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        typekit: {
+          id: "ycg5tjq",
+        },
+      },
+    },
   ],
 };

@@ -35,7 +35,11 @@ const IndexHero = ({
           In the {stateCount} states and {countyCount} counties we track, debt
           collectors filed
         </Typography>
-        <Typography className={classes.numberText} component="span">
+        <Typography
+          color="primary"
+          className={classes.numberText}
+          component="span"
+        >
           {lawsuitTotal}
         </Typography>
         <Typography className={classes.smallText} component="span">

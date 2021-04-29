@@ -10,6 +10,7 @@ import Footer from "./footer";
 import Seo from "../seo";
 import { withStyles } from "@material-ui/core";
 import { SEO_KEYS } from "../../constants";
+import { Helmet } from "react-helmet";
 
 const Page = withStyles((theme) => ({
   root: {
@@ -32,6 +33,13 @@ const Layout = ({ children, pageContext, ...props }) => {
   return (
     <Page>
       <Seo {...seo} />
+      <Helmet>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cloud.typography.com/6135894/6115032/css/fonts.css"
+        />
+      </Helmet>
       <SkipNavLink />
       <Header />
       <Main>

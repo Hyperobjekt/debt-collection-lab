@@ -15,7 +15,8 @@ const styles = (theme) => ({
   root: {
     flexDirection: "column",
     padding: theme.spacing(8, 0),
-    background: theme.palette.grey[200],
+    background: theme.palette.background.footer,
+    color: theme.palette.text.light,
   },
   row1: {
     display: "flex",

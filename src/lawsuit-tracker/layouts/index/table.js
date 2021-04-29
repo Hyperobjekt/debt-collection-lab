@@ -207,7 +207,7 @@ function IndexTable({
       <Grid container spacing={3}>
         <Grid item xs={12} md={4}>
           <Box>
-            <Typography weight="bold" variant="h4" component="h2">
+            <Typography variant="sectionTitle" component="h2">
               An Overview of Debt Collection Lawsuits
             </Typography>
             <Typography paragraph>

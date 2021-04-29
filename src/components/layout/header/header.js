@@ -10,7 +10,7 @@ import { Link } from "gatsby-material-ui-components";
 
 const StyledHeader = withStyles((theme) => ({
   root: {
-    background: theme.palette.primary.main,
+    background: theme.palette.background.dark,
     boxShadow: "none",
   },
 }))(BaseHeader);

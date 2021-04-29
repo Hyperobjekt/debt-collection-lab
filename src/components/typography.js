@@ -2,11 +2,12 @@ import React from "react";
 import { Typography as MuiTypography, withStyles } from "@material-ui/core";
 import clsx from "clsx";
 import { forwardRef } from "react";
+import { FONTS } from "../theme";
 
 const style = (theme) => ({
   sectionTitle: {
-    fontWeight: 700,
-    fontSize: theme.typography.pxToRem(28),
+    ...FONTS.KNOCKOUT["Middleweight"],
+    fontSize: theme.typography.pxToRem(40),
     lineHeight: 1.25,
     [theme.breakpoints.up("md")]: {
       maxWidth: 320,
@@ -16,14 +17,14 @@ const style = (theme) => ({
     },
   },
   number: {
-    fontWeight: 700,
-    fontSize: theme.typography.pxToRem(48),
+    ...FONTS.KNOCKOUT["Middleweight"],
+    fontSize: theme.typography.pxToRem(40),
     lineHeight: 1,
     margin: 0,
   },
   numberSecondary: {
     fontWeight: 500,
-    fontSize: theme.typography.pxToRem(32),
+    fontSize: theme.typography.pxToRem(40),
     lineHeight: 1,
     margin: 0,
   },
@@ -33,6 +34,12 @@ const style = (theme) => ({
   },
   grey: {
     color: "#555",
+  },
+  primary: {
+    color: theme.palette.primary.main,
+  },
+  black: {
+    fontWeight: 700,
   },
   bold: {
     fontWeight: 700,
@@ -63,11 +70,11 @@ const Typography = forwardRef(
         ref={ref}
         className={clsx(
           {
-            [classes[variant]]: isCustomVariant,
-            [classes[color]]: isCustomColor,
             [classes.bold]: weight === "bold",
             [classes.medium]: weight === "medium",
             [classes.light]: weight === "light",
+            [classes[variant]]: isCustomVariant,
+            [classes[color]]: isCustomColor,
             [classes.gutterTop]: gutterTop,
           },
           className

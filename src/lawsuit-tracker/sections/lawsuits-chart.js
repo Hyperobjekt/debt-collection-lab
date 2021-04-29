@@ -6,7 +6,25 @@ import GroupedBarChart from "../charts/grouped-bar-chart";
 import { formatPercent } from "../utils";
 
 const SectionBlock = withStyles((theme) => ({
-  root: {},
+  root: {
+    "& .legend": {
+      justifyContent: "flex-start",
+    },
+    "& .legend .legend__item": {
+      flex: 0,
+      marginLeft: theme.spacing(3),
+      "&:first-child": {
+        marginLeft: theme.spacing(6),
+      },
+    },
+    "& .legend .legend__label": {
+      lineHeight: 1,
+      marginTop: 1,
+    },
+    "& .legend .legend__color": {
+      borderRadius: "100%",
+    },
+  },
 }))(TwoColBlock);
 
 const LawsuitsChart = ({ data }) => {
@@ -14,10 +32,26 @@ const LawsuitsChart = ({ data }) => {
     <>
       <GroupedBarChart
         data={data}
+        theme={{
+          background: "transparent",
+          frame: { stroke: "none" },
+          axis: {
+            stroke: "#E7E1D9",
+            color: "#797267",
+            fontSize: "14px",
+            fontFamily: "maple-web, sans-serif",
+            fontWeight: 400,
+            strokeWidth: 2,
+          },
+          gridLines: {
+            stroke: "#E7E1D9",
+          },
+          colors: ["#C0D6D9", "#979290", "#C5BFAB", "#D7AC5A"],
+        }}
         options={{
           barSpacing: 1,
           groupPadding: 0.25,
-          margin: [8, 2, 40, 40],
+          margin: [8, 2, 40, 48],
         }}
       />
     </>

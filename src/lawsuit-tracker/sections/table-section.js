@@ -210,7 +210,7 @@ const TableSection = ({
   const leftContent = (
     <>
       <Box>
-        <Typography variant="sectionTitle" component="h3">
+        <Typography variant="sectionTitle" component="h2">
           {title}
         </Typography>
         <Typography>{description}</Typography>
