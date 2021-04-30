@@ -55,7 +55,21 @@ module.exports = {
         typeName: `Geo`,
       },
     },
-    "gatsby-theme-material-ui",
+    {
+      resolve: "gatsby-theme-material-ui",
+      options: {
+        webFontsConfig: {
+          fonts: {
+            google: [
+              {
+                family: "Oswald",
+                variants: ["500"],
+              },
+            ],
+          },
+        },
+      },
+    },
     {
       resolve: "gatsby-plugin-web-font-loader",
       options: {

@@ -1,8 +1,7 @@
 import React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
-// import DeckGLMap, { useMapStore } from ".";
 import { MapboxLayer } from "@deck.gl/mapbox";
-import { NavigationControl, StaticMap } from "react-map-gl";
+import { StaticMap } from "react-map-gl";
 import shallow from "zustand/shallow";
 import DeckGLMap from "./DeckGLMap";
 import { GeoJsonLayer } from "@deck.gl/layers";
@@ -97,7 +96,7 @@ const ChoroplethMap = ({
           [dataBounds[2], dataBounds[3]],
         ]);
     }
-  }, [loaded, flyToBounds, setViewport]);
+  }, [loaded, flyToBounds, setViewport, dataBounds]);
 
   console.log(initialViewport);
 
@@ -119,7 +118,7 @@ const ChoroplethMap = ({
         gl={glContext}
         ref={mapRef}
         onLoad={onMapLoad}
-      />
+      ></StaticMap>
     </DeckGLMap>
   );
 };

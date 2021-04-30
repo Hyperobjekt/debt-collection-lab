@@ -1,6 +1,5 @@
 import { slugify } from "../utils";
 import * as d3 from "d3";
-
 /**
  * Creates a comparator for sorting an object property containing numbers
  * @param {*} key
@@ -164,6 +163,8 @@ export const getTotals = (data) => {
   }, 0);
   // total number of lawsuits across states
   const lawsuitTotal = data.reduce((total, currentState) => {
+    if (currentState.name === "Texas")
+      return total + d3.sum(currentState.counties, (d) => d.lawsuits);
     return total + currentState.lawsuits;
   }, 0);
   return { stateCount, countyCount, lawsuitTotal };

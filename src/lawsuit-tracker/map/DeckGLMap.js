@@ -11,11 +11,10 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 const DeckGLMap = React.forwardRef(
   ({ children, initialViewport, bounds, ...props }, ref) => {
-    const [viewport, setViewport, setDefaultViewport, setBounds] = useMapState(
+    const [viewport, setViewport, setDefaultViewport] = useMapState(
       "viewport",
       "setViewport",
-      "setDefaultViewport",
-      "setBounds"
+      "setDefaultViewport"
     );
 
     // set the initial viewport

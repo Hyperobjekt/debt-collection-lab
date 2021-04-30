@@ -5,7 +5,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import PropTypes from "prop-types";
 import clsx from "clsx";
 import useDidUpdate from "@rooks/use-did-update";
 import styled, { createGlobalStyle } from "styled-components";
@@ -186,13 +185,15 @@ const defaultTheme = {
   },
 };
 
+const defaultFormatter = (d) => d;
+
 const Chart = ({
   data,
   width = "100%",
   height = 420,
   options,
   chart,
-  labelFormatter = (d) => d,
+  labelFormatter = defaultFormatter,
   theme = {},
   className,
   ...props
@@ -223,7 +224,7 @@ const Chart = ({
       // TODO: do a more accurate check if labels have changed
       if (labels.length !== legendLabels.length) setLegendLabels(labels);
     },
-    [legendLabels, setLegendLabels]
+    [legendLabels, setLegendLabels, labelFormatter]
   );
 
   useDidUpdate(() => {

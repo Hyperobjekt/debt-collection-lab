@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import * as d3 from "d3";
 import {
   applyFilter,
@@ -66,14 +66,13 @@ function IndexTable({
   trendRange,
   stateCount,
   countyCount,
-  lastUpdate,
 }) {
-  const [sourceData, setSourceData] = useState(source);
+  const [sourceData] = useState(source);
   const [data, setData] = useState(shapeStatesCounties(source));
   const [sortBy, setSortBy] = useState("lawsuits");
   const [ascending, setAscending] = useState(false);
   const [filter, setFilter] = useState("");
-  const [loaded, setLoaded] = useState(true);
+  const [loaded] = useState(true);
   const [view, setView] = useState("nested");
   const filteredData = applyFilter(data, filter);
   let tableData = sortData(filteredData, sortBy, ascending);
@@ -194,12 +193,13 @@ function IndexTable({
         id: "report",
         Header: "",
         cellProps: { style: { minWidth: 120 } },
-        Cell: ({ row }) => (
-          <Button to={getTrackerUrl(row.original)}>View Report</Button>
-        ),
+        Cell: ({ row }) =>
+          row.original.name !== "Texas" && (
+            <Button to={getTrackerUrl(row.original)}>View Report</Button>
+          ),
       },
     ];
-  }, [handleSort, ascending, sortBy, view]);
+  }, [handleSort, ascending, sortBy, view, trendRange]);
 
   // re-shape the source data
   return loaded ? (

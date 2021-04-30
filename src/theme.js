@@ -16,22 +16,22 @@ export const COLORS = {
 export const FONTS = {
   KNOCKOUT: {
     Featherweight: {
-      fontFamily: '"Knockout 48 A", "Knockout 48 B"',
+      fontFamily: '"Knockout 48 A", "Knockout 48 B", "Oswald", "sans-serif"',
       fontStyle: "normal",
       fontWeight: 400,
     },
     Lightweight: {
-      fontFamily: '"Knockout 49 A", "Knockout 49 B"',
+      fontFamily: '"Knockout 49 A", "Knockout 49 B", "Oswald", "sans-serif"',
       fontStyle: "normal",
       fontWeight: 400,
     },
     Middleweight: {
-      fontFamily: '"Knockout 51 A", "Knockout 51 B"',
+      fontFamily: '"Knockout 51 A", "Knockout 51 B", "Oswald", "sans-serif"',
       fontStyle: "normal",
       fontWeight: 400,
     },
     FullMiddleweight: {
-      fontFamily: '"Knockout 71 A", "Knockout 71 B"',
+      fontFamily: '"Knockout 71 A", "Knockout 71 B", "Oswald", "sans-serif"',
       fontStyle: "normal",
       fontWeight: 400,
     },

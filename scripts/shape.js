@@ -10,6 +10,7 @@ const COUNTY_SELECTOR = (d) => d.id.substring(0, 5);
 const TRACT_SELECTOR = (d) => d.id;
 
 function getName(id, name) {
+  if (id === name) return `Zip ${id}`;
   if (id.length === 2) return name.split(",").pop().trim();
   if (id.length === 5) return name.split(",")[1].trim();
   return name.split(",")[0].trim();
@@ -28,9 +29,10 @@ function aggregateLawsuits(data) {
     .groups(data, (d) =>
       d.plaintiff
         .toLowerCase()
+        .replace(/"/g, "")
+        .replace(/,/g, "")
         .replace("inc.", "inc")
         .replace("llc.", "llc")
-        .replace(",", "")
         .replace(" assignee of credit one bank n.a.", "")
     )
     .map(([collector, lawsuits]) => [
@@ -47,6 +49,8 @@ function aggregateLawsuits(data) {
     .map((d) => d.join(";"))
     .join("|");
 
+  // console.log(data.map((d) => d.default_judgement).join(","));
+
   return {
     id: data[0].id,
     name: getName(data[0].id, data[0].name),
@@ -56,8 +60,7 @@ function aggregateLawsuits(data) {
     collectors: `"${topCollectors}"`,
     collector_total: collectorTotal,
     amount: d3.sum(data, (d) => d.amount),
-    default_judgement: data.filter((d) => d.decided && !d.representation)
-      .length,
+    default_judgement: data.filter((d) => d.default_judgement === 1).length,
     no_rep_percent: data.filter((d) => !d.representation).length / data.length,
   };
 }
@@ -96,38 +99,22 @@ const jsonToCsv = (jsonData) => {
   return [headers, ...data].join("\n");
 };
 
-async function shapeIndiana() {
-  const path = "./data/18-lawsuits.csv";
-  const parser = (d) => ({
-    id: d.id,
-    name: d.name,
-    plaintiff: d.plaintiff,
-    decided: d.status.toLowerCase() === "decided",
-    date: dateToMonthDate(d.date),
-    amount: Math.random() * 4900 + 100,
-    representation: d.attorney.toLowerCase() !== "na",
-  });
-  const data = loadCsv(path, parser);
-  const debtData = [
-    ...aggregateBySelector(data, STATE_SELECTOR),
-    ...aggregateBySelector(data, COUNTY_SELECTOR),
-    ...aggregateBySelector(data, TRACT_SELECTOR),
-  ];
-  return debtData;
-}
-
-async function shapeConnecticut() {
-  const path = "./data/09-lawsuits.csv";
-  const parser = (d) => ({
-    id: d.id,
-    name: d.name,
-    plaintiff: d.plaintiff,
-    decided: true,
-    date: dateToMonthDate(d.date, "%Y-%m-%d"),
-    amount: Number(d.amount),
-    representation: d.attorney.toLowerCase() !== "no",
-  });
-  const data = loadCsv(path, parser).filter((d) => d.id !== "NA");
+async function shapeFullData() {
+  const path = "./data/lawsuit_data.csv";
+  const parser = (d) => {
+    return {
+      id: d.id,
+      name: d.name,
+      plaintiff: d.plaintiff,
+      date: dateToMonthDate(d.date, "%m/%d/%Y"),
+      default_judgement: Number(d.default_judgment),
+      amount: Number(d.amount),
+      representation: Number(d.has_representation),
+    };
+  };
+  const data = loadCsv(path, parser).filter(
+    (d) => d.id !== "NA" && d.id !== d.name
+  );
   const debtData = [
     ...aggregateBySelector(data, STATE_SELECTOR),
     ...aggregateBySelector(data, COUNTY_SELECTOR),
@@ -137,10 +124,23 @@ async function shapeConnecticut() {
 }
 
 async function shape() {
-  const indiana = await shapeIndiana();
-  const connecticut = await shapeConnecticut();
-  const debtData = [...connecticut, ...indiana];
-  await writeFile(jsonToCsv(debtData), "./static/data/lawsuits.csv");
+  const debtData = await shapeFullData();
+  // drop totals for Texas
+  const output = debtData.map((d) => {
+    if (d.name !== "Texas") return d;
+    return {
+      ...d,
+      lawsuits: 0,
+      lawsuits_date: "04/2021",
+      lawsuit_history: "01/2018;0",
+      collectors: "",
+      collector_total: 0,
+      amount: 0,
+      default_judgement: 0,
+      no_rep_percent: 0,
+    };
+  });
+  await writeFile(jsonToCsv(output), "./static/data/lawsuits.csv");
   console.log("written!");
 }
 

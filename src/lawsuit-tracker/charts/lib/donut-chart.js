@@ -1,5 +1,4 @@
 import Chart from "./chart";
-import * as d3 from "d3";
 
 /**
  * Creates the chart and renders
