@@ -11,6 +11,7 @@
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
+    "build:data": "node ./scripts/shape.js",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },

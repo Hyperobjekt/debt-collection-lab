@@ -10,6 +10,7 @@ const COUNTY_SELECTOR = (d) => d.id.substring(0, 5);
 const TRACT_SELECTOR = (d) => d.id;
 
 function getName(id, name) {
+  if (id === name) return `Zip ${id}`;
   if (id.length === 2) return name.split(",").pop().trim();
   if (id.length === 5) return name.split(",")[1].trim();
   return name.split(",")[0].trim();
@@ -47,6 +48,8 @@ function aggregateLawsuits(data) {
     .map((d) => d.join(";"))
     .join("|");
 
+  // console.log(data.map((d) => d.default_judgement).join(","));
+
   return {
     id: data[0].id,
     name: getName(data[0].id, data[0].name),
@@ -56,8 +59,7 @@ function aggregateLawsuits(data) {
     collectors: `"${topCollectors}"`,
     collector_total: collectorTotal,
     amount: d3.sum(data, (d) => d.amount),
-    default_judgement: data.filter((d) => d.decided && !d.representation)
-      .length,
+    default_judgement: data.filter((d) => d.default_judgement === 1).length,
     no_rep_percent: data.filter((d) => !d.representation).length / data.length,
   };
 }
@@ -136,10 +138,35 @@ async function shapeConnecticut() {
   return debtData;
 }
 
+async function shapeFullData() {
+  const path = "./data/lawsuit_data.csv";
+  const parser = (d) => {
+    return {
+      id: d.id,
+      name: d.name,
+      plaintiff: d.plaintiff,
+      date: dateToMonthDate(d.date, "%m/%d/%Y"),
+      default_judgement: Number(d.default_judgment),
+      amount: Number(d.amount),
+      representation: Number(d.has_representation),
+    };
+  };
+  const data = loadCsv(path, parser).filter(
+    (d) => d.id !== "NA" && d.id !== d.name
+  );
+  const debtData = [
+    ...aggregateBySelector(data, STATE_SELECTOR),
+    ...aggregateBySelector(data, COUNTY_SELECTOR),
+    ...aggregateBySelector(data, TRACT_SELECTOR),
+  ];
+  return debtData;
+}
+
 async function shape() {
-  const indiana = await shapeIndiana();
-  const connecticut = await shapeConnecticut();
-  const debtData = [...connecticut, ...indiana];
+  // const indiana = await shapeIndiana();
+  // const connecticut = await shapeConnecticut();
+  // const debtData = [...connecticut, ...indiana];
+  const debtData = await shapeFullData();
   await writeFile(jsonToCsv(debtData), "./static/data/lawsuits.csv");
   console.log("written!");
 }
