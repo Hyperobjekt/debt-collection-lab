@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Typography from "../../components/typography";
-import { Grid, withStyles } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import GroupedBarChart from "../charts/grouped-bar-chart";
 import { formatPercent } from "../utils";
@@ -81,46 +81,6 @@ const LawsuitsChartSection = ({
       </Typography>
       {children}
     </>
-  );
-  const rightContent = (
-    <Grid container spacing={3} style={{ background: "#ccc", height: 400 }}>
-      <Grid item md={6}>
-        <Typography>Visual Goals</Typography>
-        <ol>
-          <li>identify if there is a "debt collection season" across years</li>
-          <li>
-            identify what a pandemic year looks like compared to other years
-          </li>
-        </ol>
-      </Grid>
-      <Grid item md={6}>
-        <Typography>Specification</Typography>
-        <ul>
-          <li>
-            <a href="https://bl.ocks.org/bricedev/0d95074b6d83a77dc3ad">
-              Grouped bar chart
-            </a>
-          </li>
-          <li>X axis w/ 12 months (Jan - Dec)</li>
-          <li>
-            each month has 4 bars, representing years (2018, 2019, 2020, 2021)
-          </li>
-          <li>
-            pattern fill on bars that fall within pandemic range (March 2020 -
-            present)
-          </li>
-          <li>
-            legend that shows each bar color and corresponding year, as well as
-            pattern fill corresponding to pandemic timeframe{" "}
-          </li>
-          <li>
-            tooltip that reads out values for all bars for the corresponding
-            hovered month
-          </li>
-        </ul>
-      </Grid>
-      <Grid item>Data: {JSON.stringify(data)}</Grid>
-    </Grid>
   );
 
   return (

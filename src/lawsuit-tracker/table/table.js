@@ -157,7 +157,7 @@ export default function Table({ columns: userColumns, data, className, view }) {
                         {...cell.getCellProps()}
                         {...(cell.column.cellProps || {})}
                       >
-                        {cell.render("Cell")}
+                        {cell.value !== "0" ? cell.render("Cell") : "-"}
                       </TableCell>
                     );
                   })}

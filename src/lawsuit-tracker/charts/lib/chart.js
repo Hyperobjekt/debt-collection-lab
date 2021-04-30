@@ -281,7 +281,6 @@ Chart.prototype.addDataGroup = function () {
  * Adds a clipped group for chart data (bars, lines, etc)
  */
 Chart.prototype.addOverlayGroup = function () {
-  var _this = this;
   // function that returns the selection of the group element
   function createOverlaySelection(parent) {
     return parent.append("g").attr("class", "chart__overlay");
@@ -479,7 +478,6 @@ Chart.prototype.addTooltip = function (showTooltip, hideTooltip) {
  * Adds a rect in the data area that sets the hovered data
  */
 Chart.prototype.addHoverRect = function (overrides) {
-  var _this = this;
   var options = overrides || {};
   function getClosestIndex(vals, val) {
     var index = d3.bisect(vals, val);
@@ -530,7 +528,6 @@ Chart.prototype.addHoverRect = function (overrides) {
  * @returns
  */
 Chart.prototype.addHoverLine = function () {
-  var _this = this;
   function createSelection(parentSelection) {
     return parentSelection.append("line").attr("class", "chart__hover-line");
   }

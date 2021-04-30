@@ -57,7 +57,6 @@ const FORMATTER = d3.format(",~d");
 const FORMAT_NUM = (v) => (v === null ? "-" : FORMATTER(v));
 
 const MONTH_PARSE = d3.timeParse("%m/%Y");
-const dateFormat = d3.timeFormat("%B %d, %Y");
 
 function getTrendData(data) {
   return data.map((d) => ({ x: MONTH_PARSE(d.month), y: Number(d.lawsuits) }));
@@ -71,11 +70,9 @@ const TableSection = ({
   children,
   ...props
 }) => {
-  const [sourceData, setSourceData] = useState(source);
   const [sortBy, setSortBy] = useState("lawsuits");
   const [ascending, setAscending] = useState(false);
   const [filter, setFilter] = useState("");
-  const [loaded, setLoaded] = useState(true);
   const [view, setView] = useState(views[0]);
   const dataShaper = getShaperForView(view);
   const [data, setData] = useState(dataShaper(source));
@@ -83,7 +80,7 @@ const TableSection = ({
   let tableData = sortData(filteredData, sortBy, ascending);
   if (view === "counties" || view === "tracts")
     tableData = tableData.slice(0, 10);
-  const trendRange = getDateRange(sourceData);
+  const trendRange = getDateRange(source);
 
   const handleSort = useCallback(
     (event, key) => {
@@ -111,7 +108,7 @@ const TableSection = ({
     const value = event.target.value;
     if (value !== view) setView(value);
     const shaper = getShaperForView(value);
-    setData(shaper(sourceData));
+    setData(shaper(source));
   };
 
   const columns = React.useMemo(() => {
@@ -131,7 +128,6 @@ const TableSection = ({
         accessor: (d) =>
           view === "counties" ? `${d.name}, ${d.state}` : d["name"],
       },
-
       {
         id: "lawsuits",
         Header: () => (
@@ -205,7 +201,7 @@ const TableSection = ({
           }
         : null,
     ].filter((v) => !!v);
-  }, [handleSort, ascending, sortBy, view]);
+  }, [handleSort, ascending, sortBy, view, trendRange]);
 
   const leftContent = (
     <>

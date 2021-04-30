@@ -76,6 +76,8 @@ const getCollectorName = (collector) => {
  * @returns {object}
  */
 const lawsuitParser = (row) => {
+  if (isNaN(Number(row.default_judgement)))
+    console.log(row.id, row.default_judgement)
   return {
     geoid: row.id,
     name: row.name,
@@ -154,7 +156,7 @@ const createStatePages = async ({ graphql, actions }) => {
   `);
   const states = result.data.allStates.nodes;
   states.forEach(({ geoid, name }) => {
-    if (name) {
+    if (name && name !== "Texas") {
       const pageName = slugify(name);
       createPage({
         path: `/lawsuit-tracker/${pageName}/`,

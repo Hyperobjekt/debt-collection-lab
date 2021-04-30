@@ -17,7 +17,6 @@ import {
   getDemographicChartData,
   getLawsuitMapData,
 } from "../../utils";
-import { Link } from "gatsby-material-ui-components";
 import Breadcrumb from "../../../components/layout/breadcrumb";
 
 export default function TrackerCountyLayout({
@@ -123,8 +122,8 @@ export const query = graphql`
           month
         }
         tracts {
-          default_judgement
           geoid
+          default_judgement
           lawsuits
           lawsuits_date
           name

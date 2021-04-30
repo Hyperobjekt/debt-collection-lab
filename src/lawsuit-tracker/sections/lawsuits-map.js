@@ -1,9 +1,8 @@
 import React from "react";
 import Typography from "../../components/typography";
-import { Box, Grid, makeStyles, withStyles } from "@material-ui/core";
+import { Box, makeStyles, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import ChoroplethMap from "../map/ChoroplethMap";
-import * as counties from "../../../data/09-counties.json";
 import * as d3 from "d3";
 import { formatInt } from "../utils";
 
@@ -23,7 +22,7 @@ const useMapStyles = makeStyles((theme) => ({
       position: "absolute",
       width: `calc(((100vw - 100%) / 2) + 63%)`,
       height: "100%",
-      right: 0,
+      right: 1, // 1px to prevent horizontal overflow on page
       top: 0,
       bottom: 0,
     },
@@ -88,7 +87,7 @@ const LawsuitsMapSection = ({ title, description, data, ...props }) => {
   const colorScale = d3
     .scaleLinear()
     .domain(d3.extent(data.features, (d) => d.properties.value))
-    .range(["#F5F5F0", "#9E7850"])
+    .range(["#f5eFdB", "#BC5421"])
     .nice();
 
   return (
