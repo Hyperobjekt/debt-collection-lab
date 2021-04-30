@@ -39,7 +39,7 @@ const TableContainer = withStyles((theme) => ({
     },
     // highlight state rows in nested table
     "& .table--nested .MuiTableRow-root.row--0": {
-      background: "#eee",
+      background: theme.palette.background.alt,
       "& .MuiTableCell-root": {
         fontWeight: 500,
         fontSize: theme.typography.pxToRem(16),

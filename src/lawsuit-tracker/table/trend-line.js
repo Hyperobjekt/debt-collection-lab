@@ -21,8 +21,8 @@ export default function TrendLine({ range, data }) {
     .y((d) => y(d.y));
   return (
     <svg width="150" height={height + 2}>
-      <path d={area(data)} fill="rgba(0,0,0,0.1)" stroke="none" />
-      <path d={line(data)} fill="none" strokeWidth={2} stroke="#000" />
+      <path d={area(data)} fill="#EEEEE7" stroke="none" />
+      <path d={line(data)} fill="none" strokeWidth={2} stroke="#797267" />
     </svg>
   );
 }
