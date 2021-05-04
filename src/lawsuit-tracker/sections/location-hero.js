@@ -1,8 +1,8 @@
 import React from "react";
-import { Hero } from "@hyperobjekt/material-ui-website";
 import Typography from "../../components/typography";
 import { Box, Divider, withStyles } from "@material-ui/core";
 import { formatInt, formatMonthYear, formatPercent } from "../utils";
+import Hero from "../../components/sections/hero"
 
 const styles = (theme) => ({
   container: {

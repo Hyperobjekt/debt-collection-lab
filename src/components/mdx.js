@@ -1,5 +1,5 @@
 import { Button } from "@material-ui/core";
-import { Hero, Block, Container } from "@hyperobjekt/material-ui-website";
+import { Block, Container } from "@hyperobjekt/material-ui-website";
 import Typography from "./typography";
 import { Callout } from "./sections";
 import { FullLawsuitTable } from "../lawsuit-tracker/table";
@@ -15,12 +15,14 @@ import {
   typography,
 } from "@material-ui/system";
 import styled from "styled-components";
+import Hero from "./sections/hero"
 
 const ResponsiveBox = styled.div`
   ${breakpoints(
     compose(flexbox, typography, spacing, palette, display, sizing)
   )}
 `;
+
 
 const components = {
   ...mdxComponents,

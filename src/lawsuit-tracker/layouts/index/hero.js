@@ -1,11 +1,11 @@
 import React from "react";
-import { Hero } from "@hyperobjekt/material-ui-website";
 import Typography from "../../../components/typography";
 import { withStyles } from "@material-ui/core";
+import Hero from "../../../components/sections/hero";
 
 const styles = (theme) => ({
   container: {
-    alignItems: "flex-start",
+    justifyContent: "flex-start"
   },
   smallText: {
     display: "block",
@@ -30,7 +30,6 @@ const IndexHero = ({
 }) => {
   return (
     <Hero
-      bgcolor="background.dark"
       ContainerProps={{ className: classes.container }}
       {...props}
     >

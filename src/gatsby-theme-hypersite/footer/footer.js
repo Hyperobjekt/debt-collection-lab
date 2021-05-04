@@ -9,7 +9,7 @@ import { Box, withStyles } from "@material-ui/core";
 import Typography from "../../components/typography";
 import Logo from "gatsby-theme-hypersite/src/logo";
 import { useSiteMetadata } from "gatsby-theme-hypercore";
-import { Link } from "gatsby-material-ui-components";
+import { GatsbyLink, Link } from "gatsby-material-ui-components";
 
 const styles = (theme) => ({
   root: {
@@ -56,7 +56,7 @@ const Footer = ({ classes, className, children, pageContext, ...props }) => {
         </Typography>
         <Box>
           <Logo />
-          <Navigation LinkComponent={Link} links={siteMetadata.menuLinks} />
+          <Navigation isGatsbyLink={true} LinkComponent={GatsbyLink} links={siteMetadata.menuLinks} />
         </Box>
       </Container>
       <Container className={classes.row2}>

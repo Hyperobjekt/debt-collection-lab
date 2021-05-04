@@ -27,10 +27,6 @@ export default function TrackerCountyLayout({
 }) {
   const data = props.data.allCounties.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
-  const context = {
-    ...pageContext,
-    frontmatter: {},
-  };
   const breadcrumb = [
     {
       name: "Home",
@@ -51,7 +47,7 @@ export default function TrackerCountyLayout({
   ];
 
   return (
-    <Layout pageContext={context} {...props}>
+    <Layout pageContext={pageContext} {...props}>
       <Container>
         <Breadcrumb
           links={breadcrumb}

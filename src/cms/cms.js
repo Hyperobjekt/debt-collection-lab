@@ -11,7 +11,7 @@ CMS.init({
     backend: {
       name: "git-gateway",
       repo: "Hyperobjekt/debt-collection-lab",
-      branch: "production",
+      branch: "main",
     },
     media_folder: "/static/images",
     public_folder: "/images",

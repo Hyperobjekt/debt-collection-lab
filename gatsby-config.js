@@ -10,7 +10,6 @@ module.exports = {
         assetPath: `content/assets`,
       },
     },
-    "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
@@ -18,9 +17,6 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
-    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -36,5 +32,9 @@ module.exports = {
         },
       },
     },
+    "gatsby-plugin-styled-components",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sitemap",
+    `gatsby-transformer-json`,
   ],
 };
