@@ -27,6 +27,8 @@ export default function TrackerCountyLayout({
 }) {
   const data = props.data.allCounties.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
+  const demographics = props.data.allDemographics.nodes;
+  console.log("page data", { data, geojson, demographics });
   const breadcrumb = [
     {
       name: "Home",
@@ -74,9 +76,9 @@ export default function TrackerCountyLayout({
         data={[data]}
       />
       <DemographicChartSection
-        title="Debt Collection Lawsuits by Census Tract Racial Majority"
-        description="Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority.  The chart shows the number of lawsuits by racial/ethnic majority"
-        data={getDemographicChartData(data)}
+        title="Debt Collection Lawsuits by Neighborhood Demographics"
+        description="Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority."
+        data={getDemographicChartData(data, demographics)}
       />
       {children}
       {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
@@ -131,6 +133,18 @@ export const query = graphql`
             month
           }
         }
+      }
+    }
+    allDemographics(filter: { parentLocation: { eq: $geoid } }) {
+      nodes {
+        geoid
+        parentLocation
+        percent_asian
+        percent_black
+        percent_latinx
+        percent_other
+        percent_white
+        majority
       }
     }
   }
