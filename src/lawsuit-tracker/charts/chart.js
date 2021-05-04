@@ -35,6 +35,7 @@ const Global = createGlobalStyle`
     transition: opacity 0.2s ease-in-out;
     transform: translate(-50%, calc(-100% - 12px));
     z-index: 999;
+    max-width: 200px;
   }
   .chart__tooltip.chart__tooltip--show {
     opacity: 1;
@@ -47,7 +48,6 @@ const Global = createGlobalStyle`
   }
   .chart__tooltip .tooltip__item {
     font-size: 12px;
-    white-space: nowrap;
   }
 `;
 
@@ -229,7 +229,6 @@ const Chart = ({
 
   useDidUpdate(() => {
     if (chartRef.current) {
-      console.log("did update");
       chartRef.current.update({ data, options: mergedOptions });
       updateLabels(chartRef.current);
     }

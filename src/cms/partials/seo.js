@@ -26,7 +26,7 @@ const seo = {
       label: "Image",
       name: "image",
       widget: "image",
-      required: true,
+      required: false,
       default: "/images/metaImage.png",
     },
   ],

@@ -3,9 +3,12 @@ import clsx from "clsx";
 import { Link } from "gatsby-material-ui-components";
 import HomeIcon from "@material-ui/icons/Home";
 import ChevronRight from "@material-ui/icons/ChevronRight";
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import { List, ListItem, Box } from "@material-ui/core";
 import { withStyles } from "@material-ui/core";
-import Dropdown from "./dropdown"
+import { GatsbyLink } from "gatsby-theme-material-ui";
+// import Dropdown from "./dropdown"
+
 const styles = (theme) => ({
   root: {
     listStyle: "none",
@@ -18,9 +21,10 @@ const styles = (theme) => ({
     display: "flex",
     alignItems: "center",
     position: "relative",
+    color: "#fff",
     "&:hover $childItems, &:focus $childItems": {
-      display: "block"
-    }
+      display: "block",
+    },
   },
   link: {
     display: "block",
@@ -34,42 +38,46 @@ const styles = (theme) => ({
   separator: {
     fontSize: 12,
   },
-  dropdown:{
+  dropdown: {
     fontSize: 20,
   },
   childItems: {
     display: "none",
     position: "absolute",
-    top: 24,
+    top: 36,
     width: 300,
     maxHeight: "80vh",
     overflow: "auto",
     listStyle: "none",
     padding: 0,
     margin: 0,
-  }
+    color: "#fff",
+    background: theme.palette.secondary.main,
+  },
 });
 
 const Breadcrumb = ({
   classes,
   className,
   links,
+  subMenu,
   Home = HomeIcon,
   Separator = ChevronRight,
   DropdownArrow = ArrowDropDownIcon,
   ...props
 }) => {
   const childLinks = [
-    { name: 'item1', link: '/' },
-    { name: 'item1', link: '/' },
-    { name: 'item1', link: '/' },
-    { name: 'item1', link: '/' },
-    { name: 'item1', link: '/' }, 
-    { name: 'item1', link: '/' },
-    { name: 'item1', link: '/' },
-    { name: 'item1', link: '/' },
-    { name: 'item1', link: '/' }
+    { name: "item1", link: "/" },
+    { name: "item1", link: "/" },
+    { name: "item1", link: "/" },
+    { name: "item1", link: "/" },
+    { name: "item1", link: "/" },
+    { name: "item1", link: "/" },
+    { name: "item1", link: "/" },
+    { name: "item1", link: "/" },
+    { name: "item1", link: "/" },
   ];
+  console.log({ links });
   return (
     <ul className={clsx(classes.root, className)} {...props}>
       {links.map((bc, i) => (
@@ -79,20 +87,32 @@ const Breadcrumb = ({
           ) : (
             <>
               <Link className={classes.link} to={bc.link}>
-                {bc.name === "Home" ? <Home className={classes.home} /> : bc.name}
+                <Box display="flex">
+                  {bc.name === "Home" ? (
+                    <Home className={classes.home} />
+                  ) : (
+                    bc.name
+                  )}
+                  {bc.subMenu && <DropdownArrow className={classes.dropdown} />}
+                </Box>
               </Link>
-              <DropdownArrow className={classes.dropdown} />
-              <ul className={classes.childItems}>
-                {childLinks.map(({ name, link }) => (
-                <li key={name}><a href={link}>{name}</a></li>
-                ))}
-              </ul>
+
+              <List className={classes.childItems}>
+                {bc.subMenu &&
+                  bc.subMenu.map(({ name, link }) => (
+                    <ListItem
+                      key={name}
+                      component={GatsbyLink}
+                      to={link}
+                      button
+                    >
+                      {name}
+                    </ListItem>
+                  ))}
+              </List>
             </>
           )}
           {i < links.length - 1 && <Separator className={classes.separator} />}
-
-
-
         </li>
       ))}
     </ul>

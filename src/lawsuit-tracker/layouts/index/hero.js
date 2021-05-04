@@ -1,11 +1,11 @@
 import React from "react";
-import Hero from "../../../components/sections/hero";
 import Typography from "../../../components/typography";
 import { withStyles } from "@material-ui/core";
+import Hero from "../../../components/sections/hero";
 
 const styles = (theme) => ({
   container: {
-    alignItems: "flex-start",
+    justifyContent: "flex-start"
   },
   smallText: {
     display: "block",
@@ -29,7 +29,10 @@ const IndexHero = ({
   ...props
 }) => {
   return (
-    <Hero ContainerProps={{ className: classes.container }} {...props}>
+    <Hero
+      ContainerProps={{ className: classes.container }}
+      {...props}
+    >
       <p>
         <Typography className={classes.smallText} component="span">
           In the {stateCount} states and {countyCount} counties we track, debt

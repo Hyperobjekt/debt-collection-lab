@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../../components/layout";
+import Layout from "../../../gatsby-theme-hypersite/layout";
 import { graphql } from "gatsby";
 import {
   LocationHero,
@@ -17,7 +17,9 @@ import {
   getDemographicChartData,
   getLawsuitMapData,
 } from "../../utils";
-import Breadcrumb from "../../../components/layout/breadcrumb";
+import Breadcrumb from "../../../components/breadcrumb";
+import { Container } from "@hyperobjekt/material-ui-website";
+import { slugify } from "../../../utils";
 
 export default function TrackerCountyLayout({
   children,
@@ -26,10 +28,19 @@ export default function TrackerCountyLayout({
 }) {
   const data = props.data.allCounties.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
-  const context = {
-    ...pageContext,
-    frontmatter: {},
-  };
+  const demographics = props.data.allDemographics.nodes;
+  const breadcrumbLinks = props.data.allStates.nodes;
+  const breadcrumbStates = breadcrumbLinks.map((d) => d.name);
+  const breadcrumbCounties = breadcrumbLinks
+    .find((d) => d.name === data.state)
+    .counties.map((d) => d.name);
+  console.log("page data", {
+    data,
+    geojson,
+    demographics,
+    breadcrumbStates,
+    breadcrumbCounties,
+  });
   const breadcrumb = [
     {
       name: "Home",
@@ -42,21 +53,32 @@ export default function TrackerCountyLayout({
     {
       name: data.state,
       link: getTrackerUrl({ name: data.state }),
+      subMenu: breadcrumbStates
+        .map((name) => ({
+          name,
+          link: getTrackerUrl({ name }),
+        }))
+        .filter((d) => d.name !== "Texas"),
     },
     {
       name: data.name,
       link: getTrackerUrl(data),
+      subMenu: breadcrumbCounties.map((name) => ({
+        name,
+        link: getTrackerUrl({ state: data.state, name }),
+      })),
     },
   ];
 
   return (
-    <Layout pageContext={context} {...props}>
-      <LocationHero {...getLocationHeroData(data)}>
+    <Layout pageContext={pageContext} {...props}>
+      <Container>
         <Breadcrumb
           links={breadcrumb}
-          style={{ position: "absolute", top: 8 }}
+          style={{ position: "absolute", top: 0, zIndex: 10 }}
         />
-      </LocationHero>
+      </Container>
+      <LocationHero {...getLocationHeroData(data)}></LocationHero>
       <DebtCollectorsSection
         title="Top Debt Collectors"
         data={getTopCollectorsData(data)}
@@ -76,9 +98,9 @@ export default function TrackerCountyLayout({
         data={[data]}
       />
       <DemographicChartSection
-        title="Debt Collection Lawsuits by Census Tract Racial Majority"
-        description="Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority.  The chart shows the number of lawsuits by racial/ethnic majority"
-        data={getDemographicChartData(data)}
+        title="Debt Collection Lawsuits by Neighborhood Demographics"
+        description="Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority."
+        data={getDemographicChartData(data, demographics)}
       />
       {children}
       {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
@@ -132,6 +154,27 @@ export const query = graphql`
             lawsuits
             month
           }
+        }
+      }
+    }
+    allDemographics(filter: { parentLocation: { eq: $geoid } }) {
+      nodes {
+        geoid
+        parentLocation
+        percent_asian
+        percent_black
+        percent_latinx
+        percent_other
+        percent_white
+        majority
+      }
+    }
+    allStates {
+      nodes {
+        name
+        counties {
+          geoid
+          name
         }
       }
     }

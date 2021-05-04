@@ -77,7 +77,7 @@ const getCollectorName = (collector) => {
  */
 const lawsuitParser = (row) => {
   if (isNaN(Number(row.default_judgement)))
-    console.log(row.id, row.default_judgement)
+    console.log(row.id, row.default_judgement);
   return {
     geoid: row.id,
     name: row.name,
@@ -101,6 +101,65 @@ const lawsuitParser = (row) => {
     collector_total: Number(row.collector_total),
     default_judgement: Number(row.default_judgement),
     no_rep_percent: Number(row.no_rep_percent),
+  };
+};
+
+/**
+ * Returns the racial majority given % breakdown
+ * @param {*} data
+ * @returns
+ */
+const getMajority = (data) => {
+  if (data.percent_asian > 0.5) return "Asian";
+  if (data.percent_black > 0.5) return "Black";
+  if (data.percent_latinx > 0.5) return "Latinx";
+  if (data.percent_white > 0.5) return "White";
+  if (data.percent_other > 0.5) return "Other";
+  return "No Majority";
+};
+
+/**
+ * Takes a value and returns a number, returns empty string if not a number
+ * @param {*} value
+ * @returns
+ */
+const getNumberValue = (value) => {
+  const result = Number(value);
+  return isNaN(result) ? -1 : result;
+};
+
+/**
+ * Takes a GEOID and returns the parent identifier
+ * @param {*} geoid
+ * @returns
+ */
+const getParentValue = (geoid) => {
+  // census tracts
+  if (geoid.length === 11) return geoid.slice(0, 5); // county geoid
+  // zip codes
+  if (geoid.length === 7) return geoid.slice(0, 2); // state geoid
+  return "";
+};
+
+/**
+ * Parses a row from the lawsuits csv
+ * @param {object} row
+ * @returns {object}
+ */
+const demographicParser = (row) => {
+  const result = {
+    geoid: row.GEOID,
+    parentLocation: getParentValue(row.GEOID),
+    percent_asian: getNumberValue(row.percent_asian),
+    percent_black: getNumberValue(row.percent_black),
+    percent_latinx: getNumberValue(row.percent_latinx),
+    percent_white: getNumberValue(row.percent_white),
+    percent_other: getNumberValue(row.percent_other),
+  };
+  const majority = getMajority(result);
+  return {
+    ...result,
+    majority,
   };
 };
 
@@ -133,6 +192,11 @@ const createCountyPages = async ({ graphql, actions }) => {
           county: name,
           state: stateName,
           geoid: geoid,
+          frontmatter: {
+            seo: {
+              title: name,
+            },
+          },
         },
       });
     }
@@ -165,6 +229,11 @@ const createStatePages = async ({ graphql, actions }) => {
           slug: pageName,
           state: name,
           geoid: geoid,
+          frontmatter: {
+            seo: {
+              title: name,
+            },
+          },
         },
       });
     }
@@ -179,14 +248,25 @@ const createLawsuitTrackerIndex = async ({ graphql, actions }) => {
   createPage({
     path: `/lawsuit-tracker/`,
     component: IndexTemplate,
-    context: {},
+    context: {
+      frontmatter: {
+        seo: {
+          title: "Debt Collection Tracker",
+        },
+      },
+    },
   });
 };
 
 exports.sourceNodes = async (params) => {
-  const data = loadCsv("./static/data/lawsuits.csv", lawsuitParser);
-  createSourceNodes("States", getStates(data), params);
-  createSourceNodes("Counties", getCounties(data), params);
+  const lawsuits = loadCsv("./static/data/lawsuits.csv", lawsuitParser);
+  createSourceNodes("States", getStates(lawsuits), params);
+  createSourceNodes("Counties", getCounties(lawsuits), params);
+  const demographicData = loadCsv(
+    "./static/data/demographics.csv",
+    demographicParser
+  );
+  createSourceNodes("Demographics", demographicData, params);
 };
 
 exports.createPages = async ({ graphql, actions }) => {

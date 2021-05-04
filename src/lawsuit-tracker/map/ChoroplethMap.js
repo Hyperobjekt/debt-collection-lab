@@ -98,7 +98,6 @@ const ChoroplethMap = ({
     }
   }, [loaded, flyToBounds, setViewport, dataBounds]);
 
-  console.log(initialViewport);
 
   return (
     <DeckGLMap

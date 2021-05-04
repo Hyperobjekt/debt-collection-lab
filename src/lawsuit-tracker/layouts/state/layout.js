@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../../components/layout";
+import Layout from "../../../gatsby-theme-hypersite/layout";
 import { graphql } from "gatsby";
 import {
   LocationHero,
@@ -15,7 +15,8 @@ import {
   getTopCollectorsData,
   getTrackerUrl,
 } from "../../utils";
-import Breadcrumb from "../../../components/layout/breadcrumb";
+import Breadcrumb from "../../../components/breadcrumb";
+import { Container } from "@hyperobjekt/material-ui-website";
 
 export default function TrackerCountyLayout({
   children,
@@ -24,10 +25,6 @@ export default function TrackerCountyLayout({
 }) {
   const data = props.data.allStates.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
-  const context = {
-    ...pageContext,
-    frontmatter: {},
-  };
   const breadcrumb = [
     {
       name: "Home",
@@ -43,13 +40,14 @@ export default function TrackerCountyLayout({
     },
   ];
   return (
-    <Layout pageContext={context} {...props}>
-      <LocationHero {...getLocationHeroData(data)}>
+    <Layout pageContext={pageContext} {...props}>
+      <Container>
         <Breadcrumb
           links={breadcrumb}
-          style={{ position: "absolute", top: 8 }}
+          style={{ position: "absolute", top: 0, zIndex: 10 }}
         />
-      </LocationHero>
+      </Container>
+      <LocationHero {...getLocationHeroData(data)} />
       <DebtCollectorsSection
         title="Top Debt Collectors"
         data={getTopCollectorsData(data)}
