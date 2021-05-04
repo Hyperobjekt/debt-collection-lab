@@ -1,25 +1,15 @@
-import { withStyles } from "@material-ui/core";
-import React from "react";
-import { Block } from ".";
+import { Hero } from "@hyperobjekt/material-ui-website"
+import { withStyles } from "@material-ui/core"
 
-const HeroBlock = withStyles((theme) => ({
+export default withStyles((theme) => ({
   root: {
-    minHeight: `66vh`,
-    display: "flex",
-    justifyContent: "stretch",
-    alignItems: "stretch",
     background: theme.palette.background.dark,
-    color: theme.palette.text.light,
+    [theme.breakpoints.up("md")]: {
+      minHeight: 500
+    }
   },
   container: {
-    display: "flex",
     alignItems: "center",
     justifyContent: "center",
-  },
-}))(Block);
-
-const Hero = (props) => {
-  return <HeroBlock {...props} />;
-};
-
-export default Hero;
+  }
+}))(Hero)

@@ -1,15 +1,15 @@
 const metadata = require("./config/metadata.json");
 
-const siteUrl = `https://debt-collection-lab.netlify.app`;
-
 module.exports = {
-  siteMetadata: {
-    siteUrl,
-    canonicalUrl: siteUrl,
-    ...metadata,
-  },
+  siteMetadata: metadata,
   plugins: [
-    "gatsby-plugin-styled-components",
+    {
+      resolve: `gatsby-theme-hypersite`,
+      options: {
+        contentPath: `content/pages`,
+        assetPath: `content/assets`,
+      },
+    },
     {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
@@ -18,56 +18,10 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-google-tagmanager",
-      options: {
-        id: "GTM-KCG3842",
-      },
-    },
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        defaultLayouts: {
-          default: require.resolve("./src/layouts/default.js"),
-        },
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "pages",
-        path: `${__dirname}/content/pages`,
-      },
-      __key: "pages",
-    },
-    {
-      resolve: "gatsby-plugin-page-creator",
-      options: {
-        path: `${__dirname}/content/pages`,
-      },
-    },
-    `gatsby-transformer-json`,
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./data/geojson`,
         typeName: `Geo`,
-      },
-    },
-    {
-      resolve: "gatsby-theme-material-ui",
-      options: {
-        webFontsConfig: {
-          fonts: {
-            google: [
-              {
-                family: "Oswald",
-                variants: ["500"],
-              },
-            ],
-          },
-        },
       },
     },
     {
@@ -78,5 +32,9 @@ module.exports = {
         },
       },
     },
+    "gatsby-plugin-styled-components",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sitemap",
+    `gatsby-transformer-json`,
   ],
 };

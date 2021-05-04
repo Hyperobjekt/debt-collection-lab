@@ -77,7 +77,7 @@ const getCollectorName = (collector) => {
  */
 const lawsuitParser = (row) => {
   if (isNaN(Number(row.default_judgement)))
-    console.log(row.id, row.default_judgement)
+    console.log(row.id, row.default_judgement);
   return {
     geoid: row.id,
     name: row.name,
@@ -133,6 +133,11 @@ const createCountyPages = async ({ graphql, actions }) => {
           county: name,
           state: stateName,
           geoid: geoid,
+          frontmatter: {
+            seo: {
+              title: name,
+            },
+          },
         },
       });
     }
@@ -165,6 +170,11 @@ const createStatePages = async ({ graphql, actions }) => {
           slug: pageName,
           state: name,
           geoid: geoid,
+          frontmatter: {
+            seo: {
+              title: name,
+            },
+          },
         },
       });
     }
@@ -179,7 +189,13 @@ const createLawsuitTrackerIndex = async ({ graphql, actions }) => {
   createPage({
     path: `/lawsuit-tracker/`,
     component: IndexTemplate,
-    context: {},
+    context: {
+      frontmatter: {
+        seo: {
+          title: "Debt Collection Tracker",
+        },
+      },
+    },
   });
 };
 

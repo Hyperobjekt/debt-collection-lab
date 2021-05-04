@@ -3,8 +3,9 @@
   "description": "description here",
   "keywords": "Debt",
   "image": "https://via.placeholder.com/1200x630",
-  "logo": "https://via.placeholder.com/200x40",
   "icon": "https://via.placeholder.com/64x64",
+  "siteUrl": "https://debt-collection-lab.netlify.app",
+  "copyright": "Copyright Debt Collection Lab © 2021",
   "menuLinks": [
     {
       "name": "Debt Collection Tracker",
@@ -16,12 +17,12 @@
     },
     {
       "name": "About Us",
-      "link": "/about"
+      "link": "/about-us"
     }
   ],
-  "social": {
-    "email": "info@debtcollectionlab.org",
-    "twitter": "debtcollectionlab",
-    "facebook": "debtcollectionlab"
-  }
+  "social": [
+    { "name": "email", "value": "info@debtcollectionlab.org" },
+    { "name": "twitter", "value": "debtcollectionlab" },
+    { "name": "facebook", "value": "debtcollectionlab" }
+  ]
 }

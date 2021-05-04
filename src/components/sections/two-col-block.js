@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, withStyles } from "@material-ui/core";
-import { Block } from ".";
+import { Block } from "@hyperobjekt/material-ui-website";
 
 const StyledBlock = withStyles((theme) => ({
   root: {

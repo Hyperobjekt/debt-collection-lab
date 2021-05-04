@@ -1,7 +1,7 @@
 import { withStyles } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
-import { Block } from ".";
+import { Block } from "@hyperobjekt/material-ui-website";
 
 const styles = (theme) => ({
   root: {

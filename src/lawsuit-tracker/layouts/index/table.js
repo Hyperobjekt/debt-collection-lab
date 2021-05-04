@@ -10,7 +10,7 @@ import {
 } from "../../utils";
 import TrendLine from "../../table/trend-line";
 import Table from "../../table/table";
-import { Block } from "../../../components/sections";
+import { Block } from "@hyperobjekt/material-ui-website";
 import {
   Box,
   FormControl,
