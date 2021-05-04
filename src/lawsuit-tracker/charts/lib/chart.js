@@ -664,12 +664,10 @@ Chart.prototype.addBarGroups = function (overrides) {
           .attr("fill", "transparent")
           .attr("class", "chart__bar-area")
           .on("mousemove", function (event, d) {
-            console.log("hover bar group!", event, d);
             chart.setHovered(d);
             chart.showTooltip(event, options.renderTooltip);
           })
           .on("mouseout", function () {
-            console.log("hover out bar group!");
             chart.setHovered(null);
             chart.hideTooltip();
           })
@@ -871,9 +869,8 @@ Chart.prototype.addLines = function (overrides) {
         }),
       ];
     };
-  _this.lineData = options.selector(_this.data);
-  const typeNames = d3.groups(_this.data, (d) => d.group).map((d) => d[0]);
-  _this.colorScale = d3.scaleOrdinal().domain(typeNames).range(options.colors);
+
+  console.log("addLines, chart data", _this.data, _this.lineData);
 
   if (_this.getSelection(options.linesId))
     throw new Error(
@@ -884,6 +881,19 @@ Chart.prototype.addLines = function (overrides) {
   }
   function createLineRenderer(selection, chart) {
     return function () {
+      const typeNames = d3.groups(_this.data, (d) => d.group).map((d) => d[0]);
+      if (options.colorMap) {
+        _this.colorScale = d3
+          .scaleOrdinal()
+          .domain(Object.keys(options.colorMap))
+          .range(Object.values(options.colorMap));
+      } else {
+        _this.colorScale = d3
+          .scaleOrdinal()
+          .domain(typeNames)
+          .range(options.colors);
+      }
+      _this.lineData = options.selector(_this.data);
       var line = d3
         .line()
         .x(function (d) {
@@ -920,11 +930,7 @@ Chart.prototype.addLines = function (overrides) {
           return _this.colorScale(d[0][2]);
         })
         .style("stroke-dasharray", function () {
-          // need to increase the dasharray to prevent line from cutting off
-          var ratio = chart.lastWidth
-            ? chart.getInnerWidth() / chart.lastWidth
-            : 1;
-          return this.getTotalLength() * ratio + "px";
+          return "10000px";
         })
         .style("stroke-dashoffset", 0);
 
@@ -1268,7 +1274,6 @@ Chart.prototype.addVoronoi = function (overrides) {
           return d ? "M" + d.join("L") + "Z" : null;
         })
         .on("mousemove", function (event, d) {
-          console.log("HOVER", d);
           chart.setHovered(d.data);
           chart
             .getSelection("root")
@@ -1326,7 +1331,6 @@ Chart.prototype.addDonut = function (overrides) {
       .innerRadius(radius * 0.67)
       .outerRadius(radius - 1);
     const arcs = pie(chart.data);
-    console.log("arcs", arcs);
     const arcSelection = selection.selectAll("path").data(arcs);
     const arcEnter = arcSelection
       .enter()

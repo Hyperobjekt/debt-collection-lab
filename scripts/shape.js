@@ -141,7 +141,7 @@ async function shape() {
     };
   });
   await writeFile(jsonToCsv(output), "./static/data/lawsuits.csv");
-  console.log("written!");
+  console.log("wrote file to ./static/data/lawsuits.csv");
 }
 
 shape();

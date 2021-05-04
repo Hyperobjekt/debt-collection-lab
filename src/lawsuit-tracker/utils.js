@@ -252,36 +252,116 @@ export const getLawsuitMapData = (data, geojson, region) => {
   return { type: "FeatureCollection", features };
 };
 
-export const getDemographicChartData = (data) => {
-  const GROUPS = ["Asian", "Black", "Latinx", "White", "Other"];
-  const MONTHS = [
-    "03/2020",
-    "04/2020",
-    "05/2020",
-    "06/2020",
-    "07/2020",
-    "08/2020",
-    "09/2020",
-    "10/2020",
-    "11/2020",
-    "12/2020",
-    "01/2021",
-    "02/2021",
-    "03/2021",
-  ];
-  let chartData = [];
+const joinDemographicsWithData = (data, demographics) => {
+  return demographics
+    .map((dem) => {
+      const match = data.tracts.find((tract) => tract.geoid === dem.geoid);
+      return match
+        ? {
+            ...dem,
+            ...match,
+          }
+        : null;
+    })
+    .filter(Boolean);
+};
 
-  for (let i = 0; i < MONTHS.length; i++) {
-    for (let j = 0; j < GROUPS.length; j++) {
-      chartData.push({
-        group: GROUPS[j],
-        x: parseMonthYear(MONTHS[i]),
-        y: Math.random() * 500 + 50,
+/**
+ * Step 1: join lawsuit and demographic data
+ * Step 2: group joined data by racial majority
+ * Step 3: sum all lawsuits for each racial majority entry by month
+ * @param {*} data
+ * @param {*} demographics
+ * @returns
+ */
+export const getDemographicChartData = (data, demographics) => {
+  // Step 1: join lawsuit and demographic data
+  const joined = joinDemographicsWithData(data, demographics);
+  console.log({ joined, history: data.lawsuit_history });
+
+  // Step 2: group joined data by racial majority
+  const grouped = d3.group(joined, (d) => d.majority);
+  const counts = Array.from(grouped.entries()).map(([g, entries]) => ({
+    group: g,
+    tractCount: entries.length,
+    tractPercent: entries.length / joined.length,
+    lawsuitCount: d3.sum(entries, (d) => d.lawsuits),
+    lawsuitPercent: d3.sum(entries, (d) => d.lawsuits) / data.lawsuits,
+  }));
+  console.log({
+    grouped,
+    counts,
+  });
+
+  // Step 3: aggregate all lawsuits by group, by month
+  const summed = Array.from(grouped.entries())
+    .map(([group, groupData]) => {
+      const byMonth = groupData.reduce((monthObj, entry) => {
+        const monthValues = entry.lawsuit_history;
+        monthValues.forEach((data) => {
+          if (!monthObj.hasOwnProperty(data.month)) monthObj[data.month] = 0;
+          monthObj[data.month] = monthObj[data.month] + data.lawsuits;
+        });
+        return monthObj;
+      }, {});
+      return [group, Object.entries(byMonth)];
+    })
+    .map(([group, history]) => {
+      const withPercent = history.map(([month, lawsuits]) => {
+        // pull the month total from lawsuit history
+        const monthTotal = data.lawsuit_history.find(
+          (totalHistory) => totalHistory.month === month
+        );
+        // pull group percent from counts
+        const groupPercent = counts.find((c) => c.group === group).tractPercent;
+        const proportionalCount = groupPercent * monthTotal.lawsuits;
+        return {
+          month,
+          lawsuits,
+          lawsuitPercent: lawsuits / monthTotal.lawsuits,
+          proportionalCountDiff: lawsuits - proportionalCount,
+          proportionalPercentDiff: lawsuits / proportionalCount - 1,
+        };
       });
-    }
-  }
+      return [group, withPercent];
+    });
+  console.log({ summed });
+
+  // Step 4: flatten summed array into chart format
+  const chart = summed
+    .reduce((flattened, [group, groupData]) => {
+      groupData.forEach(
+        ({
+          month,
+          lawsuits,
+          lawsuitPercent,
+          proportionalCountDiff,
+          proportionalPercentDiff,
+        }) => {
+          flattened.push({
+            group,
+            x: parseMonthYear(month),
+            y: proportionalCountDiff,
+            data: {
+              month,
+              lawsuits,
+              lawsuitPercent,
+              proportionalCountDiff,
+              proportionalPercentDiff,
+            },
+          });
+        }
+      );
+      return flattened;
+    }, [])
+    .sort((a, b) => a.group.localeCompare(b.group))
+    .sort((a, b) => a.x - b.x);
+  console.log({ chart });
+
   return {
-    chartData,
+    chartData: chart,
+    tractCountByMajority: counts,
+    totalLawsuits: data.lawsuits,
   };
 };
 

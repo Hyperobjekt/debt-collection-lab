@@ -1,5 +1,6 @@
 import Chart from "./chart";
 import * as d3 from "d3";
+import Mustache from "mustache";
 
 /**
  * Creates a comparator that brings values provided in `highlighted`
@@ -152,57 +153,33 @@ function createFigure(root, data, options) {
       .addHoverDot()
       .addVoronoi({
         renderTooltip: function (hoverData) {
-          var numFormat = d3.format(".0%");
-
-          function getWeekTooltip() {
-            var weekFormat = d3.timeFormat("%b %d");
-            var start = weekFormat(xSelector(hoverData));
-            var end = weekFormat(d3.timeDay.offset(xSelector(hoverData), 6));
-            return {
-              title: hoverData.name,
-              xValue: start + " - " + end,
-              yValue: numFormat(ySelector(hoverData)),
-            };
-          }
-
-          function getMonthTooltip() {
-            const monthFormat = d3.timeFormat(
-              options.xTooltipFormat || options.xFormat || "%B"
-            );
-            return {
-              title: hoverData.name,
-              xValue: monthFormat(xSelector(hoverData)),
-              yValue: numFormat(ySelector(hoverData)),
-            };
-          }
+          var yFormat = d3.format(
+            options.yTooltipFormat || options.yFormat || ",d"
+          );
+          var xFormat = d3.timeFormat(
+            options.xTooltipFormat || options.xFormat || ",d"
+          );
 
           function getDefaultTooltip() {
-            const dateFormat = d3.timeFormat(options.xFormat || "%B %d, %Y");
             return {
               title: hoverData.group,
-              xValue: dateFormat(xSelector(hoverData)),
-              yValue: numFormat(ySelector(hoverData)),
+              xValue: xFormat(xSelector(hoverData)),
+              yValue: yFormat(ySelector(hoverData)),
             };
           }
 
-          const tooltip =
-            options.xTicks === "week"
-              ? getWeekTooltip()
-              : options.xTicks === "month"
-              ? getMonthTooltip()
-              : getDefaultTooltip();
+          const tooltip = getDefaultTooltip();
+
+          const valueTemplate =
+            options.valueTemplate ||
+            "<span>{{xValue}}:</span> <span>{{yValue}}</span>";
 
           return (
             '<h1 class="tooltip__title">' +
             tooltip.title +
             "</h1>" +
             '<div class="tooltip__item">' +
-            "<span>" +
-            tooltip.xValue +
-            ":</span>" +
-            "<span> " +
-            tooltip.yValue +
-            "</span>" +
+            Mustache.render(valueTemplate, tooltip) +
             "</div>"
           );
         },
