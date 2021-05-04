@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../../components/layout";
+import Layout from "../../../gatsby-theme-hypersite/layout";
 import { graphql } from "gatsby";
 import * as d3 from "d3";
 import IndexTable from "./table";

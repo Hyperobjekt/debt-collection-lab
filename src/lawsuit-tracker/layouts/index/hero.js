@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "../../../components/sections/hero";
+import { Hero } from "@hyperobjekt/material-ui-website";
 import Typography from "../../../components/typography";
 import { withStyles } from "@material-ui/core";
 
@@ -29,7 +29,11 @@ const IndexHero = ({
   ...props
 }) => {
   return (
-    <Hero ContainerProps={{ className: classes.container }} {...props}>
+    <Hero
+      bgcolor="background.dark"
+      ContainerProps={{ className: classes.container }}
+      {...props}
+    >
       <p>
         <Typography className={classes.smallText} component="span">
           In the {stateCount} states and {countyCount} counties we track, debt

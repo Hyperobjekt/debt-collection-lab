@@ -1,12 +1,12 @@
 import React from "react";
-import Hero from "../../components/sections/hero";
+import { Hero } from "@hyperobjekt/material-ui-website";
 import Typography from "../../components/typography";
 import { Box, Divider, withStyles } from "@material-ui/core";
 import { formatInt, formatMonthYear, formatPercent } from "../utils";
 
 const styles = (theme) => ({
   container: {
-    alignItems: "end",
+    alignItems: "center",
   },
   content: {
     maxWidth: 600,
@@ -39,7 +39,11 @@ const LocationHero = ({
   ...props
 }) => {
   return (
-    <Hero ContainerProps={{ className: classes.container }} {...props}>
+    <Hero
+      bgcolor="background.dark"
+      ContainerProps={{ className: classes.container }}
+      {...props}
+    >
       <Box className={classes.content}>
         <Typography weight="bold" variant="h2">
           {name}

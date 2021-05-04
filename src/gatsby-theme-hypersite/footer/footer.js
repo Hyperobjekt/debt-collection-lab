@@ -3,12 +3,12 @@ import clsx from "clsx";
 import {
   Footer as BaseFooter,
   Navigation,
+  Container,
 } from "@hyperobjekt/material-ui-website";
 import { Box, withStyles } from "@material-ui/core";
-import Container from "../container";
-import Typography from "../../typography";
-import Logo from "../logo";
-import { useSiteMetadata } from "../../../hooks/use-site-metadata";
+import Typography from "../../components/typography";
+import Logo from "gatsby-theme-hypersite/src/logo";
+import { useSiteMetadata } from "gatsby-theme-hypercore";
 import { Link } from "gatsby-material-ui-components";
 
 const styles = (theme) => ({
