@@ -25,6 +25,9 @@ export default function TrackerCountyLayout({
 }) {
   const data = props.data.allStates.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
+  const states = ["Connecticut", "Indiana", "Missouri"].map((d) => {
+    return { name: d, link: getTrackerUrl({ name: d }) };
+  });
   const breadcrumb = [
     {
       name: "Home",
@@ -37,6 +40,7 @@ export default function TrackerCountyLayout({
     {
       name: data.name,
       link: getTrackerUrl(data),
+      subMenu: states,
     },
   ];
   return (
