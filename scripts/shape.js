@@ -6,7 +6,8 @@ const { loadCsv, writeFile } = require("./utils");
 const DATE_FORMAT = d3.timeFormat("%m/%Y");
 const MONTH_PARSE = d3.timeParse("%m/%Y");
 const STATE_SELECTOR = (d) => d.id.substring(0, 2);
-const COUNTY_SELECTOR = (d) => d.id.substring(0, 5);
+const COUNTY_SELECTOR = (d) => d.id.substring(0, 5) && d.id !== d.name;
+const ZIP_SELECTOR = (d) => d.id === d.name;
 const TRACT_SELECTOR = (d) => d.id;
 
 function getName(id, name) {
@@ -112,10 +113,14 @@ async function shapeFullData() {
       representation: Number(d.has_representation),
     };
   };
+  // Filter out NA data and FILTER OUT ZIP CODES!!
+  // (id !== name, filters out zip codes, because zip code ids are the same as the name)
+  // TODO: keep zip codes and shape them properly
   const data = loadCsv(path, parser).filter(
     (d) => d.id !== "NA" && d.id !== d.name
   );
   const debtData = [
+    // TODO: add zip aggregation
     ...aggregateBySelector(data, STATE_SELECTOR),
     ...aggregateBySelector(data, COUNTY_SELECTOR),
     ...aggregateBySelector(data, TRACT_SELECTOR),

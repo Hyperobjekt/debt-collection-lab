@@ -27,6 +27,7 @@ function getCounties(data) {
  */
 function getStates(data) {
   const states = data.filter((d) => d.geoid.length === 2);
+  // TODO: account for states that have zip codes instead of counties
   return states.map((s) => ({
     ...s,
     counties: data
