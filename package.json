@@ -49,6 +49,7 @@
     "gatsby-transformer-sharp": "^3.4.0",
     "jss": "^10.6.0",
     "lodash.pick": "^4.4.0",
+    "mustache": "^4.2.0",
     "netlify-cms-app": "^2.14.40",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
