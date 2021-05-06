@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby-material-ui-components";
 import HomeIcon from "@material-ui/icons/Home";
 import ChevronRight from "@material-ui/icons/ChevronRight";
@@ -8,9 +8,7 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { List, ListItem, Box } from "@material-ui/core";
 import { withStyles } from "@material-ui/core";
 import { GatsbyLink } from "gatsby-theme-material-ui";
-import { useLocation } from "@reach/router"
 import { getTrackerUrl } from "../lawsuit-tracker/utils";
-// import Dropdown from "./dropdown"
 
 const styles = (theme) => ({
   root: {
@@ -25,8 +23,11 @@ const styles = (theme) => ({
     alignItems: "center",
     position: "relative",
     color: "#fff",
-    "&:hover $childItems, &:focus $childItems": {
+    "&:hover $childItems, &:focus-within $childItems": {
       display: "block",
+      opacity: 1,
+      visibility: "visible",
+      pointerEvents: "all",
     },
   },
   link: {
@@ -45,7 +46,11 @@ const styles = (theme) => ({
     fontSize: 20,
   },
   childItems: {
-    display: "none",
+    display: "block",
+    opacity: 0,
+    visibility: "hidden", // hide from screen reader
+    pointerEvents: "none", // ignore mouse events
+    transition: theme.transitions.create(["opacity"]),
     position: "absolute",
     top: 36,
     width: 300,
@@ -69,56 +74,36 @@ const Breadcrumb = ({
   DropdownArrow = ArrowDropDownIcon,
   ...props
 }) => {
-  const childLinks = [
-    { name: "item1", link: "/" },
-    { name: "item1", link: "/" },
-    { name: "item1", link: "/" },
-    { name: "item1", link: "/" },
-    { name: "item1", link: "/" },
-    { name: "item1", link: "/" },
-    { name: "item1", link: "/" },
-    { name: "item1", link: "/" },
-    { name: "item1", link: "/" },
-  ];
-
-const submenuData = useStaticQuery(graphql`
-  query second {
-    allStates {
-      nodes {
-        name
-        counties {
-          geoid
+  const submenuData = useStaticQuery(graphql`
+    query second {
+      allStates {
+        nodes {
           name
+          counties {
+            geoid
+            name
+          }
         }
       }
     }
-  }
-`)
+  `);
 
-const subMenu = {}
-subMenu.state = submenuData.allStates.nodes.map((d) => ({name: d.name, link: getTrackerUrl(d)}))
-  .filter((d) => d.name !== "Texas")
-  .filter((d) => data.state ? d.name !== data.state : d.name !== data.name)
-  .sort()
+  const subMenu = {};
+  subMenu.state = submenuData.allStates.nodes
+    .map((d) => ({ name: d.name, link: getTrackerUrl(d) }))
+    .filter((d) => d.name !== "Texas")
+    .filter((d) => (data.state ? d.name !== data.state : d.name !== data.name))
+    .sort();
 
-
-if (data.state) subMenu.county = submenuData.allStates.nodes
-  .find((d) => d.name === data.state)
-  .counties.map((d) => ({name: d.name, link: getTrackerUrl({state: data.state, name: d.name})}))
-  .filter((d) => d.name !== data.name)
-  .sort((a, b) => {
-    var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-    var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-  
-    // names must be equal
-    return 0;
-  });
+  if (data.state)
+    subMenu.county = submenuData.allStates.nodes
+      .find((d) => d.name === data.state)
+      .counties.map((d) => ({
+        name: d.name,
+        link: getTrackerUrl({ state: data.state, name: d.name }),
+      }))
+      .filter((d) => d.name !== data.name)
+      .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <ul className={clsx(classes.root, className)} {...props}>
@@ -135,23 +120,26 @@ if (data.state) subMenu.county = submenuData.allStates.nodes
                   ) : (
                     bc.name
                   )}
-                  {(bc.id === 'state' || bc.id === 'county') && <DropdownArrow className={classes.dropdown} />}
+                  {(bc.id === "state" || bc.id === "county") && (
+                    <DropdownArrow className={classes.dropdown} />
+                  )}
                 </Box>
               </Link>
-
-              <List className={classes.childItems}>
-                {(bc.id === 'state' || bc.id === 'county') &&
-                  subMenu[bc.id].map((menu) => (
-                    <ListItem
-                      key={menu.name}
-                      component={GatsbyLink}
-                      to={menu.link}
-                      button
-                    >
-                      {menu.name}
-                    </ListItem>
-                  ))}
-              </List>
+              {(bc.id === "state" || bc.id === "county") && (
+                <List className={classes.childItems}>
+                  {Array.isArray(subMenu[bc.id]) &&
+                    subMenu[bc.id].map((menu) => (
+                      <ListItem
+                        key={menu.name}
+                        component={GatsbyLink}
+                        to={menu.link}
+                        button
+                      >
+                        {menu.name}
+                      </ListItem>
+                    ))}
+                </List>
+              )}
             </>
           )}
           {i < links.length - 1 && <Separator className={classes.separator} />}
@@ -164,5 +152,3 @@ if (data.state) subMenu.county = submenuData.allStates.nodes
 Breadcrumb.propTypes = {};
 
 export default withStyles(styles)(Breadcrumb);
-
-
