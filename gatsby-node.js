@@ -1,4 +1,5 @@
 const d3 = require("d3");
+const path = require("path");
 const { getStateNameForFips, loadCsv, slugify } = require("./scripts/utils");
 const titleCase = require("title-case");
 
@@ -209,4 +210,13 @@ exports.createPages = async ({ graphql, actions }) => {
   await createLawsuitTrackerIndex({ graphql, actions });
   await createStatePages({ graphql, actions });
   await createCountyPages({ graphql, actions });
+};
+
+// allow import of local components
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
+    },
+  });
 };
