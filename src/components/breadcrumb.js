@@ -99,10 +99,26 @@ const subMenu = {}
 subMenu.state = submenuData.allStates.nodes.map((d) => ({name: d.name, link: getTrackerUrl(d)}))
   .filter((d) => d.name !== "Texas")
   .filter((d) => data.state ? d.name !== data.state : d.name !== data.name)
+  .sort()
+
 
 if (data.state) subMenu.county = submenuData.allStates.nodes
   .find((d) => d.name === data.state)
   .counties.map((d) => ({name: d.name, link: getTrackerUrl({state: data.state, name: d.name})}))
+  .filter((d) => d.name !== data.name)
+  .sort((a, b) => {
+    var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+  
+    // names must be equal
+    return 0;
+  });
 
   return (
     <ul className={clsx(classes.root, className)} {...props}>
