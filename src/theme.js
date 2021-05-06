@@ -93,7 +93,7 @@ const overrides = {
   MuiCssBaseline: {
     "@global": {
       html: {
-        scrollBehavior: "smooth"
+        scrollBehavior: "smooth",
       },
       // update padding and font on <code> elements
       code: {
