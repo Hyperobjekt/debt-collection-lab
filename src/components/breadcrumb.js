@@ -5,7 +5,7 @@ import { Link } from "gatsby-material-ui-components";
 import HomeIcon from "@material-ui/icons/Home";
 import ChevronRight from "@material-ui/icons/ChevronRight";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import { List, ListItem, Box } from "@material-ui/core";
+import { List, ListItem, Box, fade } from "@material-ui/core";
 import { withStyles } from "@material-ui/core";
 import { GatsbyLink } from "gatsby-theme-material-ui";
 import { getTrackerUrl } from "../lawsuit-tracker/utils";
@@ -52,9 +52,10 @@ const styles = (theme) => ({
     opacity: 0,
     visibility: "hidden", // hide from screen reader
     pointerEvents: "none", // ignore mouse events
-    transition: theme.transitions.create(["opacity"]),
+    transition: theme.transitions.create(["opacity", "visibility"]),
     position: "absolute",
     top: 36,
+    left: theme.spacing(-1),
     width: 300,
     maxHeight: "80vh",
     overflow: "auto",
@@ -62,7 +63,10 @@ const styles = (theme) => ({
     padding: 0,
     margin: 0,
     color: "#fff",
-    background: theme.palette.grey[800],
+    backgroundImage: `linear-gradient(180deg, ${fade(
+      theme.palette.grey[800],
+      0.01
+    )} 0%, ${fade(theme.palette.grey[800], 0.99)} 80px)`,
     boxShadow: theme.shadows[5],
   },
 });
