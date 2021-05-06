@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby-material-ui-components";
 import HomeIcon from "@material-ui/icons/Home";
 import ChevronRight from "@material-ui/icons/ChevronRight";
@@ -7,6 +8,8 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { List, ListItem, Box } from "@material-ui/core";
 import { withStyles } from "@material-ui/core";
 import { GatsbyLink } from "gatsby-theme-material-ui";
+import { useLocation } from "@reach/router"
+import { getTrackerUrl } from "../lawsuit-tracker/utils";
 // import Dropdown from "./dropdown"
 
 const styles = (theme) => ({
@@ -60,7 +63,7 @@ const Breadcrumb = ({
   classes,
   className,
   links,
-  subMenu,
+  data,
   Home = HomeIcon,
   Separator = ChevronRight,
   DropdownArrow = ArrowDropDownIcon,
@@ -77,7 +80,30 @@ const Breadcrumb = ({
     { name: "item1", link: "/" },
     { name: "item1", link: "/" },
   ];
-  console.log({ links });
+
+const submenuData = useStaticQuery(graphql`
+  query second {
+    allStates {
+      nodes {
+        name
+        counties {
+          geoid
+          name
+        }
+      }
+    }
+  }
+`)
+
+const subMenu = {}
+subMenu.state = submenuData.allStates.nodes.map((d) => ({name: d.name, link: getTrackerUrl(d)}))
+  .filter((d) => d.name !== "Texas")
+  .filter((d) => data.state ? d.name !== data.state : d.name !== data.name)
+
+if (data.state) subMenu.county = submenuData.allStates.nodes
+  .find((d) => d.name === data.state)
+  .counties.map((d) => ({name: d.name, link: getTrackerUrl({state: data.state, name: d.name})}))
+
   return (
     <ul className={clsx(classes.root, className)} {...props}>
       {links.map((bc, i) => (
@@ -93,20 +119,20 @@ const Breadcrumb = ({
                   ) : (
                     bc.name
                   )}
-                  {bc.subMenu && <DropdownArrow className={classes.dropdown} />}
+                  {(bc.id === 'state' || bc.id === 'county') && <DropdownArrow className={classes.dropdown} />}
                 </Box>
               </Link>
 
               <List className={classes.childItems}>
-                {bc.subMenu &&
-                  bc.subMenu.map(({ name, link }) => (
+                {(bc.id === 'state' || bc.id === 'county') &&
+                  subMenu[bc.id].map((menu) => (
                     <ListItem
-                      key={name}
+                      key={menu.name}
                       component={GatsbyLink}
-                      to={link}
+                      to={menu.link}
                       button
                     >
-                      {name}
+                      {menu.name}
                     </ListItem>
                   ))}
               </List>
@@ -122,3 +148,5 @@ const Breadcrumb = ({
 Breadcrumb.propTypes = {};
 
 export default withStyles(styles)(Breadcrumb);
+
+

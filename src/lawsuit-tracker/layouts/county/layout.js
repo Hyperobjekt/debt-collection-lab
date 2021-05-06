@@ -29,18 +29,7 @@ export default function TrackerCountyLayout({
   const data = props.data.allCounties.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
   const demographics = props.data.allDemographics.nodes;
-  const breadcrumbLinks = props.data.allStates.nodes;
-  const breadcrumbStates = breadcrumbLinks.map((d) => d.name);
-  const breadcrumbCounties = breadcrumbLinks
-    .find((d) => d.name === data.state)
-    .counties.map((d) => d.name);
-  console.log("page data", {
-    data,
-    geojson,
-    demographics,
-    breadcrumbStates,
-    breadcrumbCounties,
-  });
+  
   const breadcrumb = [
     {
       name: "Home",
@@ -51,22 +40,14 @@ export default function TrackerCountyLayout({
       link: "/lawsuit-tracker",
     },
     {
+      id: 'state',
       name: data.state,
       link: getTrackerUrl({ name: data.state }),
-      subMenu: breadcrumbStates
-        .map((name) => ({
-          name,
-          link: getTrackerUrl({ name }),
-        }))
-        .filter((d) => d.name !== "Texas"),
     },
     {
+      id: 'county',
       name: data.name,
       link: getTrackerUrl(data),
-      subMenu: breadcrumbCounties.map((name) => ({
-        name,
-        link: getTrackerUrl({ state: data.state, name }),
-      })),
     },
   ];
 
@@ -74,6 +55,7 @@ export default function TrackerCountyLayout({
     <Layout pageContext={pageContext} {...props}>
       <Container>
         <Breadcrumb
+          data={data}
           links={breadcrumb}
           style={{ position: "absolute", top: 0, zIndex: 10 }}
         />
@@ -167,15 +149,6 @@ export const query = graphql`
         percent_other
         percent_white
         majority
-      }
-    }
-    allStates {
-      nodes {
-        name
-        counties {
-          geoid
-          name
-        }
       }
     }
   }

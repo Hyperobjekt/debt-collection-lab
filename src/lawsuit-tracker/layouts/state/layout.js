@@ -24,29 +24,31 @@ export default function TrackerCountyLayout({
   ...props
 }) {
   const data = props.data.allStates.nodes[0];
+  console.log(props)
   const geojson = props.data.allGeojsonJson.nodes[0];
-  const states = ["Connecticut", "Indiana", "Missouri"].map((d) => {
-    return { name: d, link: getTrackerUrl({ name: d }) };
-  });
+  
   const breadcrumb = [
     {
+      id: 'home',
       name: "Home",
       link: "/",
     },
     {
+      id: 'tracker',
       name: "Debt Collection Tracker",
       link: "/lawsuit-tracker",
     },
     {
+      id: 'state',
       name: data.name,
       link: getTrackerUrl(data),
-      subMenu: states,
     },
   ];
   return (
     <Layout pageContext={pageContext} {...props}>
       <Container>
         <Breadcrumb
+          data={data}
           links={breadcrumb}
           style={{ position: "absolute", top: 0, zIndex: 10 }}
         />
@@ -77,55 +79,68 @@ export default function TrackerCountyLayout({
   );
 }
 
+// export const statesQuery = graphql`{
+//   query MyQuery {
+//     allStates {
+//       nodes {
+//         name
+//         counties {
+//           geoid
+//           name
+//         }
+//       }
+//     }
+//   }
+// }
+// `
+
 export const query = graphql`
-  query($geoid: String!, $state: String!) {
-    allGeojsonJson(
-      filter: { name: { eq: $state }, region: { eq: "counties" } }
-    ) {
-      nodes {
-        features {
-          properties {
-            GEOID
-          }
-          geometry {
-            type
-            coordinates
-          }
-          type
+query first($geoid: String!, $state: String!) {
+  allGeojsonJson(filter: {name: {eq: $state}, region: {eq: "counties"}}) {
+    nodes {
+      features {
+        properties {
+          GEOID
         }
+        geometry {
+          type
+          coordinates
+        }
+        type
       }
     }
-    allStates(filter: { geoid: { eq: $geoid } }) {
-      nodes {
+  }
+  allStates(filter: {geoid: {eq: $geoid}}) {
+    nodes {
+      geoid
+      name
+      lawsuits
+      lawsuits_date
+      default_judgement
+      no_rep_percent
+      top_collectors {
+        amount
+        collector
+        lawsuits
+      }
+      collector_total
+      lawsuit_history {
+        lawsuits
+        month
+      }
+      counties {
+        default_judgement
         geoid
-        name
         lawsuits
         lawsuits_date
-        default_judgement
+        name
         no_rep_percent
-        top_collectors {
-          amount
-          collector
-          lawsuits
-        }
-        collector_total
         lawsuit_history {
           lawsuits
           month
         }
-        counties {
-          default_judgement
-          geoid
-          lawsuits
-          lawsuits_date
-          name
-          no_rep_percent
-          lawsuit_history {
-            lawsuits
-            month
-          }
-        }
       }
     }
   }
+}
 `;
