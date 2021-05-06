@@ -29,10 +29,12 @@ const styles = (theme) => ({
       visibility: "visible",
       pointerEvents: "all",
     },
+    color: theme.palette.grey[500],
   },
   link: {
     display: "block",
     padding: theme.spacing(1),
+    color: theme.palette.grey[500],
   },
   home: {
     display: "block",
@@ -60,7 +62,8 @@ const styles = (theme) => ({
     padding: 0,
     margin: 0,
     color: "#fff",
-    background: theme.palette.secondary.main,
+    background: theme.palette.grey[800],
+    boxShadow: theme.shadows[5],
   },
 });
 
