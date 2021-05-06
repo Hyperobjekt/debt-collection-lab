@@ -133,6 +133,7 @@ const overrides = {
       paddingTop: 8,
       fontWeight: 400,
       textTransform: "none",
+      fontSize: theme.typography.pxToRem(16),
     },
     contained: {
       boxShadow: "none",

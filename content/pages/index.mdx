@@ -4,109 +4,125 @@ path: /
 seo:
   title: Debt Collection Lab
   description: Debt Collection Lab description
-image: ./home-hero.jpg
+embeddedImages:
+  - ./images/home-hero.png
+  - ./images/stat-hero.jpg
+  - ./images/one-cent.png
+  - ./images/chain.png
+  - ./images/tracker-callout.png
+  - ./images/arts-callout.png
 ---
 
-import { HomeHero } from "home";
+import {
+  HomeHero,
+  StatHero,
+  TextHero,
+  TrackerCallout,
+  ArtsCallout,
+  AboutUsCallout,
+} from "home";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyLink } from "gatsby-theme-material-ui";
 
-[!image](./home-hero.jpg)
+<HomeHero
+  image={
+    <GatsbyImage
+      width={500}
+      alt="photo of people walking with long shadows following them"
+      image={getImage(props.localImages[0])}
+    />
+  }
+/>
 
-<HomeHero image="./home-hero.jpg" />
+<StatHero
+  variant="overlay"
+  image={
+    <GatsbyImage
+      alt="a court room official handing a document to a defendant"
+      image={getImage(props.localImages[1])}
+    />
+  }
+  number="90%"
+  description="of debtors summoned to court do not have legal counsel"
+  gradient="linear-gradient(90deg, #000, transparent)"
+/>
 
-<Block>
+<TextHero>
 
-<Box display="flex" alignItems="center">
+We are changing the narrative about debt collection by building a public facing resource for debtors and their advocates.
 
-<Box mr={8}>
+<GatsbyImage
+  className="cent"
+  width={100}
+  alt="penny with Abraham Lincoln's head"
+  image={getImage(props.localImages[2])}
+/>
 
-<img src="https://via.placeholder.com/360x240" alt="placeholder" />
+<GatsbyImage
+  className="chain"
+  width={265}
+  alt="ball and chain"
+  image={getImage(props.localImages[3])}
+/>
 
-</Box>
+</TextHero>
 
-<Box width={1 / 3}>
+<TrackerCallout>
 
-<Typography>
-  Millions have been threatened with jail, tens of thousands have been summoned
-  to court in a single county in a single . The greatest indignities fall on
-  lower-income debtors and on those who are Black or Latinx. During the process
-  of debt collection, individuals learn that they can be treated as if they have
-  no right to respect or to redress.
-</Typography>
+## Debt Collection Tracker
 
-</Box>
+See where debt collection lawsuits are happening and how unevenly distributed by neighborhood, income and race they are.
 
-</Box>
+<Button
+  to="/lawsuit-tracker"
+  component={GatsbyLink}
+  color="primary"
+  variant="contained"
+>
+  View our real-time debt collection data
+</Button>
 
-<Box m={4} display="flex" justifyContent="right">
-  <Box
-    maxWidth={240}
-    ml="auto"
-    component="p"
-    display="flex"
-    flexDirection="column"
-  >
-    <Typography variant="h1" component="span">
-      90%
-    </Typography>
-    <Typography variant="h6" component="span">
-      of debtors summoned to court are without legal counsel
-    </Typography>
-  </Box>
-</Box>
+<GatsbyImage
+  className="tracker-bg"
+  width={480}
+  alt="sparklines for various counties available in the debt collection tracker"
+  image={getImage(props.localImages[4])}
+/>
 
-<Box maxWidth={460} mr="auto" component="p">
-  <Typography variant="h3" component="p">
-    We are changing the narrative about debt collection
-  </Typography>
-</Box>
+</TrackerCallout>
 
-<Callout mt={4}>
-  <Box maxWidth={600}>
-    <Typography variant="h4" component="h2" align="center">
-      We are building a public facing resource for debtors and their advocates.
-    </Typography>
-  </Box>
-  <Box maxWidth={460} m={3}>
-    <Typography align="center">
-      We can see in real time where debt collection lawsuits are happening so
-      that there is time to do something about it.
-    </Typography>
-  </Box>
-  <Button color="primary" variant="contained">
-    Go to the Debt Collection Tracker
-  </Button>
-</Callout>
+<ArtsCallout>
 
-<Callout image="https://via.placeholder.com/300x250" placement="right">
-  <Typography variant="h4" component="h2">
-    Arts and Storytelling
-  </Typography>
-  <Box mt={3} mb={3} maxWidth={420}>
-    <Typography>
-      We are using the arts and different storytelling traditions to
-      interrogate, transform, and spread new dignifying narratives for debt
-      justice.
-    </Typography>
-  </Box>
-  <Button color="primary" variant="contained">
-    Explore Arts and Storytelling
-  </Button>
-</Callout>
+## Arts and Storytelling
 
-<Callout>
-  <Box maxWidth={600}>
-    <Typography variant="h4" component="h2" align="center">
-      Who we are
-    </Typography>
-  </Box>
-  <Box maxWidth={460} m={3}>
-    <Typography align="center">
-      Find out about the members of The Debt Collection Lab
-    </Typography>
-  </Box>
-  <Button color="primary" variant="contained">
-    Learn About Us
-  </Button>
-</Callout>
+Our virtual gallery features the Debt Collectors Series, modelled on the work of Jacob Lawrence.
 
-</Block>
+<Button to="/arts-and-storytelling" component={GatsbyLink} color="primary">
+  Explore Arts and Storytelling
+</Button>
+
+<GatsbyImage
+  className="arts-bg"
+  width={480}
+  alt="sparklines for various counties available in the debt collection tracker"
+  image={getImage(props.localImages[5])}
+/>
+
+</ArtsCallout>
+
+<AboutUsCallout>
+
+## Who We Are
+
+Find out about the members of The Debt Collection Lab
+
+<Button
+  to="/about-us"
+  component={GatsbyLink}
+  color="primary"
+  variant="contained"
+>
+  Learn more about us
+</Button>
+
+</AboutUsCallout>
