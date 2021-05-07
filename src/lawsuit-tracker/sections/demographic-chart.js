@@ -65,7 +65,6 @@ const DemographicChart = ({ data }) => {
   const [metric, setMetric] = useState("proportionalCountDiff");
   const chartData = shapeChartData(data, metric);
   const chartOptions = getOptionOverrides(metric);
-  console.log("chart update", chartData);
   return (
     <>
       <Box display="flex" justifyContent="space-between" mt={2} mb={1}>

@@ -35,7 +35,6 @@ export default function TrackerCountyLayout({
   ...props
 }) {
   const data = props.data.allStates.nodes[0];
-  console.log(props);
   const geojson = props.data.allGeojsonJson.nodes[0];
   const demographics = props.data.allDemographics.nodes;
   const breadcrumb = [
@@ -86,11 +85,13 @@ export default function TrackerCountyLayout({
         views={[region]}
         data={[data]}
       />
-      {demographics.length > 0 && <DemographicChartSection
-        title="Debt Collection Lawsuits by Neighborhood Demographics"
-        description="Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority."
-        data={getDemographicChartData(data, demographics, region)}
-      />}
+      {demographics.length > 0 && (
+        <DemographicChartSection
+          title="Debt Collection Lawsuits by Neighborhood Demographics"
+          description="Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority."
+          data={getDemographicChartData(data, demographics, region)}
+        />
+      )}
       {children}
       {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
     </Layout>

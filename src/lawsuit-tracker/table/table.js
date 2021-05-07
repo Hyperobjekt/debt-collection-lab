@@ -161,10 +161,6 @@ export default function Table({ columns: userColumns, data, className, view }) {
         </TableHead>
         <TableBody {...getTableBodyProps()}>
           {truncatedRows.map((row, i) => {
-            console.log("rendering row", row.values.name, {
-              prevParentRow,
-              row,
-            });
             prepareRow(row);
             let nextRow =
               i < truncatedRows.length ? truncatedRows[i + 1] : null;
