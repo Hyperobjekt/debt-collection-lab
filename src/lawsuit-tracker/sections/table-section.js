@@ -21,6 +21,7 @@ import {
   shapeStates,
   shapeStatesCounties,
   shapeTracts,
+  shapeZips,
   sortData,
 } from "../utils";
 import * as d3 from "d3";
@@ -47,6 +48,8 @@ const getShaperForView = (view) => {
       return shapeCounties;
     case "tracts":
       return shapeTracts;
+    case "zips":
+      return shapeZips;
     default:
       throw new Error("unsupported view");
   }
@@ -78,7 +81,7 @@ const TableSection = ({
   const [data, setData] = useState(dataShaper(source));
   const filteredData = applyFilter(data, filter);
   let tableData = sortData(filteredData, sortBy, ascending);
-  if (view === "counties" || view === "tracts")
+  if (view === "counties" || view === "tracts" || view === "zips")
     tableData = tableData.slice(0, 10);
   const trendRange = getDateRange(source);
 
@@ -190,7 +193,7 @@ const TableSection = ({
             />
           ),
       },
-      view !== "tracts"
+      view !== "tracts" && view !== "zips"
         ? {
             id: "report",
             Header: "",

@@ -28,12 +28,19 @@ function getCounties(data) {
  */
 function getStates(data) {
   const states = data.filter((d) => d.geoid.length === 2);
-  return states.map((s) => ({
-    ...s,
-    counties: data
-      .filter((d) => d.geoid.length === 5 && d.geoid.indexOf(s.geoid) === 0)
-      .map((c) => ({ ...c, state: s.name })),
-  }));
+  return states.map((s) => {
+    const zips = data
+      .filter((d) => d.geoid.length === 7 && d.geoid.indexOf(s.geoid) === 0)
+      .map((c) => ({ ...c, state: s.name }));
+    return {
+      ...s,
+      region: zips?.length > 0 ? "zips" : "counties",
+      counties: data
+        .filter((d) => d.geoid.length === 5 && d.geoid.indexOf(s.geoid) === 0)
+        .map((c) => ({ ...c, state: s.name })),
+      zips,
+    };
+  });
 }
 
 /**
@@ -215,12 +222,16 @@ const createStatePages = async ({ graphql, actions }) => {
         nodes {
           geoid
           name
+          lawsuits
+          zips {
+            geoid
+          }
         }
       }
     }
   `);
   const states = result.data.allStates.nodes;
-  states.forEach(({ geoid, name }) => {
+  states.forEach(({ geoid, name, lawsuits, zips }) => {
     if (name && name !== "Texas") {
       const pageName = slugify(name);
       createPage({
@@ -230,9 +241,12 @@ const createStatePages = async ({ graphql, actions }) => {
           slug: pageName,
           state: name,
           geoid: geoid,
+          region: zips?.length > 0 ? "zips" : "counties",
           frontmatter: {
             seo: {
               title: name,
+              description: `People in ${name} have had ${lawsuits} debt collection lawsuits filed against them since we started tracking.`,
+              // TODO: generate a dynamic social image
             },
           },
         },
