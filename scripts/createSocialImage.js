@@ -9,7 +9,7 @@ async function create(name, values, postFix) {
   const fileName = postFix ? slugify(name) + "-" + postFix : slugify(name);
   const returnFileName = "/images/social/" + fileName + ".png";
   // only create on branch deploys / production
-  if (CONTEXT !== "production" || CONTEXT !== "branch-deploy")
+  if (CONTEXT !== "production" && CONTEXT !== "branch-deploy")
     return returnFileName;
   var svg = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
