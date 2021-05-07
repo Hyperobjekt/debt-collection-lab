@@ -1,7 +1,7 @@
 const d3 = require("d3");
 const path = require("path");
 const { getStateNameForFips, loadCsv, slugify } = require("./scripts/utils");
-const titleCase = require("title-case");
+const { titleCase } = require("title-case");
 
 const MONTH_PARSE = d3.timeParse("%m/%Y");
 
