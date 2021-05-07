@@ -1,48 +1,42 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# Debt Collection Lab
 
-## 🚀 Quick start
+## Getting Started
 
-1.  **Create a Gatsby site.**
+built with:
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+- node version: 15+
+- gatsby: 3.2+
+- material-ui +4.11
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+to run locally, clone the repository and install dependencies with
 
-2.  **Start developing.**
+```
+npm install
+```
 
-    Navigate into your new site’s directory and start it up.
+start in development mode with
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+```
+npm run develop
+```
 
-3.  **Open the code and start customizing!**
+## Themes
 
-    Your site is now running at http://localhost:8000!
+This site is based off of the `gatsby-theme-hypersite` theme. Which provides:
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+- Base website components (header, footer, block, hero, navigation)
+- MDX page creation with SEO and images frontmatter
 
-4.  **Learn more**
+See [gatsby-theme-hypersite](https://github.com/Hyperobjekt/gatsby-themes/tree/main/themes/gatsby-theme-hypersite) and [gatsby-starter-hypersite](https://github.com/Hyperobjekt/gatsby-themes/tree/main/starters/gatsby-starter-hypersite) for more info about customizing the theme.
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Data
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+There is a data preparation step that takes the source data and aggregates / transforms it into the format needed for the tracker.
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+This can be run with:
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+```
+npm run build:data
+```
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Lawsuit Tracker
