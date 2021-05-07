@@ -1,26 +1,28 @@
 import React from "react";
 import clsx from "clsx";
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid, Box } from "@material-ui/core";
 
 const ChartLegend = ({ labels, className, ...props }) => {
   return (
-    <Grid
+    <Box
       className={clsx("legend", className)}
-      container
+      display="flex"
       alignItems="center"
       justify="space-around"
       {...props}
     >
       {labels.map((l, i) => (
-        <Grid key={l[0]} className="legend__item" justify="center" item xs>
+        <Box key={l[0]} className="legend__item" display="flex">
           <div
             className={`legend__color legend__color--${i}`}
             style={{ background: l[1] }}
           />
-          <Typography className="legend__label">{l[0]}</Typography>
-        </Grid>
+          <Typography noWrap className="legend__label">
+            {l[0]}
+          </Typography>
+        </Box>
       ))}
-    </Grid>
+    </Box>
   );
 };
 

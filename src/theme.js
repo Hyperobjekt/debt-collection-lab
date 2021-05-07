@@ -92,14 +92,14 @@ const overrides = {
   /** Site wide global style overrides */
   MuiCssBaseline: {
     "@global": {
+      html: {
+        scrollBehavior: "smooth",
+      },
       // update padding and font on <code> elements
       code: {
         padding: theme.spacing(0.25, 1),
         borderRadius: theme.shape.borderRadius,
         fontFamily: ["monospace"].join(","),
-      },
-      "[data-reach-skip-nav-link]:focus": {
-        zIndex: `9999!important`,
       },
     },
   },
@@ -133,6 +133,7 @@ const overrides = {
       paddingTop: 8,
       fontWeight: 400,
       textTransform: "none",
+      fontSize: theme.typography.pxToRem(16),
     },
     contained: {
       boxShadow: "none",

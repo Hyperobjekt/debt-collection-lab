@@ -5,18 +5,27 @@ import {
   Navigation,
   Container,
 } from "@hyperobjekt/material-ui-website";
-import { Box, withStyles } from "@material-ui/core";
+import { Box, withStyles, Divider } from "@material-ui/core";
 import Typography from "../../components/typography";
 import Logo from "gatsby-theme-hypersite/src/logo";
 import { useSiteMetadata } from "gatsby-theme-hypercore";
 import { GatsbyLink, Link } from "gatsby-material-ui-components";
+import { FONTS } from "../../theme";
 
 const styles = (theme) => ({
   root: {
+    position: "relative",
     flexDirection: "column",
-    padding: theme.spacing(8, 0),
+    padding: theme.spacing(8, 0, 12),
     background: theme.palette.background.footer,
     color: theme.palette.text.light,
+    "& .MuiDivider-root": {
+      width: 40,
+      height: 4,
+      background: "#fff",
+      border: "none",
+      margin: theme.spacing(2, 0, 1, 0),
+    },
   },
   row1: {
     display: "flex",
@@ -29,18 +38,56 @@ const styles = (theme) => ({
     },
   },
   phrase: {
-    maxWidth: 360,
+    maxWidth: "10em",
     textAlign: "center",
-    marginBottom: theme.spacing(3),
+    marginBottom: theme.spacing(6),
+    ...FONTS.KNOCKOUT["Lightweight"],
+    fontSize: theme.typography.pxToRem(28),
+    letterSpacing: "0.03em",
+    lineHeight: 60 / 46,
     [theme.breakpoints.up("sm")]: {
       textAlign: "left",
+      fontSize: theme.typography.pxToRem(32),
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: theme.typography.pxToRem(46),
     },
   },
   row2: {},
+  row3: {
+    background: "#262625",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    "& img + img": {
+      display: "block",
+      marginLeft: theme.spacing(4),
+    },
+  },
   copyright: {
     textAlign: "center",
     [theme.breakpoints.up("sm")]: {
       textAlign: "left",
+    },
+  },
+  navLink: {
+    marginLeft: theme.spacing(-1),
+    color: "#fff",
+    textDecoration: "none",
+    textAlign: "center",
+    "&:hover, &:focus": {
+      textDecoration: "underline",
+    },
+  },
+  linksWrapper: {
+    minWidth: 200,
+    margin: theme.spacing(2, 0, 6, 0),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    [theme.breakpoints.up("sm")]: {
+      alignItems: "flex-start",
     },
   },
 });
@@ -51,12 +98,18 @@ const Footer = ({ classes, className, children, pageContext, ...props }) => {
     <BaseFooter className={clsx(classes.root, className)}>
       <Container className={classes.row1}>
         <Typography className={classes.phrase} variant="h4">
-          It is important that we understand debt collection so that we can
-          change it
+          We make visible the practices and indignities long shielded from the
+          light.
         </Typography>
-        <Box>
+        <Box className={classes.linksWrapper}>
           <Logo />
-          <Navigation isGatsbyLink={true} LinkComponent={GatsbyLink} links={siteMetadata.menuLinks} />
+          <Divider />
+          <Navigation
+            classes={{ link: classes.navLink }}
+            isGatsbyLink={true}
+            LinkComponent={GatsbyLink}
+            links={siteMetadata.menuLinks}
+          />
         </Box>
       </Container>
       <Container className={classes.row2}>
@@ -65,6 +118,20 @@ const Footer = ({ classes, className, children, pageContext, ...props }) => {
           <Link href="https://hyperobjekt.com">Hyperobjekt</Link>
         </Typography>
       </Container>
+      <Box className={classes.row3} bgcolor="grey.800">
+        <Container display="flex" flexDirection="row" pt={3} pb={3}>
+          <img
+            width="72"
+            src="/images/princeton-logo.svg"
+            alt="Princeton University Logo"
+          />
+          <img
+            width="93"
+            src="/images/d-d-logo.svg"
+            alt="Dignity and Debt Logo"
+          />
+        </Container>
+      </Box>
     </BaseFooter>
   );
 };

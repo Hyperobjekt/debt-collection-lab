@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Typography from "../../components/typography";
-import { withStyles } from "@material-ui/core";
+import { Box, Button, ButtonGroup, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import LineChart from "../charts/line-chart";
+import { formatPercent } from "../utils";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
@@ -27,11 +28,55 @@ const SectionBlock = withStyles((theme) => ({
   },
 }))(TwoColBlock);
 
+const getChartTitle = (metric) => {
+  switch (metric) {
+    case "lawsuits":
+      return "Number of Lawsuits by Neighborhood Racial Majority";
+    case "proportionalCountDiff":
+      return "Difference from Expected Number of Lawsuits Based on Neighborhood Proportions";
+    default:
+      return "";
+  }
+};
+
+const getOptionOverrides = (metric) => {
+  switch (metric) {
+    case "lawsuits":
+      return {
+        valueTemplate: "{{yValue}} lawsuits in {{xValue}}",
+        xTooltipFormat: "%B %Y",
+      };
+    case "proportionalCountDiff":
+      return {
+        valueTemplate:
+          "Difference of {{yValue}} lawsuits from the expected value based on neighborhood proportions in {{xValue}}",
+        xTooltipFormat: "%B %Y",
+      };
+    default:
+      return {};
+  }
+};
+
+const shapeChartData = (data, metric) => {
+  return data.map((d) => ({ ...d, y: d.data[metric] }));
+};
+
 const DemographicChart = ({ data }) => {
+  const [metric, setMetric] = useState("proportionalCountDiff");
+  const chartData = shapeChartData(data, metric);
+  const chartOptions = getOptionOverrides(metric);
+  console.log("chart update", chartData);
   return (
     <>
+      <Box display="flex" justifyContent="space-between" mt={2} mb={1}>
+        <Box ml={5}>
+          <Typography variant="h6" component="h4">
+            {getChartTitle(metric)}
+          </Typography>
+        </Box>
+      </Box>
       <LineChart
-        data={data}
+        data={chartData}
         theme={{
           background: "transparent",
           frame: { stroke: "none" },
@@ -52,9 +97,39 @@ const DemographicChart = ({ data }) => {
           barSpacing: 1,
           groupPadding: 0.25,
           xFormat: "%b '%y",
+          yFormat: ",d",
           margin: [8, 8, 64, 48],
+          curve: "curveCardinal",
+          colorMap: {
+            Asian: "#DBA336",
+            Black: "#BC5421",
+            Latinx: "#BFDCE0",
+            White: "#7D95AA",
+            "No Majority": "#68A58B",
+          },
+          ...chartOptions,
         }}
       />
+      <Box ml={5} mt={3}>
+        <ButtonGroup color="primary" aria-label="chart type selection">
+          <Button
+            color="primary"
+            variant={metric === "lawsuits" ? "contained" : "outlined"}
+            onClick={() => setMetric("lawsuits")}
+          >
+            Lawsuit Counts
+          </Button>
+          <Button
+            color="primary"
+            variant={
+              metric === "proportionalCountDiff" ? "contained" : "outlined"
+            }
+            onClick={() => setMetric("proportionalCountDiff")}
+          >
+            Relative to Neighborhood Proportions
+          </Button>
+        </ButtonGroup>
+      </Box>
     </>
   );
 };
@@ -62,7 +137,7 @@ const DemographicChart = ({ data }) => {
 const DemographicChartSection = ({
   title,
   description,
-  data,
+  data: { chartData, tractCountByMajority, totalLawsuits },
   children,
   ...props
 }) => {
@@ -71,14 +146,33 @@ const DemographicChartSection = ({
       <Typography variant="sectionTitle" component="h3">
         {title}
       </Typography>
-      {description && <Typography>{description}</Typography>}
+      {description && <Typography paragraph>{description}</Typography>}
+      <Typography weight="bold">Neighborhoods by Racial Majority</Typography>
+      <ul style={{ paddingLeft: 16 }}>
+        {tractCountByMajority.map(
+          ({
+            group,
+            tractCount,
+            tractPercent,
+            lawsuitCount,
+            lawsuitPercent,
+          }) => (
+            <li key={group}>
+              <Typography>
+                {group}: {formatPercent(tractPercent)} of neighborhoods,{" "}
+                {formatPercent(lawsuitPercent)} of lawsuits
+              </Typography>
+            </li>
+          )
+        )}
+      </ul>
       {children}
     </>
   );
   return (
     <SectionBlock
       left={leftContent}
-      right={<DemographicChart data={data.chartData} />}
+      right={<DemographicChart data={chartData} />}
       {...props}
     />
   );

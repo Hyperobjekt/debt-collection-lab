@@ -8,7 +8,6 @@ const styles = (theme) => ({
     display: "flex",
     justifyContent: "stretch",
     alignItems: "stretch",
-    background: theme.palette.background.default,
   },
   container: {
     display: "flex",
