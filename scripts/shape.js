@@ -6,13 +6,18 @@ const { loadCsv, writeFile } = require("./utils");
 const DATE_FORMAT = d3.timeFormat("%m/%Y");
 const MONTH_PARSE = d3.timeParse("%m/%Y");
 const STATE_SELECTOR = (d) => d.id.substring(0, 2);
-const COUNTY_SELECTOR = (d) => d.id.substring(0, 5) && d.id !== d.name;
-const ZIP_SELECTOR = (d) => d.id === d.name;
-const TRACT_SELECTOR = (d) => d.id;
+const COUNTY_SELECTOR = (d) => d.id.length === 11 && d.id.substring(0, 5);
+const ZIP_SELECTOR = (d) => d.id.length === 7 && d.id;
+const TRACT_SELECTOR = (d) => d.id.length === 11 && d.id;
 
 function getName(id, name) {
-  if (id === name) return `Zip ${id}`;
-  if (id.length === 2) return name.split(",").pop().trim();
+  // zip codes
+  if (id.length === 7) return name;
+  // TODO: need a state lookup when getting name for states from zip codes
+  if (id.length === 2)
+    return name.indexOf(",") > -1
+      ? name.split(",").pop().trim()
+      : "North Dakota";
   if (id.length === 5) return name.split(",")[1].trim();
   return name.split(",")[0].trim();
 }
@@ -72,19 +77,12 @@ function aggregateLawsuits(data) {
  * @param {*} data
  */
 function aggregateBySelector(data, selector = (d) => d.id) {
-  const reshapedIdData = data.map((d) => ({ ...d, id: selector(d) }));
+  const reshapedIdData = data
+    .map((d) => ({ ...d, id: selector(d) }))
+    .filter(Boolean);
   const groups = d3.groups(reshapedIdData, (d) => d.id);
   return groups.reduce((result, current) => {
     result.push(aggregateLawsuits(current[1]));
-    return result;
-  }, []);
-}
-
-function aggregateByCollector(data, selector = (d) => d.id) {
-  const reshapedIdData = data.map((d) => ({ ...d, id: selector(d) }));
-  const groups = d3.groups(reshapedIdData, (d) => d.id);
-  return groups.reduce((result, current) => {
-    result.push(aggregateCollectors(current[1]));
     return result;
   }, []);
 }
@@ -116,14 +114,27 @@ async function shapeFullData() {
   // Filter out NA data and FILTER OUT ZIP CODES!!
   // (id !== name, filters out zip codes, because zip code ids are the same as the name)
   // TODO: keep zip codes and shape them properly
-  const data = loadCsv(path, parser).filter(
-    (d) => d.id !== "NA" && d.id !== d.name
-  );
+  const data = loadCsv(path, parser)
+    .filter((d) => d.id !== "NA")
+    .map((d) => {
+      // add state fips to zip code
+      // TODO: need a way to determine state from zip code
+      // - have Jeff add a column with state fips
+      if (d.id === d.name) {
+        // Assuming all zips belong to North Dakota
+        return {
+          ...d,
+          id: "38" + d.id,
+          name: "Zip " + d.id,
+        };
+      }
+      return d;
+    });
   const debtData = [
-    // TODO: add zip aggregation
     ...aggregateBySelector(data, STATE_SELECTOR),
     ...aggregateBySelector(data, COUNTY_SELECTOR),
     ...aggregateBySelector(data, TRACT_SELECTOR),
+    ...aggregateBySelector(data, ZIP_SELECTOR),
   ];
   return debtData;
 }
@@ -131,20 +142,22 @@ async function shapeFullData() {
 async function shape() {
   const debtData = await shapeFullData();
   // drop totals for Texas
-  const output = debtData.map((d) => {
-    if (d.name !== "Texas") return d;
-    return {
-      ...d,
-      lawsuits: 0,
-      lawsuits_date: "04/2021",
-      lawsuit_history: "01/2018;0",
-      collectors: "",
-      collector_total: 0,
-      amount: 0,
-      default_judgement: 0,
-      no_rep_percent: 0,
-    };
-  });
+  const output = debtData
+    .map((d) => {
+      if (d.name !== "Texas") return d;
+      return {
+        ...d,
+        lawsuits: 0,
+        lawsuits_date: "04/2021",
+        lawsuit_history: "01/2018;0",
+        collectors: "",
+        collector_total: 0,
+        amount: 0,
+        default_judgement: 0,
+        no_rep_percent: 0,
+      };
+    })
+    .filter((d) => Boolean(d.id));
   await writeFile(jsonToCsv(output), "./static/data/lawsuits.csv");
   console.log("wrote file to ./static/data/lawsuits.csv");
 }

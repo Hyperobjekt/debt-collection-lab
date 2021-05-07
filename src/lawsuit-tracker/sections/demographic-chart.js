@@ -106,6 +106,7 @@ const DemographicChart = ({ data }) => {
             Latinx: "#BFDCE0",
             White: "#7D95AA",
             "No Majority": "#68A58B",
+            Other: "#444",
           },
           ...chartOptions,
         }}
