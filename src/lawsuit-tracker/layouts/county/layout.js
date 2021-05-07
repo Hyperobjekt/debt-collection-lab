@@ -51,7 +51,7 @@ export default function TrackerCountyLayout({
   ];
 
   return (
-    <Layout pageContext={pageContext} {...props}>
+    <Layout seo={pageContext.frontmatter.seo} {...props}>
       <Container>
         <Breadcrumb
           data={data}

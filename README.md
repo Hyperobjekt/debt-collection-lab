@@ -11,13 +11,13 @@ built with:
 to run locally, clone the repository and install dependencies with
 
 ```
-npm install
+yarn install
 ```
 
 start in development mode with
 
 ```
-npm run develop
+yarn develop
 ```
 
 ## Themes

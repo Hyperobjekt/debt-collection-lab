@@ -37,6 +37,7 @@ export default function TrackerCountyLayout({
   const data = props.data.allStates.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
   const demographics = props.data.allDemographics.nodes;
+  console.log({ pageContext });
   const breadcrumb = [
     {
       id: "home",
@@ -57,7 +58,7 @@ export default function TrackerCountyLayout({
   const region = data.region;
   const subRegions = data.region === "zips" ? data.zips : data.counties;
   return (
-    <Layout pageContext={pageContext} {...props}>
+    <Layout seo={pageContext.frontmatter.seo} {...props}>
       <Container>
         <Breadcrumb
           data={data}
@@ -85,7 +86,7 @@ export default function TrackerCountyLayout({
         views={[region]}
         data={[data]}
       />
-      {demographics.length > 0 && (
+      {region === "zips" > 0 && (
         <DemographicChartSection
           title="Debt Collection Lawsuits by Neighborhood Demographics"
           description="Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority."
