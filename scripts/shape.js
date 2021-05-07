@@ -111,9 +111,6 @@ async function shapeFullData() {
       representation: Number(d.has_representation),
     };
   };
-  // Filter out NA data and FILTER OUT ZIP CODES!!
-  // (id !== name, filters out zip codes, because zip code ids are the same as the name)
-  // TODO: keep zip codes and shape them properly
   const data = loadCsv(path, parser)
     .filter((d) => d.id !== "NA")
     .map((d) => {
