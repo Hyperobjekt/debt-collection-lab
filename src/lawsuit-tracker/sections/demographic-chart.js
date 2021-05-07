@@ -3,7 +3,7 @@ import Typography from "../../components/typography";
 import { Box, Button, ButtonGroup, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import LineChart from "../charts/line-chart";
-import { formatInt, formatPercent } from "../utils";
+import { formatPercent } from "../utils";
 
 const SectionBlock = withStyles((theme) => ({
   root: {

@@ -11,11 +11,17 @@ const styles = (theme) => ({
   },
   container: {
     position: "relative",
+
     padding: theme.spacing(10, 0),
     background: theme.palette.background.dark,
     color: "#fff",
     [theme.breakpoints.up("md")]: {
       minHeight: 500,
+    },
+    // bring text + button above the bg image
+    "& > h2, & > p, & > a": {
+      position: "relative",
+      zIndex: 2,
     },
     "& h2": {
       ...FONTS.KNOCKOUT["Lightweight"],

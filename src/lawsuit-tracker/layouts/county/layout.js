@@ -19,7 +19,6 @@ import {
 } from "../../utils";
 import Breadcrumb from "../../../components/breadcrumb";
 import { Container } from "@hyperobjekt/material-ui-website";
-import { slugify } from "../../../utils";
 
 export default function TrackerCountyLayout({
   children,
@@ -29,7 +28,7 @@ export default function TrackerCountyLayout({
   const data = props.data.allCounties.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
   const demographics = props.data.allDemographics.nodes;
-  
+
   const breadcrumb = [
     {
       name: "Home",
@@ -40,12 +39,12 @@ export default function TrackerCountyLayout({
       link: "/lawsuit-tracker",
     },
     {
-      id: 'state',
+      id: "state",
       name: data.state,
       link: getTrackerUrl({ name: data.state }),
     },
     {
-      id: 'county',
+      id: "county",
       name: data.name,
       link: getTrackerUrl(data),
     },
