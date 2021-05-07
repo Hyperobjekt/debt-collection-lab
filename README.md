@@ -31,12 +31,57 @@ See [gatsby-theme-hypersite](https://github.com/Hyperobjekt/gatsby-themes/tree/m
 
 ## Data
 
-There is a data preparation step that takes the source data and aggregates / transforms it into the format needed for the tracker.
+### Preliminary Shaping / Aggregation
 
-This can be run with:
+There is a data preparation step that performs the following actions:
+
+- loads the source lawsuit data (`/data/lawsuits_data.csv`)
+  - TODO: pull from S3 source
+- aggregates tract level data to counties and states
+- aggregates zip code level data to states
+- shapes data into format needed for tracker
+- writes `lawsuits.csv` to `/static/data/lawsuits.csv`
+
+The script that performs this action is in `/scripts/shape.js` and can be run with:
 
 ```
 npm run build:data
 ```
 
-## Lawsuit Tracker
+### Creating Source Nodes
+
+Source nodes are created in Gatsby from source data in `gatsby-node.js`. The following nodes are created:
+
+- `allStates`: created from `/static/data/lawsuits.csv`, contains all state level debt collection data
+- `allCounties`: created from `/static/data/lawsuits.csv`, contains all county level debt collection data
+- `allDemographics`: created from `/static/data/demographics.csv`, contains all demographics data for census tracts and zip codes
+  - TODO: pull from S3 source
+
+### GeoJSON Source Nodes
+
+GeoJSON for maps is sourced using `gatsby-source-filesystem` configuration in `gatsby-config.js`. Each GeoJSON file is a FeatureCollection with a few modifications:
+
+- there is a `name` property at the root level of the FeatureCollection that has the state name (used to query state specific GeoJson)
+- there is a `region` property at the root level of the FeatureCollection that has the region type (e.g. "counties", "zips", "tracts")
+- GeoJson features must be of `MultiPolygon` type in order for graphql to load them correctly.
+  - _HACK_: if your GeoJson has `Polygon` features, you'll need to convert these to `MultiPolygon`
+  - TODO: find a way to allow multiple feature types (might need to create a [custom graphql schema](https://www.gatsbyjs.com/docs/reference/graphql-data-layer/schema-customization/))
+
+## Page Creation
+
+### Lawsuit Tracker
+
+All pages in the lawsuit tracker (index, state pages, county pages) are created in `gatsby-node.js` based on the lawsuits data in `/static/data/lawsuits.js`. See `/src/lawsuit-tracker` for tracker related components including:
+
+- layouts
+- charts
+- maps
+- tables
+
+### Other Pages
+
+All other pages are created based on the MDX files in `/content/pages`. Functionality for creating these pages is part of `gatsby-theme-hypercore`.
+
+## Content Management
+
+Content is managed using `netlify-cms`, using manual initialization in `/src/cms/cms.js`. All pages and partials for field definitions can be found in the `/src/cms/` folder.

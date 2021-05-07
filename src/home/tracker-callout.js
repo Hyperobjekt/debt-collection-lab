@@ -11,7 +11,6 @@ const styles = (theme) => ({
   },
   container: {
     position: "relative",
-
     padding: theme.spacing(10, 0),
     background: theme.palette.background.dark,
     color: "#fff",
