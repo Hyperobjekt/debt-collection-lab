@@ -7,11 +7,60 @@ import {
   TableCell,
   withStyles,
 } from "@material-ui/core";
-import { Link } from "gatsby-material-ui-components";
+import { GatsbyLink, Link } from "gatsby-material-ui-components";
 import React from "react";
 import { useTable, useExpanded } from "react-table";
 import Typography from "../../components/typography";
 import { getTrackerUrl } from "../utils";
+
+const getAdditionalRowContent = (view, currentRow, prevParentRow, nextRow) => {
+  const isNested = view === "nested";
+  const isNextTopLevel = !nextRow || nextRow.depth === 0; // next row is top level or end of table
+  const isParentTexas = prevParentRow?.name === "Texas";
+  const isNorthDakota = currentRow.original.name === "North Dakota";
+  const pastLimitThreshold = prevParentRow?.subRows?.length > 5;
+  // show note after Harris county
+  if (isNested && isNextTopLevel && isParentTexas) {
+    return (
+      <Typography variant="caption">
+        State level data is unavailable for Texas, only the{" "}
+        <Link
+          component={GatsbyLink}
+          to={getTrackerUrl({ name: "Harris County", state: "Texas" })}
+        >
+          Harris county report
+        </Link>{" "}
+        is available.
+      </Typography>
+    );
+  }
+  if (isNested && isNextTopLevel && isNorthDakota) {
+    return (
+      <Typography variant="caption">
+        County level data is unavailable for North Dakota, go to the{" "}
+        <Link
+          component={GatsbyLink}
+          to={getTrackerUrl({ name: "North Dakota" })}
+        >
+          state report
+        </Link>{" "}
+        to view debt collection by zip code region.
+      </Typography>
+    );
+  }
+  if (isNested && isNextTopLevel && pastLimitThreshold) {
+    return (
+      <Typography variant="caption">
+        Top 5 counties shown above, go to the{" "}
+        <Link component={GatsbyLink} to={getTrackerUrl(prevParentRow)}>
+          {prevParentRow.name} report
+        </Link>{" "}
+        to see all counties.
+      </Typography>
+    );
+  }
+  return null;
+};
 
 const TableContainer = withStyles((theme) => ({
   root: {
@@ -115,35 +164,14 @@ export default function Table({ columns: userColumns, data, className, view }) {
             prepareRow(row);
             let nextRow =
               i < truncatedRows.length ? truncatedRows[i + 1] : null;
-            let showMore =
-              (!nextRow || nextRow.depth === 0) &&
-              view === "nested" &&
-              prevParentRow &&
-              ((prevParentRow.subRows && prevParentRow.subRows.length > 5) ||
-                prevParentRow.name === "Texas");
-            let showMoreText = "";
-            if (showMore) {
-              showMoreText = (
-                <Typography variant="caption">
-                  Top 5 counties shown above, go to the{" "}
-                  <Link to={getTrackerUrl(prevParentRow)}>
-                    {prevParentRow.name} report
-                  </Link>{" "}
-                  to see all counties.
-                </Typography>
-              );
-              if (prevParentRow && prevParentRow.name === "Texas") {
-                showMoreText = (
-                  <Typography variant="caption">
-                    State level data is unavailable for Texas, only the{" "}
-                    <Link to="/counties/harris-county">
-                      Harris county report
-                    </Link>{" "}
-                    is available.
-                  </Typography>
-                );
-              }
-            }
+            // boolean to indicate if an additional row should be tacked on
+            let showMore = getAdditionalRowContent(
+              view,
+              row,
+              prevParentRow,
+              nextRow
+            );
+            // if top level row, set prev parent
             if (row.depth === 0) prevParentRow = row.original;
             return (
               <>
@@ -165,7 +193,7 @@ export default function Table({ columns: userColumns, data, className, view }) {
                 {showMore && (
                   <TableRow className="row--more">
                     <TableCell align="center" colSpan="5">
-                      {showMoreText}
+                      {showMore}
                     </TableCell>
                   </TableRow>
                 )}

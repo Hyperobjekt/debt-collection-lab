@@ -870,8 +870,6 @@ Chart.prototype.addLines = function (overrides) {
       ];
     };
 
-  console.log("addLines, chart data", _this.data, _this.lineData);
-
   if (_this.getSelection(options.linesId))
     throw new Error(
       "addLines: selection already exists for given linesId " + options.linesId
