@@ -115,18 +115,6 @@ export function shapeTracts(sourceData) {
   }, []);
 }
 
-export function shapeZips(sourceData) {
-  return sourceData.reduce((zips, currentState) => {
-    return [
-      ...zips,
-      ...currentState.zips.map((c) => ({
-        ...c,
-        state: currentState.name,
-      })),
-    ];
-  }, []);
-}
-
 export const getTrackerUrl = (data) => {
   let result = "/lawsuit-tracker/";
   if (data.state) result += slugify(data.state) + "/";
@@ -245,29 +233,35 @@ export const getLawsuitChartData = (data) => {
   };
 };
 
-export const getLawsuitMapData = (data, geojson, region) => {
+export const getLawsuitMapData = (data, geojson, region, demographics) => {
+  //console.log(demographics)
   const childData = data[region];
   const features = geojson.features
     .map((f) => {
-      const match = childData.find((d) => d.geoid === f.properties.GEOID);
-      return match
+      const matchLawsuit = childData.find((d) => d.geoid === f.properties.GEOID);
+      const matchDemographic = demographics ? demographics.find((d) => d.geoid === f.properties.GEOID) : null
+      return matchLawsuit
         ? {
             ...f,
             properties: {
               ...f.properties,
-              value: match.lawsuits,
+              value: matchLawsuit.lawsuits,
+              name: matchLawsuit.name,
+              majority: matchDemographic ? matchDemographic.majority : 'Unknown',
+              selected: false
             },
           }
         : null;
     })
     .filter((v) => !!v);
+
   return { type: "FeatureCollection", features };
 };
 
-const joinDemographicsWithData = (data, demographics, region) => {
+const joinDemographicsWithData = (data, demographics) => {
   return demographics
     .map((dem) => {
-      const match = data[region].find((tract) => tract.geoid === dem.geoid);
+      const match = data.tracts.find((tract) => tract.geoid === dem.geoid);
       return match
         ? {
             ...dem,
@@ -286,9 +280,9 @@ const joinDemographicsWithData = (data, demographics, region) => {
  * @param {*} demographics
  * @returns
  */
-export const getDemographicChartData = (data, demographics, region="tracts") => {
+export const getDemographicChartData = (data, demographics) => {
   // Step 1: join lawsuit and demographic data
-  const joined = joinDemographicsWithData(data, demographics, region);
+  const joined = joinDemographicsWithData(data, demographics);
 
   // Step 2: group joined data by racial majority
   const grouped = d3.group(joined, (d) => d.majority);
