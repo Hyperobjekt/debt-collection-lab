@@ -24,7 +24,6 @@ export default function TrackerCountyLayout({
   ...props
 }) {
   const data = props.data.allStates.nodes[0];
-  console.log(props)
   const geojson = props.data.allGeojsonJson.nodes[0];
   
   const breadcrumb = [

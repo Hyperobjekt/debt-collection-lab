@@ -233,22 +233,28 @@ export const getLawsuitChartData = (data) => {
   };
 };
 
-export const getLawsuitMapData = (data, geojson, region) => {
+export const getLawsuitMapData = (data, geojson, region, demographics) => {
+  //console.log(demographics)
   const childData = data[region];
   const features = geojson.features
     .map((f) => {
-      const match = childData.find((d) => d.geoid === f.properties.GEOID);
-      return match
+      const matchLawsuit = childData.find((d) => d.geoid === f.properties.GEOID);
+      const matchDemographic = demographics ? demographics.find((d) => d.geoid === f.properties.GEOID) : null
+      return matchLawsuit
         ? {
             ...f,
             properties: {
               ...f.properties,
-              value: match.lawsuits,
+              value: matchLawsuit.lawsuits,
+              name: matchLawsuit.name,
+              majority: matchDemographic ? matchDemographic.majority : 'Unknown',
+              selected: false
             },
           }
         : null;
     })
     .filter((v) => !!v);
+
   return { type: "FeatureCollection", features };
 };
 
@@ -277,7 +283,6 @@ const joinDemographicsWithData = (data, demographics) => {
 export const getDemographicChartData = (data, demographics) => {
   // Step 1: join lawsuit and demographic data
   const joined = joinDemographicsWithData(data, demographics);
-  console.log({ joined, history: data.lawsuit_history });
 
   // Step 2: group joined data by racial majority
   const grouped = d3.group(joined, (d) => d.majority);
@@ -288,10 +293,6 @@ export const getDemographicChartData = (data, demographics) => {
     lawsuitCount: d3.sum(entries, (d) => d.lawsuits),
     lawsuitPercent: d3.sum(entries, (d) => d.lawsuits) / data.lawsuits,
   }));
-  console.log({
-    grouped,
-    counts,
-  });
 
   // Step 3: aggregate all lawsuits by group, by month
   const summed = Array.from(grouped.entries())
@@ -325,7 +326,6 @@ export const getDemographicChartData = (data, demographics) => {
       });
       return [group, withPercent];
     });
-  console.log({ summed });
 
   // Step 4: flatten summed array into chart format
   const chart = summed
@@ -356,7 +356,6 @@ export const getDemographicChartData = (data, demographics) => {
     }, [])
     .sort((a, b) => a.group.localeCompare(b.group))
     .sort((a, b) => a.x - b.x);
-  console.log({ chart });
 
   return {
     chartData: chart,

@@ -72,7 +72,7 @@ export default function TrackerCountyLayout({
       <LawsuitsMapSection
         title="Geography of Debt Collection Lawsuits"
         description={`${data.name} is split into ${data.tracts.length} census tracts.  On the map you can see the number of lawsuits corresponding to each census tract.`}
-        data={getLawsuitMapData(data, geojson, "tracts")}
+        data={getLawsuitMapData(data, geojson, "tracts", demographics)}
       />
       <TableSection
         title="Overview of Lawsuits by Census Tract"
