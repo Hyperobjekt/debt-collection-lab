@@ -1,8 +1,7 @@
 import React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { StaticMap } from "react-map-gl";
-
 import { MapboxLayer } from "@deck.gl/mapbox";
+import { StaticMap, NavigationControl } from "react-map-gl";
 import shallow from "zustand/shallow";
 import DeckGLMap from "./DeckGLMap";
 import { GeoJsonLayer } from "@deck.gl/layers";
@@ -10,6 +9,9 @@ import * as d3 from "d3";
 import bbox from "@turf/bbox";
 import useMapStore from "./hooks/useMapStore";
 import { DEFAULT_VIEWPORT } from "./constants";
+import {
+  _MapContext as MapContext,
+} from 'react-map-gl';
 
 const MAP_TOKEN =
   "pk.eyJ1IjoiaHlwZXJvYmpla3QiLCJhIjoiY2pzZ3Bnd3piMGV6YTQzbjVqa3Z3dHQxZyJ9.rHobqsY_BjkNbqNQS4DNYw";
@@ -33,6 +35,7 @@ const ChoroplethMap = ({
     (state) => [state.setViewport, state.flyToBounds],
     shallow
   );
+  const [selected, setSelected] = useState(null)
 
   const dataBounds = data ? bbox(data) : null;
   const initialViewport = data
@@ -42,6 +45,14 @@ const ChoroplethMap = ({
         zoom: 6,
       }
     : DEFAULT_VIEWPORT;
+
+  const hover = ({object}) => {
+    if(object) {
+      if(selected && selected !== object) {selected.properties.selected = false}
+      object.properties.selected = true
+      setSelected(object)
+    }
+  }
 
   const layers = data
     ? [
@@ -56,7 +67,12 @@ const ChoroplethMap = ({
             return [color.r, color.g, color.b];
           },
           getLineColor: [0, 0, 0, 100],
+          getLineWidth: (d) => d.properties.selected ? 200 : 1,
           pickable: true,
+          updateTriggers: {
+            getLineWidth: selected
+          },
+          onHover: hover
         }),
       ]
     : [];
@@ -83,6 +99,17 @@ const ChoroplethMap = ({
     // eslint-disable-next-line
   }, []);
 
+  const customToolTip = info => {
+    return info.object && {
+      html: `<h2>Name: ${info.object.properties.name}</h2><div>Racial Majority: ${info.object.properties.majority}</div>`,
+      style: {
+        backgroundColor: '#f00',
+        fontSize: '0.8em',
+        borderRadius: '2px'
+      }
+    }
+  }
+
   // Fly to bounds on load
   useEffect(() => {
     if (loaded) {
@@ -99,17 +126,24 @@ const ChoroplethMap = ({
     }
   }, [loaded, flyToBounds, setViewport, dataBounds]);
 
+
   return (
     <DeckGLMap
       ref={deckRef}
       layers={loaded && layers ? layers : []}
       initialViewport={initialViewport}
       onWebGLInitialized={setGLContext}
+      ContextProvider={MapContext.Provider}
+      controller={{scrollZoom: false, doubleClickZoom: false}}
+      getTooltip= {customToolTip}
       glOptions={{
         /* To render vector tile polygons correctly */
         stencil: true,
       }}
     >
+      <div style={{ position: 'absolute', right: 30, top: 110, zIndex: 1 }}>
+        <NavigationControl />
+      </div>
       <StaticMap
         mapStyle={MAP_STYLE}
         preventStyleDiffing={true}
@@ -117,7 +151,8 @@ const ChoroplethMap = ({
         gl={glContext}
         ref={mapRef}
         onLoad={onMapLoad}
-      ></StaticMap>
+      >
+      </StaticMap>
     </DeckGLMap>
   );
 };
