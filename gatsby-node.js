@@ -35,7 +35,7 @@ function getStates(data) {
       .map((c) => ({ ...c, state: s.name }));
     return {
       ...s,
-      region: zips?.length > 0 ? "zips" : "counties",
+      region: zips.length > 0 ? "zips" : "counties",
       counties: data
         .filter((d) => d.geoid.length === 5 && d.geoid.indexOf(s.geoid) === 0)
         .map((c) => ({ ...c, state: s.name })),
@@ -277,7 +277,7 @@ const createStatePages = async ({ graphql, actions }) => {
               slug: pageName,
               state: name,
               geoid: geoid,
-              region: zips?.length > 0 ? "zips" : "counties",
+              region: zips.length > 0 ? "zips" : "counties",
               frontmatter: {
                 seo: {
                   title: name,
