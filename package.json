@@ -53,7 +53,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "react-map-gl": "^6.1.12",
+    "react-map-gl": "^5.3.13",
     "react-table": "^7.6.3",
     "styled-components": "^5.2.3",
     "title-case": "^3.0.3",
@@ -61,12 +61,11 @@
     "worker-loader": "^3.0.8",
     "zustand": "^3.4.1"
   },
-  "browserslist":  [
-      ">0.2%",
-      "not dead",
-      "not op_mini all",
-      "not chrome < 61",
-      "not safari < 12"
-    ]
-  
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all",
+    "not chrome < 61",
+    "not safari < 12"
+  ]
 }
