@@ -1,7 +1,11 @@
 import React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import mapboxgl from "!mapbox-gl";
+import { StaticMap } from "!react-map-gl";
+/* eslint-disable @typescript-eslint/no-var-requires */
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
+
 import { MapboxLayer } from "@deck.gl/mapbox";
-import { StaticMap } from "react-map-gl";
 import shallow from "zustand/shallow";
 import DeckGLMap from "./DeckGLMap";
 import { GeoJsonLayer } from "@deck.gl/layers";
@@ -97,7 +101,6 @@ const ChoroplethMap = ({
         ]);
     }
   }, [loaded, flyToBounds, setViewport, dataBounds]);
-
 
   return (
     <DeckGLMap
