@@ -29,11 +29,11 @@ const useMapStyles = makeStyles((theme) => ({
   },
 }));
 
-const LawsuitMap = ({ data, colorScale }) => {
+const LawsuitMap = ({ data, colorScale, tooltip }) => {
   const classes = useMapStyles();
   return (
     <div className={classes.container}>
-      <ChoroplethMap data={data} colorScale={colorScale} />
+      <ChoroplethMap tooltip={tooltip} data={data} colorScale={colorScale} />
     </div>
   );
 };
@@ -83,7 +83,9 @@ const MapContent = ({ title, description, colorScale }) => {
   );
 };
 
-const LawsuitsMapSection = ({ title, description, data, ...props }) => {
+const LawsuitsMapSection = ({ title, description, data, tooltip, ...props }) => {
+
+
   const colorScale = d3
     .scaleLinear()
     .domain(d3.extent(data.features, (d) => d.properties.value))
@@ -93,7 +95,7 @@ const LawsuitsMapSection = ({ title, description, data, ...props }) => {
   return (
     <SectionBlock
       left={<MapContent {...{ title, description, colorScale }} />}
-      right={<LawsuitMap data={data} colorScale={colorScale} />}
+      right={<LawsuitMap tooltip={tooltip} data={data} colorScale={colorScale} />}
       {...props}
     />
   );

@@ -26,6 +26,14 @@ export default function TrackerCountyLayout({
   const data = props.data.allStates.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
   
+  const Tooltip = (classes, selected) => {
+    return (
+      <div className={classes.tooltip} style={{top: selected.event.offsetCenter.y, left: selected.event.offsetCenter.x, opacity: selected.info ? 0.87 : 0}}>
+          <h1 className={classes.title}>{ selected.info.properties.name }</h1>
+      </div>
+    )
+  }
+
   const breadcrumb = [
     {
       id: 'home',
@@ -65,6 +73,7 @@ export default function TrackerCountyLayout({
         title="Geography of Debt Collection Lawsuits"
         description={`${data.name} is split into ${data.counties.length} counties.  On the map you can see the number of lawsuits corresponding to each census tract.`}
         data={getLawsuitMapData(data, geojson, "counties")}
+        tooltip={Tooltip}
       />
       <TableSection
         title="Overview of Lawsuits by County"

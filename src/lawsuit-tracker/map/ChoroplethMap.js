@@ -12,7 +12,7 @@ import { DEFAULT_VIEWPORT } from "./constants";
 import {
   _MapContext as MapContext,
 } from 'react-map-gl';
-import { withStyles } from "@material-ui/core";
+import { withStyles, makeStyles } from "@material-ui/core";
 
 const MAP_TOKEN =
   "pk.eyJ1IjoiaHlwZXJvYmpla3QiLCJhIjoiY2pzZ3Bnd3piMGV6YTQzbjVqa3Z3dHQxZyJ9.rHobqsY_BjkNbqNQS4DNYw";
@@ -27,18 +27,36 @@ const styles = (theme) => ({
     margin: 0,
   },
   tooltip: {
-    backgroundColor: theme.palette.grey[500],
-    fontSize: '0.8em',
-
+    position: 'absolute', 
+    zIndex: 1, 
+    pointerEvents: 'none',
+    background: '#000',
+    color: '#fff',
+    padding: '12px',
+    transition: 'opacity 0.2s ease-in-out',
+    transform: 'translate(-50%, calc(-100% - 12px))',
+    zIndex: 999,
+  },
+  title:{
+    fontSize: '14px',
+    marginBottom: '4px',
+    marginTop: 0,
+    whiteSpace: 'nowrap',
+  },
+  item:{
+    fontSize: '12px'
   }
 });
 
+
 const ChoroplethMap = ({
   // hovered,
+  classes,
   colorScale,
   data,
   onHover,
   onClick,
+  tooltip,
   ...props
 }) => {
   // DeckGL and mapbox will both draw into this WebGL context
@@ -51,7 +69,7 @@ const ChoroplethMap = ({
     (state) => [state.setViewport, state.flyToBounds],
     shallow
   );
-  const [selected, setSelected] = useState({})
+  const [selected, setSelected] = useState({info: null, event: {offsetCenter: {x:0, y:0}}})
 
   const dataBounds = data ? bbox(data) : null;
   const initialViewport = data
@@ -63,12 +81,13 @@ const ChoroplethMap = ({
     : DEFAULT_VIEWPORT;
 
   const hover = ({object}, event) => {
-    console.log(selected)
     if(object) {
       if(selected.info && selected.info !== object) {selected.info.properties.selected = false}
       object.properties.selected = true
-      setSelected({info: object, event: event})
+    }else{
+      if(selected) selected.info.properties.selected = false
     }
+    setSelected({info: object, event: event})
   }
 
   const layers = data
@@ -116,23 +135,11 @@ const ChoroplethMap = ({
     // eslint-disable-next-line
   }, []);
 
-  const Tooltip = (info) => {
-    return (
-      <div style={{position: 'absolute', zIndex: 1, pointerEvents: 'none', left: selected.event.offsetCenter.x, top: selected.event.offsetCenter.y}}>
-          { selected.info.properties.name }
-      </div>
-    );
-  };
+  const resetState = () => {
+    setSelected = ({})
+  }
 
-  // const customToolTip = info => {
-  //   return info.object && {
-  //     html: Tooltip(info),
-  //     style: {
-  //       top: '10px',
-  //       left: '10px',
-  //     }
-  //   }
-  // }
+  //console.log(tooltip)
 
   // Fly to bounds on load
   useEffect(() => {
@@ -150,7 +157,6 @@ const ChoroplethMap = ({
     }
   }, [loaded, flyToBounds, setViewport, dataBounds]);
 
-
   return (
     <DeckGLMap
       ref={deckRef}
@@ -163,6 +169,7 @@ const ChoroplethMap = ({
         /* To render vector tile polygons correctly */
         stencil: true,
       }}
+      onMouseLeave={resetState}
     >
       <div style={{ position: 'absolute', right: 30, top: 110, zIndex: 1 }}>
         <NavigationControl />
@@ -176,10 +183,8 @@ const ChoroplethMap = ({
         onLoad={onMapLoad}
       >
       </StaticMap>
-      {selected.info && (
-        <div style={{position: 'absolute', zIndex: 1, pointerEvents: 'none', left: selected.event.offsetCenter.x, top: selected.event.offsetCenter.y}}>
-          { selected.info.properties.name }
-        </div>
+      {(selected.info && selected.event) && (
+        tooltip(classes, selected)
       )}
     </DeckGLMap>
   );

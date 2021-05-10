@@ -234,7 +234,6 @@ export const getLawsuitChartData = (data) => {
 };
 
 export const getLawsuitMapData = (data, geojson, region, demographics) => {
-  //console.log(demographics)
   const childData = data[region];
   const features = geojson.features
     .map((f) => {
@@ -247,8 +246,16 @@ export const getLawsuitMapData = (data, geojson, region, demographics) => {
               ...f.properties,
               value: matchLawsuit.lawsuits,
               name: matchLawsuit.name,
-              majority: matchDemographic ? matchDemographic.majority : 'Unknown',
-              selected: false
+              selected: false,
+              demographics: matchDemographic ? {
+                pctAsian: formatPercent(matchDemographic.percent_asian),
+                pctBlack: formatPercent(matchDemographic.percent_black),
+                pctLatinx: formatPercent(matchDemographic.percent_latinx),
+                pctOther: formatPercent(matchDemographic.percent_other),
+                pctWhite: formatPercent(matchDemographic.percent_white),
+              }
+              :
+              {}
             },
           }
         : null;

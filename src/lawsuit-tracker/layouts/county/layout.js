@@ -29,6 +29,21 @@ export default function TrackerCountyLayout({
   const data = props.data.allCounties.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
   const demographics = props.data.allDemographics.nodes;
+
+  const Tooltip = (classes, selected) => {
+    console.log(selected)
+    return (
+      <div className={classes.tooltip} style={{top: selected.event.offsetCenter.y, left: selected.event.offsetCenter.x, opacity: selected.info ? 0.87 : 0}}>
+          <h1 className={classes.title}>{ selected.info.properties.name }</h1>
+          <div className={classes.item}>{ selected.info.properties.value} lawsuits</div>
+          <div className={classes.item}>{ selected.info.properties.demographics.pctAsian } asian</div>
+          <div className={classes.item}>{ selected.info.properties.demographics.pctBlack } black</div>
+          <div className={classes.item}>{ selected.info.properties.demographics.pctLatinx } latinx</div>
+          <div className={classes.item}>{ selected.info.properties.demographics.pctWhite } white</div>
+          <div className={classes.item}>{ selected.info.properties.demographics.pctOther } other</div>
+      </div>
+    )
+  }
   
   const breadcrumb = [
     {
@@ -73,6 +88,7 @@ export default function TrackerCountyLayout({
         title="Geography of Debt Collection Lawsuits"
         description={`${data.name} is split into ${data.tracts.length} census tracts.  On the map you can see the number of lawsuits corresponding to each census tract.`}
         data={getLawsuitMapData(data, geojson, "tracts", demographics)}
+        tooltip={Tooltip}
       />
       <TableSection
         title="Overview of Lawsuits by Census Tract"
