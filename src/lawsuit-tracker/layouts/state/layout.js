@@ -17,8 +17,6 @@ import {
   getTopCollectorsData,
   getTrackerUrl,
 } from "../../utils";
-import Breadcrumb from "../../../components/breadcrumb";
-import { Container } from "@hyperobjekt/material-ui-website";
 
 const getSingularRegion = (region, casing) => {
   const regions = {
@@ -37,35 +35,11 @@ export default function TrackerCountyLayout({
   const data = props.data.allStates.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
   const demographics = props.data.allDemographics.nodes;
-  console.log({ pageContext });
-  const breadcrumb = [
-    {
-      id: "home",
-      name: "Home",
-      link: "/",
-    },
-    {
-      id: "tracker",
-      name: "Debt Collection Tracker",
-      link: "/lawsuit-tracker",
-    },
-    {
-      id: "state",
-      name: data.name,
-      link: getTrackerUrl(data),
-    },
-  ];
+
   const region = data.region;
   const subRegions = data.region === "zips" ? data.zips : data.counties;
   return (
-    <Layout seo={pageContext.frontmatter.seo} {...props}>
-      <Container>
-        <Breadcrumb
-          data={data}
-          links={breadcrumb}
-          style={{ position: "absolute", top: 0, zIndex: 10 }}
-        />
-      </Container>
+    <Layout meta={pageContext.frontmatter.meta} {...props}>
       <LocationHero {...getLocationHeroData(data)} />
       <DebtCollectorsSection
         title="Top Debt Collectors"

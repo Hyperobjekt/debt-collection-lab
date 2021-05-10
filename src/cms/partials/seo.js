@@ -1,6 +1,6 @@
 const seo = {
-  label: "SEO Settings",
-  name: "seo",
+  label: "Page Metadata",
+  name: "meta",
   widget: "object",
   collapsed: true,
   fields: [
@@ -11,19 +11,19 @@ const seo = {
       required: false,
     },
     {
-      label: "Meta Description",
+      label: "Description",
       name: "description",
       widget: "text",
       required: false,
     },
     {
-      label: "Meta Keywords",
+      label: "Keywords",
       name: "keywords",
       widget: "text",
       required: false,
     },
     {
-      label: "Image",
+      label: "Social Image",
       name: "image",
       widget: "image",
       required: false,

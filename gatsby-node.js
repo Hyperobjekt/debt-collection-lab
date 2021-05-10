@@ -216,7 +216,7 @@ const createCountyPages = async ({ graphql, actions }) => {
               state: stateName,
               geoid: geoid,
               frontmatter: {
-                seo: {
+                meta: {
                   title: name,
                   description: `People in ${name} have had ${lawsuits} debt collection lawsuits filed against them since we started tracking.`,
                   image: socialImage,
@@ -279,7 +279,7 @@ const createStatePages = async ({ graphql, actions }) => {
               geoid: geoid,
               region: zips?.length > 0 ? "zips" : "counties",
               frontmatter: {
-                seo: {
+                meta: {
                   title: name,
                   description: `People in ${name} have had ${lawsuits} debt collection lawsuits filed against them since we started tracking.`,
                   image: socialImage,
@@ -304,7 +304,7 @@ const createLawsuitTrackerIndex = async ({ graphql, actions }) => {
     component: IndexTemplate,
     context: {
       frontmatter: {
-        seo: {
+        meta: {
           title: "Debt Collection Tracker",
         },
       },
