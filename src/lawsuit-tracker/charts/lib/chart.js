@@ -1334,7 +1334,16 @@ Chart.prototype.addDonut = function (overrides) {
       .enter()
       .append("path")
       // .attr("d", (d, i) => arc(startArcs[i]))
-      .attr("fill", (d) => _this.colorScale(d.data.group));
+      .attr("fill", (d) => _this.colorScale(d.data.group))
+      .on("mousemove", function (event, d) {
+        chart.setHovered(d);
+        options.renderTooltip &&
+          chart.showTooltip(event, options.renderTooltip);
+      })
+      .on("mouseout", function (event, d) {
+        chart.setHovered(null);
+        options.renderTooltip && chart.hideTooltip();
+      })
 
     arcEnter
       .transition()
