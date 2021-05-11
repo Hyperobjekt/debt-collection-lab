@@ -45,7 +45,7 @@ export default function SubpageLayout({
       />
       <LawsuitsMapSection
         content={content[type].map}
-        data={getLawsuitMapData(data, geojson, region)}
+        data={getLawsuitMapData(data, geojson, region, demographics)}
       />
       <TableSection
         views={[region]}

@@ -10,13 +10,33 @@ import bbox from "@turf/bbox";
 import useMapStore from "./hooks/useMapStore";
 import { DEFAULT_VIEWPORT } from "./constants";
 import { _MapContext as MapContext } from "react-map-gl";
+import { formatInt, formatPercent } from "../utils";
+import Tooltip from "./Tooltip";
 
 const MAP_TOKEN =
   "pk.eyJ1IjoiaHlwZXJvYmpla3QiLCJhIjoiY2pzZ3Bnd3piMGV6YTQzbjVqa3Z3dHQxZyJ9.rHobqsY_BjkNbqNQS4DNYw";
 const MAP_STYLE = "mapbox://styles/hyperobjekt/cknuto9c60c0217qgff4tn4kb";
 
+const getTooltipProps = ({ info, event }) => {
+  return {
+    x: event.offsetCenter.x,
+    y: event.offsetCenter.y,
+    title: info.properties.name,
+    subtitle: formatInt(info.properties.value) + " lawsuits",
+    items: info.properties.demographics
+      ? Object.values(info.properties.demographics)
+          .sort((a, b) => b.value - a.value)
+          .map(({ label, value }) => ({
+            label,
+            value: formatPercent(value),
+            raw: value,
+          }))
+      : null,
+  };
+};
+
 const ChoroplethMap = ({
-  // hovered,
+  tooltip,
   colorScale,
   data,
   onHover,
@@ -28,12 +48,15 @@ const ChoroplethMap = ({
   const [glContext, setGLContext] = useState();
   const deckRef = useRef(null);
   const mapRef = useRef(null);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState({ loaded: false, flown: false });
   const [setViewport, flyToBounds] = useMapStore(
     (state) => [state.setViewport, state.flyToBounds],
     shallow
   );
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState({
+    info: null,
+    event: { offsetCenter: { x: 0, y: 0 } },
+  });
 
   const dataBounds = data ? bbox(data) : null;
   const initialViewport = data
@@ -44,14 +67,16 @@ const ChoroplethMap = ({
       }
     : DEFAULT_VIEWPORT;
 
-  const hover = ({ object }) => {
+  const handleHover = ({ object }, event) => {
     if (object) {
-      if (selected && selected !== object) {
-        selected.properties.selected = false;
+      if (selected.info && selected.info !== object) {
+        selected.info.properties.selected = false;
       }
       object.properties.selected = true;
-      setSelected(object);
+    } else {
+      if (selected) selected.info.properties.selected = false;
     }
+    setSelected({ info: object, event: event });
   };
 
   const layers = data
@@ -67,12 +92,12 @@ const ChoroplethMap = ({
             return [color.r, color.g, color.b];
           },
           getLineColor: [0, 0, 0, 100],
-          getLineWidth: (d) => (d.properties.selected ? 100 : 1),
+          getLineWidth: (d) => (d.properties.selected ? 500 : 1),
           pickable: true,
           updateTriggers: {
             getLineWidth: selected,
           },
-          onHover: hover,
+          onHover: handleHover,
         }),
       ]
     : [];
@@ -95,25 +120,17 @@ const ChoroplethMap = ({
         layers.forEach((layer) => addNestedLayers(layer));
     };
     addNestedLayers(layers);
-    setLoaded(true);
+    setLoaded({ loaded: true, flown: false });
     // eslint-disable-next-line
   }, []);
 
-  const customToolTip = (info) => {
-    return (
-      info.object && {
-        html: `<h2>${info.object.properties.name}</h2><div>${info.object.properties.majority}</div>`,
-        style: {
-          backgroundColor: "#f00",
-          fontSize: "0.8em",
-        },
-      }
-    );
+  const resetState = () => {
+    setSelected(null);
   };
 
   // Fly to bounds on load
   useEffect(() => {
-    if (loaded) {
+    if (loaded.loaded && !loaded.flown) {
       const map = mapRef.current.getMap();
       setViewport({
         width: map.getCanvas().offsetWidth,
@@ -124,6 +141,7 @@ const ChoroplethMap = ({
           [dataBounds[0], dataBounds[1]],
           [dataBounds[2], dataBounds[3]],
         ]);
+      setLoaded({ loaded: true, flown: true });
     }
   }, [loaded, flyToBounds, setViewport, dataBounds]);
 
@@ -135,13 +153,21 @@ const ChoroplethMap = ({
       onWebGLInitialized={setGLContext}
       ContextProvider={MapContext.Provider}
       controller={{ scrollZoom: false, doubleClickZoom: false }}
-      getTooltip={customToolTip}
       glOptions={{
         /* To render vector tile polygons correctly */
         stencil: true,
       }}
+      onMouseLeave={resetState}
     >
-      <div style={{ position: "absolute", right: 30, top: 110, zIndex: 1 }}>
+      <div
+        style={{
+          position: "absolute",
+          right: 40,
+          top: "50%",
+          marginTop: -32,
+          zIndex: 1,
+        }}
+      >
         <NavigationControl />
       </div>
       <StaticMap
@@ -152,6 +178,9 @@ const ChoroplethMap = ({
         ref={mapRef}
         onLoad={onMapLoad}
       ></StaticMap>
+      {selected.info && selected.event && (
+        <Tooltip {...getTooltipProps(selected)} />
+      )}
     </DeckGLMap>
   );
 };
