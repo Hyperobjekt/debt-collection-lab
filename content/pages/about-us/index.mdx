@@ -1,38 +1,68 @@
 ---
 publish: true
 path: /about-us
-seo:
+template: about
+meta:
   title: About Us
+embeddedImages:
+  - ../images/gallery-9.jpg
+team:
+  - name: Frederick F. Wherry
+    title: PI - Princeton University, Sociology
+  - name: Dalié Jimenez
+    title: PI - Co-PI – University of California at Irvine Law School
+  - name: Lois R. Lupica
+    title: Co-PI – University of Maine Law School
+  - name: Jeffrey Reichman
+    title: Senior investigator – January Advisors, Data Science Consulting
+  - name: Robin Lee
+    title: Co-PI—Princeton University, Sociology
+  - name: Jeff Himpele
+    title: Collaborator, Director, VizE Lab, Princeton University, Anthropology
 ---
 
-<Hero>
-  <Typography variant="h1">About Us</Typography>
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
+
+<Hero className="hero--about" ContainerProps={{justifyContent : "flex-start"}}>
+
+<Typography className="hero__text">
+  It is important that we understand debt collection so that we can{" "}
+  <span>change it.</span>
+</Typography>
+
 </Hero>
 
 <Block>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in purus non nisi gravida convallis. Etiam tempor euismod quam ut sollicitudin. Nam lacinia libero et purus commodo auctor. Maecenas non justo eget libero convallis sodales id non neque. Morbi semper massa lacus, a iaculis enim posuere sit amet. Suspendisse quis eleifend mi, vitae hendrerit ipsum. Integer euismod urna eget ligula convallis, sed viverra felis sollicitudin. Sed risus magna, semper sit amet tincidunt ut, sagittis id justo. Proin pulvinar volutpat lorem, vel scelerisque elit viverra sed.
+<GatsbyImage
+  className="image--about"
+  width={"50%"}
+  alt="photo of people in court room"
+  image={getImage(props.localImages[0])}
+/>
 
-Duis porta nulla at lobortis congue. Vivamus ipsum elit, sagittis at facilisis et, dignissim vitae nulla. Morbi ornare dui in massa ultrices, a venenatis tortor tempor. Ut eu dui a purus semper laoreet. Fusce tincidunt aliquam sem at rutrum. Duis eu sollicitudin metus. Maecenas non faucibus sem. Duis facilisis ante nibh, sed volutpat odio dictum sit amet.
-
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque dapibus nisi ac quam volutpat tristique. Praesent laoreet commodo ornare. Donec eleifend lobortis rhoncus. Donec sed bibendum tellus. Sed ut commodo turpis. Sed consequat fermentum ligula ac cursus. Nulla scelerisque elit nibh, ac volutpat magna condimentum malesuada. Vestibulum massa urna, rhoncus sit amet sem sed, scelerisque vulputate metus. Aliquam nunc urna, tincidunt et eros ac, fringilla ultricies nunc. Nulla cursus lacus id ligula varius, vitae pharetra lorem auctor. Donec at pretium nisl. Cras porttitor lacus libero, ut eleifend nisi vehicula ac. Mauris facilisis est sit amet diam rhoncus mattis. Sed urna metus, pretium sit amet pellentesque nec, vestibulum quis magna.
-
-### Section
-
-Phasellus placerat odio sit amet tempor rutrum. In hac habitasse platea dictumst. Aliquam neque sem, pulvinar at orci a, rutrum venenatis orci. Sed molestie, purus molestie elementum suscipit, metus sapien ullamcorper urna, ac sodales lorem mi at nisi. Maecenas nulla elit, facilisis sit amet vulputate quis, pharetra vel metus. Aliquam vel magna pretium, suscipit turpis eget, maximus nulla. Nam ultricies ut nunc quis interdum. Mauris ut consequat neque. Aliquam scelerisque, risus nec efficitur vestibulum, leo dolor volutpat nunc, sit amet commodo quam ex sed nulla. Vivamus a justo porttitor turpis viverra ullamcorper.
-
-#### Sub section
-
-Phasellus ornare dui eu euismod iaculis. Phasellus finibus et mauris eu pretium. Integer posuere lobortis mauris, nec dapibus risus malesuada accumsan. Suspendisse sed aliquet arcu. Quisque vitae orci non libero iaculis laoreet. In aliquam ullamcorper efficitur. Nunc at erat vel ante congue lacinia quis at nisi. Aenean convallis facilisis diam, vehicula scelerisque ligula cursus quis. Ut sed pharetra mi, eu vehicula quam. Integer non ex efficitur, mollis magna eget, suscipit est. Nullam vitae mauris eu nisi fermentum volutpat ac et mauris.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in purus non nisi gravida convallis. Etiam tempor euismod quam ut sollicitudin. Nam lacinia libero et purus commodo auctor. Maecenas non justo eget libero convallis sodales id non neque. Morbi semper massa lacus, a iaculis enim posuere sit amet. Suspendisse quis eleifend mi, vitae hendrerit ipsum. Integer euismod urna eget ligula convallis, sed viverra felis sollicitudin. Sed risus magna, semper sit amet tincidunt ut, sagittis id justo. Proin pulvinar volutpat lorem, vel scelerisque elit viverra sed.
-
-Duis porta nulla at lobortis congue. Vivamus ipsum elit, sagittis at facilisis et, dignissim vitae nulla. Morbi ornare dui in massa ultrices, a venenatis tortor tempor. Ut eu dui a purus semper laoreet. Fusce tincidunt aliquam sem at rutrum. Duis eu sollicitudin metus. Maecenas non faucibus sem. Duis facilisis ante nibh, sed volutpat odio dictum sit amet.
-
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque dapibus nisi ac quam volutpat tristique. Praesent laoreet commodo ornare. Donec eleifend lobortis rhoncus. Donec sed bibendum tellus. Sed ut commodo turpis. Sed consequat fermentum ligula ac cursus. Nulla scelerisque elit nibh, ac volutpat magna condimentum malesuada. Vestibulum massa urna, rhoncus sit amet sem sed, scelerisque vulputate metus. Aliquam nunc urna, tincidunt et eros ac, fringilla ultricies nunc. Nulla cursus lacus id ligula varius, vitae pharetra lorem auctor. Donec at pretium nisl. Cras porttitor lacus libero, ut eleifend nisi vehicula ac. Mauris facilisis est sit amet diam rhoncus mattis. Sed urna metus, pretium sit amet pellentesque nec, vestibulum quis magna.
-
-Phasellus placerat odio sit amet tempor rutrum. In hac habitasse platea dictumst. Aliquam neque sem, pulvinar at orci a, rutrum venenatis orci. Sed molestie, purus molestie elementum suscipit, metus sapien ullamcorper urna, ac sodales lorem mi at nisi. Maecenas nulla elit, facilisis sit amet vulputate quis, pharetra vel metus. Aliquam vel magna pretium, suscipit turpis eget, maximus nulla. Nam ultricies ut nunc quis interdum. Mauris ut consequat neque. Aliquam scelerisque, risus nec efficitur vestibulum, leo dolor volutpat nunc, sit amet commodo quam ex sed nulla. Vivamus a justo porttitor turpis viverra ullamcorper.
-
-Phasellus ornare dui eu euismod iaculis. Phasellus finibus et mauris eu pretium. Integer posuere lobortis mauris, nec dapibus risus malesuada accumsan. Suspendisse sed aliquet arcu. Quisque vitae orci non libero iaculis laoreet. In aliquam ullamcorper efficitur. Nunc at erat vel ante congue lacinia quis at nisi. Aenean convallis facilisis diam, vehicula scelerisque ligula cursus quis. Ut sed pharetra mi, eu vehicula quam. Integer non ex efficitur, mollis magna eget, suscipit est. Nullam vitae mauris eu nisi fermentum volutpat ac et mauris.
+<Grid container spacing={3}>
+  <Grid item xs={12} md={4} lg={5}>
+    <Typography component="h2" variant="underline">
+      Who We Are
+    </Typography>
+  </Grid>
+  <Grid item xs={12} md={8} lg={7}>
+    <Grid className="list--team" component="ul" container>
+      {props.frontmatter.team.map((member) => (
+        <Grid component="li" item xs={12} sm={6}>
+          <Box mt={2} mb={2}>
+            <Typography component="p" variant="h5">
+              {member.name}
+            </Typography>
+            <Typography color="grey" variant="body2">
+              {member.title}
+            </Typography>
+          </Box>
+        </Grid>
+      ))}
+    </Grid>
+  </Grid>
+</Grid>
 
 </Block>

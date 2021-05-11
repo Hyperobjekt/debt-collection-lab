@@ -287,7 +287,11 @@ const joinDemographicsWithData = (data, demographics) => {
  * @param {*} demographics
  * @returns
  */
-export const getDemographicChartData = (data, demographics) => {
+export const getDemographicChartData = (
+  data,
+  demographics,
+  region = "tracts"
+) => {
   // Step 1: join lawsuit and demographic data
   const joined = joinDemographicsWithData(data, demographics);
 

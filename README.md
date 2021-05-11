@@ -64,8 +64,10 @@ GeoJSON for maps is sourced using `gatsby-source-filesystem` configuration in `g
 - there is a `name` property at the root level of the FeatureCollection that has the state name (used to query state specific GeoJson)
 - there is a `region` property at the root level of the FeatureCollection that has the region type (e.g. "counties", "zips", "tracts")
 - GeoJson features must be of `MultiPolygon` type in order for graphql to load them correctly.
-  - _HACK_: if your GeoJson has `Polygon` features, you'll need to convert these to `MultiPolygon`
-  - TODO: find a way to allow multiple feature types (might need to create a [custom graphql schema](https://www.gatsbyjs.com/docs/reference/graphql-data-layer/schema-customization/))
+
+> _HACK_: if your GeoJson has `Polygon` features, you'll need to convert these to `MultiPolygon`  
+TODO: find a way to allow multiple feature types (might need to create a [custom graphql schema](https://www.gatsbyjs.com/docs/reference/graphql-data-layer/schema-customization/))  
+for now, you can use a regex find (`"type":"MultiPolygon","coordinates":[[$1]]`) / replace (`"type":"MultiPolygon","coordinates":[[$1]]`) [in VS Code](https://docs.microsoft.com/en-us/visualstudio/ide/using-regular-expressions-in-visual-studio?view=vs-2019) to convert polygons to multipolygons
 
 ## Page Creation
 

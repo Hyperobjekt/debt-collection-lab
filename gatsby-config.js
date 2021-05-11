@@ -1,3 +1,4 @@
+const path = require("path");
 const metadata = require("./config/metadata.json");
 
 module.exports = {
@@ -8,6 +9,10 @@ module.exports = {
       options: {
         contentPath: `content/pages`,
         assetPath: `content/assets`,
+        layouts: {
+          gallery: path.resolve("./src/arts-and-storytelling/layout.js"),
+          about: path.resolve("./src/about-us/layout.js"),
+        },
       },
     },
     {

@@ -216,7 +216,7 @@ const createCountyPages = async ({ graphql, actions }) => {
               state: stateName,
               geoid: geoid,
               frontmatter: {
-                seo: {
+                meta: {
                   title: name,
                   description: `People in ${name} have had ${lawsuits} debt collection lawsuits filed against them since we started tracking.`,
                   image: socialImage,
@@ -279,7 +279,7 @@ const createStatePages = async ({ graphql, actions }) => {
               geoid: geoid,
               region: zips?.length > 0 ? "zips" : "counties",
               frontmatter: {
-                seo: {
+                meta: {
                   title: name,
                   description: `People in ${name} have had ${lawsuits} debt collection lawsuits filed against them since we started tracking.`,
                   image: socialImage,
@@ -304,7 +304,7 @@ const createLawsuitTrackerIndex = async ({ graphql, actions }) => {
     component: IndexTemplate,
     context: {
       frontmatter: {
-        seo: {
+        meta: {
           title: "Debt Collection Tracker",
         },
       },
@@ -336,4 +336,35 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       modules: [path.resolve(__dirname, "src"), "node_modules"],
     },
   });
+};
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes, createFieldExtension } = actions;
+
+  const frontmatterTypeDefs = `
+    type MdxFrontmatter implements Node {
+      name: String
+      draft: Boolean
+      path: String!
+      alias: String
+      lang: String
+      template: String
+      meta: SeoFrontmatter!
+      embeddedImages: [File] @fileByRelativePath
+      galleryImages: [File] @fileByRelativePath
+      team: [TeamMember]
+    }
+    type SeoFrontmatter {
+      title: String!
+      description: String
+      keywords: String
+      image: File @fileByRelativePath
+      isBlogPost: Boolean
+    }
+    type TeamMember {
+      name: String
+      title: String
+    }
+  `;
+  createTypes(frontmatterTypeDefs);
 };

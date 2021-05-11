@@ -17,9 +17,6 @@ import {
   getDemographicChartData,
   getLawsuitMapData,
 } from "../../utils";
-import Breadcrumb from "../../../components/breadcrumb";
-import { Container } from "@hyperobjekt/material-ui-website";
-import { slugify } from "../../../utils";
 
 export default function TrackerCountyLayout({
   children,
@@ -45,36 +42,8 @@ export default function TrackerCountyLayout({
     )
   }
   
-  const breadcrumb = [
-    {
-      name: "Home",
-      link: "/",
-    },
-    {
-      name: "Debt Collection Tracker",
-      link: "/lawsuit-tracker",
-    },
-    {
-      id: 'state',
-      name: data.state,
-      link: getTrackerUrl({ name: data.state }),
-    },
-    {
-      id: 'county',
-      name: data.name,
-      link: getTrackerUrl(data),
-    },
-  ];
-
   return (
-    <Layout pageContext={pageContext} {...props}>
-      <Container>
-        <Breadcrumb
-          data={data}
-          links={breadcrumb}
-          style={{ position: "absolute", top: 0, zIndex: 10 }}
-        />
-      </Container>
+    <Layout meta={pageContext.frontmatter.meta} {...props}>
       <LocationHero {...getLocationHeroData(data)}></LocationHero>
       <DebtCollectorsSection
         title="Top Debt Collectors"
