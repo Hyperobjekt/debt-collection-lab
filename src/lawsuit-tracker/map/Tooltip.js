@@ -7,7 +7,7 @@ const styles = (theme) => ({
   root: {
     position: "absolute",
     pointerEvents: "none",
-    background: "#000",
+    background: "rgba(0,0,0,0.87)",
     color: "#fff",
     padding: theme.spacing(2),
     transition: "opacity 0.2s ease-in-out",

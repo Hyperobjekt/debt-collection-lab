@@ -53,7 +53,11 @@ const styles = (theme) => ({
       fontSize: theme.typography.pxToRem(46),
     },
   },
-  row2: {},
+  row2: {
+    "& .MuiLink-root": {
+      color: "#f84e31",
+    },
+  },
   row3: {
     background: "#262625",
     position: "absolute",
