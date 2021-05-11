@@ -84,52 +84,77 @@ export default function TrackerCountyLayout({
 }
 
 export const query = graphql`
-query first($geoid: String!, $state: String!, $region: String!) {
-  allGeojsonJson(filter: { name: { eq: $state }, region: { eq: $region } }) {
-    nodes {
-      features {
-        properties {
-          GEOID
-        }
-        geometry {
+  query first($geoid: String!, $state: String!, $region: String!) {
+    allGeojsonJson(filter: { name: { eq: $state }, region: { eq: $region } }) {
+      nodes {
+        features {
+          properties {
+            GEOID
+          }
+          geometry {
+            type
+            coordinates
+          }
           type
-          coordinates
         }
-        type
       }
     }
-  }
-  allStates(filter: {geoid: {eq: $geoid}}) {
-    nodes {
-      geoid
-      name
-      lawsuits
-      lawsuits_date
-      default_judgement
-      no_rep_percent
-      top_collectors {
-        amount
-        collector
-        lawsuits
-      }
-      collector_total
-      lawsuit_history {
-        lawsuits
-        month
-      }
-      counties {
-        default_judgement
+    allStates(filter: { geoid: { eq: $geoid } }) {
+      nodes {
         geoid
+        name
+        region
         lawsuits
         lawsuits_date
-        name
+        default_judgement
         no_rep_percent
+        top_collectors {
+          amount
+          collector
+          lawsuits
+        }
+        collector_total
         lawsuit_history {
           lawsuits
           month
         }
+        counties {
+          default_judgement
+          geoid
+          lawsuits
+          lawsuits_date
+          name
+          no_rep_percent
+          lawsuit_history {
+            lawsuits
+            month
+          }
+        }
+        zips {
+          default_judgement
+          geoid
+          lawsuits
+          lawsuits_date
+          name
+          no_rep_percent
+          lawsuit_history {
+            lawsuits
+            month
+          }
+        }
+      }
+    }
+    allDemographics(filter: { parentLocation: { eq: $geoid } }) {
+      nodes {
+        geoid
+        parentLocation
+        percent_asian
+        percent_black
+        percent_latinx
+        percent_other
+        percent_white
+        majority
       }
     }
   }
-}
 `;
