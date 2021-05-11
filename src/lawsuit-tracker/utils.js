@@ -115,6 +115,18 @@ export function shapeTracts(sourceData) {
   }, []);
 }
 
+export function shapeZips(sourceData) {
+  return sourceData.reduce((zips, currentState) => {
+    return [
+      ...zips,
+      ...currentState.zips.map((c) => ({
+        ...c,
+        state: currentState.name,
+      })),
+    ];
+  }, []);
+}
+
 export const getTrackerUrl = (data) => {
   let result = "/lawsuit-tracker/";
   if (data.state) result += slugify(data.state) + "/";

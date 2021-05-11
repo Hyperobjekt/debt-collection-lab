@@ -84,8 +84,6 @@ const MapContent = ({ title, description, colorScale }) => {
 };
 
 const LawsuitsMapSection = ({ title, description, data, tooltip, ...props }) => {
-
-
   const colorScale = d3
     .scaleLinear()
     .domain(d3.extent(data.features, (d) => d.properties.value))
