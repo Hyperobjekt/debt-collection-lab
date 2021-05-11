@@ -28,7 +28,6 @@ export default function TrackerCountyLayout({
   const demographics = props.data.allDemographics.nodes;
 
   const Tooltip = (classes, selected) => {
-    console.log(selected)
     return (
       <div className={classes.tooltip} style={{top: selected.event.offsetCenter.y, left: selected.event.offsetCenter.x, opacity: selected.info ? 0.87 : 0}}>
           <h1 className={classes.title}>{ selected.info.properties.name }</h1>
@@ -41,7 +40,7 @@ export default function TrackerCountyLayout({
       </div>
     )
   }
-  
+
   return (
     <Layout meta={pageContext.frontmatter.meta} {...props}>
       <LocationHero {...getLocationHeroData(data)}></LocationHero>

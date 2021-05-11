@@ -64,7 +64,7 @@ const ChoroplethMap = ({
   const [glContext, setGLContext] = useState();
   const deckRef = useRef(null);
   const mapRef = useRef(null);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState({loaded: false, flown: false});
   const [setViewport, flyToBounds] = useMapStore(
     (state) => [state.setViewport, state.flyToBounds],
     shallow
@@ -131,7 +131,7 @@ const ChoroplethMap = ({
         layers.forEach((layer) => addNestedLayers(layer));
     };
     addNestedLayers(layers);
-    setLoaded(true);
+    setLoaded({loaded: true, flown: false});
     // eslint-disable-next-line
   }, []);
 
@@ -143,7 +143,7 @@ const ChoroplethMap = ({
 
   // Fly to bounds on load
   useEffect(() => {
-    if (loaded) {
+    if (loaded.loaded && !loaded.flown) {
       const map = mapRef.current.getMap();
       setViewport({
         width: map.getCanvas().offsetWidth,
@@ -154,6 +154,7 @@ const ChoroplethMap = ({
           [dataBounds[0], dataBounds[1]],
           [dataBounds[2], dataBounds[3]],
         ]);
+      setLoaded({loaded: true, flown: true})
     }
   }, [loaded, flyToBounds, setViewport, dataBounds]);
 
@@ -171,7 +172,7 @@ const ChoroplethMap = ({
       }}
       onMouseLeave={resetState}
     >
-      <div style={{ position: 'absolute', right: 30, top: 110, zIndex: 1 }}>
+      <div style={{ position: 'absolute', height: '100%', zIndex: 1, display: 'flex', alignItems: 'center', left: '10%' }}>
         <NavigationControl />
       </div>
       <StaticMap

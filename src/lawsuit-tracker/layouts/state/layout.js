@@ -23,7 +23,6 @@ export default function TrackerCountyLayout({
 }) {
   const data = props.data.allStates.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
-  const demographics = props.data.allDemographics.nodes;
 
   const Tooltip = (classes, selected) => {
     return (
