@@ -72,13 +72,16 @@ const styles = (theme) => ({
     },
   },
   navLink: {
-    marginLeft: theme.spacing(-1),
+    marginLeft: theme.spacing(-2),
     color: "#fff",
     textDecoration: "none",
     textAlign: "center",
     "&:hover, &:focus": {
       textDecoration: "underline",
     },
+  },
+  linkActive: {
+    fontWeight: 700,
   },
   linksWrapper: {
     minWidth: 200,
@@ -105,7 +108,7 @@ const Footer = ({ classes, className, children, pageContext, ...props }) => {
           <Logo />
           <Divider />
           <Navigation
-            classes={{ link: classes.navLink }}
+            classes={{ link: classes.navLink, linkActive: classes.linkActive }}
             isGatsbyLink={true}
             LinkComponent={GatsbyLink}
             links={siteMetadata.menuLinks}

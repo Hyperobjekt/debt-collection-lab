@@ -7,5 +7,8 @@ export default withStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       minHeight: 500,
     },
+    [theme.breakpoints.up("lg")]: {
+      minHeight: 600,
+    },
   },
 }))(Hero);

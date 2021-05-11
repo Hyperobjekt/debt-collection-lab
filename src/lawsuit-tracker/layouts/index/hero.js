@@ -13,11 +13,26 @@ const styles = (theme) => ({
     display: "block",
     fontSize: theme.typography.pxToRem(18),
     fontWeight: 500,
-    maxWidth: 320,
+    maxWidth: "15em",
+    [theme.breakpoints.up("md")]: {
+      fontSize: theme.typography.pxToRem(18),
+    },
   },
   numberText: {
-    fontSize: theme.typography.pxToRem(100),
+    fontSize: theme.typography.pxToRem(60),
     fontWeight: 700,
+    [theme.breakpoints.up("md")]: {
+      fontSize: theme.typography.pxToRem(100),
+    },
+    "& + $smallText": {
+      maxWidth: "12.75em",
+    },
+  },
+  gradient: {
+    backgroundImage: `linear-gradient(90deg, #000, transparent)`,
+    [theme.breakpoints.down("xs")]: {
+      backgroundColor: "rgba(0,0,0,0.65)",
+    },
   },
 });
 
@@ -35,10 +50,11 @@ const IndexHero = ({
   const context = { stateCount, countyCount, startDate, endDate };
   return (
     <Hero
+      classes={{ gradient: classes.gradient }}
       variant="overlay"
       image={<GatsbyImage width="100%" alt="court room" image={image} />}
       ContainerProps={{ className: classes.container }}
-      gradient="linear-gradient(90deg, #000, transparent)"
+      gradient
       {...props}
     >
       <p>
