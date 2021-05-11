@@ -265,10 +265,10 @@ export const getLawsuitMapData = (data, geojson, region, demographics) => {
   return { type: "FeatureCollection", features };
 };
 
-const joinDemographicsWithData = (data, demographics) => {
+const joinDemographicsWithData = (data, demographics, region) => {
   return demographics
     .map((dem) => {
-      const match = data.tracts.find((tract) => tract.geoid === dem.geoid);
+      const match = data[region].find((tract) => tract.geoid === dem.geoid);
       return match
         ? {
             ...dem,
@@ -293,7 +293,7 @@ export const getDemographicChartData = (
   region = "tracts"
 ) => {
   // Step 1: join lawsuit and demographic data
-  const joined = joinDemographicsWithData(data, demographics);
+  const joined = joinDemographicsWithData(data, demographics, region);
 
   // Step 2: group joined data by racial majority
   const grouped = d3.group(joined, (d) => d.majority);
