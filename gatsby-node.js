@@ -337,3 +337,34 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     },
   });
 };
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes, createFieldExtension } = actions;
+
+  const frontmatterTypeDefs = `
+    type MdxFrontmatter implements Node {
+      name: String
+      draft: Boolean
+      path: String!
+      alias: String
+      lang: String
+      template: String
+      meta: SeoFrontmatter!
+      embeddedImages: [File] @fileByRelativePath
+      galleryImages: [File] @fileByRelativePath
+      team: [TeamMember]
+    }
+    type SeoFrontmatter {
+      title: String!
+      description: String
+      keywords: String
+      image: File @fileByRelativePath
+      isBlogPost: Boolean
+    }
+    type TeamMember {
+      name: String
+      title: String
+    }
+  `;
+  createTypes(frontmatterTypeDefs);
+};

@@ -1,8 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Hero } from "@hyperobjekt/material-ui-website";
-import { Typography, withStyles } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 import { FONTS } from "../theme";
+
 const styles = (theme) => ({
   root: {
     padding: theme.spacing(15, 0, 15),
@@ -66,9 +66,5 @@ const TextHero = ({ classes, ...props }) => {
     />
   );
 };
-
-TextHero.defaultProps = {};
-
-TextHero.propTypes = {};
 
 export default withStyles(styles)(TextHero);
