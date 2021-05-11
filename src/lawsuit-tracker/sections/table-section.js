@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import PropTypes from "prop-types";
 import Typography from "../../components/typography";
 import {
   Box,
@@ -16,27 +17,48 @@ import TwoColBlock from "../../components/sections/two-col-block";
 import {
   applyFilter,
   getDateRange,
+  getSingularRegion,
   getTrackerUrl,
   shapeCounties,
   shapeStates,
   shapeStatesCounties,
   shapeTracts,
+  shapeZips,
   sortData,
 } from "../utils";
 import * as d3 from "d3";
-import { Button } from "gatsby-material-ui-components";
+import { Button, GatsbyLink } from "gatsby-material-ui-components";
 import Table from "../table/table";
 import TrendLine from "../table/trend-line";
 import SearchIcon from "@material-ui/icons/Search";
+import Mustache from "mustache";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
     "& .controls": {
       marginTop: theme.spacing(3),
     },
+    "& .control": {
+      marginTop: theme.spacing(3),
+    },
+    "& .MuiGrid-root.MuiGrid-container": {
+      alignItems: "flex-start", // required for sticky side column
+    },
+    [theme.breakpoints.up("md")]: {
+      "& .MuiGrid-root.MuiGrid-item:first-child": {
+        position: "sticky",
+        top: 64,
+        paddingRight: theme.spacing(6),
+      },
+    },
   },
 }))(TwoColBlock);
 
+/**
+ * Returns a function that shapes the data based on the provided view
+ * @param {string} view
+ * @returns {function}
+ */
 const getShaperForView = (view) => {
   switch (view) {
     case "nested":
@@ -47,45 +69,74 @@ const getShaperForView = (view) => {
       return shapeCounties;
     case "tracts":
       return shapeTracts;
+    case "zips":
+      return shapeZips;
     default:
       throw new Error("unsupported view");
   }
 };
 
-const VALID_TYPES = ["name", "lawsuits", "default_judgement"];
-const FORMATTER = d3.format(",~d");
-const FORMAT_NUM = (v) => (v === null ? "-" : FORMATTER(v));
-
-const MONTH_PARSE = d3.timeParse("%m/%Y");
-
+/**
+ * Returns data for the trend line
+ * @param {*} data
+ * @returns {Array<object>} [{x, y}]
+ */
 function getTrendData(data) {
   return data.map((d) => ({ x: MONTH_PARSE(d.month), y: Number(d.lawsuits) }));
 }
 
+/** Valid sort types */
+const VALID_TYPES = ["name", "lawsuits", "default_judgement"];
+
+/** Number formatter */
+const FORMATTER = d3.format(",~d");
+
+/** Format wrapper that handles null values */
+const FORMAT_NUM = (v) => (v === null ? "-" : FORMATTER(v));
+
+/** Parser for month dates */
+const MONTH_PARSE = d3.timeParse("%m/%Y");
+
+/**
+ * A section with a left column for title, description, and table controls
+ * and a table on the right.
+ */
 const TableSection = ({
-  title,
-  description,
-  views = ["tracts"],
+  views,
   data: source,
+  cols,
+  limit,
+  content,
   children,
   ...props
 }) => {
+  /** metric to sort by */
   const [sortBy, setSortBy] = useState("lawsuits");
+  /** sorting order */
   const [ascending, setAscending] = useState(false);
+  /** filter string for table */
   const [filter, setFilter] = useState("");
+  /** current table view (nested, states, counties, zips) */
   const [view, setView] = useState(views[0]);
+  /** function that shapes data for the current view */
   const dataShaper = getShaperForView(view);
+  /** table data */
   const [data, setData] = useState(dataShaper(source));
+  /** table data with filter applied */
   const filteredData = applyFilter(data, filter);
+  /** sorted and filtered table data */
   let tableData = sortData(filteredData, sortBy, ascending);
-  if (view === "counties" || view === "tracts")
-    tableData = tableData.slice(0, 10);
+  /** limited rows for specific views when limit is specified  */
+  if (view === "counties" || view === "tracts" || (view === "zips" && limit))
+    tableData = tableData.slice(0, limit);
+  /** range of dates used for trend lines */
   const trendRange = getDateRange(source);
 
+  /** memoized handler for when user changes sorting */
   const handleSort = useCallback(
     (event, key) => {
       if (VALID_TYPES.indexOf(key) === -1) {
-        alert("not yet implemented");
+        console.error("tried to sort invalid param");
         return;
       }
       if (sortBy === key) {
@@ -99,11 +150,13 @@ const TableSection = ({
     [sortBy, ascending, setSortBy, setAscending]
   );
 
+  /** handler for when user types in the filter input */
   const handleFilter = (event) => {
     const value = event.target.value;
     if (value !== filter) setFilter(value);
   };
 
+  /** handler for when user changes view */
   const handleViewChange = (event) => {
     const value = event.target.value;
     if (value !== view) setView(value);
@@ -111,6 +164,7 @@ const TableSection = ({
     setData(shaper(source));
   };
 
+  /** columns for table (must be memoized!) */
   const columns = React.useMemo(() => {
     return [
       {
@@ -190,26 +244,33 @@ const TableSection = ({
             />
           ),
       },
-      view !== "tracts"
+      view !== "tracts" && view !== "zips"
         ? {
             id: "report",
             Header: "",
             cellProps: { style: { minWidth: 120 } },
             Cell: ({ row }) => (
-              <Button to={getTrackerUrl(row.original)}>View Report</Button>
+              <Button component={GatsbyLink} to={getTrackerUrl(row.original)}>
+                View Report
+              </Button>
             ),
           }
         : null,
-    ].filter((v) => !!v);
-  }, [handleSort, ascending, sortBy, view, trendRange]);
+    ].filter((v) => !!v && cols.indexOf(v.id) > -1);
+  }, [handleSort, ascending, sortBy, view, trendRange, cols]);
 
+  const context = {
+    singularRegion: getSingularRegion(view),
+    name: data[0].state || data[0].county,
+    count: data.length,
+  };
   const leftContent = (
     <>
       <Box>
         <Typography variant="sectionTitle" component="h2">
-          {title}
+          {Mustache.render(content.TITLE, context)}
         </Typography>
-        <Typography>{description}</Typography>
+        <Typography>{Mustache.render(content.DESCRIPTION, context)}</Typography>
         {children}
       </Box>
       <div className="controls">
@@ -270,9 +331,23 @@ const TableSection = ({
       data={tableData}
       className={`table--${view}`}
       view={view}
+      content={content}
     />
   );
   return <SectionBlock left={leftContent} right={rightContent} {...props} />;
+};
+
+TableSection.defaultProps = {
+  views: ["tracts"],
+  cols: ["name", "lawsuits", "default_judgement", "trend", "report"],
+  limit: 10,
+};
+
+TableSection.propTypes = {
+  /** array of views to show radio controls for */
+  views: PropTypes.array,
+  /** columns to display in the table (corresponds to column ids) */
+  cols: PropTypes.array,
 };
 
 export default TableSection;

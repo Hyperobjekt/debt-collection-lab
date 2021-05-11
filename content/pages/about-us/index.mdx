@@ -1,0 +1,68 @@
+---
+publish: true
+path: /about-us
+template: about
+meta:
+  title: About Us
+embeddedImages:
+  - ../images/gallery-9.jpg
+team:
+  - name: Frederick F. Wherry
+    title: PI - Princeton University, Sociology
+  - name: Dalié Jimenez
+    title: PI - Co-PI – University of California at Irvine Law School
+  - name: Lois R. Lupica
+    title: Co-PI – University of Maine Law School
+  - name: Jeffrey Reichman
+    title: Senior investigator – January Advisors, Data Science Consulting
+  - name: Robin Lee
+    title: Co-PI—Princeton University, Sociology
+  - name: Jeff Himpele
+    title: Collaborator, Director, VizE Lab, Princeton University, Anthropology
+---
+
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
+
+<Hero className="hero--about" ContainerProps={{justifyContent : "flex-start"}}>
+
+<Typography className="hero__text">
+  It is important that we understand debt collection so that we can{" "}
+  <span>change it.</span>
+</Typography>
+
+</Hero>
+
+<Block>
+
+<GatsbyImage
+  className="image--about"
+  width={"50%"}
+  alt="photo of people in court room"
+  image={getImage(props.localImages[0])}
+/>
+
+<Grid container spacing={3}>
+  <Grid item xs={12} md={4} lg={5}>
+    <Typography component="h2" variant="underline">
+      Who We Are
+    </Typography>
+  </Grid>
+  <Grid item xs={12} md={8} lg={7}>
+    <Grid className="list--team" component="ul" container>
+      {props.frontmatter.team.map((member) => (
+        <Grid component="li" item xs={12} sm={6}>
+          <Box mt={2} mb={2}>
+            <Typography component="p" variant="h5">
+              {member.name}
+            </Typography>
+            <Typography color="grey" variant="body2">
+              {member.title}
+            </Typography>
+          </Box>
+        </Grid>
+      ))}
+    </Grid>
+  </Grid>
+</Grid>
+
+</Block>

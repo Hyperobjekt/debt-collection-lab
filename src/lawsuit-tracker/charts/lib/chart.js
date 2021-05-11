@@ -870,8 +870,6 @@ Chart.prototype.addLines = function (overrides) {
       ];
     };
 
-  console.log("addLines, chart data", _this.data, _this.lineData);
-
   if (_this.getSelection(options.linesId))
     throw new Error(
       "addLines: selection already exists for given linesId " + options.linesId
@@ -1336,7 +1334,16 @@ Chart.prototype.addDonut = function (overrides) {
       .enter()
       .append("path")
       // .attr("d", (d, i) => arc(startArcs[i]))
-      .attr("fill", (d) => _this.colorScale(d.data.group));
+      .attr("fill", (d) => _this.colorScale(d.data.group))
+      .on("mousemove", function (event, d) {
+        chart.setHovered(d);
+        options.renderTooltip &&
+          chart.showTooltip(event, options.renderTooltip);
+      })
+      .on("mouseout", function (event, d) {
+        chart.setHovered(null);
+        options.renderTooltip && chart.hideTooltip();
+      })
 
     arcEnter
       .transition()

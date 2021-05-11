@@ -4,7 +4,8 @@ import { Box, makeStyles, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import ChoroplethMap from "../map/ChoroplethMap";
 import * as d3 from "d3";
-import { formatInt } from "../utils";
+import { formatInt, formatMonthYear } from "../utils";
+import Mustache from "mustache";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
@@ -38,18 +39,22 @@ const LawsuitMap = ({ data, colorScale }) => {
   );
 };
 
-const MapContent = ({ title, description, colorScale }) => {
+const MapContent = ({ data, content, colorScale }) => {
   const colors = colorScale.range().join(",");
   const values = colorScale.domain();
   const gradient = `linear-gradient(90deg, ${colors})`;
   return (
     <>
       <Typography variant="sectionTitle" component="h3">
-        {title}
+        {content.TITLE}
       </Typography>
-      {description && <Typography>{description}</Typography>}
+      {content.DESCRIPTION && (
+        <Typography>{Mustache.render(content.DESCRIPTION, data)}</Typography>
+      )}
       <Typography style={{ marginTop: 24, display: "block" }} variant="caption">
-        Lawsuit filings since March 2020:
+        {Mustache.render(content.LABEL, {
+          startDate: formatMonthYear(data.startDate),
+        })}
       </Typography>
       <Box style={{ width: 280 }}>
         <div style={{ background: gradient, width: 280, height: 16 }} />
@@ -83,17 +88,16 @@ const MapContent = ({ title, description, colorScale }) => {
   );
 };
 
-const LawsuitsMapSection = ({ title, description, data, ...props }) => {
+const LawsuitsMapSection = ({ content, data, ...props }) => {
   const colorScale = d3
     .scaleLinear()
-    .domain(d3.extent(data.features, (d) => d.properties.value))
+    .domain(d3.extent(data.geojson.features, (d) => d.properties.value))
     .range(["#f5eFdB", "#BC5421"])
     .nice();
-
   return (
     <SectionBlock
-      left={<MapContent {...{ title, description, colorScale }} />}
-      right={<LawsuitMap data={data} colorScale={colorScale} />}
+      left={<MapContent {...{ data, content, colorScale }} />}
+      right={<LawsuitMap data={data.geojson} colorScale={colorScale} />}
       {...props}
     />
   );

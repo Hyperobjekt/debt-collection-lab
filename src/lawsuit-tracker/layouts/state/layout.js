@@ -1,22 +1,6 @@
 import React from "react";
-import Layout from "../../../gatsby-theme-hypersite/layout";
 import { graphql } from "gatsby";
-import {
-  LocationHero,
-  LawsuitsChartSection,
-  LawsuitsMapSection,
-  DebtCollectorsSection,
-  TableSection,
-} from "../../sections";
-import {
-  getLawsuitChartData,
-  getLawsuitMapData,
-  getLocationHeroData,
-  getTopCollectorsData,
-  getTrackerUrl,
-} from "../../utils";
-import Breadcrumb from "../../../components/breadcrumb";
-import { Container } from "@hyperobjekt/material-ui-website";
+import SubpageLayout from "../subpage";
 
 export default function TrackerCountyLayout({
   children,
@@ -25,121 +9,139 @@ export default function TrackerCountyLayout({
 }) {
   const data = props.data.allStates.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
-  
-  const breadcrumb = [
-    {
-      id: 'home',
-      name: "Home",
-      link: "/",
-    },
-    {
-      id: 'tracker',
-      name: "Debt Collection Tracker",
-      link: "/lawsuit-tracker",
-    },
-    {
-      id: 'state',
-      name: data.name,
-      link: getTrackerUrl(data),
-    },
-  ];
+  const demographics = props.data.allDemographics.nodes;
+  const content = props.data.allLawsuitTrackerJson.nodes[0];
+  const meta = pageContext.frontmatter.meta;
   return (
-    <Layout pageContext={pageContext} {...props}>
-      <Container>
-        <Breadcrumb
-          data={data}
-          links={breadcrumb}
-          style={{ position: "absolute", top: 0, zIndex: 10 }}
-        />
-      </Container>
-      <LocationHero {...getLocationHeroData(data)} />
-      <DebtCollectorsSection
-        title="Top Debt Collectors"
-        data={getTopCollectorsData(data)}
-      />
-      <LawsuitsChartSection
-        title="Debt Collection Lawsuits By Year"
-        data={getLawsuitChartData(data)}
-      />
-      <LawsuitsMapSection
-        title="Geography of Debt Collection Lawsuits"
-        description={`${data.name} is split into ${data.counties.length} counties.  On the map you can see the number of lawsuits corresponding to each census tract.`}
-        data={getLawsuitMapData(data, geojson, "counties")}
-      />
-      <TableSection
-        title="Overview of Lawsuits by County"
-        description={`The table to the right shows data for the ${data.counties.length} counties in ${data.name}.  Use the search below to find a specific county.`}
-        views={["counties"]}
-        data={[data]}
-      />
-      {children}
-      {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
-    </Layout>
+    <SubpageLayout
+      type="state"
+      {...{ meta, data, geojson, demographics, content }}
+    />
   );
 }
 
-// export const statesQuery = graphql`{
-//   query MyQuery {
-//     allStates {
-//       nodes {
-//         name
-//         counties {
-//           geoid
-//           name
-//         }
-//       }
-//     }
-//   }
-// }
-// `
-
 export const query = graphql`
-query first($geoid: String!, $state: String!) {
-  allGeojsonJson(filter: {name: {eq: $state}, region: {eq: "counties"}}) {
-    nodes {
-      features {
-        properties {
-          GEOID
+  query first($geoid: String!, $state: String!, $region: String!) {
+    allLawsuitTrackerJson {
+      nodes {
+        state {
+          hero {
+            STATS {
+              id
+              description
+            }
+          }
+          collectors {
+            TITLE
+            DESCRIPTION
+          }
+          lawsuits {
+            TITLE
+            DESCRIPTION
+          }
+          map {
+            TITLE
+            DESCRIPTION
+            LABEL
+          }
+          table {
+            TITLE
+            DESCRIPTION
+          }
+          demographics {
+            TITLE
+            DESCRIPTION
+            BREAKDOWN_TITLE
+            BREAKDOWN_LABEL
+            COUNT_CHART_TITLE
+            COUNT_CHART_TOOLTIP
+            PROPORTION_CHART_TITLE
+            PROPORTION_CHART_TOOLTIP
+          }
         }
-        geometry {
-          type
-          coordinates
+        table {
+          LAST_UPDATED
+          TOP_LIMIT
+          NORTH_DAKOTA_NOTE
+          TEXAS_NOTE
+          COUNTIES_NOTE
+          ZIPS_NOTE
+          STATES_NOTE
+          NO_RESULTS
+          REPORT_LINK
         }
-        type
       }
     }
-  }
-  allStates(filter: {geoid: {eq: $geoid}}) {
-    nodes {
-      geoid
-      name
-      lawsuits
-      lawsuits_date
-      default_judgement
-      no_rep_percent
-      top_collectors {
-        amount
-        collector
-        lawsuits
+    allGeojsonJson(filter: { name: { eq: $state }, region: { eq: $region } }) {
+      nodes {
+        features {
+          properties {
+            GEOID
+          }
+          geometry {
+            type
+            coordinates
+          }
+          type
+        }
       }
-      collector_total
-      lawsuit_history {
-        lawsuits
-        month
-      }
-      counties {
-        default_judgement
+    }
+    allStates(filter: { geoid: { eq: $geoid } }) {
+      nodes {
         geoid
+        name
+        region
         lawsuits
         lawsuits_date
-        name
+        default_judgement
         no_rep_percent
+        top_collectors {
+          amount
+          collector
+          lawsuits
+        }
+        collector_total
         lawsuit_history {
           lawsuits
           month
         }
+        counties {
+          default_judgement
+          geoid
+          lawsuits
+          lawsuits_date
+          name
+          no_rep_percent
+          lawsuit_history {
+            lawsuits
+            month
+          }
+        }
+        zips {
+          default_judgement
+          geoid
+          lawsuits
+          lawsuits_date
+          name
+          no_rep_percent
+          lawsuit_history {
+            lawsuits
+            month
+          }
+        }
+      }
+    }
+    allDemographics(filter: { parentLocation: { eq: $geoid } }) {
+      nodes {
+        geoid
+        parentLocation
+        percent_asian
+        percent_black
+        percent_latinx
+        percent_other
+        percent_white
+        majority
       }
     }
   }
-}
 `;

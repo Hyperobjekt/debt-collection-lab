@@ -115,6 +115,18 @@ export function shapeTracts(sourceData) {
   }, []);
 }
 
+export function shapeZips(sourceData) {
+  return sourceData.reduce((zips, currentState) => {
+    return [
+      ...zips,
+      ...currentState.zips.map((c) => ({
+        ...c,
+        state: currentState.name,
+      })),
+    ];
+  }, []);
+}
+
 export const getTrackerUrl = (data) => {
   let result = "/lawsuit-tracker/";
   if (data.state) result += slugify(data.state) + "/";
@@ -154,6 +166,16 @@ export const getDateRange = (data) => {
   return [startDate, endDate];
 };
 
+export const getSingularRegion = (region, casing) => {
+  const regions = {
+    states: "State",
+    counties: "County",
+    tracts: "Census Tract",
+    zips: "Zip Code",
+  };
+  return casing === "lower" ? regions[region].toLowerCase() : regions[region];
+};
+
 export const getTotals = (data) => {
   // number of states in the data
   const stateCount = data.length;
@@ -173,9 +195,10 @@ export const getTotals = (data) => {
 export const getLocationHeroData = (data) => {
   return {
     name: data.name,
-    totalCount: data.lawsuits,
-    percentWithoutRep: data.no_rep_percent,
-    percentDefault: data.default_judgement / data.lawsuits,
+    lawsuits: data.lawsuits,
+    no_rep_percent: data.no_rep_percent,
+    default_judgement: data.default_judgement,
+    default_judgement_percent: data.default_judgement / data.lawsuits,
     dateRange: getDateRange([data]),
   };
 };
@@ -236,10 +259,15 @@ export const getLawsuitChartData = (data) => {
 export const getLawsuitMapData = (data, geojson, region, demographics) => {
   //console.log(demographics)
   const childData = data[region];
+  const dates = getDateRange([data]);
   const features = geojson.features
     .map((f) => {
-      const matchLawsuit = childData.find((d) => d.geoid === f.properties.GEOID);
-      const matchDemographic = demographics ? demographics.find((d) => d.geoid === f.properties.GEOID) : null
+      const matchLawsuit = childData.find(
+        (d) => d.geoid === f.properties.GEOID
+      );
+      const matchDemographic = demographics
+        ? demographics.find((d) => d.geoid === f.properties.GEOID)
+        : null;
       return matchLawsuit
         ? {
             ...f,
@@ -247,21 +275,31 @@ export const getLawsuitMapData = (data, geojson, region, demographics) => {
               ...f.properties,
               value: matchLawsuit.lawsuits,
               name: matchLawsuit.name,
-              majority: matchDemographic ? matchDemographic.majority : 'Unknown',
-              selected: false
+              majority: matchDemographic
+                ? matchDemographic.majority
+                : "Unknown",
+              selected: false,
             },
           }
         : null;
     })
     .filter((v) => !!v);
-
-  return { type: "FeatureCollection", features };
+  const featureCollection = { type: "FeatureCollection", features };
+  return {
+    geojson: featureCollection,
+    name: data.name,
+    region: region,
+    featureCount: featureCollection.features.length,
+    singularRegion: getSingularRegion(region),
+    startDate: dates[0],
+    endDate: dates[1],
+  };
 };
 
-const joinDemographicsWithData = (data, demographics) => {
+const joinDemographicsWithData = (data, demographics, region) => {
   return demographics
     .map((dem) => {
-      const match = data.tracts.find((tract) => tract.geoid === dem.geoid);
+      const match = data[region].find((tract) => tract.geoid === dem.geoid);
       return match
         ? {
             ...dem,
@@ -280,9 +318,13 @@ const joinDemographicsWithData = (data, demographics) => {
  * @param {*} demographics
  * @returns
  */
-export const getDemographicChartData = (data, demographics) => {
+export const getDemographicChartData = (
+  data,
+  demographics,
+  region = "tracts"
+) => {
   // Step 1: join lawsuit and demographic data
-  const joined = joinDemographicsWithData(data, demographics);
+  const joined = joinDemographicsWithData(data, demographics, region);
 
   // Step 2: group joined data by racial majority
   const grouped = d3.group(joined, (d) => d.majority);

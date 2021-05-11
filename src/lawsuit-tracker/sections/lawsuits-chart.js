@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import GroupedBarChart from "../charts/grouped-bar-chart";
 import { formatPercent } from "../utils";
+import Mustache from "mustache";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
@@ -58,26 +59,21 @@ const LawsuitsChart = ({ data }) => {
   );
 };
 
-const LawsuitsChartSection = ({
-  title,
-  description,
-  data,
-  children,
-  ...props
-}) => {
+const LawsuitsChartSection = ({ content, data, children, ...props }) => {
+  const context = {
+    topMonthName: data.topMonthName,
+    topMonthPercent: formatPercent(data.topMonthPercent),
+    // TODO: Calculate these values!
+    diffLabel: "increased",
+    diffPercent: "0%",
+  };
   const leftContent = (
     <>
       <Typography variant="sectionTitle" component="h3">
-        {title}
+        {content.TITLE}
       </Typography>
-      {description && <Typography paragraph>{description}</Typography>}
       <Typography paragraph>
-        On average, {data.topMonthName} is the month with the most debt
-        collection lawsuits filed, accounting for{" "}
-        {formatPercent(data.topMonthPercent)} of the filings for the year. Since
-        the pandemic started, debt collection lawsuits have
-        <code>INCREASED / DECREASED</code> by <code>PERCENT_DIFF</code> from the
-        average of previous years.
+        {Mustache.render(content.DESCRIPTION, context)}
       </Typography>
       {children}
     </>

@@ -1,9 +1,11 @@
 const d3 = require("d3");
+const path = require("path");
 const { getStateNameForFips, loadCsv, slugify } = require("./scripts/utils");
-const titleCase = require("title-case");
-
+const { titleCase } = require("title-case");
+const createSocialImage = require("./scripts/createSocialImage");
 const MONTH_PARSE = d3.timeParse("%m/%Y");
-
+const formatPercent = d3.format(".1%");
+const formatInt = d3.format(",d");
 /**
  * Returns an array of county objects
  * @param {*} data
@@ -14,6 +16,7 @@ function getCounties(data) {
   return counties.map((c) => ({
     ...c,
     state: getStateNameForFips(c.geoid),
+    region: "tracts",
     tracts: data.filter(
       (d) => d.geoid.length > 5 && d.geoid.indexOf(c.geoid) === 0
     ),
@@ -27,12 +30,19 @@ function getCounties(data) {
  */
 function getStates(data) {
   const states = data.filter((d) => d.geoid.length === 2);
-  return states.map((s) => ({
-    ...s,
-    counties: data
-      .filter((d) => d.geoid.length === 5 && d.geoid.indexOf(s.geoid) === 0)
-      .map((c) => ({ ...c, state: s.name })),
-  }));
+  return states.map((s) => {
+    const zips = data
+      .filter((d) => d.geoid.length === 7 && d.geoid.indexOf(s.geoid) === 0)
+      .map((c) => ({ ...c, state: s.name }));
+    return {
+      ...s,
+      region: zips?.length > 0 ? "zips" : "counties",
+      counties: data
+        .filter((d) => d.geoid.length === 5 && d.geoid.indexOf(s.geoid) === 0)
+        .map((c) => ({ ...c, state: s.name })),
+      zips,
+    };
+  });
 }
 
 /**
@@ -174,33 +184,51 @@ const createCountyPages = async ({ graphql, actions }) => {
         nodes {
           geoid
           name
+          lawsuits
+          no_rep_percent
+          default_judgement
         }
       }
     }
   `);
   const counties = result.data.allCounties.nodes;
-  counties.forEach(({ geoid, name }) => {
-    if (name) {
-      const stateName = getStateNameForFips(geoid);
-      const slugStateName = slugify(stateName);
-      const pageName = slugify(name);
-      createPage({
-        path: `/lawsuit-tracker/${slugStateName}/${pageName}/`,
-        component: CountyTemplate,
-        context: {
-          slug: pageName,
-          county: name,
-          state: stateName,
-          geoid: geoid,
-          frontmatter: {
-            seo: {
-              title: name,
+  await Promise.all(
+    counties.map(
+      async ({ geoid, name, lawsuits, no_rep_percent, default_judgement }) => {
+        if (name) {
+          const stateName = getStateNameForFips(geoid);
+          const slugStateName = slugify(stateName);
+          const pageName = slugify(name);
+          const socialImage = await createSocialImage(
+            name,
+            [
+              formatInt(lawsuits),
+              formatPercent(no_rep_percent),
+              formatPercent(default_judgement / lawsuits),
+            ],
+            slugStateName
+          );
+          createPage({
+            path: `/lawsuit-tracker/${slugStateName}/${pageName}/`,
+            component: CountyTemplate,
+            context: {
+              slug: pageName,
+              county: name,
+              state: stateName,
+              geoid: geoid,
+              frontmatter: {
+                meta: {
+                  title: name,
+                  description: `People in ${name} have had ${lawsuits} debt collection lawsuits filed against them since we started tracking.`,
+                  image: socialImage,
+                },
+              },
             },
-          },
-        },
-      });
-    }
-  });
+          });
+        }
+      }
+    )
+  );
 };
 
 const createStatePages = async ({ graphql, actions }) => {
@@ -214,30 +242,57 @@ const createStatePages = async ({ graphql, actions }) => {
         nodes {
           geoid
           name
+          lawsuits
+          no_rep_percent
+          default_judgement
+          zips {
+            geoid
+          }
         }
       }
     }
   `);
   const states = result.data.allStates.nodes;
-  states.forEach(({ geoid, name }) => {
-    if (name && name !== "Texas") {
-      const pageName = slugify(name);
-      createPage({
-        path: `/lawsuit-tracker/${pageName}/`,
-        component: StateTemplate,
-        context: {
-          slug: pageName,
-          state: name,
-          geoid: geoid,
-          frontmatter: {
-            seo: {
-              title: name,
+
+  await Promise.all(
+    states.map(
+      async ({
+        geoid,
+        name,
+        lawsuits,
+        no_rep_percent,
+        default_judgement,
+        zips,
+      }) => {
+        if (name && name !== "Texas") {
+          const pageName = slugify(name);
+          const socialImage = await createSocialImage(name, [
+            formatInt(lawsuits),
+            formatPercent(no_rep_percent),
+            formatPercent(default_judgement / lawsuits),
+          ]);
+          createPage({
+            path: `/lawsuit-tracker/${pageName}/`,
+            component: StateTemplate,
+            context: {
+              slug: pageName,
+              state: name,
+              geoid: geoid,
+              region: zips?.length > 0 ? "zips" : "counties",
+              frontmatter: {
+                meta: {
+                  title: name,
+                  description: `People in ${name} have had ${lawsuits} debt collection lawsuits filed against them since we started tracking.`,
+                  image: socialImage,
+                  // TODO: generate a dynamic social image
+                },
+              },
             },
-          },
-        },
-      });
-    }
-  });
+          });
+        }
+      }
+    )
+  );
 };
 
 const createLawsuitTrackerIndex = async ({ graphql, actions }) => {
@@ -250,7 +305,7 @@ const createLawsuitTrackerIndex = async ({ graphql, actions }) => {
     component: IndexTemplate,
     context: {
       frontmatter: {
-        seo: {
+        meta: {
           title: "Debt Collection Tracker",
         },
       },
@@ -273,4 +328,44 @@ exports.createPages = async ({ graphql, actions }) => {
   await createLawsuitTrackerIndex({ graphql, actions });
   await createStatePages({ graphql, actions });
   await createCountyPages({ graphql, actions });
+};
+
+// allow import of local components
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
+    },
+  });
+};
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes, createFieldExtension } = actions;
+
+  const frontmatterTypeDefs = `
+    type MdxFrontmatter implements Node {
+      name: String
+      draft: Boolean
+      path: String!
+      alias: String
+      lang: String
+      template: String
+      meta: SeoFrontmatter!
+      embeddedImages: [File] @fileByRelativePath
+      galleryImages: [File] @fileByRelativePath
+      team: [TeamMember]
+    }
+    type SeoFrontmatter {
+      title: String!
+      description: String
+      keywords: String
+      image: File @fileByRelativePath
+      isBlogPost: Boolean
+    }
+    type TeamMember {
+      name: String
+      title: String
+    }
+  `;
+  createTypes(frontmatterTypeDefs);
 };

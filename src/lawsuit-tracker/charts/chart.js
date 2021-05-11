@@ -34,8 +34,8 @@ const Global = createGlobalStyle`
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
     transform: translate(-50%, calc(-100% - 12px));
-    z-index: 999;
     max-width: 200px;
+    z-index: 999;
   }
   .chart__tooltip.chart__tooltip--show {
     opacity: 1;
@@ -45,6 +45,9 @@ const Global = createGlobalStyle`
     margin-bottom: 4px;
     margin-top: 0;
     white-space: nowrap;
+  }
+  .chart__tooltip .tooltip__title--donut {
+    white-space: normal;
   }
   .chart__tooltip .tooltip__item {
     font-size: 12px;
@@ -239,6 +242,7 @@ const Chart = ({
       chartRef.current = chart(elRef.current, data, mergedOptions);
       updateLabels(chartRef.current);
     }
+    // eslint-disable-next-line
   }, []);
 
   return (

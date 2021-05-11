@@ -1,3 +1,4 @@
+const path = require("path");
 const metadata = require("./config/metadata.json");
 
 module.exports = {
@@ -8,6 +9,10 @@ module.exports = {
       options: {
         contentPath: `content/pages`,
         assetPath: `content/assets`,
+        layouts: {
+          gallery: path.resolve("./src/arts-and-storytelling/layout.js"),
+          about: path.resolve("./src/about-us/layout.js"),
+        },
       },
     },
     {
@@ -25,6 +30,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./content/lawsuit-tracker`,
+        typeName: `Tracker`,
+      },
+    },
+    {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         typekit: {
@@ -36,5 +48,8 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     `gatsby-transformer-json`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
   ],
 };

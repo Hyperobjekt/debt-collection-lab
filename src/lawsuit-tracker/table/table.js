@@ -7,11 +7,80 @@ import {
   TableCell,
   withStyles,
 } from "@material-ui/core";
-import { Link } from "gatsby-material-ui-components";
+import { GatsbyLink, Link } from "gatsby-material-ui-components";
 import React from "react";
 import { useTable, useExpanded } from "react-table";
 import Typography from "../../components/typography";
 import { getTrackerUrl } from "../utils";
+
+/**
+ * Returns if an additional row with additional content should be added
+ * based on the view, current row, next row, and parent row.
+ * @param {*} view
+ * @param {*} currentRow
+ * @param {*} prevParentRow
+ * @param {*} nextRow
+ * @returns
+ */
+const getAdditionalRowContent = (
+  view,
+  currentRow,
+  prevParentRow,
+  nextRow,
+  content
+) => {
+  const isNested = view === "nested";
+  const isNextTopLevel = !nextRow || nextRow.depth === 0; // next row is top level or end of table
+  const isParentTexas = prevParentRow?.name === "Texas";
+  const isNorthDakota = currentRow.original.name === "North Dakota";
+  const pastLimitThreshold = prevParentRow?.subRows?.length > 5;
+  // show note after Harris county
+  if (isNested && isNextTopLevel && isParentTexas) {
+    const parts = content["TEXAS_NOTE"].split("{{page}}");
+    return (
+      <Typography variant="caption">
+        {parts[0]}
+        {parts.length > 1 && (
+          <Link
+            component={GatsbyLink}
+            to={getTrackerUrl({ name: "Harris County", state: "Texas" })}
+          >
+            Harris county report
+          </Link>
+        )}
+        {parts[1]}
+      </Typography>
+    );
+  }
+  if (isNested && isNextTopLevel && isNorthDakota) {
+    const parts = content["NORTH_DAKOTA_NOTE"].split("{{page}}");
+    return (
+      <Typography variant="caption">
+        {parts[0]}
+        <Link
+          component={GatsbyLink}
+          to={getTrackerUrl({ name: "North Dakota" })}
+        >
+          state report
+        </Link>{" "}
+        {parts[1]}
+      </Typography>
+    );
+  }
+  if (isNested && isNextTopLevel && pastLimitThreshold) {
+    const parts = content["TOP_LIMIT"].split("{{page}}");
+    return (
+      <Typography variant="caption">
+        {parts[0]}
+        <Link component={GatsbyLink} to={getTrackerUrl(prevParentRow)}>
+          {prevParentRow.name} report
+        </Link>{" "}
+        {parts[1]}
+      </Typography>
+    );
+  }
+  return null;
+};
 
 const TableContainer = withStyles((theme) => ({
   root: {
@@ -66,7 +135,13 @@ const TableContainer = withStyles((theme) => ({
   },
 }))(MuiTableContainer);
 
-export default function Table({ columns: userColumns, data, className, view }) {
+export default function Table({
+  columns: userColumns,
+  data,
+  className,
+  view,
+  content,
+}) {
   const {
     getTableProps,
     getTableBodyProps,
@@ -80,6 +155,10 @@ export default function Table({ columns: userColumns, data, className, view }) {
     },
     useExpanded // Use the useExpanded plugin hook
   );
+
+  /** get the note (if any) to append to the table */
+  const noteKey = view.toUpperCase() + "_NOTE";
+  const note = content.hasOwnProperty(noteKey) ? content[noteKey] : null;
 
   let subRowCount = 0;
   const truncatedRows = rows.filter((r) => {
@@ -115,35 +194,15 @@ export default function Table({ columns: userColumns, data, className, view }) {
             prepareRow(row);
             let nextRow =
               i < truncatedRows.length ? truncatedRows[i + 1] : null;
-            let showMore =
-              (!nextRow || nextRow.depth === 0) &&
-              view === "nested" &&
-              prevParentRow &&
-              ((prevParentRow.subRows && prevParentRow.subRows.length > 5) ||
-                prevParentRow.name === "Texas");
-            let showMoreText = "";
-            if (showMore) {
-              showMoreText = (
-                <Typography variant="caption">
-                  Top 5 counties shown above, go to the{" "}
-                  <Link to={getTrackerUrl(prevParentRow)}>
-                    {prevParentRow.name} report
-                  </Link>{" "}
-                  to see all counties.
-                </Typography>
-              );
-              if (prevParentRow && prevParentRow.name === "Texas") {
-                showMoreText = (
-                  <Typography variant="caption">
-                    State level data is unavailable for Texas, only the{" "}
-                    <Link to="/counties/harris-county">
-                      Harris county report
-                    </Link>{" "}
-                    is available.
-                  </Typography>
-                );
-              }
-            }
+            // boolean to indicate if an additional row should be tacked on
+            let showMore = getAdditionalRowContent(
+              view,
+              row,
+              prevParentRow,
+              nextRow,
+              content
+            );
+            // if top level row, set prev parent
             if (row.depth === 0) prevParentRow = row.original;
             return (
               <>
@@ -165,20 +224,17 @@ export default function Table({ columns: userColumns, data, className, view }) {
                 {showMore && (
                   <TableRow className="row--more">
                     <TableCell align="center" colSpan="5">
-                      {showMoreText}
+                      {showMore}
                     </TableCell>
                   </TableRow>
                 )}
               </>
             );
           })}
-          {(view === "counties" || view === "tracts") && (
+          {note && (
             <TableRow className="row--more">
               <TableCell align="center" colSpan="5">
-                <Typography variant="caption">
-                  The top {view} are listed above, use the search to find a
-                  specific location.{" "}
-                </Typography>
+                <Typography variant="caption">{note}</Typography>
               </TableCell>
             </TableRow>
           )}

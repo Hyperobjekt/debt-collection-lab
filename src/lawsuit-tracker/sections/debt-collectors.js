@@ -4,6 +4,7 @@ import { makeStyles, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import { formatInt, formatPercent } from "../utils";
 import DonutChart from "../charts/donut-chart";
+import Mustache from "mustache";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
@@ -82,24 +83,22 @@ const TopCollectorsChart = ({ data }) => {
   );
 };
 
-const DebtCollectorsSection = ({
-  title,
-  description,
-  data,
-  children,
-  ...props
-}) => {
+const DebtCollectorsSection = ({ content, data, children, ...props }) => {
+  const context = {
+    name: data.name,
+    collectorTotal: formatInt(data.collector_total),
+    topCollectorPercent: formatPercent(5 / data.collector_total),
+    topCount: formatInt(data.topLawsuits),
+    topPercent: formatPercent(data.topPercent),
+    totalCount: formatInt(data.total),
+  };
   const leftContent = (
     <>
       <Typography variant="sectionTitle" component="h3">
-        {title}
+        {content.TITLE}
       </Typography>
-      {description && <Typography paragraph>{description}</Typography>}
       <Typography paragraph>
-        Out of {formatInt(data.collector_total)} debt collectors in {data.name},
-        the top 5 ({formatPercent(5 / data.collector_total)}) are responsible
-        for {formatInt(data.topLawsuits)} ({formatPercent(data.topPercent)}) of{" "}
-        {formatInt(data.total)} lawsuits.
+        {Mustache.render(content.DESCRIPTION, context)}
       </Typography>
       {children}
     </>
