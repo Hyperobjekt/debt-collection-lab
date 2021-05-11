@@ -28,6 +28,7 @@ export default function TrackerCountyLayout({
     return (
       <div className={classes.tooltip} style={{top: selected.event.offsetCenter.y, left: selected.event.offsetCenter.x, opacity: selected.info ? 0.87 : 0}}>
           <h1 className={classes.title}>{ selected.info.properties.name }</h1>
+          <div className={classes.item}>{ selected.info.properties.value } lawsuits</div>
       </div>
     )
   }
