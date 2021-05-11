@@ -2,7 +2,8 @@ import React from "react";
 import Typography from "../../components/typography";
 import { Box, Divider, withStyles } from "@material-ui/core";
 import { formatInt, formatMonthYear, formatPercent } from "../utils";
-import Hero from "../../components/sections/hero"
+import Hero from "../../components/sections/hero";
+import Mustache from "mustache";
 
 const styles = (theme) => ({
   container: {
@@ -28,16 +29,19 @@ const styles = (theme) => ({
   },
 });
 
-const LocationHero = ({
-  classes,
-  name,
-  totalCount,
-  percentWithoutRep,
-  percentDefault,
-  dateRange,
-  children,
-  ...props
-}) => {
+const FORMATTERS = {
+  lawsuits: formatInt,
+  no_rep_percent: formatPercent,
+  default_judgement: formatInt,
+  default_judgement_percent: formatPercent,
+};
+
+const LocationHero = ({ classes, data, content, children, ...props }) => {
+  const { name, dateRange } = data;
+  const context = {
+    startDate: formatMonthYear(dateRange[0]),
+    endDate: formatMonthYear(dateRange[1]),
+  };
   return (
     <Hero
       bgcolor="background.dark"
@@ -50,31 +54,20 @@ const LocationHero = ({
         </Typography>
         <Divider className={classes.divider} />
         <Box display="flex" flexDirection="row">
-          <Box className={classes.stat}>
-            <Typography color="primary" variant="numberSecondary">
-              {formatInt(totalCount)}
-            </Typography>
-            <Typography variant="body2">
-              lawsuits from {formatMonthYear(dateRange[0])} to{" "}
-              {formatMonthYear(dateRange[1])}
-            </Typography>
-          </Box>
-          <Box className={classes.stat}>
-            <Typography color="primary" variant="numberSecondary">
-              {formatPercent(percentWithoutRep)}
-            </Typography>
-            <Typography variant="body2">
-              of defendants did not have legal representation
-            </Typography>
-          </Box>
-          <Box className={classes.stat}>
-            <Typography color="primary" variant="numberSecondary">
-              {formatPercent(percentDefault)}
-            </Typography>
-            <Typography variant="body2">
-              of lawsuits resulted in default judgments
-            </Typography>
-          </Box>
+          {content.STATS.map((stat) => {
+            const format = FORMATTERS[stat.id];
+            const value = format(data[stat.id]);
+            return (
+              <Box key={stat.id} className={classes.stat}>
+                <Typography color="primary" variant="numberSecondary">
+                  {value}
+                </Typography>
+                <Typography variant="body2">
+                  {Mustache.render(stat.description, context)}
+                </Typography>
+              </Box>
+            );
+          })}
         </Box>
         <Divider className={classes.divider} />
       </Box>

@@ -3,7 +3,8 @@ import Typography from "../../components/typography";
 import { Box, Button, ButtonGroup, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import LineChart from "../charts/line-chart";
-import { formatPercent } from "../utils";
+import { formatInt, formatPercent } from "../utils";
+import Mustache from "mustache";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
@@ -28,28 +29,27 @@ const SectionBlock = withStyles((theme) => ({
   },
 }))(TwoColBlock);
 
-const getChartTitle = (metric) => {
+const getChartTitle = (metric, content) => {
   switch (metric) {
     case "lawsuits":
-      return "Number of Lawsuits by Neighborhood Racial Majority";
+      return content["COUNT_CHART_TITLE"];
     case "proportionalCountDiff":
-      return "Difference from Expected Number of Lawsuits Based on Neighborhood Proportions";
+      return content["PROPORTION_CHART_TITLE"];
     default:
       return "";
   }
 };
 
-const getOptionOverrides = (metric) => {
+const getOptionOverrides = (metric, content) => {
   switch (metric) {
     case "lawsuits":
       return {
-        valueTemplate: "{{yValue}} lawsuits in {{xValue}}",
+        valueTemplate: content["COUNT_CHART_TOOLTIP"],
         xTooltipFormat: "%B %Y",
       };
     case "proportionalCountDiff":
       return {
-        valueTemplate:
-          "Difference of {{yValue}} lawsuits from the expected value based on neighborhood proportions in {{xValue}}",
+        valueTemplate: content["PROPORTION_CHART_TOOLTIP"],
         xTooltipFormat: "%B %Y",
       };
     default:
@@ -61,16 +61,16 @@ const shapeChartData = (data, metric) => {
   return data.map((d) => ({ ...d, y: d.data[metric] }));
 };
 
-const DemographicChart = ({ data }) => {
+const DemographicChart = ({ data, content }) => {
   const [metric, setMetric] = useState("proportionalCountDiff");
-  const chartData = shapeChartData(data, metric);
-  const chartOptions = getOptionOverrides(metric);
+  const chartData = shapeChartData(data, metric, content);
+  const chartOptions = getOptionOverrides(metric, content);
   return (
     <>
       <Box display="flex" justifyContent="space-between" mt={2} mb={1}>
         <Box ml={5}>
           <Typography variant="h6" component="h4">
-            {getChartTitle(metric)}
+            {getChartTitle(metric, content)}
           </Typography>
         </Box>
       </Box>
@@ -135,19 +135,27 @@ const DemographicChart = ({ data }) => {
 };
 
 const DemographicChartSection = ({
-  title,
-  description,
+  content,
   data: { chartData, tractCountByMajority, totalLawsuits },
   children,
   ...props
 }) => {
+  const context = {
+    totalLawsuits,
+  };
   const leftContent = (
     <>
       <Typography variant="sectionTitle" component="h3">
-        {title}
+        {content.TITLE}
       </Typography>
-      {description && <Typography paragraph>{description}</Typography>}
-      <Typography weight="bold">Neighborhoods by Racial Majority</Typography>
+      {content.DESCRIPTION && (
+        <Typography paragraph>
+          {Mustache.render(content.DESCRIPTION, context)}
+        </Typography>
+      )}
+      <Typography component="h4" variant="h5">
+        {content.BREAKDOWN_TITLE}
+      </Typography>
       <ul style={{ paddingLeft: 16 }}>
         {tractCountByMajority.map(
           ({
@@ -159,8 +167,13 @@ const DemographicChartSection = ({
           }) => (
             <li key={group}>
               <Typography>
-                {group}: {formatPercent(tractPercent)} of neighborhoods,{" "}
-                {formatPercent(lawsuitPercent)} of lawsuits
+                {Mustache.render(content["BREAKDOWN_LABEL"], {
+                  group,
+                  groupPercent: formatPercent(tractPercent),
+                  lawsuitPercent: formatPercent(lawsuitPercent),
+                  groupCount: formatInt(tractCount),
+                  lawsuitCount: formatInt(lawsuitCount),
+                })}
               </Typography>
             </li>
           )
@@ -172,7 +185,7 @@ const DemographicChartSection = ({
   return (
     <SectionBlock
       left={leftContent}
-      right={<DemographicChart data={chartData} />}
+      right={<DemographicChart data={chartData} content={content} />}
       {...props}
     />
   );

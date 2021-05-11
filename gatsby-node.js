@@ -16,6 +16,7 @@ function getCounties(data) {
   return counties.map((c) => ({
     ...c,
     state: getStateNameForFips(c.geoid),
+    region: "tracts",
     tracts: data.filter(
       (d) => d.geoid.length > 5 && d.geoid.indexOf(c.geoid) === 0
     ),

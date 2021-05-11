@@ -5,7 +5,11 @@ import "@reach/skip-nav/styles.css";
 const Layout = ({ children, ...props }) => {
   return (
     <BaseLayout {...props}>
-      <Helmet>
+      <Helmet
+        htmlAttributes={{
+          lang: props.frontmatter?.lang || "en",
+        }}
+      >
         <link
           rel="stylesheet"
           type="text/css"

@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Callout from "../components/sections/callout";
-import { Typography, withStyles } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 import { FONTS } from "../theme";
 const styles = (theme) => ({
   root: {

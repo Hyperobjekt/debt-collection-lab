@@ -97,7 +97,7 @@ const Footer = ({ classes, className, children, pageContext, ...props }) => {
   return (
     <BaseFooter className={clsx(classes.root, className)}>
       <Container className={classes.row1}>
-        <Typography className={classes.phrase} variant="h4">
+        <Typography className={classes.phrase} component="p" variant="h4">
           We make visible the practices and indignities long shielded from the
           light.
         </Typography>

@@ -1,31 +1,6 @@
 import React from "react";
-import Layout from "../../../gatsby-theme-hypersite/layout";
 import { graphql } from "gatsby";
-import {
-  LocationHero,
-  LawsuitsChartSection,
-  LawsuitsMapSection,
-  DebtCollectorsSection,
-  DemographicChartSection,
-  TableSection,
-} from "../../sections";
-import {
-  getDemographicChartData,
-  getLawsuitChartData,
-  getLawsuitMapData,
-  getLocationHeroData,
-  getTopCollectorsData,
-  getTrackerUrl,
-} from "../../utils";
-
-const getSingularRegion = (region, casing) => {
-  const regions = {
-    states: "State",
-    counties: "County",
-    zips: "Zip Code",
-  };
-  return casing === "lower" ? regions[region].toLowerCase() : regions[region];
-};
+import SubpageLayout from "../subpage";
 
 export default function TrackerCountyLayout({
   children,
@@ -35,46 +10,68 @@ export default function TrackerCountyLayout({
   const data = props.data.allStates.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
   const demographics = props.data.allDemographics.nodes;
-
-  const region = data.region;
-  const subRegions = data.region === "zips" ? data.zips : data.counties;
+  const content = props.data.allLawsuitTrackerJson.nodes[0];
+  const meta = pageContext.frontmatter.meta;
   return (
-    <Layout meta={pageContext.frontmatter.meta} {...props}>
-      <LocationHero {...getLocationHeroData(data)} />
-      <DebtCollectorsSection
-        title="Top Debt Collectors"
-        data={getTopCollectorsData(data)}
-      />
-      <LawsuitsChartSection
-        title="Debt Collection Lawsuits By Year"
-        data={getLawsuitChartData(data)}
-      />
-      <LawsuitsMapSection
-        title="Geography of Debt Collection Lawsuits"
-        description={`${data.name} is split into ${subRegions.length} ${region}.  On the map you can see the number of lawsuits corresponding to each census tract.`}
-        data={getLawsuitMapData(data, geojson, region)}
-      />
-      <TableSection
-        title={`Overview of Lawsuits by ${getSingularRegion(region)}`}
-        description={`The table to the right shows data for the ${subRegions.length} ${region} in ${data.name}.  Use the search below to find a specific county.`}
-        views={[region]}
-        data={[data]}
-      />
-      {region === "zips" > 0 && (
-        <DemographicChartSection
-          title="Debt Collection Lawsuits by Neighborhood Demographics"
-          description="Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority."
-          data={getDemographicChartData(data, demographics, region)}
-        />
-      )}
-      {children}
-      {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
-    </Layout>
+    <SubpageLayout
+      type="state"
+      {...{ meta, data, geojson, demographics, content }}
+    />
   );
 }
 
 export const query = graphql`
   query first($geoid: String!, $state: String!, $region: String!) {
+    allLawsuitTrackerJson {
+      nodes {
+        state {
+          hero {
+            STATS {
+              id
+              description
+            }
+          }
+          collectors {
+            TITLE
+            DESCRIPTION
+          }
+          lawsuits {
+            TITLE
+            DESCRIPTION
+          }
+          map {
+            TITLE
+            DESCRIPTION
+            LABEL
+          }
+          table {
+            TITLE
+            DESCRIPTION
+          }
+          demographics {
+            TITLE
+            DESCRIPTION
+            BREAKDOWN_TITLE
+            BREAKDOWN_LABEL
+            COUNT_CHART_TITLE
+            COUNT_CHART_TOOLTIP
+            PROPORTION_CHART_TITLE
+            PROPORTION_CHART_TOOLTIP
+          }
+        }
+        table {
+          LAST_UPDATED
+          TOP_LIMIT
+          NORTH_DAKOTA_NOTE
+          TEXAS_NOTE
+          COUNTIES_NOTE
+          ZIPS_NOTE
+          STATES_NOTE
+          NO_RESULTS
+          REPORT_LINK
+        }
+      }
+    }
     allGeojsonJson(filter: { name: { eq: $state }, region: { eq: $region } }) {
       nodes {
         features {

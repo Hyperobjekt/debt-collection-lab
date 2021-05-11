@@ -13,7 +13,22 @@ import { useTable, useExpanded } from "react-table";
 import Typography from "../../components/typography";
 import { getTrackerUrl } from "../utils";
 
-const getAdditionalRowContent = (view, currentRow, prevParentRow, nextRow) => {
+/**
+ * Returns if an additional row with additional content should be added
+ * based on the view, current row, next row, and parent row.
+ * @param {*} view
+ * @param {*} currentRow
+ * @param {*} prevParentRow
+ * @param {*} nextRow
+ * @returns
+ */
+const getAdditionalRowContent = (
+  view,
+  currentRow,
+  prevParentRow,
+  nextRow,
+  content
+) => {
   const isNested = view === "nested";
   const isNextTopLevel = !nextRow || nextRow.depth === 0; // next row is top level or end of table
   const isParentTexas = prevParentRow?.name === "Texas";
@@ -21,41 +36,46 @@ const getAdditionalRowContent = (view, currentRow, prevParentRow, nextRow) => {
   const pastLimitThreshold = prevParentRow?.subRows?.length > 5;
   // show note after Harris county
   if (isNested && isNextTopLevel && isParentTexas) {
+    const parts = content["TEXAS_NOTE"].split("{{page}}");
     return (
       <Typography variant="caption">
-        State level data is unavailable for Texas, only the{" "}
-        <Link
-          component={GatsbyLink}
-          to={getTrackerUrl({ name: "Harris County", state: "Texas" })}
-        >
-          Harris county report
-        </Link>{" "}
-        is available.
+        {parts[0]}
+        {parts.length > 1 && (
+          <Link
+            component={GatsbyLink}
+            to={getTrackerUrl({ name: "Harris County", state: "Texas" })}
+          >
+            Harris county report
+          </Link>
+        )}
+        {parts[1]}
       </Typography>
     );
   }
   if (isNested && isNextTopLevel && isNorthDakota) {
+    const parts = content["NORTH_DAKOTA_NOTE"].split("{{page}}");
     return (
       <Typography variant="caption">
-        County level data is unavailable for North Dakota, go to the{" "}
+        {parts[0]}
         <Link
           component={GatsbyLink}
           to={getTrackerUrl({ name: "North Dakota" })}
         >
           state report
         </Link>{" "}
-        to view debt collection by zip code region.
+        {parts[1]}
       </Typography>
     );
   }
   if (isNested && isNextTopLevel && pastLimitThreshold) {
+    const parts = content["TOP_LIMIT"].split("{{page}}");
     return (
       <Typography variant="caption">
-        Top 5 counties shown above, go to the{" "}
+        {parts[0]}
         <Link component={GatsbyLink} to={getTrackerUrl(prevParentRow)}>
           {prevParentRow.name} report
         </Link>{" "}
-        to see all counties.
+        {parts[1]}
       </Typography>
     );
   }
@@ -115,7 +135,13 @@ const TableContainer = withStyles((theme) => ({
   },
 }))(MuiTableContainer);
 
-export default function Table({ columns: userColumns, data, className, view }) {
+export default function Table({
+  columns: userColumns,
+  data,
+  className,
+  view,
+  content,
+}) {
   const {
     getTableProps,
     getTableBodyProps,
@@ -129,6 +155,10 @@ export default function Table({ columns: userColumns, data, className, view }) {
     },
     useExpanded // Use the useExpanded plugin hook
   );
+
+  /** get the note (if any) to append to the table */
+  const noteKey = view.toUpperCase() + "_NOTE";
+  const note = content.hasOwnProperty(noteKey) ? content[noteKey] : null;
 
   let subRowCount = 0;
   const truncatedRows = rows.filter((r) => {
@@ -169,7 +199,8 @@ export default function Table({ columns: userColumns, data, className, view }) {
               view,
               row,
               prevParentRow,
-              nextRow
+              nextRow,
+              content
             );
             // if top level row, set prev parent
             if (row.depth === 0) prevParentRow = row.original;
@@ -200,13 +231,10 @@ export default function Table({ columns: userColumns, data, className, view }) {
               </>
             );
           })}
-          {(view === "counties" || view === "tracts") && (
+          {note && (
             <TableRow className="row--more">
               <TableCell align="center" colSpan="5">
-                <Typography variant="caption">
-                  The top {view} are listed above, use the search to find a
-                  specific location.{" "}
-                </Typography>
+                <Typography variant="caption">{note}</Typography>
               </TableCell>
             </TableRow>
           )}

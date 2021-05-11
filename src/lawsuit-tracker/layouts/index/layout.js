@@ -14,6 +14,7 @@ export default function TrackerIndexLayout({ children, ...props }) {
   const data = props.data.allStates.nodes;
   const { stateCount, countyCount, lawsuitTotal } = getTotals(data);
   const dateRange = getDateRange(data);
+  const content = props.data.allLawsuitTrackerJson.nodes[0];
   return (
     <Layout {...props}>
       <IndexHero
@@ -22,16 +23,18 @@ export default function TrackerIndexLayout({ children, ...props }) {
         lawsuitTotal={intFormat(lawsuitTotal)}
         startDate={monthFormat(dateRange[0])}
         endDate={monthFormat(dateRange[1])}
+        content={content.index.hero}
       />
-      <IndexAbout />
+      <IndexAbout content={content.index.about} />
       <IndexTable
         data={data}
         trendRange={dateRange}
         stateCount={stateCount}
         countyCount={countyCount}
+        lastUpdated={monthFormat(dateRange[1])}
+        content={{ ...content.index.table, ...content.table }}
       />
       {children}
-      {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
     </Layout>
   );
 }
@@ -62,6 +65,39 @@ export const query = graphql`
           lawsuits_date
           name
           no_rep_percent
+        }
+      }
+    }
+    allLawsuitTrackerJson {
+      nodes {
+        index {
+          about {
+            TITLE
+            DESCRIPTION
+            LINKS {
+              name
+              link
+            }
+          }
+          hero {
+            FIRST_LINE
+            SECOND_LINE
+          }
+          table {
+            TITLE
+            DESCRIPTION
+          }
+        }
+        table {
+          LAST_UPDATED
+          TOP_LIMIT
+          NORTH_DAKOTA_NOTE
+          TEXAS_NOTE
+          COUNTIES_NOTE
+          ZIPS_NOTE
+          STATES_NOTE
+          NO_RESULTS
+          REPORT_LINK
         }
       }
     }

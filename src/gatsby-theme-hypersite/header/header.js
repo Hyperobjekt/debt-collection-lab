@@ -34,7 +34,7 @@ export default withStyles((theme) => ({
     transition: theme.transitions.create(["background-color"]),
     backgroundColor: theme.palette.background.alt,
     boxShadow: "none",
-    "& a": {
+    "& a, & button": {
       color: theme.palette.text.primary,
     },
     "&.HypHeader-shrunk": {

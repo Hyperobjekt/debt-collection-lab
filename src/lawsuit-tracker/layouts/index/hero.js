@@ -2,10 +2,11 @@ import React from "react";
 import Typography from "../../../components/typography";
 import { withStyles } from "@material-ui/core";
 import Hero from "../../../components/sections/hero";
+import Mustache from "mustache";
 
 const styles = (theme) => ({
   container: {
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
   smallText: {
     display: "block",
@@ -26,17 +27,15 @@ const IndexHero = ({
   lawsuitTotal,
   startDate,
   endDate,
+  content,
   ...props
 }) => {
+  const context = { stateCount, countyCount, startDate, endDate };
   return (
-    <Hero
-      ContainerProps={{ className: classes.container }}
-      {...props}
-    >
+    <Hero ContainerProps={{ className: classes.container }} {...props}>
       <p>
         <Typography className={classes.smallText} component="span">
-          In the {stateCount} states and {countyCount} counties we track, debt
-          collectors filed
+          {Mustache.render(content.FIRST_LINE, context)}
         </Typography>
         <Typography
           color="primary"
@@ -46,7 +45,7 @@ const IndexHero = ({
           {lawsuitTotal}
         </Typography>
         <Typography className={classes.smallText} component="span">
-          lawsuits from {startDate} to {endDate}.
+          {Mustache.render(content.SECOND_LINE, context)}
         </Typography>
       </p>
     </Hero>

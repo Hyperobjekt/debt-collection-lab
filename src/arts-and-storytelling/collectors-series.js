@@ -107,7 +107,6 @@ const CollectorsSeries = ({
         >
           {images &&
             images.map((tile, i) => {
-              console.log("image", tile);
               return (
                 <GridListTile
                   key={i}

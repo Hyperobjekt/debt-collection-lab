@@ -166,6 +166,16 @@ export const getDateRange = (data) => {
   return [startDate, endDate];
 };
 
+export const getSingularRegion = (region, casing) => {
+  const regions = {
+    states: "State",
+    counties: "County",
+    tracts: "Census Tract",
+    zips: "Zip Code",
+  };
+  return casing === "lower" ? regions[region].toLowerCase() : regions[region];
+};
+
 export const getTotals = (data) => {
   // number of states in the data
   const stateCount = data.length;
@@ -185,9 +195,10 @@ export const getTotals = (data) => {
 export const getLocationHeroData = (data) => {
   return {
     name: data.name,
-    totalCount: data.lawsuits,
-    percentWithoutRep: data.no_rep_percent,
-    percentDefault: data.default_judgement / data.lawsuits,
+    lawsuits: data.lawsuits,
+    no_rep_percent: data.no_rep_percent,
+    default_judgement: data.default_judgement,
+    default_judgement_percent: data.default_judgement / data.lawsuits,
     dateRange: getDateRange([data]),
   };
 };
@@ -247,6 +258,7 @@ export const getLawsuitChartData = (data) => {
 
 export const getLawsuitMapData = (data, geojson, region) => {
   const childData = data[region];
+  const dates = getDateRange([data]);
   const features = geojson.features
     .map((f) => {
       const match = childData.find((d) => d.geoid === f.properties.GEOID);
@@ -261,7 +273,16 @@ export const getLawsuitMapData = (data, geojson, region) => {
         : null;
     })
     .filter((v) => !!v);
-  return { type: "FeatureCollection", features };
+  const featureCollection = { type: "FeatureCollection", features };
+  return {
+    geojson: featureCollection,
+    name: data.name,
+    region: region,
+    featureCount: featureCollection.features.length,
+    singularRegion: getSingularRegion(region),
+    startDate: dates[0],
+    endDate: dates[1],
+  };
 };
 
 const joinDemographicsWithData = (data, demographics, region) => {

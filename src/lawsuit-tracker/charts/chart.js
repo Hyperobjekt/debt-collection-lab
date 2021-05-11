@@ -239,6 +239,7 @@ const Chart = ({
       chartRef.current = chart(elRef.current, data, mergedOptions);
       updateLabels(chartRef.current);
     }
+    // eslint-disable-next-line
   }, []);
 
   return (
