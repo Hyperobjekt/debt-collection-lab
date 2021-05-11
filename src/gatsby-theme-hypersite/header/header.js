@@ -18,6 +18,7 @@ function DclHeader({ classes, ...props }) {
       className={clsx({ [classes.light]: isHome })}
       classes={headerClasses}
       height={64}
+      stickyOffset={500}
       shrink={64}
       shrinkOffset={500}
       {...props}
@@ -28,20 +29,34 @@ function DclHeader({ classes, ...props }) {
 export default withStyles((theme) => ({
   root: {
     boxShadow: "none",
-    background: theme.palette.background.dark,
+    background: "transparent",
+    position: "absolute",
+    transition: theme.transitions.create(["background-color", "transform"]),
+    transform: `translateY(0px)`,
+  },
+  stuck: {
+    position: "fixed",
+    top: -64,
+    transform: `translateY(64px)`,
+    backgroundColor: theme.palette.background.dark,
+    "& + .HypHeader-offset": {
+      minHeight: `none!important`,
+    },
   },
   light: {
-    transition: theme.transitions.create(["background-color"]),
-    backgroundColor: theme.palette.background.alt,
     boxShadow: "none",
     "& a, & button": {
       color: theme.palette.text.primary,
     },
     "&.HypHeader-shrunk": {
       background: theme.palette.background.dark,
-      "& a": {
+      "& a, & button": {
         color: "#fff",
       },
+    },
+    offset: {
+      minHeight: 0,
+      // marginBottom: -64,
     },
   },
 }))(DclHeader);

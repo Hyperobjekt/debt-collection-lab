@@ -8,6 +8,7 @@ export default withStyles((theme) => ({
     width: "100%",
     color: theme.palette.grey[400],
     padding: 0,
+    top: 64,
   },
   container: {},
   depth0: {},

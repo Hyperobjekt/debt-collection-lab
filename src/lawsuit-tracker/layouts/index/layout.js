@@ -6,6 +6,7 @@ import IndexTable from "./table";
 import IndexHero from "./hero";
 import IndexAbout from "./about";
 import { getDateRange, getTotals } from "../../utils";
+import { getImage } from "gatsby-plugin-image";
 
 const intFormat = d3.format(",d");
 const monthFormat = d3.timeFormat("%B %Y");
@@ -15,6 +16,8 @@ export default function TrackerIndexLayout({ children, ...props }) {
   const { stateCount, countyCount, lawsuitTotal } = getTotals(data);
   const dateRange = getDateRange(data);
   const content = props.data.allLawsuitTrackerJson.nodes[0];
+  const image = getImage(props.data.allFile.nodes[0]);
+  console.log({ image });
   return (
     <Layout {...props}>
       <IndexHero
@@ -24,6 +27,7 @@ export default function TrackerIndexLayout({ children, ...props }) {
         startDate={monthFormat(dateRange[0])}
         endDate={monthFormat(dateRange[1])}
         content={content.index.hero}
+        image={image}
       />
       <IndexAbout content={content.index.about} />
       <IndexTable
@@ -41,6 +45,13 @@ export default function TrackerIndexLayout({ children, ...props }) {
 
 export const query = graphql`
   {
+    allFile(filter: { name: { eq: "tracker-hero" } }) {
+      nodes {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+        }
+      }
+    }
     allStates {
       nodes {
         geoid

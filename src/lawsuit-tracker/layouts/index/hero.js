@@ -3,6 +3,7 @@ import Typography from "../../../components/typography";
 import { withStyles } from "@material-ui/core";
 import Hero from "../../../components/sections/hero";
 import Mustache from "mustache";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const styles = (theme) => ({
   container: {
@@ -28,11 +29,18 @@ const IndexHero = ({
   startDate,
   endDate,
   content,
+  image,
   ...props
 }) => {
   const context = { stateCount, countyCount, startDate, endDate };
   return (
-    <Hero ContainerProps={{ className: classes.container }} {...props}>
+    <Hero
+      variant="overlay"
+      image={<GatsbyImage width="100%" alt="court room" image={image} />}
+      ContainerProps={{ className: classes.container }}
+      gradient="linear-gradient(90deg, #000, transparent)"
+      {...props}
+    >
       <p>
         <Typography className={classes.smallText} component="span">
           {Mustache.render(content.FIRST_LINE, context)}
