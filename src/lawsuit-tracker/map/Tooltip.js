@@ -11,7 +11,7 @@ const styles = (theme) => ({
     color: "#fff",
     padding: theme.spacing(2),
     transition: "opacity 0.2s ease-in-out",
-    transform: "translate(-50%, calc(-100% - 16px))",
+    transform: "translate(-50%, calc(-100% - 32px))",
     zIndex: 999,
     minWidth: 200,
   },

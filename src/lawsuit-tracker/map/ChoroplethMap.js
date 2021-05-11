@@ -91,11 +91,19 @@ const ChoroplethMap = ({
             const color = d3.color(colorScale(f.properties.value));
             return [color.r, color.g, color.b];
           },
-          getLineColor: [0, 0, 0, 100],
-          getLineWidth: (d) => (d.properties.selected ? 500 : 1),
+          getLineColor: (f) => {
+            const color = d3
+              .color(colorScale(f.properties.value))
+              .darker(f.properties.selected ? 1 : 0.2);
+            return [color.r, color.g, color.b];
+          },
+          getLineWidth: (f) => (f.properties.selected ? 3 : 1),
+          lineWidthUnits: "pixels",
+          lineWidthMinPixels: 1,
           pickable: true,
           updateTriggers: {
             getLineWidth: selected,
+            getLineColor: selected,
           },
           onHover: handleHover,
         }),
