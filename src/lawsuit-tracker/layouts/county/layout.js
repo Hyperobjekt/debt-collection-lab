@@ -16,6 +16,8 @@ import {
   getLocationHeroData,
   getDemographicChartData,
   getLawsuitMapData,
+  formatPercent,
+  formatInt,
 } from "../../utils";
 
 export default function TrackerCountyLayout({
@@ -31,9 +33,9 @@ export default function TrackerCountyLayout({
     return (
       <div className={classes.tooltip} style={{top: selected.event.offsetCenter.y, left: selected.event.offsetCenter.x, }}>
           <h1 className={classes.title}>{ selected.info.properties.name }</h1>
-          <div className={classes.item}>{ selected.info.properties.value } lawsuits</div>
+          <div className={classes.item}>{ formatInt(selected.info.properties.value) } lawsuits</div>
           {Object.keys(selected.info.properties.demographics).map((l) => (
-              <div className={classes.item}>{ `${selected.info.properties.demographics[l].value} ${selected.info.properties.demographics[l].label}` }</div>
+              <div className={classes.item}>{ `${formatPercent(selected.info.properties.demographics[l].value)} ${selected.info.properties.demographics[l].label}` }</div>
           ))}
       </div>
     )
@@ -53,7 +55,7 @@ export default function TrackerCountyLayout({
       <LawsuitsMapSection
         title="Geography of Debt Collection Lawsuits"
         description={`${data.name} is split into ${data.tracts.length} census tracts.  On the map you can see the number of lawsuits corresponding to each census tract.`}
-        data={getLawsuitMapData(data, geojson, "tracts")}
+        data={getLawsuitMapData(data, geojson, "tracts", demographics)}
         tooltip={Tooltip}
       />
       <TableSection

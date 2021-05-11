@@ -260,11 +260,11 @@ export const getLawsuitMapData = (data, geojson, region, demographics) => {
               name: matchLawsuit.name,
               selected: false,
               demographics: matchDemographic ? {
-                pctAsian: {value: formatPercent(matchDemographic.percent_asian), label: 'asian'},
-                pctBlack: {value: formatPercent(matchDemographic.percent_black), label: 'black'},
-                pctLatinx: {value: formatPercent(matchDemographic.percent_latinx), label: 'latinx'},
-                pctWhite: {value: formatPercent(matchDemographic.percent_white), label: 'white'},
-                pctOther: {value: formatPercent(matchDemographic.percent_other), label: 'other'},
+                pctAsian: {value: matchDemographic.percent_asian, label: 'asian'},
+                pctBlack: {value: matchDemographic.percent_black, label: 'black'},
+                pctLatinx: {value: matchDemographic.percent_latinx, label: 'latinx'},
+                pctWhite: {value: matchDemographic.percent_white, label: 'white'},
+                pctOther: {value: matchDemographic.percent_other, label: 'other'},
               }
               :
               {}
