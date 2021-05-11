@@ -29,14 +29,12 @@ export default function TrackerCountyLayout({
 
   const Tooltip = (classes, selected) => {
     return (
-      <div className={classes.tooltip} style={{top: selected.event.offsetCenter.y, left: selected.event.offsetCenter.x, opacity: selected.info ? 0.87 : 0}}>
+      <div className={classes.tooltip} style={{top: selected.event.offsetCenter.y, left: selected.event.offsetCenter.x, }}>
           <h1 className={classes.title}>{ selected.info.properties.name }</h1>
-          <div className={classes.item}>{ selected.info.properties.value} lawsuits</div>
-          <div className={classes.item}>{ selected.info.properties.demographics.pctAsian } asian</div>
-          <div className={classes.item}>{ selected.info.properties.demographics.pctBlack } black</div>
-          <div className={classes.item}>{ selected.info.properties.demographics.pctLatinx } latinx</div>
-          <div className={classes.item}>{ selected.info.properties.demographics.pctWhite } white</div>
-          <div className={classes.item}>{ selected.info.properties.demographics.pctOther } other</div>
+          <div className={classes.item}>{ selected.info.properties.value } lawsuits</div>
+          {Object.keys(selected.info.properties.demographics).map((l) => (
+              <div className={classes.item}>{ `${selected.info.properties.demographics[l].value} ${selected.info.properties.demographics[l].label}` }</div>
+          ))}
       </div>
     )
   }
