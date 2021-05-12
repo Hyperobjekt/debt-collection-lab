@@ -80,6 +80,9 @@ let theme = createMuiTheme({
       alt: COLORS.altBackground,
       footer: COLORS.footerBackground,
     },
+    action: {
+      hover: "rgba(120, 120, 0, 0.05)",
+    },
   },
   spacing,
   shape: { borderRadius: 0 },

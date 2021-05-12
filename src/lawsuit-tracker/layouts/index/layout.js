@@ -2,11 +2,11 @@ import React from "react";
 import Layout from "../../../gatsby-theme-hypersite/layout";
 import { graphql } from "gatsby";
 import * as d3 from "d3";
-import IndexTable from "./table";
 import IndexHero from "./hero";
 import IndexAbout from "./about";
 import { getDateRange, getTotals } from "../../utils";
 import { getImage } from "gatsby-plugin-image";
+import { TableSection } from "../../sections";
 
 const intFormat = d3.format(",d");
 const monthFormat = d3.timeFormat("%B %Y");
@@ -29,12 +29,9 @@ export default function TrackerIndexLayout({ children, ...props }) {
         image={image}
       />
       <IndexAbout content={content.index.about} />
-      <IndexTable
+      <TableSection
+        views={["nested", "states", "counties"]}
         data={data}
-        trendRange={dateRange}
-        stateCount={stateCount}
-        countyCount={countyCount}
-        lastUpdated={monthFormat(dateRange[1])}
         content={{ ...content.index.table, ...content.table }}
       />
       {children}

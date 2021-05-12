@@ -6,12 +6,14 @@ import {
   TableRow,
   TableCell,
   withStyles,
+  darken,
 } from "@material-ui/core";
 import { GatsbyLink, Link } from "gatsby-material-ui-components";
 import React from "react";
 import { useTable, useExpanded } from "react-table";
 import Typography from "../../components/typography";
 import { getTrackerUrl } from "../utils";
+import { navigate } from "gatsby";
 
 /**
  * Returns if an additional row with additional content should be added
@@ -114,15 +116,21 @@ const TableContainer = withStyles((theme) => ({
         height: 56,
         fontSize: theme.typography.pxToRem(16),
       },
+      "&:hover": {
+        backgroundColor: darken(theme.palette.background.alt, 0.05),
+      },
     },
     // row hover states
-    "& .MuiTableRow-root": {
+    "& .MuiTableRow-root.row--1, .MuiTableRow-root.row--0": {
       transition: theme.transitions.create(["background-color"], {
         duration: theme.transitions.duration.short,
       }),
-      backgroundColor: "rgba(0,0,0,0)",
       "&:hover": {
-        backgroundColor: "rgba(0,0,0,0.025)",
+        backgroundColor: theme.palette.action.hover,
+        cursor: "pointer",
+        "& .MuiButton-text": {
+          textDecoration: "underline",
+        },
       },
     },
     // indent nested rows
@@ -136,6 +144,10 @@ const TableContainer = withStyles((theme) => ({
   },
 }))(MuiTableContainer);
 
+/**
+ * Component that renders the actual table, based on columns, data,
+ * and the current view
+ */
 export default function Table({
   columns: userColumns,
   data,
@@ -161,6 +173,7 @@ export default function Table({
   const noteKey = view.toUpperCase() + "_NOTE";
   const note = content.hasOwnProperty(noteKey) ? content[noteKey] : null;
 
+  /** limit rows for nested view, so only 5 rows appear below parent */
   let subRowCount = 0;
   const truncatedRows = rows.filter((r) => {
     if (r.depth === 0) {
@@ -171,7 +184,15 @@ export default function Table({
     return true;
   });
 
+  /** used to track the parent row when rendering the table */
   let prevParentRow = null;
+
+  const handleRowClick = (row) => {
+    // do nothing when a tract / zip row is clicked
+    if (row.original.geoid.length > 5 || row.original.name.indexOf("Zip") > -1)
+      return;
+    navigate(getTrackerUrl(row.original));
+  };
 
   return (
     <TableContainer>
@@ -210,6 +231,7 @@ export default function Table({
                 <TableRow
                   className={`row row--${row.depth}`}
                   {...row.getRowProps()}
+                  onClick={() => handleRowClick(row)}
                 >
                   {row.cells.map((cell) => {
                     return (
