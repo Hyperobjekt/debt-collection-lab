@@ -12,16 +12,24 @@ export default function TrackerCountyLayout({
   const demographics = props.data.allDemographics.nodes;
   const content = props.data.allLawsuitTrackerJson.nodes[0];
   const meta = pageContext.frontmatter.meta;
+  const image = props.data.allFile.nodes[0];
   return (
     <SubpageLayout
       type="county"
-      {...{ meta, data, geojson, demographics, content }}
+      {...{ meta, data, geojson, image, demographics, content }}
     />
   );
 }
 
 export const query = graphql`
   query($geoid: String!, $state: String!) {
+    allFile(filter: { name: { eq: "location-hero" } }) {
+      nodes {
+        childImageSharp {
+          gatsbyImageData(layout: FIXED, width: 350)
+        }
+      }
+    }
     allLawsuitTrackerJson {
       nodes {
         county {

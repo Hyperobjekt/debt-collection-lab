@@ -111,6 +111,7 @@ const TableContainer = withStyles((theme) => ({
       background: theme.palette.background.alt,
       "& .MuiTableCell-root": {
         fontWeight: 500,
+        height: 56,
         fontSize: theme.typography.pxToRem(16),
       },
     },

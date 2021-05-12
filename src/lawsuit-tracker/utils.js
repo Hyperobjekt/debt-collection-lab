@@ -317,6 +317,7 @@ export const getLawsuitMapData = (data, geojson, region, demographics) => {
 };
 
 const joinDemographicsWithData = (data, demographics, region) => {
+  // console.log("joinDemographicsWithData", { data, demographics, region });
   return demographics
     .map((dem) => {
       const match = data[region].find((tract) => tract.geoid === dem.geoid);
@@ -419,6 +420,7 @@ export const getDemographicChartData = (
     .sort((a, b) => a.group.localeCompare(b.group))
     .sort((a, b) => a.x - b.x);
 
+  // console.log("getDemographicChartData", { chart, data, counts, joined });
   return {
     chartData: chart,
     tractCountByMajority: counts,

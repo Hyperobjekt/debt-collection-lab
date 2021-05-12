@@ -15,8 +15,13 @@ const SectionBlock = withStyles((theme) => ({
 const useChartStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    [theme.breakpoints.up("sm")]: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+    },
     "& .chart__body": {
       flex: 0,
     },

@@ -1,5 +1,6 @@
 import * as d3 from "d3";
 import { voronoi } from "d3-voronoi";
+import Mustache from "mustache";
 
 const DEFAULT_COLORS = ["#333", "#555", "#777", "#999"];
 
@@ -1217,9 +1218,9 @@ Chart.prototype.addLegend = function (items) {
  * @param {*} overrides
  * @returns
  */
-Chart.prototype.addVoronoi = function (overrides) {
+Chart.prototype.addVoronoi = function (overrides = {}) {
   var _this = this;
-  var options = overrides || {};
+  var options = { ..._this.options, ...overrides };
   options.xSelector =
     options.xSelector ||
     function (d) {
@@ -1229,11 +1230,6 @@ Chart.prototype.addVoronoi = function (overrides) {
     options.ySelector ||
     function (d) {
       return d.y;
-    };
-  options.renderTooltip =
-    options.renderTooltip ||
-    function (data) {
-      return data;
     };
   this.voronoi = voronoi()
     .x(function (d) {
@@ -1251,6 +1247,33 @@ Chart.prototype.addVoronoi = function (overrides) {
   }
   function createRenderer(selection, chart) {
     return function () {
+      function renderTooltip(hoverData) {
+        var yFormat = d3.format(
+          chart.options.yTooltipFormat || options.yFormat || ",d"
+        );
+        var xFormat = d3.timeFormat(
+          chart.options.xTooltipFormat || options.xFormat || ",d"
+        );
+        function getDefaultTooltip() {
+          return {
+            title: hoverData.group,
+            xValue: xFormat(options.xSelector(hoverData)),
+            yValue: yFormat(options.ySelector(hoverData)),
+          };
+        }
+        const data = getDefaultTooltip();
+
+        const valueTemplate =
+          chart.options.valueTemplate ||
+          "<span>{{xValue}}:</span> <span>{{yValue}}</span>";
+
+        const tooltipTemplate =
+          '<h1 class="tooltip__title">{{title}}</h1>' +
+          '<div class="tooltip__item">' +
+          valueTemplate +
+          "</div>";
+        return Mustache.render(tooltipTemplate, data);
+      }
       chart.voronoi
         .x(function (d) {
           return _this.xScale(options.xSelector(d));
@@ -1277,7 +1300,7 @@ Chart.prototype.addVoronoi = function (overrides) {
             .getSelection("root")
             .select("path[data-id='" + d.data.name + "']")
             .classed("chart__line--hovered", true);
-          chart.showTooltip(event, options.renderTooltip);
+          chart.showTooltip(event, renderTooltip);
           var renderLine = chart.getRenderer("hoverLine");
           renderLine && renderLine();
           var renderDot = chart.getRenderer("hoverDot");
@@ -1343,7 +1366,7 @@ Chart.prototype.addDonut = function (overrides) {
       .on("mouseout", function (event, d) {
         chart.setHovered(null);
         options.renderTooltip && chart.hideTooltip();
-      })
+      });
 
     arcEnter
       .transition()

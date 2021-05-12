@@ -11,13 +11,13 @@ const SectionBlock = withStyles((theme) => ({
     background: theme.palette.background.alt,
     "& .legend": {
       justifyContent: "flex-start",
+      paddingLeft: theme.spacing(6),
+      flexWrap: "wrap",
     },
     "& .legend .legend__item": {
       flex: 0,
-      marginLeft: theme.spacing(3),
-      "&:first-child": {
-        marginLeft: theme.spacing(6),
-      },
+      marginRight: theme.spacing(3),
+      marginBottom: theme.spacing(1),
     },
     "& .legend .legend__label": {
       lineHeight: 1,
@@ -65,6 +65,7 @@ const DemographicChart = ({ data, content }) => {
   const [metric, setMetric] = useState("proportionalCountDiff");
   const chartData = shapeChartData(data, metric, content);
   const chartOptions = getOptionOverrides(metric, content);
+  console.log({ chartOptions });
   return (
     <>
       <Box display="flex" justifyContent="space-between" mt={2} mb={1}>

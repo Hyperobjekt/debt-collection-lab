@@ -249,11 +249,14 @@ const TableSection = ({
             id: "report",
             Header: "",
             cellProps: { style: { minWidth: 120 } },
-            Cell: ({ row }) => (
-              <Button component={GatsbyLink} to={getTrackerUrl(row.original)}>
-                View Report
-              </Button>
-            ),
+            Cell: ({ row }) =>
+              row.original.name !== "Texas" ? (
+                <Button component={GatsbyLink} to={getTrackerUrl(row.original)}>
+                  View Report
+                </Button>
+              ) : (
+                "-"
+              ),
           }
         : null,
     ].filter((v) => !!v && cols.indexOf(v.id) > -1);

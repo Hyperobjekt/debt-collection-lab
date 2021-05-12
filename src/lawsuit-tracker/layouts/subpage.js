@@ -19,6 +19,7 @@ import {
 export default function SubpageLayout({
   children,
   meta,
+  image,
   type,
   data,
   geojson,
@@ -32,6 +33,7 @@ export default function SubpageLayout({
   return (
     <Layout meta={meta} {...props}>
       <LocationHero
+        image={image}
         content={content[type].hero}
         data={getLocationHeroData(data)}
       ></LocationHero>
@@ -55,7 +57,7 @@ export default function SubpageLayout({
       {hasDemographicChart && (
         <DemographicChartSection
           content={content[type].demographics}
-          data={getDemographicChartData(data, demographics)}
+          data={getDemographicChartData(data, demographics, region)}
         />
       )}
       {children}

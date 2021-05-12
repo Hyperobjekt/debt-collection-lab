@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import SubpageLayout from "../subpage";
 
-export default function TrackerCountyLayout({
+export default function TrackerStateLayout({
   children,
   pageContext,
   ...props
@@ -12,16 +12,24 @@ export default function TrackerCountyLayout({
   const demographics = props.data.allDemographics.nodes;
   const content = props.data.allLawsuitTrackerJson.nodes[0];
   const meta = pageContext.frontmatter.meta;
+  const image = props.data.allFile.nodes[0];
   return (
     <SubpageLayout
       type="state"
-      {...{ meta, data, geojson, demographics, content }}
+      {...{ meta, data, geojson, image, demographics, content }}
     />
   );
 }
 
 export const query = graphql`
   query first($geoid: String!, $state: String!, $region: String!) {
+    allFile(filter: { name: { eq: "location-hero" } }) {
+      nodes {
+        childImageSharp {
+          gatsbyImageData(layout: FIXED, width: 350)
+        }
+      }
+    }
     allLawsuitTrackerJson {
       nodes {
         state {

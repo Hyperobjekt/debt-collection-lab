@@ -10,13 +10,13 @@ const SectionBlock = withStyles((theme) => ({
   root: {
     "& .legend": {
       justifyContent: "flex-start",
+      paddingLeft: theme.spacing(6),
+      flexWrap: "wrap",
     },
     "& .legend .legend__item": {
       flex: 0,
-      marginLeft: theme.spacing(3),
-      "&:first-child": {
-        marginLeft: theme.spacing(6),
-      },
+      marginRight: theme.spacing(3),
+      marginBottom: theme.spacing(1),
     },
     "& .legend .legend__label": {
       lineHeight: 1,
