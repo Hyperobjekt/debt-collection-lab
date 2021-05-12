@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { Typography, Grid, Box } from "@material-ui/core";
+import { Typography, Box } from "@material-ui/core";
 
 const ChartLegend = ({ labels, className, ...props }) => {
   return (

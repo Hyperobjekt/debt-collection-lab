@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "@material-ui/core";
-import { Block, Container, Box } from "@hyperobjekt/material-ui-website";
+import { Button, Box } from "@material-ui/core";
+import { Block, Container } from "@hyperobjekt/material-ui-website";
 import Typography from "./typography";
 import { Callout, CalloutBlock } from "./sections";
 import { FullLawsuitTable } from "../lawsuit-tracker/table";

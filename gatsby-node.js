@@ -16,6 +16,7 @@ function getCounties(data) {
   return counties.map((c) => ({
     ...c,
     state: getStateNameForFips(c.geoid),
+    region: "tracts",
     tracts: data.filter(
       (d) => d.geoid.length > 5 && d.geoid.indexOf(c.geoid) === 0
     ),
@@ -147,8 +148,14 @@ const getParentValue = (geoid) => {
   if (geoid.length === 11) return geoid.slice(0, 5); // county geoid
   // zip codes
   if (geoid.length === 7) return geoid.slice(0, 2); // state geoid
+  // TODO: state zip without prefix, assume north dakota for now, but should have data format changed to include state
+  if (geoid.length === 5) return "38"; // state geoid
   return "";
 };
+
+// HACK: zips should have state prefixed, this prepends ND because it is currently the only state with zips
+// TODO: have Jeff prepend zip GEOIDs with state FIPS
+const getGeoid = (geoid) => (geoid.length === 5 ? "38" + geoid : geoid);
 
 /**
  * Parses a row from the lawsuits csv
@@ -157,7 +164,7 @@ const getParentValue = (geoid) => {
  */
 const demographicParser = (row) => {
   const result = {
-    geoid: row.GEOID,
+    geoid: getGeoid(row.GEOID),
     parentLocation: getParentValue(row.GEOID),
     percent_asian: getNumberValue(row.percent_asian),
     percent_black: getNumberValue(row.percent_black),

@@ -2,23 +2,63 @@ import React from "react";
 import Typography from "../../components/typography";
 import { Box, Divider, withStyles } from "@material-ui/core";
 import { formatInt, formatMonthYear, formatPercent } from "../utils";
-import Hero from "../../components/sections/hero"
+import Hero from "../../components/sections/hero";
+import Mustache from "mustache";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 const styles = (theme) => ({
+  root: {
+    minHeight: 500,
+    [theme.breakpoints.up("lg")]: {
+      minHeight: 600,
+    },
+  },
   container: {
     alignItems: "center",
+    justifyContent: "flex-end",
   },
   content: {
-    maxWidth: 600,
-    marginLeft: "auto",
+    position: "relative",
+    zIndex: 2,
+    flex: 1,
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: "auto",
+      maxWidth: "53.4%",
+      width: "100%",
+      minWidth: 500,
+    },
+  },
+  imageWrapper: {
+    position: "absolute",
+    left: 0,
+    bottom: 16,
+    zIndex: 1,
+    width: 250,
+    [theme.breakpoints.up("md")]: {
+      bottom: 32,
+    },
+    [theme.breakpoints.up("lg")]: {
+      bottom: 64,
+    },
   },
   divider: {
     margin: theme.spacing(3, 0),
   },
+  statsWrapper: {
+    [theme.breakpoints.up("sm")]: {
+      flexDirection: "row",
+    },
+  },
   stat: {
     maxWidth: 160,
     "& + $stat": {
-      marginLeft: theme.spacing(3),
+      marginTop: theme.spacing(2),
+    },
+    [theme.breakpoints.up("sm")]: {
+      "& + $stat": {
+        marginTop: 0,
+        marginLeft: theme.spacing(3),
+      },
     },
     "& .MuiTypography-root:last-child": {
       marginTop: theme.spacing(1),
@@ -28,57 +68,66 @@ const styles = (theme) => ({
   },
 });
 
+const FORMATTERS = {
+  lawsuits: formatInt,
+  no_rep_percent: formatPercent,
+  default_judgement: formatInt,
+  default_judgement_percent: formatPercent,
+};
+
 const LocationHero = ({
   classes,
-  name,
-  totalCount,
-  percentWithoutRep,
-  percentDefault,
-  dateRange,
+  data,
+  image,
+  content,
   children,
   ...props
 }) => {
+  const { name, dateRange } = data;
+  const context = {
+    startDate: formatMonthYear(dateRange[0]),
+    endDate: formatMonthYear(dateRange[1]),
+  };
   return (
     <Hero
+      classes={{
+        root: classes.root,
+        imageWrapper: classes.imageWrapper,
+        content: classes.content,
+      }}
       bgcolor="background.dark"
+      image={
+        <GatsbyImage width="50%" image={getImage(image)} alt="ball and chain" />
+      }
       ContainerProps={{ className: classes.container }}
       {...props}
     >
-      <Box className={classes.content}>
-        <Typography weight="bold" variant="h2">
-          {name}
-        </Typography>
-        <Divider className={classes.divider} />
-        <Box display="flex" flexDirection="row">
-          <Box className={classes.stat}>
-            <Typography color="primary" variant="numberSecondary">
-              {formatInt(totalCount)}
-            </Typography>
-            <Typography variant="body2">
-              lawsuits from {formatMonthYear(dateRange[0])} to{" "}
-              {formatMonthYear(dateRange[1])}
-            </Typography>
-          </Box>
-          <Box className={classes.stat}>
-            <Typography color="primary" variant="numberSecondary">
-              {formatPercent(percentWithoutRep)}
-            </Typography>
-            <Typography variant="body2">
-              of defendants did not have legal representation
-            </Typography>
-          </Box>
-          <Box className={classes.stat}>
-            <Typography color="primary" variant="numberSecondary">
-              {formatPercent(percentDefault)}
-            </Typography>
-            <Typography variant="body2">
-              of lawsuits resulted in default judgments
-            </Typography>
-          </Box>
-        </Box>
-        <Divider className={classes.divider} />
+      <Typography weight="bold" variant="h2">
+        {name}
+      </Typography>
+      <Divider className={classes.divider} />
+      <Box
+        className={classes.statsWrapper}
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+      >
+        {content.STATS.map((stat) => {
+          const format = FORMATTERS[stat.id];
+          const value = format(data[stat.id]);
+          return (
+            <Box key={stat.id} className={classes.stat}>
+              <Typography color="primary" variant="numberSecondary">
+                {value}
+              </Typography>
+              <Typography variant="body2">
+                {Mustache.render(stat.description, context)}
+              </Typography>
+            </Box>
+          );
+        })}
       </Box>
-
+      <Divider className={classes.divider} />
       {children}
     </Hero>
   );

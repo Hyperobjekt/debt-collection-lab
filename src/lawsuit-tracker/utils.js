@@ -166,6 +166,16 @@ export const getDateRange = (data) => {
   return [startDate, endDate];
 };
 
+export const getSingularRegion = (region, casing) => {
+  const regions = {
+    states: "State",
+    counties: "County",
+    tracts: "Census Tract",
+    zips: "Zip Code",
+  };
+  return casing === "lower" ? regions[region].toLowerCase() : regions[region];
+};
+
 export const getTotals = (data) => {
   // number of states in the data
   const stateCount = data.length;
@@ -185,9 +195,10 @@ export const getTotals = (data) => {
 export const getLocationHeroData = (data) => {
   return {
     name: data.name,
-    totalCount: data.lawsuits,
-    percentWithoutRep: data.no_rep_percent,
-    percentDefault: data.default_judgement / data.lawsuits,
+    lawsuits: data.lawsuits,
+    no_rep_percent: data.no_rep_percent,
+    default_judgement: data.default_judgement,
+    default_judgement_percent: data.default_judgement / data.lawsuits,
     dateRange: getDateRange([data]),
   };
 };
@@ -245,26 +256,68 @@ export const getLawsuitChartData = (data) => {
   };
 };
 
-export const getLawsuitMapData = (data, geojson, region) => {
+export const getLawsuitMapData = (data, geojson, region, demographics) => {
   const childData = data[region];
+  const dates = getDateRange([data]);
   const features = geojson.features
     .map((f) => {
-      const match = childData.find((d) => d.geoid === f.properties.GEOID);
-      return match
+      const matchLawsuit = childData.find(
+        (d) => d.geoid === f.properties.GEOID
+      );
+      const matchDemographic = demographics
+        ? demographics.find((d) => d.geoid === f.properties.GEOID)
+        : null;
+      return matchLawsuit
         ? {
             ...f,
             properties: {
               ...f.properties,
-              value: match.lawsuits,
+              value: matchLawsuit.lawsuits,
+              name: matchLawsuit.name,
+              selected: false,
+              demographics: matchDemographic
+                ? {
+                    pctAsian: {
+                      value: matchDemographic.percent_asian,
+                      label: "Asian",
+                    },
+                    pctBlack: {
+                      value: matchDemographic.percent_black,
+                      label: "Black",
+                    },
+                    pctLatinx: {
+                      value: matchDemographic.percent_latinx,
+                      label: "Latinx",
+                    },
+                    pctWhite: {
+                      value: matchDemographic.percent_white,
+                      label: "White",
+                    },
+                    pctOther: {
+                      value: matchDemographic.percent_other,
+                      label: "Other",
+                    },
+                  }
+                : null,
             },
           }
         : null;
     })
     .filter((v) => !!v);
-  return { type: "FeatureCollection", features };
+  const featureCollection = { type: "FeatureCollection", features };
+  return {
+    geojson: featureCollection,
+    name: data.name,
+    region: region,
+    featureCount: featureCollection.features.length,
+    singularRegion: getSingularRegion(region),
+    startDate: dates[0],
+    endDate: dates[1],
+  };
 };
 
 const joinDemographicsWithData = (data, demographics, region) => {
+  // console.log("joinDemographicsWithData", { data, demographics, region });
   return demographics
     .map((dem) => {
       const match = data[region].find((tract) => tract.geoid === dem.geoid);
@@ -367,6 +420,7 @@ export const getDemographicChartData = (
     .sort((a, b) => a.group.localeCompare(b.group))
     .sort((a, b) => a.x - b.x);
 
+  // console.log("getDemographicChartData", { chart, data, counts, joined });
   return {
     chartData: chart,
     tractCountByMajority: counts,

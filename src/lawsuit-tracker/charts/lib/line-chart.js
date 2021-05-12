@@ -1,6 +1,5 @@
 import Chart from "./chart";
 import * as d3 from "d3";
-import Mustache from "mustache";
 
 /**
  * Creates a comparator that brings values provided in `highlighted`
@@ -109,6 +108,8 @@ function createFigure(root, data, options) {
     // add number to highlight class to root
     // $(root).addClass("chart__body--highlight" + highlighted.length);
   }
+  options.xFormat = options.xFormat || xFormat;
+  options.yFormat = options.yFormat || ((d) => d);
   var chart = new Chart(root, data, options);
   return (
     chart
@@ -151,39 +152,7 @@ function createFigure(root, data, options) {
       // renders the chart
       .addHoverLine()
       .addHoverDot()
-      .addVoronoi({
-        renderTooltip: function (hoverData) {
-          var yFormat = d3.format(
-            options.yTooltipFormat || options.yFormat || ",d"
-          );
-          var xFormat = d3.timeFormat(
-            options.xTooltipFormat || options.xFormat || ",d"
-          );
-
-          function getDefaultTooltip() {
-            return {
-              title: hoverData.group,
-              xValue: xFormat(xSelector(hoverData)),
-              yValue: yFormat(ySelector(hoverData)),
-            };
-          }
-
-          const tooltip = getDefaultTooltip();
-
-          const valueTemplate =
-            options.valueTemplate ||
-            "<span>{{xValue}}:</span> <span>{{yValue}}</span>";
-
-          return (
-            '<h1 class="tooltip__title">' +
-            tooltip.title +
-            "</h1>" +
-            '<div class="tooltip__item">' +
-            Mustache.render(valueTemplate, tooltip) +
-            "</div>"
-          );
-        },
-      })
+      .addVoronoi()
       .render()
   );
 }

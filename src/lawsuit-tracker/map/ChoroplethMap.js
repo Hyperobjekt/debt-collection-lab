@@ -1,8 +1,7 @@
 import React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { StaticMap } from "react-map-gl";
-
 import { MapboxLayer } from "@deck.gl/mapbox";
+import { StaticMap, NavigationControl } from "react-map-gl";
 import shallow from "zustand/shallow";
 import DeckGLMap from "./DeckGLMap";
 import { GeoJsonLayer } from "@deck.gl/layers";
@@ -10,13 +9,34 @@ import * as d3 from "d3";
 import bbox from "@turf/bbox";
 import useMapStore from "./hooks/useMapStore";
 import { DEFAULT_VIEWPORT } from "./constants";
+import { _MapContext as MapContext } from "react-map-gl";
+import { formatInt, formatPercent } from "../utils";
+import Tooltip from "./Tooltip";
 
 const MAP_TOKEN =
   "pk.eyJ1IjoiaHlwZXJvYmpla3QiLCJhIjoiY2pzZ3Bnd3piMGV6YTQzbjVqa3Z3dHQxZyJ9.rHobqsY_BjkNbqNQS4DNYw";
 const MAP_STYLE = "mapbox://styles/hyperobjekt/cknuto9c60c0217qgff4tn4kb";
 
+const getTooltipProps = ({ info, event }) => {
+  return {
+    x: event.offsetCenter.x,
+    y: event.offsetCenter.y,
+    title: info.properties.name,
+    subtitle: formatInt(info.properties.value) + " lawsuits",
+    items: info.properties.demographics
+      ? Object.values(info.properties.demographics)
+          .sort((a, b) => b.value - a.value)
+          .map(({ label, value }) => ({
+            label,
+            value: formatPercent(value),
+            raw: value,
+          }))
+      : null,
+  };
+};
+
 const ChoroplethMap = ({
-  // hovered,
+  tooltip,
   colorScale,
   data,
   onHover,
@@ -28,11 +48,15 @@ const ChoroplethMap = ({
   const [glContext, setGLContext] = useState();
   const deckRef = useRef(null);
   const mapRef = useRef(null);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState({ loaded: false, flown: false });
   const [setViewport, flyToBounds] = useMapStore(
     (state) => [state.setViewport, state.flyToBounds],
     shallow
   );
+  const [selected, setSelected] = useState({
+    info: null,
+    event: { offsetCenter: { x: 0, y: 0 } },
+  });
 
   const dataBounds = data ? bbox(data) : null;
   const initialViewport = data
@@ -42,6 +66,18 @@ const ChoroplethMap = ({
         zoom: 6,
       }
     : DEFAULT_VIEWPORT;
+
+  const handleHover = ({ object }, event) => {
+    if (object) {
+      if (selected.info && selected.info !== object) {
+        selected.info.properties.selected = false;
+      }
+      object.properties.selected = true;
+    } else {
+      if (selected) selected.info.properties.selected = false;
+    }
+    setSelected({ info: object, event: event });
+  };
 
   const layers = data
     ? [
@@ -55,8 +91,21 @@ const ChoroplethMap = ({
             const color = d3.color(colorScale(f.properties.value));
             return [color.r, color.g, color.b];
           },
-          getLineColor: [0, 0, 0, 100],
+          getLineColor: (f) => {
+            const color = d3
+              .color(colorScale(f.properties.value))
+              .darker(f.properties.selected ? 1 : 0.2);
+            return [color.r, color.g, color.b];
+          },
+          getLineWidth: (f) => (f.properties.selected ? 3 : 1),
+          lineWidthUnits: "pixels",
+          lineWidthMinPixels: 1,
           pickable: true,
+          updateTriggers: {
+            getLineWidth: selected,
+            getLineColor: selected,
+          },
+          onHover: handleHover,
         }),
       ]
     : [];
@@ -79,13 +128,17 @@ const ChoroplethMap = ({
         layers.forEach((layer) => addNestedLayers(layer));
     };
     addNestedLayers(layers);
-    setLoaded(true);
+    setLoaded({ loaded: true, flown: false });
     // eslint-disable-next-line
   }, []);
 
+  const resetState = () => {
+    setSelected(null);
+  };
+
   // Fly to bounds on load
   useEffect(() => {
-    if (loaded) {
+    if (loaded.loaded && !loaded.flown) {
       const map = mapRef.current.getMap();
       setViewport({
         width: map.getCanvas().offsetWidth,
@@ -96,6 +149,7 @@ const ChoroplethMap = ({
           [dataBounds[0], dataBounds[1]],
           [dataBounds[2], dataBounds[3]],
         ]);
+      setLoaded({ loaded: true, flown: true });
     }
   }, [loaded, flyToBounds, setViewport, dataBounds]);
 
@@ -105,11 +159,25 @@ const ChoroplethMap = ({
       layers={loaded && layers ? layers : []}
       initialViewport={initialViewport}
       onWebGLInitialized={setGLContext}
+      ContextProvider={MapContext.Provider}
+      controller={{ scrollZoom: false, doubleClickZoom: false }}
       glOptions={{
         /* To render vector tile polygons correctly */
         stencil: true,
       }}
+      onMouseLeave={resetState}
     >
+      <div
+        style={{
+          position: "absolute",
+          right: 40,
+          top: "50%",
+          marginTop: -32,
+          zIndex: 1,
+        }}
+      >
+        <NavigationControl />
+      </div>
       <StaticMap
         mapStyle={MAP_STYLE}
         preventStyleDiffing={true}
@@ -118,6 +186,9 @@ const ChoroplethMap = ({
         ref={mapRef}
         onLoad={onMapLoad}
       ></StaticMap>
+      {selected.info && selected.event && (
+        <Tooltip {...getTooltipProps(selected)} />
+      )}
     </DeckGLMap>
   );
 };

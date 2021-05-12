@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Hero } from "@hyperobjekt/material-ui-website";
 import { Typography, withStyles } from "@material-ui/core";
 import { FONTS } from "../theme";

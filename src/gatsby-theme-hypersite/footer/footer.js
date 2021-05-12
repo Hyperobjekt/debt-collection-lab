@@ -53,7 +53,11 @@ const styles = (theme) => ({
       fontSize: theme.typography.pxToRem(46),
     },
   },
-  row2: {},
+  row2: {
+    "& .MuiLink-root": {
+      color: "#f84e31",
+    },
+  },
   row3: {
     background: "#262625",
     position: "absolute",
@@ -72,13 +76,16 @@ const styles = (theme) => ({
     },
   },
   navLink: {
-    marginLeft: theme.spacing(-1),
+    marginLeft: theme.spacing(-2),
     color: "#fff",
     textDecoration: "none",
     textAlign: "center",
     "&:hover, &:focus": {
       textDecoration: "underline",
     },
+  },
+  linkActive: {
+    fontWeight: 700,
   },
   linksWrapper: {
     minWidth: 200,
@@ -97,7 +104,7 @@ const Footer = ({ classes, className, children, pageContext, ...props }) => {
   return (
     <BaseFooter className={clsx(classes.root, className)}>
       <Container className={classes.row1}>
-        <Typography className={classes.phrase} variant="h4">
+        <Typography className={classes.phrase} component="p" variant="h4">
           We make visible the practices and indignities long shielded from the
           light.
         </Typography>
@@ -105,7 +112,7 @@ const Footer = ({ classes, className, children, pageContext, ...props }) => {
           <Logo />
           <Divider />
           <Navigation
-            classes={{ link: classes.navLink }}
+            classes={{ link: classes.navLink, linkActive: classes.linkActive }}
             isGatsbyLink={true}
             LinkComponent={GatsbyLink}
             links={siteMetadata.menuLinks}

@@ -137,11 +137,23 @@ const overrides = {
     },
     contained: {
       boxShadow: "none",
+      "& $primary": {
+        background: "#000",
+      },
+    },
+    containedPrimary: {
+      // accessibility fix: darker to improve contrast
+      backgroundColor: "#DF3416",
     },
     text: {
       fontWeight: 400,
       textTransform: "none",
-      color: theme.palette.primary.main,
+      // accessibility fix: darker to improve contrast
+      color: "#D53215",
+    },
+    textPrimary: {
+      // accessibility fix: darker to improve contrast
+      color: "#D53215",
     },
   },
   MuiDivider: {

@@ -30,6 +30,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./content/lawsuit-tracker`,
+        typeName: `Tracker`,
+      },
+    },
+    {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         typekit: {

@@ -1,4 +1,5 @@
 import Chart from "./chart";
+import { formatInt, formatPercent } from "../../../lawsuit-tracker/utils"
 
 /**
  * Creates the chart and renders
@@ -14,10 +15,11 @@ function createFigure(root, data, options) {
       .addDonut({
         renderTooltip: (data) => {
           return (
-            '<h1 class="tooltip__title">' +
-            data.group +
+            '<h1 class="tooltip__title tooltip__title--donut">' +
+            data.data.group +
             "</h1>" +
-            '<div class="tooltip__item">' +
+            '<div class="tooltip__item tooltip__item--donut">' +
+              formatInt(data.data.lawsuits) + ' lawsuits (' + formatPercent(data.data.value) + ')' +
             "</div>"
           );
         },

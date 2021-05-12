@@ -1,22 +1,6 @@
 import React from "react";
-import Layout from "../../../gatsby-theme-hypersite/layout";
 import { graphql } from "gatsby";
-import {
-  LocationHero,
-  LawsuitsChartSection,
-  LawsuitsMapSection,
-  DebtCollectorsSection,
-  DemographicChartSection,
-  TableSection,
-} from "../../sections";
-import {
-  getTopCollectorsData,
-  getTrackerUrl,
-  getLawsuitChartData,
-  getLocationHeroData,
-  getDemographicChartData,
-  getLawsuitMapData,
-} from "../../utils";
+import SubpageLayout from "../subpage";
 
 export default function TrackerCountyLayout({
   children,
@@ -26,40 +10,76 @@ export default function TrackerCountyLayout({
   const data = props.data.allCounties.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
   const demographics = props.data.allDemographics.nodes;
+  const content = props.data.allLawsuitTrackerJson.nodes[0];
+  const meta = pageContext.frontmatter.meta;
+  const image = props.data.allFile.nodes[0];
   return (
-    <Layout meta={pageContext.frontmatter.meta} {...props}>
-      <LocationHero {...getLocationHeroData(data)}></LocationHero>
-      <DebtCollectorsSection
-        title="Top Debt Collectors"
-        data={getTopCollectorsData(data)}
-      />
-      <LawsuitsChartSection
-        title="Debt Collection Lawsuits By Year"
-        data={getLawsuitChartData(data)}
-      />
-      <LawsuitsMapSection
-        title="Geography of Debt Collection Lawsuits"
-        description={`${data.name} is split into ${data.tracts.length} census tracts.  On the map you can see the number of lawsuits corresponding to each census tract.`}
-        data={getLawsuitMapData(data, geojson, "tracts")}
-      />
-      <TableSection
-        title="Overview of Lawsuits by Census Tract"
-        description={`The table to the right shows data for the ${data.tracts.length} census tracts in ${data.name}.  Use the search below to find a specific tract.`}
-        data={[data]}
-      />
-      <DemographicChartSection
-        title="Debt Collection Lawsuits by Neighborhood Demographics"
-        description="Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority."
-        data={getDemographicChartData(data, demographics)}
-      />
-      {children}
-      {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
-    </Layout>
+    <SubpageLayout
+      type="county"
+      {...{ meta, data, geojson, image, demographics, content }}
+    />
   );
 }
 
 export const query = graphql`
   query($geoid: String!, $state: String!) {
+    allFile(filter: { name: { eq: "location-hero" } }) {
+      nodes {
+        childImageSharp {
+          gatsbyImageData(layout: FIXED, width: 350)
+        }
+      }
+    }
+    allLawsuitTrackerJson {
+      nodes {
+        county {
+          hero {
+            STATS {
+              id
+              description
+            }
+          }
+          collectors {
+            TITLE
+            DESCRIPTION
+          }
+          lawsuits {
+            TITLE
+            DESCRIPTION
+          }
+          map {
+            TITLE
+            DESCRIPTION
+            LABEL
+          }
+          table {
+            TITLE
+            DESCRIPTION
+          }
+          demographics {
+            TITLE
+            DESCRIPTION
+            BREAKDOWN_TITLE
+            BREAKDOWN_LABEL
+            COUNT_CHART_TITLE
+            COUNT_CHART_TOOLTIP
+            PROPORTION_CHART_TITLE
+            PROPORTION_CHART_TOOLTIP
+          }
+        }
+        table {
+          LAST_UPDATED
+          TOP_LIMIT
+          NORTH_DAKOTA_NOTE
+          TEXAS_NOTE
+          COUNTIES_NOTE
+          ZIPS_NOTE
+          STATES_NOTE
+          NO_RESULTS
+          REPORT_LINK
+        }
+      }
+    }
     allGeojsonJson(filter: { name: { eq: $state }, region: { eq: "tracts" } }) {
       nodes {
         features {
@@ -78,6 +98,7 @@ export const query = graphql`
       nodes {
         geoid
         name
+        region
         state
         lawsuits
         lawsuits_date

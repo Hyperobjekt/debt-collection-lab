@@ -8,7 +8,10 @@ const useStyles = makeStyles(() =>
   createStyles({
     "@global": {
       ".hero--about": {
-        paddingBottom: theme.spacing(18),
+        paddingBottom: theme.spacing(21),
+        [theme.breakpoints.up("lg")]: {
+          paddingBottom: theme.spacing(24),
+        },
       },
       ".hero__text, .hero__text > span": {
         ...FONTS.KNOCKOUT.FullMiddleweight,
