@@ -16,9 +16,10 @@ const styles = (theme) => ({
   root: {
     position: "relative",
     flexDirection: "column",
-    padding: theme.spacing(8, 0, 12),
+    padding: theme.spacing(8, 0, 11),
     background: theme.palette.background.footer,
     color: theme.palette.text.light,
+    minHeight: 436,
     "& .MuiDivider-root": {
       width: 40,
       height: 4,
@@ -54,9 +55,7 @@ const styles = (theme) => ({
     },
   },
   row2: {
-    "& .MuiLink-root": {
-      color: "#f84e31",
-    },
+    marginTop: "auto",
   },
   row3: {
     background: "#262625",
@@ -73,6 +72,13 @@ const styles = (theme) => ({
     textAlign: "center",
     [theme.breakpoints.up("sm")]: {
       textAlign: "left",
+    },
+    "& .MuiLink-root": {
+      color: theme.palette.common.white,
+      textDecoration: "underline",
+      "&:hover": {
+        color: theme.palette.primary.main,
+      },
     },
   },
   navLink: {
@@ -120,7 +126,7 @@ const Footer = ({ classes, className, children, pageContext, ...props }) => {
         </Box>
       </Container>
       <Container className={classes.row2}>
-        <Typography className={classes.copyright}>
+        <Typography variant="caption" className={classes.copyright}>
           {siteMetadata.title} © {new Date().getFullYear()} | Site by{" "}
           <Link href="https://hyperobjekt.com">Hyperobjekt</Link>
         </Typography>

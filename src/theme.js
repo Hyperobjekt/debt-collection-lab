@@ -10,7 +10,7 @@ export const COLORS = {
   secondaryText: "#595247",
   altBackground: "#FAFAF5",
   darkBackground: "#181817",
-  footerBackground: "#232321",
+  footerBackground: "#181817",
 };
 
 export const FONTS = {
@@ -137,23 +137,26 @@ const overrides = {
     },
     contained: {
       boxShadow: "none",
+      fontSize: theme.typography.pxToRem(14),
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
       "& $primary": {
         background: "#000",
       },
     },
     containedPrimary: {
       // accessibility fix: darker to improve contrast
-      backgroundColor: "#DF3416",
+      backgroundColor: "#D2452D",
     },
     text: {
       fontWeight: 400,
       textTransform: "none",
       // accessibility fix: darker to improve contrast
-      color: "#D53215",
+      color: "#CA432B",
     },
     textPrimary: {
       // accessibility fix: darker to improve contrast
-      color: "#D53215",
+      color: "#CA432B",
     },
   },
   MuiDivider: {

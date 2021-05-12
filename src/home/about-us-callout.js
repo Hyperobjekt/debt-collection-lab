@@ -4,8 +4,7 @@ import { withStyles } from "@material-ui/core";
 import { FONTS } from "../theme";
 const styles = (theme) => ({
   root: {
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
+    padding: theme.spacing(9, 3),
   },
   container: {
     position: "relative",

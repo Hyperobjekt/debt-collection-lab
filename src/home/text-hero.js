@@ -10,13 +10,20 @@ const styles = (theme) => ({
       padding: theme.spacing(12, 0, 10),
     },
     [theme.breakpoints.up("md")]: {
-      padding: theme.spacing(12, 0, 15),
+      padding: theme.spacing(14, 0, 8),
     },
   },
-  container: {},
+  container: {
+    [theme.breakpoints.up("md")]: {
+      justifyContent: "flex-start",
+    },
+  },
   image: {},
   content: {
     position: "static",
+    [theme.breakpoints.up("md")]: {
+      flex: 1,
+    },
     "& p": {
       ...FONTS.KNOCKOUT["FullMiddleweight"],
       letterSpacing: "0.02em",
@@ -29,6 +36,7 @@ const styles = (theme) => ({
       },
       [theme.breakpoints.up("md")]: {
         fontSize: theme.typography.pxToRem(48),
+        marginLeft: "8.333%",
       },
       [theme.breakpoints.up("lg")]: {
         fontSize: theme.typography.pxToRem(60),

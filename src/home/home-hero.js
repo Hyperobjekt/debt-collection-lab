@@ -76,7 +76,7 @@ const styles = (theme) => ({
       lineHeight: 1,
       ...FONTS.KNOCKOUT["FullMiddleweight"],
       [theme.breakpoints.up("md")]: {
-        fontSize: "5.75em",
+        fontSize: "6.5em",
         margin: theme.spacing(0, 0, 2, -1),
         transform: `rotate(-3.5deg)`,
       },
@@ -105,6 +105,7 @@ const styles = (theme) => ({
       lineHeight: 1.2,
       ...FONTS.KNOCKOUT["Featherweight"],
       [theme.breakpoints.up("md")]: {
+        fontSize: "2.75em",
         margin: theme.spacing(0.5, 0, 4, 9.5),
         transform: `rotate(-1.25deg)`,
       },
