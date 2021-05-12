@@ -52,6 +52,15 @@ const Global = createGlobalStyle`
   .chart__tooltip .tooltip__item {
     font-size: 12px;
   }
+  .chart__tooltip .tooltip__item-list {
+    margin: 8px 0 0 0;
+    padding: 8px 0 0 16px;
+    border-top: 1px dotted #ccc;
+    min-width: 120px;
+  }
+  .chart__tooltip .tooltip__item.tooltip__item--bar {
+    margin: 2px 0;
+  }
 `;
 
 const ChartContainer = styled.div`
@@ -233,7 +242,6 @@ const Chart = ({
   useDidUpdate(() => {
     if (chartRef.current) {
       chartRef.current.update({ data, options: mergedOptions });
-      console.log("update", { mergedOptions });
       updateLabels(chartRef.current);
     }
   }, [data, mergedOptions, updateLabels]);
