@@ -6,6 +6,8 @@ const page = {
   name: "Home",
   extension: "mdx",
   format: "frontmatter",
+  media_folder: "./images",
+  public_folder: "./images",
   fields: [
     {
       label: "Title",

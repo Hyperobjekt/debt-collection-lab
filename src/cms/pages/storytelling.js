@@ -1,11 +1,13 @@
 import seo from "../partials/seo";
 
 const page = {
-  file: "content/pages/arts-and-storytelling.mdx",
+  file: "content/pages/arts-and-storytelling/index.mdx",
   label: "Art & Storytelling",
   name: "Art & Storytelling",
   extension: "mdx",
   format: "frontmatter",
+  media_folder: "../images",
+  public_folder: "../images",
   fields: [
     {
       label: "Title",
