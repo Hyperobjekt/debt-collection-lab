@@ -233,7 +233,6 @@ const Chart = ({
   useDidUpdate(() => {
     if (chartRef.current) {
       chartRef.current.update({ data, options: mergedOptions });
-      console.log("update", { mergedOptions });
       updateLabels(chartRef.current);
     }
   }, [data, mergedOptions, updateLabels]);
