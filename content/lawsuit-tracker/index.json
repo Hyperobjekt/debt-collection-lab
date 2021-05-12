@@ -38,20 +38,25 @@
     },
     "collectors": {
       "TITLE": "Top Debt Collectors",
-      "DESCRIPTION": "Out of {{ collectorTotal }} debt collectors in {{ name }}, the top 5 ({{topCollectorPercent}}) are responsible for {{topCount}} ({{topPercent}}) of {{totalCount}} lawsuits."
+      "DESCRIPTION": "Out of {{ collectorTotal }} debt collectors in {{ name }}, the top 5 ({{topCollectorPercent}}) are responsible for {{topCount}} ({{topPercent}}) of {{totalCount}} lawsuits.",
+      "FOOTNOTE": ""
     },
     "lawsuits": {
       "TITLE": "Debt Collection Lawsuits By Year",
-      "DESCRIPTION": "On average, {{topMonthName}} is the month with the most debt collection lawsuits filed, accounting for {{topMonthPercent}} of the filings for the year. Since the pandemic started, debt collection lawsuits have {{diffLabel}} by {{diffPercent}} from the average of previous years."
+      "DESCRIPTION": "{{topMonthName}} typically has the most debt collection lawsuits filed each year, with an average of {{topMonthCount}} filings, accounting for {{topMonthPercent}} of the filings for the year.",
+      "PANDEMIC_COMPARISON": "Since the pandemic started, the average debt collection lawsuits in a given month have {{diffLabel}} by {{diffPercent}} compared to pre-pandemic filings.",
+      "FOOTNOTE": ""
     },
     "map": {
       "TITLE": "Geography of Debt Collection Lawsuits",
       "DESCRIPTION": "{{name}} is split into {{featureCount}} {{region}}.  On the map you can see the number of lawsuits corresponding to each {{singularRegion}}.",
-      "LABEL": "Lawsuit filings since {{startDate}}"
+      "LABEL": "Lawsuit filings since {{startDate}}",
+      "FOOTNOTE": ""
     },
     "table": {
       "TITLE": "Overview of Lawsuits by Census Tract",
-      "DESCRIPTION": "The table to the right shows data for the {{count}} census tracts in {{name}}.  Use the search below to find a specific tract."
+      "DESCRIPTION": "The table to the right shows data for the {{count}} census tracts in {{name}}.  Use the search below to find a specific tract.",
+      "FOOTNOTE": ""
     },
     "demographics": {
       "TITLE": "Debt Collection Lawsuits by Neighborhood Demographics",
@@ -61,7 +66,8 @@
       "COUNT_CHART_TITLE": "Number of Lawsuits by Neighborhood Racial Majority",
       "COUNT_CHART_TOOLTIP": "{{yValue}} lawsuits in {{xValue}}",
       "PROPORTION_CHART_TITLE": "Difference from Expected Number of Lawsuits Based on Neighborhood Proportions",
-      "PROPORTION_CHART_TOOLTIP": "Difference of {{yValue}} lawsuits from the expected value based on neighborhood proportions in {{xValue}}"
+      "PROPORTION_CHART_TOOLTIP": "Difference of {{yValue}} lawsuits from the expected value based on neighborhood proportions in {{xValue}}",
+      "FOOTNOTE": ""
     }
   },
   "state": {
@@ -83,20 +89,25 @@
     },
     "collectors": {
       "TITLE": "Top Debt Collectors",
-      "DESCRIPTION": "Out of {{collectorTotal}} debt collectors in {{name}}, the top 5 ({{topCollectorPercent}}) are responsible for {{topCount}} ({{topPercent}}) of {{totalCount}} lawsuits."
+      "DESCRIPTION": "Out of {{collectorTotal}} debt collectors in {{name}}, the top 5 ({{topCollectorPercent}}) are responsible for {{topCount}} ({{topPercent}}) of {{totalCount}} lawsuits.",
+      "FOOTNOTE": ""
     },
     "lawsuits": {
       "TITLE": "Debt Collection Lawsuits By Year",
-      "DESCRIPTION": "On average, {{topMonthName}} is the month with the most debt collection lawsuits filed, accounting for {{topMonthPercent}} of the filings for the year. Since the pandemic started, debt collection lawsuits have {{diffLabel}} by {{diffPercent}} from the average of previous years."
+      "DESCRIPTION": "On average, {{topMonthName}} is the month with the most debt collection lawsuits filed, accounting for {{topMonthPercent}} of the filings for the year. ",
+      "PANDEMIC_COMPARISON": "Since the pandemic started, monthly debt collection lawsuits have {{diffLabel}} by {{diffPercent}} compared to pre-pandemic filings.",
+      "FOOTNOTE": ""
     },
     "map": {
       "TITLE": "Geography of Debt Collection Lawsuits",
       "DESCRIPTION": "{{name}} is split into {{featureCount}} {{region}}.  On the map you can see the number of lawsuits corresponding to each {{singularRegion}}.",
-      "LABEL": "Lawsuit filings since {{startDate}}"
+      "LABEL": "Lawsuit filings since {{startDate}}",
+      "FOOTNOTE": ""
     },
     "table": {
       "TITLE": "Overview of Lawsuits by {{singularRegion}}",
-      "DESCRIPTION": "The table to the right shows data for the {{count}} census tracts in {{name}}.  Use the search below to find a specific tract."
+      "DESCRIPTION": "The table to the right shows data for the {{count}} census tracts in {{name}}.  Use the search below to find a specific tract.",
+      "FOOTNOTE": ""
     },
     "demographics": {
       "TITLE": "Debt Collection Lawsuits by Neighborhood Demographics",
@@ -106,7 +117,8 @@
       "COUNT_CHART_TITLE": "Number of Lawsuits by Neighborhood Racial Majority",
       "COUNT_CHART_TOOLTIP": "{{yValue}} lawsuits in {{xValue}}",
       "PROPORTION_CHART_TITLE": "Difference from Expected Number of Lawsuits Based on Neighborhood Proportions",
-      "PROPORTION_CHART_TOOLTIP": "Difference of {{yValue}} lawsuits from the expected value based on neighborhood proportions in {{xValue}}"
+      "PROPORTION_CHART_TOOLTIP": "Difference of {{yValue}} lawsuits from the expected value based on neighborhood proportions in {{xValue}}",
+      "FOOTNOTE": ""
     }
   },
   "table": {

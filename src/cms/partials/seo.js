@@ -27,7 +27,7 @@ const seo = {
       name: "image",
       widget: "image",
       required: false,
-      default: "/images/metaImage.png",
+      default: "./images/social.png",
     },
   ],
 };

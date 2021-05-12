@@ -204,14 +204,13 @@ export const getLocationHeroData = (data) => {
 };
 
 export const getLawsuitChartData = (data) => {
-  // shape 2020 data
-  const g2020 = data.lawsuit_history.map((d) => ({
+  // shape chart data based on lawsuit history
+  const chartData = data.lawsuit_history.map((d) => ({
     group: formatYear(parseMonthYear(d.month)),
     x: formatShortMonth(parseMonthYear(d.month)),
     y: d.lawsuits,
+    raw: { ...d, month: parseMonthYear(d.month) },
   }));
-  // one big array for all chart data
-  const chartData = g2020;
   // get the average value for each month
   const monthlyAverages = d3
     .groups(chartData, (d) => d.x)
@@ -226,11 +225,31 @@ export const getLawsuitChartData = (data) => {
   const topMonthName = d3.timeFormat("%B")(
     d3.timeParse("%b/%Y")(`${topMonth[0]}/2020`)
   );
+  const pandemicStart = parseMonthYear("03/2020");
+  // get the average monthly filings since pandemic start
+  const pandemicHistory = chartData.filter(
+    (d) => +d.raw.month >= +pandemicStart
+  );
+  const prePandemicHistory = chartData.filter(
+    (d) => +d.raw.month < +pandemicStart
+  );
+
+  // get the average value for each month
+  const pandemicAverage =
+    d3.sum(pandemicHistory, (d) => d.y) / pandemicHistory.length;
+  const prePandemicAverage =
+    d3.sum(prePandemicHistory, (d) => d.y) / prePandemicHistory.length;
+  const diffPercent = 1 - pandemicAverage / prePandemicAverage;
+  const diffLabel = diffPercent > 0 ? "decreased" : "increased";
   return {
     chartData,
     avgYearly,
     topMonthName,
+    topMonthCount: topMonth[1],
     topMonthPercent,
+    diffPercent: Math.abs(diffPercent),
+    diffLabel,
+    prePandemicCount: prePandemicHistory.length,
   };
 };
 

@@ -56,7 +56,7 @@ const MapContent = ({ data, content, colorScale }) => {
           startDate: formatMonthYear(data.startDate),
         })}
       </Typography>
-      <Box style={{ width: 280 }}>
+      <Box style={{ width: 280 }} mb={4}>
         <div style={{ background: gradient, width: 280, height: 16 }} />
         <Box
           display="flex"
@@ -84,6 +84,11 @@ const MapContent = ({ data, content, colorScale }) => {
           </Typography>
         </Box>
       </Box>
+      {content.FOOTNOTE && (
+        <Typography variant="caption" color="grey">
+          {Mustache.render(content.FOOTNOTE, data)}
+        </Typography>
+      )}
     </>
   );
 };

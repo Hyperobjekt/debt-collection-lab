@@ -37,6 +37,7 @@ const SectionBlock = withStyles((theme) => ({
   root: {
     "& .controls": {
       marginTop: theme.spacing(3),
+      marginBottom: theme.spacing(3),
     },
     "& .control": {
       marginTop: theme.spacing(3),
@@ -326,6 +327,11 @@ const TableSection = ({
           </div>
         )}
       </div>
+      {content.FOOTNOTE && (
+        <Typography variant="caption" color="grey">
+          {Mustache.render(content.FOOTNOTE, context)}
+        </Typography>
+      )}
     </>
   );
   const rightContent = (

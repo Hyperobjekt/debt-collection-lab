@@ -180,6 +180,11 @@ const DemographicChartSection = ({
         )}
       </ul>
       {children}
+      {content.FOOTNOTE && (
+        <Typography variant="caption" color="grey">
+          {content.FOOTNOTE}
+        </Typography>
+      )}
     </>
   );
   return (

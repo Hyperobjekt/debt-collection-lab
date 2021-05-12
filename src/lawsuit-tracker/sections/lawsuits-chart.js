@@ -3,7 +3,7 @@ import Typography from "../../components/typography";
 import { withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import GroupedBarChart from "../charts/grouped-bar-chart";
-import { formatPercent } from "../utils";
+import { formatInt, formatPercent } from "../utils";
 import Mustache from "mustache";
 
 const SectionBlock = withStyles((theme) => ({
@@ -63,9 +63,10 @@ const LawsuitsChartSection = ({ content, data, children, ...props }) => {
   const context = {
     topMonthName: data.topMonthName,
     topMonthPercent: formatPercent(data.topMonthPercent),
-    // TODO: Calculate these values!
-    diffLabel: "increased",
-    diffPercent: "0%",
+    topMonthCount: formatInt(data.topMonthCount),
+    diffLabel: data.diffLabel,
+    diffPercent: formatPercent(data.diffPercent),
+    prePandemicCount: data.prePandemicCount,
   };
   const leftContent = (
     <>
@@ -73,8 +74,15 @@ const LawsuitsChartSection = ({ content, data, children, ...props }) => {
         {content.TITLE}
       </Typography>
       <Typography paragraph>
-        {Mustache.render(content.DESCRIPTION, context)}
+        {Mustache.render(content.DESCRIPTION, context)}{" "}
+        {context.prePandemicCount > 12 &&
+          Mustache.render(content.PANDEMIC_COMPARISON, context)}
       </Typography>
+      {content.FOOTNOTE && (
+        <Typography variant="caption" color="grey">
+          {Mustache.render(content.FOOTNOTE, context)}
+        </Typography>
+      )}
       {children}
     </>
   );

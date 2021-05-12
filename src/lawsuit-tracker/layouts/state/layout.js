@@ -42,19 +42,24 @@ export const query = graphql`
           collectors {
             TITLE
             DESCRIPTION
+            FOOTNOTE
           }
           lawsuits {
             TITLE
             DESCRIPTION
+            PANDEMIC_COMPARISON
+            FOOTNOTE
           }
           map {
             TITLE
             DESCRIPTION
             LABEL
+            FOOTNOTE
           }
           table {
             TITLE
             DESCRIPTION
+            FOOTNOTE
           }
           demographics {
             TITLE
@@ -65,6 +70,7 @@ export const query = graphql`
             COUNT_CHART_TOOLTIP
             PROPORTION_CHART_TITLE
             PROPORTION_CHART_TOOLTIP
+            FOOTNOTE
           }
         }
         table {
