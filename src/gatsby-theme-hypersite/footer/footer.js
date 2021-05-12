@@ -63,9 +63,12 @@ const styles = (theme) => ({
     bottom: 0,
     left: 0,
     right: 0,
-    "& img + img": {
+    "& a + a": {
       display: "block",
       marginLeft: theme.spacing(4),
+    },
+    "& img": {
+      display: "block",
     },
   },
   copyright: {
@@ -133,16 +136,34 @@ const Footer = ({ classes, className, children, pageContext, ...props }) => {
       </Container>
       <Box className={classes.row3} bgcolor="grey.800">
         <Container display="flex" flexDirection="row" pt={3} pb={3}>
-          <img
-            width="72"
-            src="/images/princeton-logo.svg"
-            alt="Princeton University Logo"
-          />
-          <img
-            width="93"
-            src="/images/d-d-logo.svg"
-            alt="Dignity and Debt Logo"
-          />
+          <a href="https://www.princeton.edu/" target="_blank" rel="noreferrer">
+            <img
+              width="72"
+              src="/images/princeton-logo.svg"
+              alt="Princeton University Logo"
+            />
+          </a>
+          <a
+            href="https://www.dignityanddebt.org/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              width="93"
+              src="/images/d-d-logo.svg"
+              alt="Dignity and Debt Logo"
+            />
+          </a>
+          <a
+            href="https://anthropology.princeton.edu/research-programs/vize-lab"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img width="53" src="/images/viz-e-lab.svg" alt="VizE Lab Logo" />
+          </a>
+          <a href="https://www.ssrc.org/" target="_blank" rel="noreferrer">
+            <img width="56" src="/images/ssrc-logo.svg" alt="SSRC Logo" />
+          </a>
         </Container>
       </Box>
     </BaseFooter>
