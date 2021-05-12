@@ -1,5 +1,6 @@
 import Chart from "./chart";
 import * as d3 from "d3";
+import { formatInt } from "../../utils";
 
 /**
  * Selector for X values from data point
@@ -58,17 +59,22 @@ function createFigure(root, data, options) {
       // adds the bars
       .addBarGroups({
         renderTooltip: (data) => {
-          return (
-            '<h1 class="tooltip__title">' +
-            data.group +
-            "</h1>" +
-            '<div class="tooltip__item">' +
-            "</div>"
-          );
+          return `<h1 class="tooltip__title">${
+            data.group
+          }</h1><ul class="tooltip__item-list">
+            ${data.values
+              .map(
+                (y) =>
+                  `<li class="tooltip__item tooltip__item--bar"><strong>${
+                    y.group
+                  }:</strong> ${formatInt(y.y)}</li>`
+              )
+              .join("")}</ul>`;
         },
       })
       .render()
   );
 }
+//${data.values.map((y) => `<div class="tooltip__item">${y.group} | ${y.y}</div>`)}
 
 export default createFigure;

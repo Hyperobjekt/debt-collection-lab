@@ -210,30 +210,8 @@ export const getLawsuitChartData = (data) => {
     x: formatShortMonth(parseMonthYear(d.month)),
     y: d.lawsuits,
   }));
-  // generate sample years bases on 2020 values
-  const g2019 = g2020.map((d) => ({
-    group: "2019",
-    x: d.x,
-    y: (Math.random() * 0.5 + 0.75) * d.y,
-  }));
-  const g2018 = g2020.map((d) => ({
-    group: "2018",
-    x: d.x,
-    y: (Math.random() * 0.5 + 0.75) * d.y,
-  }));
-  // only jan / feb / march for 2021
-  const g2021 = g2020
-    .map((d) => ({
-      group: "2021",
-      x: d.x,
-      y:
-        ["Jan", "Feb", "Mar"].indexOf(d.x) > -1
-          ? (Math.random() * 0.5 + 0.75) * d.y
-          : 0,
-    }))
-    .filter((d) => d.y > 0);
   // one big array for all chart data
-  const chartData = [...g2018, ...g2019, ...g2020, ...g2021];
+  const chartData = g2020;
   // get the average value for each month
   const monthlyAverages = d3
     .groups(chartData, (d) => d.x)
