@@ -31,7 +31,7 @@
           "description": "of defendants did not have legal representation"
         },
         {
-          "id": "default_judgement",
+          "id": "default_judgement_percent",
           "description": "of lawsuits resulted in default judgments"
         }
       ]
@@ -82,7 +82,7 @@
           "description": "of defendants did not have legal representation"
         },
         {
-          "id": "default_judgement",
+          "id": "default_judgement_percent",
           "description": "of lawsuits resulted in default judgments"
         }
       ]
