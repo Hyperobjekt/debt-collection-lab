@@ -30,6 +30,7 @@ const styles = (theme) => ({
   },
   imageContainer: {
     width: '100%',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -98,9 +99,12 @@ const Lightbox = ({
         </IconButton>
         <Box className={classes.imageContainer}>
           <GatsbyImage
+            height={1000}
+            alt={images[index].alt || " "}
             className={classes.image}
             image={getImage(images[index].image)}
           />
+          <div>{images[index].desc}</div>
         </Box>
         <IconButton
           className={classes.next} 

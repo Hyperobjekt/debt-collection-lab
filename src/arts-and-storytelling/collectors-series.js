@@ -15,13 +15,9 @@ const styles = (theme) => ({
     [theme.breakpoints.up("md")]: {
       padding: theme.spacing(12, 0, 15),
     },
-    overflow: 'hidden'
-
   },
   container: {
     justifyContent: "flex-start",
-    overflow: 'hidden'
-
   },
   content: {
     position: "relative",
@@ -100,7 +96,7 @@ const CollectorsSeries = ({
   const handleClick = (i, e) => {
     setLightbox({show: true, index: i})
   }
-  console.log(images)
+  console.log(description)
   return (
     <Block
       bgcolor="background.dark"
