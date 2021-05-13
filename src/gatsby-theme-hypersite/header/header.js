@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { default as Header } from "gatsby-theme-hypersite/src/header/header";
-import { withStyles } from "@material-ui/core";
+import { fade, withStyles } from "@material-ui/core";
 import { useLocation } from "@reach/router";
 
 /**
@@ -29,19 +29,39 @@ function DclHeader({ classes, ...props }) {
 export default withStyles((theme) => ({
   root: {
     boxShadow: "none",
-    background: "transparent",
+    backgroundColor: "transparent",
+    backgroundImage: `linear-gradient(
+      180deg,
+      ${theme.palette.background.dark},
+      ${fade(theme.palette.background.dark, 0.87)} 64px,
+      rgba(0,0,0,0) 192px,
+      rgba(0,0,0,0) 256px
+    )`,
+    backgroundSize: "20px 256px",
+    backgroundPosition: "0 -192px",
     position: "absolute",
-    transition: theme.transitions.create(["background-color", "transform"]),
+    transition: theme.transitions.create([
+      "background-color",
+      "background-position",
+      "transform",
+    ]),
     transform: `translateY(0px)`,
+    "& .logo__light": {
+      fill: "#1A1716",
+    },
+    "& .logo__dark": {
+      fill: "#FBF9F6",
+    },
   },
   stuck: {
     position: "fixed",
     top: -64,
     transform: `translateY(64px)`,
-    backgroundColor: theme.palette.background.dark,
+    backgroundPosition: "0 0px",
     "& + .HypHeader-offset": {
       minHeight: `none!important`,
     },
+    backdropFilter: `blur(6px)`,
   },
   light: {
     boxShadow: "none",
@@ -49,14 +69,26 @@ export default withStyles((theme) => ({
       color: theme.palette.text.primary,
     },
     "&.HypHeader-shrunk": {
-      background: theme.palette.background.dark,
+      backgroundPosition: "0 0px",
       "& a, & button": {
         color: "#fff",
+      },
+      "& .logo__light": {
+        fill: "#1A1716",
+      },
+      "& .logo__dark": {
+        fill: "#FBF9F6",
       },
     },
     offset: {
       minHeight: 0,
       // marginBottom: -64,
+    },
+    "& .logo__light": {
+      fill: "#FBF9F6",
+    },
+    "& .logo__dark": {
+      fill: "#1A1716",
     },
   },
 }))(DclHeader);

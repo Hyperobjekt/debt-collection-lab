@@ -49,13 +49,13 @@ const styles = (theme) => ({
     ...FONTS.KNOCKOUT["Lightweight"],
     fontSize: theme.typography.pxToRem(28),
     letterSpacing: "0.03em",
-    lineHeight: 60 / 46,
+    lineHeight: 50 / 40,
     [theme.breakpoints.up("sm")]: {
       textAlign: "left",
       fontSize: theme.typography.pxToRem(32),
     },
     [theme.breakpoints.up("md")]: {
-      fontSize: theme.typography.pxToRem(46),
+      fontSize: theme.typography.pxToRem(40),
     },
   },
   row2: {
@@ -101,6 +101,9 @@ const styles = (theme) => ({
       },
     },
   },
+  navRoot: {
+    marginTop: theme.spacing(1),
+  },
   navLink: {
     marginLeft: theme.spacing(-2),
     color: "#fff",
@@ -135,10 +138,14 @@ const Footer = ({ classes, className, children, pageContext, ...props }) => {
           light.
         </Typography>
         <Box className={classes.linksWrapper}>
-          <Logo />
+          <Logo light />
           <Divider />
           <Navigation
-            classes={{ link: classes.navLink, linkActive: classes.linkActive }}
+            classes={{
+              root: classes.navRoot,
+              link: classes.navLink,
+              linkActive: classes.linkActive,
+            }}
             isGatsbyLink={true}
             LinkComponent={GatsbyLink}
             links={siteMetadata.menuLinks}
