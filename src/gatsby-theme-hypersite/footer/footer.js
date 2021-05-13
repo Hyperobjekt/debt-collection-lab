@@ -16,10 +16,14 @@ const styles = (theme) => ({
   root: {
     position: "relative",
     flexDirection: "column",
-    padding: theme.spacing(8, 0, 11),
+    padding: theme.spacing(8, 0, 0),
     background: theme.palette.background.footer,
     color: theme.palette.text.light,
-    minHeight: 436,
+
+    [theme.breakpoints.up("sm")]: {
+      minHeight: 436,
+      padding: theme.spacing(8, 0, 11),
+    },
     "& .MuiDivider-root": {
       width: 40,
       height: 4,
@@ -59,16 +63,29 @@ const styles = (theme) => ({
   },
   row3: {
     background: "#262625",
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
     "& a + a": {
       display: "block",
-      marginLeft: theme.spacing(4),
+      marginTop: theme.spacing(3),
     },
     "& img": {
       display: "block",
+    },
+    [theme.breakpoints.down("xs")]: {
+      "& > .MuiBox-root": {
+        flexDirection: "column",
+        alignItems: "center",
+      },
+    },
+    [theme.breakpoints.up("sm")]: {
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      right: 0,
+      "& a + a": {
+        display: "block",
+        marginTop: 0,
+        marginLeft: theme.spacing(4),
+      },
     },
   },
   copyright: {

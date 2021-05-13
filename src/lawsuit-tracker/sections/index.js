@@ -4,3 +4,4 @@ export { default as LawsuitsMapSection } from "./lawsuits-map";
 export { default as DebtCollectorsSection } from "./debt-collectors";
 export { default as DemographicChartSection } from "./demographic-chart";
 export { default as TableSection } from "./table-section";
+export { default as ShareBlock } from "./share";

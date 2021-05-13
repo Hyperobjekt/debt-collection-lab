@@ -5,6 +5,8 @@ import { formatInt, formatMonthYear, formatPercent } from "../utils";
 import Hero from "../../components/sections/hero";
 import Mustache from "mustache";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import TwitterShare from "../../components/twitter";
+import FacebookShare from "../../components/facebook";
 
 const styles = (theme) => ({
   root: {
@@ -64,6 +66,15 @@ const styles = (theme) => ({
       marginTop: theme.spacing(1),
       lineHeight: 1.5,
       display: "block",
+    },
+  },
+  share: {
+    marginTop: theme.spacing(-2),
+    "& .MuiTypography-root:first-child": {
+      marginRight: theme.spacing(1),
+    },
+    "& .MuiSvgIcon-root": {
+      fontSize: 16,
     },
   },
 });
@@ -128,6 +139,11 @@ const LocationHero = ({
         })}
       </Box>
       <Divider className={classes.divider} />
+      <Box display="flex" alignItems="center" className={classes.share}>
+        <Typography variant="caption">Share this page: </Typography>
+        <TwitterShare />
+        <FacebookShare />
+      </Box>
       {children}
     </Hero>
   );

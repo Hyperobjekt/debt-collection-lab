@@ -7,6 +7,7 @@ import {
   DebtCollectorsSection,
   DemographicChartSection,
   TableSection,
+  ShareBlock,
 } from "../sections";
 import {
   getTopCollectorsData,
@@ -60,7 +61,7 @@ export default function SubpageLayout({
           data={getDemographicChartData(data, demographics, region)}
         />
       )}
-      {children}
+      <ShareBlock />
     </Layout>
   );
 }

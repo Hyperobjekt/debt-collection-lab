@@ -24,7 +24,10 @@ const page = {
           label: "Hero",
           name: "hero",
           widget: "object",
-          fields: [],
+          fields: [
+            { label: "First Line", name: "FIRST_LINE", widget: "string" },
+            { label: "Second Line", name: "SECOND_LINE", widget: "string" },
+          ],
         },
         {
           label: "About Section",

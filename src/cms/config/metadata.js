@@ -78,21 +78,16 @@ const page = {
     {
       label: "social",
       name: "social",
-      widget: "object",
+      widget: "list",
       fields: [
         {
-          label: "email",
-          name: "email",
+          label: "Service",
+          name: "name",
           widget: "string",
         },
         {
-          label: "twitter",
-          name: "twitter",
-          widget: "string",
-        },
-        {
-          label: "facebook",
-          name: "facebook",
+          label: "Account / Email",
+          name: "value",
           widget: "string",
         },
       ],
