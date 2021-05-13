@@ -10,20 +10,21 @@ export const path = {
   name: "path",
   widget: "string",
   hint: `Where the page will be created within the site structure.  Be careful changing this, as it could break links to any pages linking here.`,
-  required: false,
+  required: true,
 };
 
 export const name = {
   label: "Page Name",
   name: "name",
   widget: "string",
-  hint: `the page name is used to refer to this page within the site (e.g. in the breadcrumb)`,
+  hint: `the page name is used to refer to this page within the site (e.g. in the breadcrumb).  If this is not provided, the title from the page metadata will be used.`,
   required: false,
 };
 
 export const body = {
   label: "Body",
   name: "body",
+  modes: ["raw"],
   widget: "markdown",
   default: "",
   required: false,
@@ -44,6 +45,8 @@ export const embeddedImages = {
   collapsed: true,
   summary: "{{fields.image}}",
   field: { label: "Image", name: "image", widget: "image" },
+  hint:
+    "These are images used within the page and will be automatically optimized.",
 };
 
 export const description = {

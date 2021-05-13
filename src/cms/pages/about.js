@@ -1,5 +1,6 @@
 import { embeddedImages, name, body, template, path } from "../partials/fields";
 import seo from "../partials/seo";
+import team from "../partials/team";
 
 const page = {
   file: "content/pages/about-us/index.mdx",

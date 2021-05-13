@@ -2,6 +2,8 @@ const seo = {
   label: "Page Metadata",
   name: "meta",
   widget: "object",
+  hint:
+    "Page metadata contains page specific values for search engine optimization and social sharing.  If values are not set, the default values set for metadata in the site config will be used.",
   collapsed: true,
   fields: [
     {
