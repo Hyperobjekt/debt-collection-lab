@@ -1,8 +1,10 @@
 import React from "react";
 import { Block } from "@hyperobjekt/material-ui-website";
 import { Box, GridList, GridListTile, withStyles } from "@material-ui/core";
+import { useState } from "react";
 import { FONTS } from "../theme";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import Lightbox from './lightbox'
 
 const styles = (theme) => ({
   root: {
@@ -13,9 +15,13 @@ const styles = (theme) => ({
     [theme.breakpoints.up("md")]: {
       padding: theme.spacing(12, 0, 15),
     },
+    overflow: 'hidden'
+
   },
   container: {
     justifyContent: "flex-start",
+    overflow: 'hidden'
+
   },
   content: {
     position: "relative",
@@ -89,7 +95,12 @@ const CollectorsSeries = ({
   children,
   ...props
 }) => {
+  const [lightbox, setLightbox] = useState({show: false, index: null})
   const { root, container } = classes;
+  const handleClick = (i, e) => {
+    setLightbox({show: true, index: i})
+  }
+  console.log(images)
   return (
     <Block
       bgcolor="background.dark"
@@ -112,6 +123,7 @@ const CollectorsSeries = ({
                   key={i}
                   className={classes.gridTile}
                   cols={tile.cols || 1}
+                  onClick={(e) => handleClick(i, e)}
                 >
                   <GatsbyImage
                     height={350}
@@ -123,6 +135,13 @@ const CollectorsSeries = ({
             })}
         </GridList>
       </Box>
+      {lightbox.show &&
+        <Lightbox 
+          images={images}
+          selected={lightbox.index}
+          setShow={setLightbox}
+        />
+      }
     </Block>
   );
 };
