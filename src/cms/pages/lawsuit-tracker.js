@@ -66,7 +66,7 @@ const page = {
     },
     {
       label: "County Pages",
-      name: "state",
+      name: "county",
       widget: "object",
       fields: [hero, collectors, lawsuits, map, table, demographics],
     },
