@@ -98,6 +98,16 @@ const TableContainer = withStyles((theme) => ({
         boxShadow: `0 1px 0 #ccc`,
       },
     },
+    "& .MuiTableCell-root.MuiTableCell-head": {
+      lineHeight: 1.25,
+      "& .MuiTableSortLabel-root:focus, & .MuiTableSortLabel-root:hover": {
+        textDecoration: "underline",
+      },
+      // add dotted underline for tooltip indicator
+      "& .MuiTableSortLabel-root span": {
+        textDecoration: "underline dotted #999 2px",
+      },
+    },
     // decrease default padding
     "& .MuiTableCell-root": {
       padding: theme.spacing(1),

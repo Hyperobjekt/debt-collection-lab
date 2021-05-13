@@ -130,6 +130,7 @@
     "ZIPS_NOTE": "The top zip codes are listed above, use the search to find a specific location.",
     "STATES_NOTE": "Only a limited number of states are currently available.  We are working on getting more data.",
     "NO_RESULTS": "No results that match your filter.",
-    "REPORT_LINK": "View Report"
+    "REPORT_LINK": "View Report",
+    "DEFAULT_JUDGEMENTS_HINT": "Judgment issued without considering the facts of the complaint (typically occurs when defendant is not present in court or does not respond to the suit). See the <a href='https://www.pewtrusts.org/en/research-and-analysis/reports/2020/05/how-debt-collectors-are-transforming-the-business-of-state-courts#6-debt-lawsuits-frequently-end-i' target='_blank' rel='noreferrer'>PEW charitable trusts website</a> for more information."
   }
 }

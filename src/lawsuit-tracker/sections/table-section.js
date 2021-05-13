@@ -11,11 +11,13 @@ import {
   RadioGroup,
   TableSortLabel,
   TextField,
+  Tooltip,
   withStyles,
 } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import {
   applyFilter,
+  formatMonthYear,
   getDateRange,
   getSingularRegion,
   getTrackerUrl,
@@ -50,6 +52,25 @@ const SectionBlock = withStyles((theme) => ({
         position: "sticky",
         top: 64,
         paddingRight: theme.spacing(6),
+      },
+    },
+    "& .hint-button": {
+      position: "relative",
+      margin: theme.spacing(2, 0, 2, -1),
+      fontWeight: 500,
+      color: "#595247",
+      lineHeight: 1,
+      "&:before": {
+        content: "'?'",
+        display: "inline-block",
+        minWidth: 16,
+        height: 16,
+        backgroundColor: "#efece6",
+        marginRight: 8,
+        lineHeight: "18px",
+        fontSize: 12,
+        borderRadius: 16,
+        marginTop: -2,
       },
     },
   },
@@ -213,7 +234,21 @@ const TableSection = ({
             }
             onClick={(e) => handleSort(e, "default_judgement")}
           >
-            Default Judgements
+            <Tooltip
+              title={
+                <Typography
+                  variant="caption"
+                  dangerouslySetInnerHTML={{
+                    __html: content.DEFAULT_JUDGEMENTS_HINT,
+                  }}
+                />
+              }
+              placement="top"
+              interactive
+              arrow
+            >
+              <span>Default Judgements</span>
+            </Tooltip>
           </TableSortLabel>
         ),
         cellProps: { align: "right", width: 100 },
@@ -267,6 +302,7 @@ const TableSection = ({
     singularRegion: getSingularRegion(view),
     name: data[0].state || data[0].county,
     count: data.length,
+    lastUpdated: formatMonthYear(trendRange[1]),
   };
   const leftContent = (
     <>
@@ -275,6 +311,23 @@ const TableSection = ({
           {Mustache.render(content.TITLE, context)}
         </Typography>
         <Typography>{Mustache.render(content.DESCRIPTION, context)}</Typography>
+        <Tooltip
+          title={
+            <Typography
+              variant="caption"
+              dangerouslySetInnerHTML={{
+                __html: content.DEFAULT_JUDGEMENTS_HINT,
+              }}
+            />
+          }
+          interactive
+          arrow
+        >
+          <Button className="hint-button">What is a default judgement?</Button>
+        </Tooltip>
+        <Typography paragraph variant="caption">
+          {Mustache.render(content.LAST_UPDATED, context)}
+        </Typography>
         {children}
       </Box>
       <div className="controls">

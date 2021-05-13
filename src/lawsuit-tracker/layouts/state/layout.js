@@ -83,6 +83,7 @@ export const query = graphql`
           STATES_NOTE
           NO_RESULTS
           REPORT_LINK
+          DEFAULT_JUDGEMENTS_HINT
         }
       }
     }

@@ -167,6 +167,19 @@ const overrides = {
       backgroundColor: "#eee",
     },
   },
+  MuiTooltip: {
+    tooltip: {
+      backgroundColor: theme.palette.background.dark,
+      padding: theme.spacing(2),
+      "& a": {
+        color: "#fff",
+        textDecoration: "underline",
+      },
+    },
+    arrow: {
+      color: theme.palette.background.dark,
+    },
+  },
 };
 
 export default deepmerge(theme, { overrides });
