@@ -55,13 +55,6 @@ const page = {
       required: true,
     },
     {
-      label: "icon",
-      name: "icon",
-      widget: "image",
-      default: "",
-      required: true,
-    },
-    {
       label: "navigation",
       name: "menuLinks",
       widget: "list",

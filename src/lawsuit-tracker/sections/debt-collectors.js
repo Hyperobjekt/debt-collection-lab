@@ -52,7 +52,7 @@ const TopCollectorsChart = ({ data }) => {
     const value = data.find((d) => d.group === label);
     return (
       <>
-        <Typography weight="bold" variant="legendLabel">
+        <Typography component="span" weight="bold" variant="legendLabel">
           {label}
         </Typography>
         {formatInt(value.lawsuits)} lawsuits ({formatPercent(value.value)})

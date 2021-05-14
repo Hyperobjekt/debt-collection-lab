@@ -11,4 +11,9 @@ export default withStyles((theme) => ({
       minHeight: 600,
     },
   },
+  imageWrapper: {},
+  image: {},
+  container: {},
+  gradient: {},
+  content: {},
 }))(Hero);

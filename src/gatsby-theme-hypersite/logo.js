@@ -4,6 +4,9 @@ import { GatsbyLink } from "gatsby-material-ui-components";
 import { withStyles } from "@material-ui/core";
 
 const styles = (theme) => ({
+  logo: {
+    marginTop: 6,
+  },
   light: {
     "& .logo__dark": {
       fill: "#FBF9F6",
@@ -18,12 +21,15 @@ const Logo = ({ classes, light }) => {
   return (
     <GatsbyLink to="/">
       <svg
+        aria-labelledby="logoTitle"
+        role="img"
         width="230"
         height="21"
         viewBox="0 0 230 21"
         fill="none"
-        className={clsx("logo", { [classes.light]: light })}
+        className={clsx("logo", classes.logo, { [classes.light]: light })}
       >
+        <title id="logoTitle">Debt Collection Lab</title>
         <rect
           y="-0.160156"
           width="62.1457"

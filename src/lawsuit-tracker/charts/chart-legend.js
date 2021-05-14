@@ -12,7 +12,7 @@ const ChartLegend = ({ labels, className, ...props }) => {
       {...props}
     >
       {labels.map((l, i) => (
-        <Box key={l[0]} className="legend__item" display="flex">
+        <Box key={"legend" + i} className="legend__item" display="flex">
           <div
             className={`legend__color legend__color--${i}`}
             style={{ background: l[1] }}

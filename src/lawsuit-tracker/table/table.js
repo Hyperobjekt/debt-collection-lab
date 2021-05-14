@@ -208,10 +208,11 @@ export default function Table({
     <TableContainer>
       <MuiTable className={className} {...getTableProps()}>
         <TableHead>
-          {headerGroups.map((headerGroup) => (
-            <TableRow {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
+          {headerGroups.map((headerGroup, i) => (
+            <TableRow key={"header" + i} {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column, j) => (
                 <TableCell
+                  key={"col" + j}
                   {...column.getHeaderProps()}
                   {...(column.cellProps || {})}
                 >
@@ -237,15 +238,16 @@ export default function Table({
             // if top level row, set prev parent
             if (row.depth === 0) prevParentRow = row.original;
             return (
-              <>
+              <React.Fragment key={"row" + i}>
                 <TableRow
                   className={`row row--${row.depth}`}
                   {...row.getRowProps()}
                   onClick={() => handleRowClick(row)}
                 >
-                  {row.cells.map((cell) => {
+                  {row.cells.map((cell, j) => {
                     return (
                       <TableCell
+                        key={"cell" + j}
                         {...cell.getCellProps()}
                         {...(cell.column.cellProps || {})}
                       >
@@ -261,7 +263,7 @@ export default function Table({
                     </TableCell>
                   </TableRow>
                 )}
-              </>
+              </React.Fragment>
             );
           })}
           {note && (
