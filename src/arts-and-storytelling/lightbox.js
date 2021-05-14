@@ -75,8 +75,6 @@ const Lightbox = ({
 
   const [index, setIndex] = useState(selected)
 
-  console.log(show)
-
   const handleClick = (type, e) => {
     switch(type) {
       case 'prev':

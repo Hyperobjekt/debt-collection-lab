@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Block } from "@hyperobjekt/material-ui-website";
 import { Box, GridList, GridListTile, withStyles } from "@material-ui/core";
 import { useState } from "react";
@@ -93,11 +93,22 @@ const CollectorsSeries = ({
   children,
   ...props
 }) => {
-  const [lightbox, setLightbox] = useState({show: false, index: 0})
+  const [lightbox, _setLightbox] = useState({show: false, index: 0})
+  const [scrollPosition, setScrollPosition] = useState(0)
   const { root, container } = classes;
   const handleClick = (i, e) => {
     setLightbox({show: true, index: i})
   }
+
+  const setLightbox = (state) => {
+    if(state === true) setScrollPosition(window.scrollY)
+    _setLightbox(state)
+    if(state === false) {
+      console.log(scrollPosition)
+      window.scrollTo(0, scrollPosition * -1);
+    }
+  }
+
   return (
     <Block
       bgcolor="background.dark"
