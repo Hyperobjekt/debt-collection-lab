@@ -133,7 +133,7 @@ const LocationHero = ({
                 -
               </Typography>
               <Typography variant="body2">
-                default judgements are unavailable in Indiana
+                default judgments are unavailable in Indiana
               </Typography>
             </Box>
           ) : (

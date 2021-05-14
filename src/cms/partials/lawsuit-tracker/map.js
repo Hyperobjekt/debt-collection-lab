@@ -25,6 +25,8 @@ const entry = {
       label: "Footnote",
       name: "FOOTNOTE",
       widget: "string",
+      default: "",
+      required: false,
     },
   ],
 };
