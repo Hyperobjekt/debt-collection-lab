@@ -370,6 +370,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type TeamMember {
       name: String
       title: String
+      creds: String
     }
   `;
   createTypes(frontmatterTypeDefs);

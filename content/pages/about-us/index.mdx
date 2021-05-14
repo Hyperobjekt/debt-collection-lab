@@ -8,17 +8,31 @@ embeddedImages:
   - ../images/gallery-9.jpg
 team:
   - name: Frederick F. Wherry
-    title: PI - Princeton University, Sociology
+    title: PI
+    creds: Townsend Martin, Class of 1917 Professor of Sociology - Princeton University
   - name: Dalié Jimenez
-    title: PI - Co-PI – University of California at Irvine Law School
+    title: Co-PI
+    creds: Professor of Law - University of California at Irvine Law School
   - name: Lois R. Lupica
-    title: Co-PI – University of Maine Law School
-  - name: Jeffrey Reichman
-    title: Senior investigator – January Advisors, Data Science Consulting
+    title: Co-PI
+    creds: Visiting Professor of the Practice of Law - Sturm College of Law, University of Denver
   - name: Robin Lee
-    title: Co-PI—Princeton University, Sociology
-  - name: Jeff Himpele
-    title: Collaborator, Director, VizE Lab, Princeton University, Anthropology
+    title: Co-PI
+    creds: Graduate Student, Sociology - Princeton University
+  - name: Jeffrey Himpele
+    title: Co-PI
+    creds: Director of VizE Lab - Princeton University, Anthropology
+  - name: Jeff Reichman
+    title: Collaborator
+    creds: Founder, Principal - January Advisors
+  - name: Ari Riggins
+    title: Collaborating Artist
+  - name: Rachel Mrkaich
+    title: Collaborating Artist
+  - name: Carlotta Platt
+    title: Undergraduate Research Assistant
+  - name: Anika Duffus
+    title: Undergraduate Research Assistant
 ---
 
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
@@ -51,13 +65,18 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
     <Grid className="list--team" component="ul" container>
       {props.frontmatter.team.map((member) => (
         <Grid component="li" item xs={12} sm={6}>
-          <Box mt={2} mb={2}>
+          <Box mt={2} mb={2} mr={3}>
             <Typography component="p" variant="h5">
               {member.name}
             </Typography>
-            <Typography color="grey" variant="body2">
+            <Typography color="grey" variant="body1">
               {member.title}
             </Typography>
+            {member.creds && (
+              <Typography color="grey" variant="body2">
+                {member.creds}
+              </Typography>
+            )}
           </Box>
         </Grid>
       ))}
