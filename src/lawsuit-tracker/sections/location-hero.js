@@ -95,6 +95,7 @@ const LocationHero = ({
   ...props
 }) => {
   const { name, dateRange } = data;
+  const isIndiana = data.name === "Indiana" || data.state === "Indiana";
   const context = {
     startDate: formatMonthYear(dateRange[0]),
     endDate: formatMonthYear(dateRange[1]),
@@ -126,7 +127,16 @@ const LocationHero = ({
         {content.STATS.map((stat) => {
           const format = FORMATTERS[stat.id];
           const value = format(data[stat.id]);
-          return (
+          return isIndiana && stat.id.indexOf("default_judgement") > -1 ? (
+            <Box key={stat.id} className={classes.stat}>
+              <Typography color="primary" variant="numberSecondary">
+                -
+              </Typography>
+              <Typography variant="body2">
+                default judgements are unavailable in Indiana
+              </Typography>
+            </Box>
+          ) : (
             <Box key={stat.id} className={classes.stat}>
               <Typography color="primary" variant="numberSecondary">
                 {value}

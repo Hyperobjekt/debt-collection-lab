@@ -153,6 +153,19 @@ const TableSection = ({
     tableData = tableData.slice(0, limit);
   /** range of dates used for trend lines */
   const trendRange = getDateRange(source);
+  /** check if table contains data for indiana so we can flag default judgements are unavailable */
+  const hasIndiana =
+    data.filter(
+      (d) =>
+        d.state === "Indiana" ||
+        d.name === "Indiana" ||
+        d.geoid.indexOf("18") === 0
+    ).length > 0;
+  if (hasIndiana) {
+    content.DEFAULT_JUDGEMENTS_HINT =
+      content.DEFAULT_JUDGEMENTS_HINT +
+      `<br /><br />Default judgments are not recorded by the state of Indiana.`;
+  }
 
   /** memoized handler for when user changes sorting */
   const handleSort = useCallback(

@@ -195,6 +195,7 @@ export const getTotals = (data) => {
 export const getLocationHeroData = (data) => {
   return {
     name: data.name,
+    state: data.state,
     lawsuits: data.lawsuits,
     no_rep_percent: data.no_rep_percent,
     default_judgement: data.default_judgement,
