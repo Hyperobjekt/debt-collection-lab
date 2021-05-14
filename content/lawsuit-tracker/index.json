@@ -59,7 +59,7 @@
     },
     "demographics": {
       "TITLE": "Debt Collection Lawsuits by Neighborhood Demographics",
-      "DESCRIPTION": "Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority.",
+      "DESCRIPTION": "Based on data from the American Community Survey, census tracts have been categorized by their racial/ethnic majority.",
       "BREAKDOWN_TITLE": "Neighborhoods by Racial Majority",
       "BREAKDOWN_LABEL": "{{group}}: {{groupPercent}} of neighborhoods, {{lawsuitPercent}} of lawsuits",
       "COUNT_CHART_TITLE": "Number of Lawsuits by Neighborhood Racial Majority",
@@ -110,7 +110,7 @@
     },
     "demographics": {
       "TITLE": "Debt Collection Lawsuits by Neighborhood Demographics",
-      "DESCRIPTION": "Based on data from the American Community Survey, census tracts have been categorized by ther racial/ethnic majority.",
+      "DESCRIPTION": "Based on data from the American Community Survey, census tracts have been categorized by their racial/ethnic majority.",
       "BREAKDOWN_TITLE": "Neighborhoods by Racial Majority",
       "BREAKDOWN_LABEL": "{{group}}: {{groupPercent}} of neighborhoods, {{lawsuitPercent}} of lawsuits",
       "COUNT_CHART_TITLE": "Number of Lawsuits by Neighborhood Racial Majority",

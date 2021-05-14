@@ -27,8 +27,9 @@ const Layout = ({ children, ...props }) => {
       >
         <link
           rel="stylesheet"
-          type="text/css"
           href="https://cloud.typography.com/6135894/6115032/css/fonts.css"
+          media="print"
+          onload="this.media='all'"
         />
       </Helmet>
       {children}
