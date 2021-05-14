@@ -29,10 +29,21 @@ export const pageQuery = graphql`
             gatsbyImageData(layout: FULL_WIDTH)
           }
         }
-        galleryImages {
-          childImageSharp {
-            gatsbyImageData(height: 350)
+        gallery {
+          author
+          alt
+          caption
+          thumbnail: image {
+            childImageSharp {
+              gatsbyImageData(height: 350)
+            }
           }
+          full: image {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
+          order
         }
       }
     }
