@@ -3,7 +3,7 @@ import { embeddedImages, name, body, template, path } from "../partials/fields";
 
 const galleryImages = {
   label: "Gallery Images",
-  name: "galleryImages",
+  name: "gallery",
   widget: "list",
   summary: "{{fields.caption}}",
   fields: [
