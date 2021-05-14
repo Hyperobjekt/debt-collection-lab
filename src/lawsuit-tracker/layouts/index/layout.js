@@ -7,6 +7,9 @@ import IndexAbout from "./about";
 import { getDateRange, getTotals } from "../../utils";
 import { getImage } from "gatsby-plugin-image";
 import { TableSection } from "../../sections";
+import { TwoColBlock } from "../../../components/sections";
+import { Box } from "@material-ui/core";
+import Typography from "../../../components/typography";
 
 const intFormat = d3.format(",d");
 const monthFormat = d3.timeFormat("%B %Y");
@@ -35,6 +38,24 @@ export default function TrackerIndexLayout({ children, ...props }) {
         data={data}
         content={{ ...content.index.table, ...content.table }}
       />
+      {/* TODO: refactor additional info so it can be MDX instead of raw html */}
+      <TwoColBlock
+        left={
+          <Typography variant="sectionTitle" component="h2">
+            {content.index.additional.TITLE}
+          </Typography>
+        }
+        right={
+          <Box
+            style={{ fontSize: 16 }}
+            mt={2}
+            dangerouslySetInnerHTML={{
+              __html: content.index.additional.DESCRIPTION,
+            }}
+          />
+        }
+      />
+
       {children}
     </Layout>
   );
@@ -185,6 +206,10 @@ export const query = graphql`
           FIRST_LINE
         }
         table {
+          DESCRIPTION
+          TITLE
+        }
+        additional {
           DESCRIPTION
           TITLE
         }

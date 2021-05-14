@@ -7,16 +7,15 @@
     "about": {
       "TITLE": "About the Debt Collection Tracker",
       "DESCRIPTION": "People who already had trouble paying their bills saw those troubles multiply during the Covid-19 pandemic. Although there were some moratoriums on debt collection, thousands of lawsuits were still being filed in a single county court per month. We have created the Debt Collection Lawsuit Tracker to monitor weekly updates to the number of debt cases being filed across the United States.",
-      "LINKS": [
-        {
-          "name": "Read our Methodology Report",
-          "link": "/"
-        }
-      ]
+      "LINKS": [{ "name": "", "link": "" }]
     },
     "table": {
       "TITLE": "An Overview of Debt Collection Lawsuits",
       "DESCRIPTION": "In the {{stateCount}} states and {{countyCount}} counties we track, the table shows an overview of debt collection lawsuits. View the report for individual states or counties to get a more detailed view, including charts and maps."
+    },
+    "additional": {
+      "TITLE": "Additional Info",
+      "DESCRIPTION": "<p>Data for the Debt Collection Tracker was collected and prepared by our partners at JanuaryAdvisors</p><p>Methodology report coming soon.</p><p>To contribute data to the debt collection tracker please <a href='mailto:debtcollectionlab@gmail.com'>contact us</a>.</p>"
     }
   },
   "county": {

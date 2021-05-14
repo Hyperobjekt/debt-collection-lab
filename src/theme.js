@@ -98,6 +98,9 @@ const overrides = {
       html: {
         scrollBehavior: "smooth",
       },
+      a: {
+        color: "#CA432B",
+      },
       // update padding and font on <code> elements
       code: {
         padding: theme.spacing(0.25, 1),
@@ -128,7 +131,7 @@ const overrides = {
   },
   MuiLink: {
     root: {
-      color: theme.palette.primary.main,
+      color: "#CA432B",
     },
   },
   MuiButton: {
