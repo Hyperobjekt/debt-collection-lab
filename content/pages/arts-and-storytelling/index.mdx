@@ -7,16 +7,52 @@ template: gallery
 embeddedImages:
   - ../images/chain2.png
   - ../images/jacob-lawrence-migration.png
-galleryImages:
-  - ../images/gallery-1.jpg
-  - ../images/gallery-2.jpg
-  - ../images/gallery-3.jpg
-  - ../images/gallery-4.jpg
-  - ../images/gallery-5.jpg
-  - ../images/gallery-6.jpg
-  - ../images/gallery-7.jpg
-  - ../images/gallery-8.jpg
-  - ../images/gallery-9.jpg
+gallery:
+  - author: Ari Riggins ‘23, Debt Collection Lab.
+    image: ../images/gallery-6.jpg
+    alt: A mother faces her child as her phone rings off the hook
+    caption: A mother faces her child as her phone rings off the hook
+    order: 6
+  - author: Ari Riggins ‘23, Debt Collection Lab.
+    image: ../images/gallery-7.jpg
+    alt: Kill Switch Part 1. A creditor utilizes his “kill switch” on his phone to disable a woman’s car whose payments are in arrears
+    caption: Kill Switch Part 1. A creditor utilizes his “kill switch” on his phone to disable a woman’s car whose payments are in arrears
+    order: 7
+  - author: Ari Riggins ‘23, Debt Collection Lab.
+    image: ../images/gallery-5.jpg
+    alt: Kill Switch Part 2. Mother and child in the car as the kill switch leaves them stranded in the middle of the freeway.
+    caption: Kill Switch Part 2. Mother and child in the car as the kill switch leaves them stranded in the middle of the freeway.
+    order: 5
+  - author: Ari Riggins ‘23, Debt Collection Lab.
+    image: ../images/gallery-2.jpg
+    alt: A judge issues a stack of default judgments in favor of the creditor, against the debtor
+    caption: A judge issues a stack of default judgments in favor of the creditor, against the debtor
+    order: 2
+  - author: Ari Riggins ‘23, Debt Collection Lab.
+    image: ../images/gallery-1.jpg
+    alt: Debtors find themselves imprisoned or otherwise confined.
+    caption: Debtors find themselves imprisoned or otherwise confined.
+    order: 1
+  - author: Ari Riggins ‘23, Debt Collection Lab.
+    image: ../images/gallery-4.jpg
+    alt: Kitchen table economics when there are more bills than money.
+    caption: Kitchen table economics when there are more bills than money.
+    order: 4
+  - author: Rachel Mrkaich ‘21, Debt Collection Lab..
+    image: ../images/gallery-3.jpg
+    alt: The Letter. It appears you have chosen to be arrested. Put into handcuffs in front of your family.
+    caption: The Letter. It appears you have chosen to be arrested. Put into handcuffs in front of your family.
+    order: 3
+  - author: Rachel Mrkaich ‘21, Debt Collection Lab.
+    image: ../images/gallery-9.jpg
+    alt: No justice for debtors, no defense.
+    caption: No justice for debtors, no defense.
+    order: 9
+  - author: Rachel Mrkaich ‘21, Debt Collection Lab.
+    image: ../images/gallery-8.jpg
+    alt: At least the letter was opened, still hard to understand.
+    caption: At least the letter was opened, still hard to understand.
+    order: 8
 ---
 
 import { ArtsHero, CollectorSeries } from "arts-and-storytelling";
@@ -44,120 +80,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 </ArtsHero>
 
-<CollectorSeries 
-  galleryImages={[
-    {
-      name: "image 1",
-      alt: "image 1",
-      image: props.frontmatter.galleryImages[0],
-      cols: 5
-    },
-    {
-      name: "image 2",
-      alt: "image 2",
-      image: props.frontmatter.galleryImages[1],
-      cols: 3
-    },
-    {
-      name: "image 3",
-      alt: "image 3",
-      image: props.frontmatter.galleryImages[2],
-      cols: 3
-    },
-    {
-      name: "image 4",
-      alt: "image 4",
-      image: props.frontmatter.galleryImages[3],
-      cols: 5
-    },
-    {
-      name: "image 5",
-      alt: "image 5",
-      image: props.frontmatter.galleryImages[4],
-      cols: 5
-    },
-    {
-      name: "image 6",
-      alt: "image 6",
-      image: props.frontmatter.galleryImages[5],
-      cols: 3
-    },
-    {
-      name: "image 7",
-      alt: "image 7",
-      image: props.frontmatter.galleryImages[6],
-      cols: 3
-    },
-    {
-      name: "image 8",
-      alt: "image 8",
-      image: props.frontmatter.galleryImages[7],
-      cols: 5
-    },
-    {
-      name: "image 9",
-      alt: "image 9",
-      image: props.frontmatter.galleryImages[8],
-      cols: 5
-    }
-  ]}
-  fullresImages={[
-    {
-      name: "image 1",
-      alt: "image 1",
-      image: props.frontmatter.fullresImages[0],
-      desc: "Ari Riggins ‘23, Debt Collection Lab. A mother faces her child as her phone rings off the hook",
-    },
-    {
-      name: "image 2",
-      alt: "image 2",
-      image: props.frontmatter.fullresImages[1],
-      desc: "Ari Riggins ‘23, Debt Collection Lab. Kill Switch Part 1. A creditor utilizes his “kill switch” on his phone to disable a woman’s car whose payments are in arrears",
-    },
-    {
-      name: "image 3",
-      alt: "image 3",
-      image: props.frontmatter.fullresImages[2],
-      desc: "Ari Riggins ‘23, Debt Collection Lab. Kill Switch Part 2. Mother and child in the car as the kill switch leaves them stranded in the middle of the freeway.",
-    },
-    {
-      name: "image 4",
-      alt: "image 4",
-      image: props.frontmatter.fullresImages[3],
-      desc: "Ari Riggins ‘23, Debt Collection Lab. A judge issues a stack of default judgments in favor of the creditor, against the debtor",
-    },
-    {
-      name: "image 5",
-      alt: "image 5",
-      image: props.frontmatter.fullresImages[4],
-      desc: "Ari Riggins ‘23, Debt Collection Lab. Debtors find themselves imprisoned or otherwise confined.",
-    },
-    {
-      name: "image 6",
-      alt: "image 6",
-      image: props.frontmatter.fullresImages[5],
-      desc: "Ari Riggins ‘23, Debt Collection Lab. Kitchen table economics when there are more bills than money.",
-    },
-    {
-      name: "image 7",
-      alt: "image 7",
-      image: props.frontmatter.fullresImages[6],
-      desc: "Rachel Mrkaich ‘21, Debt Collection Lab. The Letter. It appears you have chosen to be arrested. Put into handcuffs in front of your family.",
-    },
-    {
-      name: "image 8",
-      alt: "image 8",
-      image: props.frontmatter.fullresImages[7],
-      desc: "Rachel Mrkaich ‘21, Debt Collection Lab. No justice for debtors, no defense.",
-    },
-    {
-      name: "image 9",
-      alt: "image 9",
-      image: props.frontmatter.fullresImages[8],
-      desc: "Rachel Mrkaich ‘21, Debt Collection Lab. At least the letter was opened, still hard to understand.",
-    }
-  ]}
->
+<CollectorSeries gallery={props.frontmatter.gallery}>
 
 ## The Debt Collectors Series
 

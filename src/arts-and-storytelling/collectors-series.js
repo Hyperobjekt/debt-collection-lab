@@ -1,11 +1,16 @@
 import React, { useEffect } from "react";
 import { Block } from "@hyperobjekt/material-ui-website";
-import { Box, GridList, GridListTile, withStyles } from "@material-ui/core";
+import {
+  Box,
+  ButtonBase,
+  GridList,
+  GridListTile,
+  withStyles,
+} from "@material-ui/core";
 import { useState } from "react";
 import { FONTS } from "../theme";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
-import Lightbox from './lightbox'
-import useScrollPosition from "./hooks/useScrollPosition";
+import Lightbox from "./lightbox";
 
 const styles = (theme) => ({
   root: {
@@ -72,6 +77,9 @@ const styles = (theme) => ({
     overflow: "hidden",
     marginTop: theme.spacing(8),
   },
+  imageButton: {
+    height: "100%",
+  },
   gridList: {
     width: "100%",
     maxWidth: 770,
@@ -84,32 +92,37 @@ const styles = (theme) => ({
   },
 });
 
+const getCols = (gatsbyImage) => {
+  const { width, height } = getImage(gatsbyImage);
+  if (!width || !height) return 1;
+  return width / height > 1 ? 5 : 3;
+};
+
 const CollectorsSeries = ({
   title,
   description,
-  galleryImages = [],
-  fullresImages = [],
+  gallery = [],
   classes,
   children,
   ...props
 }) => {
-  const [lightbox, _setLightbox] = useState({show: false, index: 0})
-  const [scrollPosition, setScrollPosition] = useState(0)
+  const [lightbox, _setLightbox] = useState({ show: false, index: 0 });
   const { root, container } = classes;
   const handleClick = (i, e) => {
-    setLightbox({show: true, index: i})
-  }
+    setLightbox({ show: true, index: i });
+  };
+  const sortedGallery = gallery.sort((a, b) => a.order - b.order);
 
   const setLightbox = (state) => {
-    if(state.show === true) setScrollPosition(window.scrollY)
-    _setLightbox(state)
-  }
+    // if (state.show === true) setScrollPosition(window.scrollY);
+    _setLightbox(state);
+  };
 
   useEffect(() => {
-    if(lightbox.show === false){
-      window.scrollTo(0, scrollPosition);
+    if (lightbox.show === false) {
+      // window.scrollTo(0, scrollPosition);
     }
-  }, [lightbox])
+  }, [lightbox]);
 
   return (
     <Block
@@ -126,33 +139,37 @@ const CollectorsSeries = ({
           className={classes.gridList}
           cols={8}
         >
-          {galleryImages &&
-            galleryImages.map((tile, i) => {
-              return (
-                <GridListTile
-                  key={i}
-                  className={classes.gridTile}
-                  cols={tile.cols || 1}
+          {sortedGallery.map((item, i) => {
+            return (
+              <GridListTile
+                key={i}
+                className={classes.gridTile}
+                cols={getCols(item.thumbnail)}
+              >
+                <ButtonBase
+                  focusRipple
+                  className={classes.imageButton}
                   onClick={(e) => handleClick(i, e)}
                 >
                   <GatsbyImage
                     height={350}
-                    alt={tile.alt || " "}
-                    image={getImage(tile.image)}
+                    alt={item.alt || " "}
+                    image={getImage(item.thumbnail)}
                   />
-                </GridListTile>
-              );
-            })}
+                </ButtonBase>
+              </GridListTile>
+            );
+          })}
         </GridList>
       </Box>
-      {lightbox.show && 
-      <Lightbox 
-        images={fullresImages}
-        selected={lightbox.index}
-        setShow={setLightbox}
-        show={lightbox.show}
-      />
-    }
+      {lightbox.show && (
+        <Lightbox
+          images={sortedGallery}
+          selected={lightbox.index}
+          setShow={setLightbox}
+          show={lightbox.show}
+        />
+      )}
     </Block>
   );
 };

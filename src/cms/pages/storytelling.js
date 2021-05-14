@@ -5,8 +5,20 @@ const galleryImages = {
   label: "Gallery Images",
   name: "galleryImages",
   widget: "list",
-  summary: "{{fields.image}}",
-  field: { label: "Image", name: "image", widget: "image" },
+  summary: "{{fields.caption}}",
+  fields: [
+    { label: "Attribution", name: "author", widget: "string" },
+    { label: "Caption", name: "caption", widget: "text" },
+    { label: "Image", name: "image", widget: "image" },
+    {
+      label: "Alternate Text",
+      name: "alt",
+      widget: "string",
+      hint:
+        "this text is provided to users who use a screen reader when focusing on the image.",
+    },
+    { label: "Order", name: "order", widget: "number", value_type: "int" },
+  ],
 };
 
 const page = {
