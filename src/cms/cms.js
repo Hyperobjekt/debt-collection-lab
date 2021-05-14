@@ -7,7 +7,8 @@ window.CMS_MANUAL_INIT = true;
 CMS.init({
   config: {
     load_config_file: false,
-    // local_backend: true,
+    // remember to run npx netlify-cms-proxy-server if running locally
+    local_backend: process.env.CI !== true,
     backend: {
       name: "git-gateway",
       repo: "Hyperobjekt/debt-collection-lab",

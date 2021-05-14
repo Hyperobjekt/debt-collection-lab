@@ -8,9 +8,26 @@ const hero = {
       label: "Stats",
       name: "STATS",
       widget: "list",
+      max: 3,
       summary: "{{fields.id}}",
       fields: [
-        { label: "Stat ID", name: "id", widget: "string" },
+        {
+          label: "Metric",
+          name: "id",
+          widget: "select",
+          options: [
+            { label: "Lawsuit Total", value: "lawsuits" },
+            { label: "% No Representation", value: "no_rep_percent" },
+            {
+              label: "% Default Judgments",
+              value: "default_judgement_percent",
+            },
+            {
+              label: "Default Judgments Total",
+              value: "default_judgement",
+            },
+          ],
+        },
         { label: "Description", name: "description", widget: "string" },
       ],
       required: true,

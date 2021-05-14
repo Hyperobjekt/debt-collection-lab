@@ -7,6 +7,9 @@ import IndexAbout from "./about";
 import { getDateRange, getTotals } from "../../utils";
 import { getImage } from "gatsby-plugin-image";
 import { TableSection } from "../../sections";
+import { TwoColBlock } from "../../../components/sections";
+import { Box } from "@material-ui/core";
+import Typography from "../../../components/typography";
 
 const intFormat = d3.format(",d");
 const monthFormat = d3.timeFormat("%B %Y");
@@ -15,8 +18,9 @@ export default function TrackerIndexLayout({ children, ...props }) {
   const data = props.data.allStates.nodes;
   const { stateCount, countyCount, lawsuitTotal } = getTotals(data);
   const dateRange = getDateRange(data);
-  const content = props.data.allLawsuitTrackerJson.nodes[0];
+  const content = props.data.lawsuitTrackerJson;
   const image = getImage(props.data.allFile.nodes[0]);
+  console.log({ content });
   return (
     <Layout {...props}>
       <IndexHero
@@ -34,6 +38,24 @@ export default function TrackerIndexLayout({ children, ...props }) {
         data={data}
         content={{ ...content.index.table, ...content.table }}
       />
+      {/* TODO: refactor additional info so it can be MDX instead of raw html */}
+      <TwoColBlock
+        left={
+          <Typography variant="sectionTitle" component="h2">
+            {content.index.additional.TITLE}
+          </Typography>
+        }
+        right={
+          <Box
+            style={{ fontSize: 16 }}
+            mt={2}
+            dangerouslySetInnerHTML={{
+              __html: content.index.additional.DESCRIPTION,
+            }}
+          />
+        }
+      />
+
       {children}
     </Layout>
   );
@@ -75,36 +97,121 @@ export const query = graphql`
         }
       }
     }
-    allLawsuitTrackerJson {
-      nodes {
-        index {
-          about {
-            TITLE
-            DESCRIPTION
-            LINKS {
-              name
-              link
-            }
-          }
-          hero {
-            FIRST_LINE
-            SECOND_LINE
-          }
-          table {
-            TITLE
-            DESCRIPTION
+    lawsuitTrackerJson {
+      county {
+        collectors {
+          DESCRIPTION
+          FOOTNOTE
+          TITLE
+        }
+        demographics {
+          BREAKDOWN_LABEL
+          BREAKDOWN_TITLE
+          COUNT_CHART_TITLE
+          COUNT_CHART_TOOLTIP
+          DESCRIPTION
+          FOOTNOTE
+          PROPORTION_CHART_TITLE
+          PROPORTION_CHART_TOOLTIP
+          TITLE
+        }
+        hero {
+          STATS {
+            description
+            id
           }
         }
+        lawsuits {
+          DESCRIPTION
+          FOOTNOTE
+          PANDEMIC_COMPARISON
+          TITLE
+        }
+        map {
+          TITLE
+          LABEL
+          FOOTNOTE
+          DESCRIPTION
+        }
         table {
-          LAST_UPDATED
-          TOP_LIMIT
-          NORTH_DAKOTA_NOTE
-          TEXAS_NOTE
-          COUNTIES_NOTE
-          ZIPS_NOTE
-          STATES_NOTE
-          NO_RESULTS
-          REPORT_LINK
+          DESCRIPTION
+          FOOTNOTE
+          TITLE
+        }
+      }
+      state {
+        table {
+          TITLE
+          FOOTNOTE
+          DESCRIPTION
+        }
+        map {
+          DESCRIPTION
+          FOOTNOTE
+          LABEL
+          TITLE
+        }
+        lawsuits {
+          DESCRIPTION
+          FOOTNOTE
+          PANDEMIC_COMPARISON
+          TITLE
+        }
+        hero {
+          STATS {
+            description
+            id
+          }
+        }
+        demographics {
+          BREAKDOWN_LABEL
+          BREAKDOWN_TITLE
+          COUNT_CHART_TITLE
+          COUNT_CHART_TOOLTIP
+          DESCRIPTION
+          FOOTNOTE
+          PROPORTION_CHART_TITLE
+          PROPORTION_CHART_TOOLTIP
+          TITLE
+        }
+        collectors {
+          DESCRIPTION
+          FOOTNOTE
+          TITLE
+        }
+      }
+      table {
+        ZIPS_NOTE
+        TOP_LIMIT
+        STATES_NOTE
+        TEXAS_NOTE
+        REPORT_LINK
+        NO_RESULTS
+        NORTH_DAKOTA_NOTE
+        LAST_UPDATED
+        DEFAULT_JUDGEMENTS_HINT
+        COUNTIES_NOTE
+      }
+      index {
+        about {
+          DESCRIPTION
+          LINKS {
+            link
+            name
+          }
+          TITLE
+        }
+        hero {
+          SECOND_LINE
+          FIRST_LINE
+        }
+        table {
+          DESCRIPTION
+          TITLE
+        }
+        additional {
+          DESCRIPTION
+          TITLE
         }
       }
     }

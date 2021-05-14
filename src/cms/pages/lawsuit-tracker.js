@@ -23,6 +23,7 @@ const page = {
         {
           label: "Hero",
           name: "hero",
+          collapsed: true,
           widget: "object",
           fields: [
             { label: "First Line", name: "FIRST_LINE", widget: "string" },
@@ -32,6 +33,7 @@ const page = {
         {
           label: "About Section",
           name: "about",
+          collapsed: true,
           widget: "object",
           fields: [
             title,
@@ -47,12 +49,14 @@ const page = {
         {
           label: "Table Section",
           name: "table",
+          collapsed: true,
           widget: "object",
           fields: [title, description],
         },
         {
           label: "Additional Info Section",
           name: "additional",
+          collapsed: true,
           widget: "object",
           fields: [title, description],
         },
@@ -73,6 +77,7 @@ const page = {
     {
       label: "Table Strings",
       name: "table",
+      collapsed: true,
       widget: "object",
       fields: [
         { label: "Last Updated", name: "LAST_UPDATED", widget: "string" },

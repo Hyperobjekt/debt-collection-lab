@@ -7,16 +7,15 @@
     "about": {
       "TITLE": "About the Debt Collection Tracker",
       "DESCRIPTION": "People who already had trouble paying their bills saw those troubles multiply during the Covid-19 pandemic. Although there were some moratoriums on debt collection, thousands of lawsuits were still being filed in a single county court per month. We have created the Debt Collection Lawsuit Tracker to monitor weekly updates to the number of debt cases being filed across the United States.",
-      "LINKS": [
-        {
-          "name": "Read our Methodology Report",
-          "link": "/"
-        }
-      ]
+      "LINKS": [{ "name": "", "link": "" }]
     },
     "table": {
       "TITLE": "An Overview of Debt Collection Lawsuits",
       "DESCRIPTION": "In the {{stateCount}} states and {{countyCount}} counties we track, the table shows an overview of debt collection lawsuits. View the report for individual states or counties to get a more detailed view, including charts and maps."
+    },
+    "additional": {
+      "TITLE": "Additional Info",
+      "DESCRIPTION": "<p>Data for the Debt Collection Tracker was collected and prepared by our partners at JanuaryAdvisors</p><p>Methodology report coming soon.</p><p>To contribute data to the debt collection tracker please <a href='mailto:debtcollectionlab@gmail.com'>contact us</a>.</p>"
     }
   },
   "county": {
@@ -31,7 +30,7 @@
           "description": "of defendants did not have legal representation"
         },
         {
-          "id": "default_judgement",
+          "id": "default_judgement_percent",
           "description": "of lawsuits resulted in default judgments"
         }
       ]
@@ -82,7 +81,7 @@
           "description": "of defendants did not have legal representation"
         },
         {
-          "id": "default_judgement",
+          "id": "default_judgement_percent",
           "description": "of lawsuits resulted in default judgments"
         }
       ]
@@ -130,6 +129,7 @@
     "ZIPS_NOTE": "The top zip codes are listed above, use the search to find a specific location.",
     "STATES_NOTE": "Only a limited number of states are currently available.  We are working on getting more data.",
     "NO_RESULTS": "No results that match your filter.",
-    "REPORT_LINK": "View Report"
+    "REPORT_LINK": "View Report",
+    "DEFAULT_JUDGEMENTS_HINT": "Judgment issued without considering the facts of the complaint (typically occurs when defendant is not present in court or does not respond to the suit). See the <a href='https://www.pewtrusts.org/en/research-and-analysis/reports/2020/05/how-debt-collectors-are-transforming-the-business-of-state-courts#6-debt-lawsuits-frequently-end-i' target='_blank' rel='noreferrer'>PEW charitable trusts website</a> for more information."
   }
 }

@@ -12,6 +12,12 @@ const SectionBlock = withStyles((theme) => ({
     position: "relative",
     background: theme.palette.background.alt,
     minHeight: 420,
+    [theme.breakpoints.up("md")]: {
+      minHeight: 500,
+    },
+    [theme.breakpoints.up("lg")]: {
+      minHeight: 600,
+    },
   },
 }))(TwoColBlock);
 
