@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FONTS } from "../theme";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import Lightbox from './lightbox'
+import Dialog from '@material-ui/core/Dialog';
 
 const styles = (theme) => ({
   root: {
@@ -86,17 +87,17 @@ const styles = (theme) => ({
 const CollectorsSeries = ({
   title,
   description,
-  images = [],
+  galleryImages = [],
+  fullresImages = [],
   classes,
   children,
   ...props
 }) => {
-  const [lightbox, setLightbox] = useState({show: false, index: null})
+  const [lightbox, setLightbox] = useState({show: false, index: 0})
   const { root, container } = classes;
   const handleClick = (i, e) => {
     setLightbox({show: true, index: i})
   }
-  console.log(description)
   return (
     <Block
       bgcolor="background.dark"
@@ -112,8 +113,8 @@ const CollectorsSeries = ({
           className={classes.gridList}
           cols={8}
         >
-          {images &&
-            images.map((tile, i) => {
+          {galleryImages &&
+            galleryImages.map((tile, i) => {
               return (
                 <GridListTile
                   key={i}
@@ -131,13 +132,14 @@ const CollectorsSeries = ({
             })}
         </GridList>
       </Box>
-      {lightbox.show &&
-        <Lightbox 
-          images={images}
-          selected={lightbox.index}
-          setShow={setLightbox}
-        />
-      }
+      {lightbox.show && 
+      <Lightbox 
+        images={fullresImages}
+        selected={lightbox.index}
+        setShow={setLightbox}
+        show={lightbox.show}
+      />
+    }
     </Block>
   );
 };

@@ -34,6 +34,11 @@ export const pageQuery = graphql`
             gatsbyImageData(height: 350)
           }
         }
+        fullresImages: galleryImages {
+          childImageSharp {
+            gatsbyImageData(layout: CONSTRAINED)
+          }
+        }
       }
     }
   }
