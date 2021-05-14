@@ -21,7 +21,7 @@ const Logo = ({ classes, light }) => {
   return (
     <GatsbyLink to="/">
       <svg
-        aria-labelledby="logoTitle"
+        aria-label="Debt Collection Lab"
         role="img"
         width="230"
         height="21"
@@ -29,7 +29,6 @@ const Logo = ({ classes, light }) => {
         fill="none"
         className={clsx("logo", classes.logo, { [classes.light]: light })}
       >
-        <title id="logoTitle">Debt Collection Lab</title>
         <rect
           y="-0.160156"
           width="62.1457"
