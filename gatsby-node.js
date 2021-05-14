@@ -87,7 +87,6 @@ const getCollectorName = (collector) => {
  */
 const lawsuitParser = (row) => {
   if (isNaN(Number(row.default_judgement)))
-    console.log(row.id, row.default_judgement);
   return {
     geoid: row.id,
     name: row.name,
@@ -99,6 +98,7 @@ const lawsuitParser = (row) => {
         month: v.split(";")[0],
         lawsuits: Number(v.split(";")[1]),
       }))
+      .filter((d) => row.id.length === 2 || row.id.length === 5 ? d.lawsuits >= 10 : true)
       .filter((d) => d.month.indexOf("1969") === -1),
     top_collectors: row.collectors.split("|").map((v) => {
       const values = v.split(";");
