@@ -24,7 +24,6 @@ export default withStyles((theme) => ({
       },
     },
   },
-  depth2: {},
   list: {},
   listItem: {},
   listItemActive: {},

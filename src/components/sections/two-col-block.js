@@ -5,6 +5,7 @@ import { Block } from "@hyperobjekt/material-ui-website";
 const StyledBlock = withStyles((theme) => ({
   root: {
     position: "relative",
+    padding: theme.spacing(9, 0),
     "& .two-col-block__left": {
       paddingRight: theme.spacing(6),
     },

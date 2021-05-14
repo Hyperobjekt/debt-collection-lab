@@ -7,8 +7,8 @@ import { FONTS } from "../theme";
 const style = (theme) => ({
   sectionTitle: {
     ...FONTS.KNOCKOUT["Middleweight"],
-    fontSize: theme.typography.pxToRem(40),
-    lineHeight: 1.25,
+    fontSize: theme.typography.pxToRem(34),
+    lineHeight: 40 / 34,
     [theme.breakpoints.up("md")]: {
       maxWidth: 320,
     },

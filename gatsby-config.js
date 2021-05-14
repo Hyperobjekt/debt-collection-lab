@@ -44,6 +44,18 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Debt Collection Lab`,
+        short_name: `Debt Collection Lab`,
+        start_url: `/`,
+        background_color: `#181817`,
+        theme_color: `#EA4A2E`,
+        display: `standalone`,
+        icon: "content/pages/images/favicon-260.png",
+      },
+    },
     "gatsby-plugin-styled-components",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",

@@ -9,4 +9,18 @@ export default withStyles((theme) => ({
   listItem: {
     background: "transparent",
   },
+  link: {
+    color: "#B6AFA4",
+    letterSpacing: 1,
+    "&:hover": {
+      textDecoration: "underline",
+      textUnderlineOffset: "6px",
+    },
+  },
+  linkActive: {
+    fontWeight: "normal",
+    textDecoration: "underline",
+    textUnderlineOffset: "6px",
+    color: "#fff",
+  },
 }))(DesktopNavigation);

@@ -40,6 +40,7 @@ export default function TrackerIndexLayout({ children, ...props }) {
       />
       {/* TODO: refactor additional info so it can be MDX instead of raw html */}
       <TwoColBlock
+        bgcolor="background.alt"
         left={
           <Typography variant="sectionTitle" component="h2">
             {content.index.additional.TITLE}
