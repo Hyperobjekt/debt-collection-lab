@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FONTS } from "../theme";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import Lightbox from './lightbox'
-import Dialog from '@material-ui/core/Dialog';
+import useScrollPosition from "./hooks/useScrollPosition";
 
 const styles = (theme) => ({
   root: {
@@ -101,13 +101,15 @@ const CollectorsSeries = ({
   }
 
   const setLightbox = (state) => {
-    if(state === true) setScrollPosition(window.scrollY)
+    if(state.show === true) setScrollPosition(window.scrollY)
     _setLightbox(state)
-    if(state === false) {
-      console.log(scrollPosition)
-      window.scrollTo(0, scrollPosition * -1);
-    }
   }
+
+  useEffect(() => {
+    if(lightbox.show === false){
+      window.scrollTo(0, scrollPosition);
+    }
+  }, [lightbox])
 
   return (
     <Block

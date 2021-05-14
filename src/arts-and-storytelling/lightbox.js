@@ -95,11 +95,10 @@ const Lightbox = ({
   }
 
   return (
-    <Dialog fullscreen="true" open={show} onClose={()=>setShow(false)}>
+    <Dialog fullscreen="true" open={show} onClose={()=>setShow({show: false, index: 0})}>
       <Block
         bgcolor="background.dark"
         color="common.white"
-        onClick={(e) => handleClick('close', e)}
         className={classes.rootDialog}
         {...props}
       >
@@ -107,7 +106,7 @@ const Lightbox = ({
         <IconButton 
           className={classes.close} 
           aria-label="close"
-          onClick={(e) => setShow(false)}
+          onClick={(e) => setShow({show: false, index: 0})}
           >
             <CloseIcon />
           </IconButton>
