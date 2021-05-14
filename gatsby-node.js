@@ -99,7 +99,11 @@ const lawsuitParser = (row) => {
         month: v.split(";")[0],
         lawsuits: Number(v.split(";")[1]),
       }))
-      .filter((d) => d.month.indexOf("1969") === -1),
+      .filter((d) => {
+        const isNoisy = row.id.length < 6 && d.lawsuits < 10;
+        const isValidDate = d.month.indexOf("1969") === -1;
+        return isValidDate && !isNoisy;
+      }),
     top_collectors: row.collectors.split("|").map((v) => {
       const values = v.split(";");
       return {
@@ -109,7 +113,9 @@ const lawsuitParser = (row) => {
       };
     }),
     collector_total: Number(row.collector_total),
-    default_judgement: Number(row.default_judgement),
+    // set indiana to null
+    default_judgement:
+      row.id.indexOf("18") === 0 ? null : Number(row.default_judgement),
     no_rep_percent: Number(row.no_rep_percent),
   };
 };
