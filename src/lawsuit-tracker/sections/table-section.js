@@ -260,7 +260,7 @@ const TableSection = ({
               interactive
               arrow
             >
-              <span>Default Judgements</span>
+              <span>Default Judgments</span>
             </Tooltip>
           </TableSortLabel>
         ),
@@ -336,7 +336,7 @@ const TableSection = ({
           interactive
           arrow
         >
-          <Button className="hint-button">What is a default judgement?</Button>
+          <Button className="hint-button">What is a default judgment?</Button>
         </Tooltip>
         <Typography paragraph variant="caption">
           {Mustache.render(content.LAST_UPDATED, context)}

@@ -55,6 +55,7 @@ const entry = {
       label: "Footnote",
       name: "FOOTNOTE",
       widget: "string",
+      required: false,
     },
   ],
 };

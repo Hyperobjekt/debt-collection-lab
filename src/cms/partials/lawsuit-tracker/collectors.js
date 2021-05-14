@@ -19,6 +19,7 @@ const collectors = {
       label: "Footnote",
       name: "FOOTNOTE",
       widget: "string",
+      required: false,
     },
   ],
 };
