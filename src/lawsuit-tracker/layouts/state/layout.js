@@ -155,6 +155,7 @@ export const query = graphql`
         percent_latinx
         percent_other
         percent_white
+        median_hhi
         majority
       }
     }

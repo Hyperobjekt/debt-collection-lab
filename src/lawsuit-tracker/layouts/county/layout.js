@@ -13,6 +13,7 @@ export default function TrackerCountyLayout({
   const content = props.data.allLawsuitTrackerJson.nodes[0];
   const meta = pageContext.frontmatter.meta;
   const image = props.data.allFile.nodes[0];
+  console.log({ data });
   return (
     <SubpageLayout
       type="county"
@@ -144,6 +145,7 @@ export const query = graphql`
         percent_latinx
         percent_other
         percent_white
+        median_hhi
         majority
       }
     }

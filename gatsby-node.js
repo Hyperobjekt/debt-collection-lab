@@ -100,7 +100,7 @@ const lawsuitParser = (row) => {
         lawsuits: Number(v.split(";")[1]),
       }))
       .filter((d) => {
-        const isNoisy = row.id.length < 6 && d.lawsuits < 10;
+        const isNoisy = row.id.length < 6 && d.lawsuits < 2;
         const isValidDate = d.month.indexOf("1969") === -1;
         return isValidDate && !isNoisy;
       }),
@@ -177,6 +177,7 @@ const demographicParser = (row) => {
     percent_latinx: getNumberValue(row.percent_latinx),
     percent_white: getNumberValue(row.percent_white),
     percent_other: getNumberValue(row.percent_other),
+    median_hhi: getNumberValue(row.median_hhi),
   };
   const majority = getMajority(result);
   return {

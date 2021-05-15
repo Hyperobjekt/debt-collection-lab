@@ -18,20 +18,27 @@ const MAP_TOKEN =
 const MAP_STYLE = "mapbox://styles/hyperobjekt/cknuto9c60c0217qgff4tn4kb";
 
 const getTooltipProps = ({ info, event }) => {
+  const items = info.properties.demographics
+    ? Object.values(info.properties.demographics)
+        .sort((a, b) => b.value - a.value)
+        .map(({ label, value }) => ({
+          label,
+          value: formatPercent(value),
+          raw: value,
+        }))
+    : [];
+  if (info.properties.medianHhi) {
+    items.push({
+      label: "Median Household Income",
+      value: "$" + formatInt(info.properties.medianHhi),
+    });
+  }
   return {
     x: event.offsetCenter.x,
     y: event.offsetCenter.y,
     title: info.properties.name,
     subtitle: formatInt(info.properties.value) + " lawsuits",
-    items: info.properties.demographics
-      ? Object.values(info.properties.demographics)
-          .sort((a, b) => b.value - a.value)
-          .map(({ label, value }) => ({
-            label,
-            value: formatPercent(value),
-            raw: value,
-          }))
-      : null,
+    items: items,
   };
 };
 

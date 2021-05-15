@@ -20,7 +20,6 @@ export default function TrackerIndexLayout({ children, ...props }) {
   const dateRange = getDateRange(data);
   const content = props.data.lawsuitTrackerJson;
   const image = getImage(props.data.allFile.nodes[0]);
-  console.log({ content });
   return (
     <Layout {...props}>
       <IndexHero
