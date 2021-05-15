@@ -90,6 +90,7 @@ export const pageQuery = graphql`
         team {
           name
           title
+          creds
         }
       }
     }
