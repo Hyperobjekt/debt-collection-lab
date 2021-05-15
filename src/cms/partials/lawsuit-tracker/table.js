@@ -18,6 +18,7 @@ const entry = {
     {
       label: "Footnote",
       name: "FOOTNOTE",
+      default: "",
       widget: "string",
     },
   ],

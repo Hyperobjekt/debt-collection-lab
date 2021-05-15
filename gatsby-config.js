@@ -26,14 +26,12 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./data/geojson`,
-        typeName: `Geo`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./content/lawsuit-tracker`,
-        typeName: `Tracker`,
       },
     },
     {

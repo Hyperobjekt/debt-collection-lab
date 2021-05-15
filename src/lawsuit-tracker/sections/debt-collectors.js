@@ -55,6 +55,7 @@ const TopCollectorsChart = ({ data }) => {
         <Typography component="span" weight="bold" variant="legendLabel">
           {label}
         </Typography>
+        <br />
         {formatInt(value.lawsuits)} lawsuits ({formatPercent(value.value)})
       </>
     );

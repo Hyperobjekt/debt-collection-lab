@@ -218,6 +218,12 @@ export const getLawsuitChartData = (data) => {
     .map((d) => [d[0], d3.sum(d[1], (v) => v.y / d[1].length)]);
   // pull the month with the highest average
   const topMonth = monthlyAverages.sort((a, b) => b[1] - a[1])[0];
+  if (!topMonth) {
+    console.warn("no top month available", chartData);
+    return {
+      chartData: null,
+    };
+  }
   // get the average yearly filings
   const avgYearly = d3.sum(monthlyAverages, (d) => d[1]);
   // calculate the % of the top month's lawsuits of the yearly average
@@ -273,6 +279,7 @@ export const getLawsuitMapData = (data, geojson, region, demographics) => {
               value: matchLawsuit.lawsuits,
               name: matchLawsuit.name,
               selected: false,
+              medianHhi: matchDemographic ? matchDemographic.median_hhi : null,
               demographics: matchDemographic
                 ? {
                     pctAsian: {
@@ -357,6 +364,7 @@ export const getDemographicChartData = (
 
   // Step 3: aggregate all lawsuits by group, by month
   const summed = Array.from(grouped.entries())
+    // map grouped values to [group, lawsuit history by month]
     .map(([group, groupData]) => {
       const byMonth = groupData.reduce((monthObj, entry) => {
         const monthValues = entry.lawsuit_history;
@@ -368,21 +376,32 @@ export const getDemographicChartData = (
       }, {});
       return [group, Object.entries(byMonth)];
     })
+    // map history for each group to values
     .map(([group, history]) => {
       const withPercent = history.map(([month, lawsuits]) => {
         // pull the month total from lawsuit history
-        const monthTotal = data.lawsuit_history.find(
+        let monthTotal = data.lawsuit_history.find(
           (totalHistory) => totalHistory.month === month
         );
+        // assume 0 if month total is unavailable
+        if (!monthTotal) {
+          monthTotal = { month, lawsuits: 0 };
+        }
         // pull group percent from counts
         const groupPercent = counts.find((c) => c.group === group).tractPercent;
-        const proportionalCount = groupPercent * monthTotal.lawsuits;
+        const proportionalCount = monthTotal
+          ? groupPercent * monthTotal.lawsuits
+          : null;
         return {
           month,
           lawsuits,
-          lawsuitPercent: lawsuits / monthTotal.lawsuits,
-          proportionalCountDiff: lawsuits - proportionalCount,
-          proportionalPercentDiff: lawsuits / proportionalCount - 1,
+          lawsuitPercent: monthTotal ? lawsuits / monthTotal.lawsuits : null,
+          proportionalCountDiff: proportionalCount
+            ? lawsuits - proportionalCount
+            : null,
+          proportionalPercentDiff: proportionalCount
+            ? lawsuits / proportionalCount - 1
+            : null,
         };
       });
       return [group, withPercent];

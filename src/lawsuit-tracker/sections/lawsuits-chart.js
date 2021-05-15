@@ -5,6 +5,7 @@ import TwoColBlock from "../../components/sections/two-col-block";
 import GroupedBarChart from "../charts/grouped-bar-chart";
 import { formatInt, formatPercent } from "../utils";
 import Mustache from "mustache";
+import { Block } from "@hyperobjekt/material-ui-website/lib/block";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
@@ -60,6 +61,18 @@ const LawsuitsChart = ({ data }) => {
 };
 
 const LawsuitsChartSection = ({ content, data, children, ...props }) => {
+  if (!data || !data.chartData) {
+    return (
+      <Block>
+        <Typography variant="sectionTitle" component="h3">
+          {content.TITLE}
+        </Typography>
+        <Typography variant="body1">
+          Lawsuit history unavailable for this location.
+        </Typography>
+      </Block>
+    );
+  }
   const context = {
     topMonthName: data.topMonthName,
     topMonthPercent: formatPercent(data.topMonthPercent),
