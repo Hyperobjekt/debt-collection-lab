@@ -119,6 +119,16 @@ const FORMAT_NUM = (v) => (v === null ? "-" : FORMATTER(v));
 /** Parser for month dates */
 const MONTH_PARSE = d3.timeParse("%m/%Y");
 
+const getTooltipHint = (content, hasIndiana) => {
+  if (hasIndiana) {
+    return (
+      content.DEFAULT_JUDGEMENTS_HINT +
+      `<br /><br />Default judgments are not recorded by the state of Indiana.`
+    );
+  }
+  return content.DEFAULT_JUDGEMENTS_HINT;
+};
+
 /**
  * A section with a left column for title, description, and table controls
  * and a table on the right.
@@ -132,6 +142,7 @@ const TableSection = ({
   children,
   ...props
 }) => {
+  console.log({ source });
   /** metric to sort by */
   const [sortBy, setSortBy] = useState("lawsuits");
   /** sorting order */
@@ -161,11 +172,7 @@ const TableSection = ({
         d.name === "Indiana" ||
         d.geoid.indexOf("18") === 0
     ).length > 0;
-  if (hasIndiana) {
-    content.DEFAULT_JUDGEMENTS_HINT =
-      content.DEFAULT_JUDGEMENTS_HINT +
-      `<br /><br />Default judgments are not recorded by the state of Indiana.`;
-  }
+  const tooltipHint = getTooltipHint(content, hasIndiana);
 
   /** memoized handler for when user changes sorting */
   const handleSort = useCallback(
@@ -234,40 +241,6 @@ const TableSection = ({
         accessor: (d) => FORMAT_NUM(d["lawsuits"]),
       },
       {
-        id: "default_judgement",
-        Header: () => (
-          <TableSortLabel
-            active={sortBy === "default_judgement"}
-            direction={
-              sortBy === "default_judgement"
-                ? ascending
-                  ? "asc"
-                  : "desc"
-                : "asc"
-            }
-            onClick={(e) => handleSort(e, "default_judgement")}
-          >
-            <Tooltip
-              title={
-                <Typography
-                  variant="body2"
-                  dangerouslySetInnerHTML={{
-                    __html: content.DEFAULT_JUDGEMENTS_HINT,
-                  }}
-                />
-              }
-              placement="top"
-              interactive
-              arrow
-            >
-              <span>Default Judgments</span>
-            </Tooltip>
-          </TableSortLabel>
-        ),
-        cellProps: { align: "right", width: 100 },
-        accessor: (d) => FORMAT_NUM(d["default_judgement"]),
-      },
-      {
         id: "trend",
         Header: () => (
           <>
@@ -292,6 +265,41 @@ const TableSection = ({
               data={getTrendData(row.original.lawsuit_history)}
             />
           ),
+      },
+
+      {
+        id: "default_judgement",
+        Header: () => (
+          <TableSortLabel
+            active={sortBy === "default_judgement"}
+            direction={
+              sortBy === "default_judgement"
+                ? ascending
+                  ? "asc"
+                  : "desc"
+                : "asc"
+            }
+            onClick={(e) => handleSort(e, "default_judgement")}
+          >
+            <Tooltip
+              title={
+                <Typography
+                  variant="body2"
+                  dangerouslySetInnerHTML={{
+                    __html: tooltipHint,
+                  }}
+                />
+              }
+              placement="top"
+              interactive
+              arrow
+            >
+              <span>Default Judgments</span>
+            </Tooltip>
+          </TableSortLabel>
+        ),
+        cellProps: { align: "right", width: 100 },
+        accessor: (d) => FORMAT_NUM(d["default_judgement"]),
       },
       view !== "tracts" && view !== "zips"
         ? {
@@ -329,7 +337,7 @@ const TableSection = ({
             <Typography
               variant="body2"
               dangerouslySetInnerHTML={{
-                __html: content.DEFAULT_JUDGEMENTS_HINT,
+                __html: tooltipHint,
               }}
             />
           }
@@ -414,7 +422,7 @@ const TableSection = ({
 
 TableSection.defaultProps = {
   views: ["tracts"],
-  cols: ["name", "lawsuits", "default_judgement", "trend", "report"],
+  cols: ["name", "lawsuits", "trend", "default_judgement", "report"],
   limit: 10,
 };
 

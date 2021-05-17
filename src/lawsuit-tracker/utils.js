@@ -321,11 +321,20 @@ export const getLawsuitMapData = (data, geojson, region, demographics) => {
   };
 };
 
+/**
+ * Joins demographic data for the provided region level to the lawsuits data
+ * @param {*} data
+ * @param {*} demographics
+ * @param {*} region
+ * @returns
+ */
 const joinDemographicsWithData = (data, demographics, region) => {
   // console.log("joinDemographicsWithData", { data, demographics, region });
   return demographics
     .map((dem) => {
-      const match = data[region].find((tract) => tract.geoid === dem.geoid);
+      const match = data[region].find(
+        (location) => location.geoid === dem.geoid
+      );
       return match
         ? {
             ...dem,
@@ -334,6 +343,17 @@ const joinDemographicsWithData = (data, demographics, region) => {
         : null;
     })
     .filter(Boolean);
+};
+
+const getNeighborhoodProportions = (data, joinedData) => {
+  const grouped = d3.group(joinedData, (d) => d.majority);
+  return Array.from(grouped.entries()).map(([g, entries]) => ({
+    group: g,
+    tractCount: entries.length,
+    tractPercent: entries.length / joinedData.length,
+    lawsuitCount: d3.sum(entries, (d) => d.lawsuits),
+    lawsuitPercent: d3.sum(entries, (d) => d.lawsuits) / data.lawsuits,
+  }));
 };
 
 /**
@@ -352,15 +372,11 @@ export const getDemographicChartData = (
   // Step 1: join lawsuit and demographic data
   const joined = joinDemographicsWithData(data, demographics, region);
 
+  // Step 1a: get overall proportions
+  const counts = getNeighborhoodProportions(data, joined);
+
   // Step 2: group joined data by racial majority
   const grouped = d3.group(joined, (d) => d.majority);
-  const counts = Array.from(grouped.entries()).map(([g, entries]) => ({
-    group: g,
-    tractCount: entries.length,
-    tractPercent: entries.length / joined.length,
-    lawsuitCount: d3.sum(entries, (d) => d.lawsuits),
-    lawsuitPercent: d3.sum(entries, (d) => d.lawsuits) / data.lawsuits,
-  }));
 
   // Step 3: aggregate all lawsuits by group, by month
   const summed = Array.from(grouped.entries())
@@ -446,12 +462,24 @@ export const getDemographicChartData = (
     .sort((a, b) => a.group.localeCompare(b.group))
     .sort((a, b) => a.x - b.x);
 
-  // console.log("getDemographicChartData", { chart, data, counts, joined });
   return {
     chartData: chart,
     tractCountByMajority: counts,
     totalLawsuits: data.lawsuits,
   };
+};
+
+/**
+ * Shapes and returns data required for table section
+ * @param {*} data
+ * @param {*} demographics
+ * @param {*} region
+ */
+export const getTableData = (data, demographics, region) => {
+  // get counts for each county
+  // const joined = joinDemographicsWithData(data, demographics, region);
+  // const counts = getNeighborhoodProportions(data, joined);
+  // TODO: get data with neighborhood proportions for counties / zips
 };
 
 export const getTopCollectorsData = (data) => {
