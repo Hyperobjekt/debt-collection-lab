@@ -65,7 +65,7 @@
       "COUNT_CHART_TITLE": "Number of Lawsuits by Neighborhood Racial Majority",
       "COUNT_CHART_TOOLTIP": "{{yValue}} lawsuits in {{xValue}}",
       "PROPORTION_CHART_TITLE": "Difference from Proportionate Filings Based on Neighborhood Racial Majority Proportions",
-      "PROPORTION_CHART_TOOLTIP": "Filings in {{title}} neighborhoods were {{data.diff}} in {{xValue}}, with a difference of {{yValue}} lawsuits from a proportionate value.",
+      "PROPORTION_CHART_TOOLTIP": "Filings in {{title}} neighborhoods were {{data.diff}} in {{xValue}}, with {{yValue}} lawsuits from a proportionate value.",
       "FOOTNOTE": ""
     }
   },
@@ -115,8 +115,8 @@
       "BREAKDOWN_LABEL": "{{group}}: {{groupPercent}} of neighborhoods, {{lawsuitPercent}} of lawsuits",
       "COUNT_CHART_TITLE": "Number of Lawsuits by Neighborhood Racial Majority",
       "COUNT_CHART_TOOLTIP": "{{yValue}} lawsuits in {{xValue}}",
-      "PROPORTION_CHART_TITLE": "Difference from Expected Number of Lawsuits Based on Neighborhood Proportions",
-      "PROPORTION_CHART_TOOLTIP": "Difference of {{yValue}} lawsuits from the expected value based on neighborhood proportions in {{xValue}}",
+      "PROPORTION_CHART_TITLE": "Difference from Proportionate Filings Based on Neighborhood Racial Majority Proportions",
+      "PROPORTION_CHART_TOOLTIP": "Filings in {{title}} neighborhoods were {{data.diff}} in {{xValue}}, with {{yValue}} lawsuits from a proportionate value.",
       "FOOTNOTE": ""
     }
   },

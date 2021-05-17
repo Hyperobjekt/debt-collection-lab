@@ -196,6 +196,11 @@ const DemographicChartSection = ({
   const context = {
     totalLawsuits,
   };
+  // pull out the group where there is no demographic data
+  const demsUnavailable = tractCountByMajority.filter(({ group }) =>
+    Boolean(!group)
+  );
+
   const leftContent = (
     <>
       <Typography variant="sectionTitle" component="h3">
@@ -214,28 +219,36 @@ const DemographicChartSection = ({
             {content.BREAKDOWN_TITLE}
           </Typography>
           <ul style={{ paddingLeft: 16 }}>
-            {tractCountByMajority.map(
-              ({
-                group,
-                tractCount,
-                tractPercent,
-                lawsuitCount,
-                lawsuitPercent,
-              }) => (
-                <li key={group}>
-                  <Typography>
-                    {Mustache.render(content["BREAKDOWN_LABEL"], {
-                      group,
-                      groupPercent: formatPercent(tractPercent),
-                      lawsuitPercent: formatPercent(lawsuitPercent),
-                      groupCount: formatInt(tractCount),
-                      lawsuitCount: formatInt(lawsuitCount),
-                    })}
-                  </Typography>
-                </li>
-              )
-            )}
+            {tractCountByMajority
+              .filter(({ group }) => Boolean(group))
+              .map(
+                ({
+                  group,
+                  tractCount,
+                  tractPercent,
+                  lawsuitCount,
+                  lawsuitPercent,
+                }) => (
+                  <li key={group}>
+                    <Typography>
+                      {Mustache.render(content["BREAKDOWN_LABEL"], {
+                        group,
+                        groupPercent: formatPercent(tractPercent),
+                        lawsuitPercent: formatPercent(lawsuitPercent),
+                        groupCount: formatInt(tractCount),
+                        lawsuitCount: formatInt(lawsuitCount),
+                      })}
+                    </Typography>
+                  </li>
+                )
+              )}
           </ul>
+          {demsUnavailable.length > 0 && (
+            <Typography variant="caption">
+              * Demographic information unavailable for{" "}
+              {formatPercent(demsUnavailable[0].tractPercent)} neighborhoods.
+            </Typography>
+          )}
         </>
       )}
       {children}

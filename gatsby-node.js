@@ -6,21 +6,45 @@ const createSocialImage = require("./scripts/createSocialImage");
 const MONTH_PARSE = d3.timeParse("%m/%Y");
 const formatPercent = d3.format(".1%");
 const formatInt = d3.format(",d");
+
+function getDemographicProportions(totalLawsuits, subregions) {
+  const grouped = d3.group(subregions, (d) => d.majority);
+  return Array.from(grouped.entries()).map(([g, entries]) => ({
+    group: g,
+    tractCount: entries.length,
+    tractPercent: entries.length / subregions.length,
+    lawsuitCount: d3.sum(entries, (d) => d.lawsuits),
+    lawsuitPercent: d3.sum(entries, (d) => d.lawsuits) / totalLawsuits,
+  }));
+}
+
 /**
  * Returns an array of county objects
  * @param {*} data
  * @returns
  */
-function getCounties(data) {
-  const counties = data.filter((d) => d.geoid.length === 5);
-  return counties.map((c) => ({
-    ...c,
-    state: getStateNameForFips(c.geoid),
-    region: "tracts",
-    tracts: data.filter(
-      (d) => d.geoid.length > 5 && d.geoid.indexOf(c.geoid) === 0
-    ),
-  }));
+function getCounties(lawsuits, demographics) {
+  const counties = lawsuits.filter((d) => d.geoid.length === 5);
+  return counties.map((c) => {
+    const countyData = {
+      ...c,
+      state: getStateNameForFips(c.geoid),
+      region: "tracts",
+      tracts: lawsuits
+        .filter((d) => d.geoid.length > 7 && d.geoid.indexOf(c.geoid) === 0)
+        .map((tract) => {
+          // add demographics
+          const match = demographics.find((row) => row.geoid === tract.geoid);
+          if (!match) return tract;
+          return { ...match, ...tract };
+        }),
+    };
+    countyData.proportions = getDemographicProportions(
+      countyData.lawsuits,
+      countyData.tracts
+    );
+    return countyData;
+  });
 }
 
 /**
@@ -28,19 +52,43 @@ function getCounties(data) {
  * @param {*} data
  * @returns
  */
-function getStates(data) {
-  const states = data.filter((d) => d.geoid.length === 2);
+function getStates(lawsuits, demographics, countyData) {
+  const states = lawsuits.filter((d) => d.geoid.length === 2);
   return states.map((s) => {
-    const zips = data
+    const zips = lawsuits
       .filter((d) => d.geoid.length === 7 && d.geoid.indexOf(s.geoid) === 0)
-      .map((c) => ({ ...c, state: s.name }));
+      .map((zip) => {
+        const zipData = { ...zip, state: s.name };
+        const match = demographics.find((row) => row.geoid === zip.geoid);
+        if (!match) return zipData;
+        return { ...zipData, ...match };
+      });
+    const counties = lawsuits
+      .filter((d) => d.geoid.length === 5 && d.geoid.indexOf(s.geoid) === 0)
+      .map((c) => {
+        const result = { ...c, state: s.name };
+        const match = countyData.find((county) => county.geoid === c.geoid);
+        // get groups that have disproportionate filings (> 133% of filings share compared to neighborhood proportion)
+        result.disproportionate = match
+          ? match.proportions
+              ?.filter(({ group, lawsuitPercent, tractPercent }) => {
+                if (group === "No Majority") return false;
+                const isDisproportionate =
+                  lawsuitPercent > tractPercent * 1.3333;
+                if (isDisproportionate) return isDisproportionate;
+              })
+              .map(({ group }) => group)
+          : [];
+        return result;
+      });
+    const region = zips.length > counties.length ? "zips" : "counties";
     return {
       ...s,
-      region: zips?.length > 0 ? "zips" : "counties",
-      counties: data
-        .filter((d) => d.geoid.length === 5 && d.geoid.indexOf(s.geoid) === 0)
-        .map((c) => ({ ...c, state: s.name })),
+      region,
+      counties,
       zips,
+      proportions:
+        region === "zips" ? getDemographicProportions(s.lawsuits, zips) : [],
     };
   });
 }
@@ -331,13 +379,16 @@ const createLawsuitTrackerIndex = async ({ graphql, actions }) => {
 
 exports.sourceNodes = async (params) => {
   const lawsuits = loadCsv("./static/data/lawsuits.csv", lawsuitParser);
-  createSourceNodes("States", getStates(lawsuits), params);
-  createSourceNodes("Counties", getCounties(lawsuits), params);
-  const demographicData = loadCsv(
+  const demographics = loadCsv(
     "./static/data/demographics.csv",
     demographicParser
   );
-  createSourceNodes("Demographics", demographicData, params);
+  const countyData = getCounties(lawsuits, demographics);
+  const stateData = getStates(lawsuits, demographics, countyData);
+  createSourceNodes("States", stateData, params);
+  createSourceNodes("Counties", countyData, params);
+
+  // createSourceNodes("Demographics", demographicData, params);
 };
 
 exports.createPages = async ({ graphql, actions }) => {

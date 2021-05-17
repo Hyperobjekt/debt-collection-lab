@@ -161,12 +161,17 @@ async function shapeFullData() {
     };
   };
   const data = loadCsv(path, parser)
-    .filter((d) => d.id !== "NA")
+    .filter((d) => d.id && d.id !== "NA")
     .map((d) => {
       // add state fips to zip code
       // TODO: need a way to determine state from zip code
       // - have Jeff add a column with state fips
-      if (d.id === d.name) {
+      if (
+        d.id &&
+        d.id.length === 5 &&
+        d.id === d.name &&
+        ["57", "58"].indexOf(d.id.substring(0, 2)) > -1
+      ) {
         // Assuming all zips belong to North Dakota
         return {
           ...d,

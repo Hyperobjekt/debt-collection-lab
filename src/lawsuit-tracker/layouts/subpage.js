@@ -24,7 +24,6 @@ export default function SubpageLayout({
   type,
   data,
   geojson,
-  demographics,
   content,
   ...props
 }) {
@@ -48,7 +47,7 @@ export default function SubpageLayout({
       />
       <LawsuitsMapSection
         content={content[type].map}
-        data={getLawsuitMapData(data, geojson, region, demographics)}
+        data={getLawsuitMapData(data, geojson, region)}
       />
       <TableSection
         views={[region]}
@@ -58,7 +57,7 @@ export default function SubpageLayout({
       {hasDemographicChart && (
         <DemographicChartSection
           content={content[type].demographics}
-          data={getDemographicChartData(data, demographics, region)}
+          data={getDemographicChartData(data, region)}
         />
       )}
       <ShareBlock />

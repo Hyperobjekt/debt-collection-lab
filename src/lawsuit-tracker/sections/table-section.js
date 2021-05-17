@@ -317,7 +317,7 @@ const TableSection = ({
           }
         : null,
     ].filter((v) => !!v && cols.indexOf(v.id) > -1);
-  }, [handleSort, ascending, sortBy, view, trendRange, cols]);
+  }, [handleSort, ascending, sortBy, view, trendRange, cols, tooltipHint]);
 
   const context = {
     singularRegion: getSingularRegion(view),

@@ -9,15 +9,11 @@ export default function TrackerCountyLayout({
 }) {
   const data = props.data.allCounties.nodes[0];
   const geojson = props.data.allGeojsonJson.nodes[0];
-  const demographics = props.data.allDemographics.nodes;
   const content = props.data.allLawsuitTrackerJson.nodes[0];
   const meta = pageContext.frontmatter.meta;
   const image = props.data.allFile.nodes[0];
   return (
-    <SubpageLayout
-      type="county"
-      {...{ meta, data, geojson, image, demographics, content }}
-    />
+    <SubpageLayout type="county" {...{ meta, data, geojson, image, content }} />
   );
 }
 
@@ -121,6 +117,11 @@ export const query = graphql`
           lawsuits
           month
         }
+        proportions {
+          group
+          tractPercent
+          lawsuitPercent
+        }
         tracts {
           geoid
           default_judgement
@@ -132,20 +133,15 @@ export const query = graphql`
             lawsuits
             month
           }
+          parentLocation
+          percent_asian
+          percent_black
+          percent_latinx
+          percent_other
+          percent_white
+          median_hhi
+          majority
         }
-      }
-    }
-    allDemographics(filter: { parentLocation: { eq: $geoid } }) {
-      nodes {
-        geoid
-        parentLocation
-        percent_asian
-        percent_black
-        percent_latinx
-        percent_other
-        percent_white
-        median_hhi
-        majority
       }
     }
   }
