@@ -9,6 +9,10 @@ export default withStyles((theme) => ({
     color: theme.palette.grey[400],
     padding: 0,
     top: 64,
+    // TODO: create styles for mobile breadcrumb
+    [theme.breakpoints.only("xs")]: {
+      display: "none",
+    },
   },
   container: {},
   depth0: {},

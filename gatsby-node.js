@@ -320,6 +320,9 @@ const createLawsuitTrackerIndex = async ({ graphql, actions }) => {
       frontmatter: {
         meta: {
           title: "Debt Collection Tracker",
+          description:
+            "We are building tools for tracking debt collection nationwide.",
+          image: "/images/social/tracker-social.jpg",
         },
       },
     },
