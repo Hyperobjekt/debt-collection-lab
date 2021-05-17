@@ -14,6 +14,7 @@ import {
   Tooltip,
   withStyles,
 } from "@material-ui/core";
+import FlagIcon from "@material-ui/icons/Warning";
 import TwoColBlock from "../../components/sections/two-col-block";
 import {
   applyFilter,
@@ -129,6 +130,48 @@ const getTooltipHint = (content, hasIndiana) => {
   return content.DEFAULT_JUDGEMENTS_HINT;
 };
 
+const getDisproportionateTooltip = (groups) => {
+  let groupList = "";
+  if (groups.length === 1) groupList = groups[0];
+  if (groups.length === 2) groupList = groups[0] + " and " + groups[1];
+  if (groups.length > 2) {
+    const last = groups.pop();
+    groupList = groups.join(", ") + " and " + last;
+  }
+  return `On average, ${groupList} neighborhoods are disproportionately filed against.`;
+};
+
+const PlaceName = ({ row, view }) => {
+  const name =
+    view === "counties"
+      ? `${row.original.name}, ${row.original.state}`
+      : row.original["name"];
+  const hasDisproportionate = row.original.disproportionate?.length > 0;
+  const nameComponent = (
+    <Box
+      display="inline-flex"
+      alignItems="center"
+      style={{ whiteSpace: "nowrap", lineHeight: 1.1 }}
+    >
+      {name}{" "}
+      {hasDisproportionate && (
+        <FlagIcon style={{ fontSize: 16, marginLeft: 8 }} />
+      )}
+    </Box>
+  );
+  return hasDisproportionate ? (
+    <Tooltip
+      title={getDisproportionateTooltip(row.original.disproportionate)}
+      arrow
+      placement="right"
+    >
+      {nameComponent}
+    </Tooltip>
+  ) : (
+    nameComponent
+  );
+};
+
 /**
  * A section with a left column for title, description, and table controls
  * and a table on the right.
@@ -221,8 +264,7 @@ const TableSection = ({
           </TableSortLabel>
         ),
         cellProps: { width: "50%" },
-        accessor: (d) =>
-          view === "counties" ? `${d.name}, ${d.state}` : d["name"],
+        Cell: ({ row }) => <PlaceName row={row} view={view} />,
       },
       {
         id: "lawsuits",

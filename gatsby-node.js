@@ -74,7 +74,8 @@ function getStates(lawsuits, demographics, countyData) {
               ?.filter(({ group, lawsuitPercent, tractPercent }) => {
                 if (group === "No Majority") return false;
                 const isDisproportionate =
-                  lawsuitPercent > tractPercent * 1.3333;
+                  lawsuitPercent > tractPercent * 1.3333 ||
+                  lawsuitPercent - tractPercent > 0.04;
                 if (isDisproportionate) return isDisproportionate;
               })
               .map(({ group }) => group)

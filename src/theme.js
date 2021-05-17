@@ -172,6 +172,7 @@ const overrides = {
       backgroundColor: theme.palette.background.dark,
       padding: theme.spacing(2),
       fontSize: theme.typography.pxToRem(14),
+      fontWeight: "normal",
       "& a": {
         color: "#fff",
         textDecoration: "underline",

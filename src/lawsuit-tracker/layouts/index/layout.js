@@ -89,6 +89,7 @@ export const query = graphql`
           geoid
           state
           lawsuits
+          disproportionate
           lawsuit_history {
             lawsuits
             month
