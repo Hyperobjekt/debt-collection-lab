@@ -392,13 +392,20 @@ export const getDemographicChartData = (
         const proportionalCount = monthTotal
           ? groupPercent * monthTotal.lawsuits
           : null;
+        const proportionalCountDiff = proportionalCount
+          ? lawsuits - proportionalCount
+          : null;
         return {
           month,
+          diff:
+            proportionalCountDiff === 0
+              ? "proportionate"
+              : proportionalCountDiff > 0
+              ? "disproportionately high"
+              : "disproportionately low",
           lawsuits,
           lawsuitPercent: monthTotal ? lawsuits / monthTotal.lawsuits : null,
-          proportionalCountDiff: proportionalCount
-            ? lawsuits - proportionalCount
-            : null,
+          proportionalCountDiff,
           proportionalPercentDiff: proportionalCount
             ? lawsuits / proportionalCount - 1
             : null,
@@ -415,6 +422,7 @@ export const getDemographicChartData = (
           month,
           lawsuits,
           lawsuitPercent,
+          diff,
           proportionalCountDiff,
           proportionalPercentDiff,
         }) => {
@@ -424,6 +432,7 @@ export const getDemographicChartData = (
             y: proportionalCountDiff,
             data: {
               month,
+              diff,
               lawsuits,
               lawsuitPercent,
               proportionalCountDiff,

@@ -139,9 +139,10 @@ function createFigure(root, data, options) {
           selection
             .selectAll(".tick text")
             .attr("text-anchor", "end")
-            .attr("transform", "rotate(-30)");
+            .attr("transform", "rotate(-45)");
         },
       })
+      .addMarklines()
       // adds the trend line
       .addLines({
         selector: lineSelector,

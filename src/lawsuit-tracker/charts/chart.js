@@ -64,6 +64,9 @@ const Global = createGlobalStyle`
 `;
 
 const ChartContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
   .chart {
     position: relative;
     width: 100%;
@@ -159,6 +162,13 @@ const ChartContainer = styled.div`
     fill: #999;
   }
 
+  /** MARKLINES **/
+  .chart__markline {
+    stroke: ${getThemeKey(["markline.stroke"])};
+    stroke-width: ${getThemeKey(["markline.strokeWidth"])};
+    stroke-dasharray: ${getThemeKey(["markline.strokeDasharray"])};
+  }
+
   /** LEGEND */
   .legend__item {
     display: flex;
@@ -186,6 +196,11 @@ const defaultTheme = {
     ticks: "#ccc",
     strokeWidth: 2,
   },
+  markline: {
+    strokeWidth: 4,
+    stroke: "#ddd",
+    strokeDasharray: "6 6",
+  },
   gridLines: {
     stroke: "#eee",
     strokeWidth: 1,
@@ -208,6 +223,7 @@ const Chart = ({
   labelFormatter = defaultFormatter,
   theme = {},
   className,
+  children,
   ...props
 }) => {
   const elRef = useRef(null);
@@ -266,6 +282,7 @@ const Chart = ({
         {legendLabels.length && (
           <ChartLegend className="chart__legend" labels={legendLabels} />
         )}
+        {children}
       </ChartContainer>
     </>
   );

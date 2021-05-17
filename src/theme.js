@@ -171,6 +171,7 @@ const overrides = {
     tooltip: {
       backgroundColor: theme.palette.background.dark,
       padding: theme.spacing(2),
+      fontSize: theme.typography.pxToRem(14),
       "& a": {
         color: "#fff",
         textDecoration: "underline",

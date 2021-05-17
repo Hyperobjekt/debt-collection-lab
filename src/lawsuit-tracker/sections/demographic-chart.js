@@ -107,6 +107,11 @@ const DemographicChart = ({
           gridLines: {
             stroke: "#E7E1D9",
           },
+          markline: {
+            strokeWidth: 4,
+            stroke: "#797267",
+            strokeDasharray: "6 6",
+          },
           colors: ["#DBA336", "#BC5421", "#BFDCE0", "#7D95AA", "#68A58B"],
         }}
         options={{
@@ -116,13 +121,39 @@ const DemographicChart = ({
           yFormat: ",d",
           margin: [8, 8, 64, 48],
           curve: "curveCardinal",
+          marklines:
+            metric === "proportionalCountDiff"
+              ? [{ id: "proportional", axis: "y", value: 0 }]
+              : [],
           colorMap: allGroups.reduce((colorMap, group) => {
             colorMap[group] = COLOR_MAP[group];
             return colorMap;
           }, {}),
           ...chartOptions,
         }}
-      />
+      >
+        {/* TODO: cleanup styles, add tooltip for more details on proportionate lawsuits */}
+        {metric === "proportionalCountDiff" && (
+          <Box
+            className="legend__item"
+            display="flex"
+            style={{ marginBottom: 8, marginLeft: 47 }}
+          >
+            <div
+              className={`legend__color`}
+              style={{
+                background: "transparent",
+                borderTop: `4px dashed #797267`,
+                height: 0,
+                width: 17,
+              }}
+            />
+            <Typography noWrap className="legend__label">
+              Proportionate Filings
+            </Typography>
+          </Box>
+        )}
+      </LineChart>
       {hasMultipleGroups && (
         <Box ml={5} mt={3}>
           <ButtonGroup color="primary" aria-label="chart type selection">

@@ -47,7 +47,7 @@ function createFigure(root, data, options) {
             selection
               .selectAll(".tick text")
               .attr("text-anchor", "end")
-              .attr("transform", "rotate(-30)");
+              .attr("transform", "rotate(-45) translate(-5 -10)");
           } else {
             selection
               .selectAll(".tick text")

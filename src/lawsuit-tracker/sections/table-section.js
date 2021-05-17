@@ -250,7 +250,7 @@ const TableSection = ({
             <Tooltip
               title={
                 <Typography
-                  variant="caption"
+                  variant="body2"
                   dangerouslySetInnerHTML={{
                     __html: content.DEFAULT_JUDGEMENTS_HINT,
                   }}
@@ -327,7 +327,7 @@ const TableSection = ({
         <Tooltip
           title={
             <Typography
-              variant="caption"
+              variant="body2"
               dangerouslySetInnerHTML={{
                 __html: content.DEFAULT_JUDGEMENTS_HINT,
               }}

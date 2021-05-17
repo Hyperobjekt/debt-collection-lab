@@ -28,7 +28,6 @@ export default function SubpageLayout({
   content,
   ...props
 }) {
-  console.log({ data, demographics });
   const region = data.region;
   const hasDemographicChart =
     type === "county" || (region === "zips" && data.zips.length > 0);
