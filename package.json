@@ -29,6 +29,7 @@
     "d3-voronoi": "^1.1.4",
     "deck.gl": "^8.4.12",
     "dotenv": "^8.2.0",
+    "formik": "^2.2.6",
     "gatsby": "^3.4.2",
     "gatsby-plugin-google-gtag": "^3.5.0",
     "gatsby-plugin-image": "^1.4.0",
@@ -59,6 +60,7 @@
     "title-case": "^3.0.3",
     "viewport-mercator-project": "^7.0.2",
     "worker-loader": "^3.0.8",
+    "yup": "^0.32.9",
     "zustand": "^3.4.1"
   },
   "browserslist": [

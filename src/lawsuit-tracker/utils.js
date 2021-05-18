@@ -366,8 +366,8 @@ export const getDemographicChartData = (data, region = "tracts") => {
         return {
           month,
           diff:
-            proportionalCountDiff < 3 && proportionalCountDiff > -3
-              ? "proportionate"
+            proportionalCountDiff < 6 && proportionalCountDiff > -6
+              ? "roughly proportionate"
               : proportionalCountDiff > 0
               ? "disproportionately high"
               : "disproportionately low",

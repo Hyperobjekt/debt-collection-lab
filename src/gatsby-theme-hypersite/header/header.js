@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import { default as Header } from "gatsby-theme-hypersite/src/header/header";
 import { fade, withStyles } from "@material-ui/core";
-import { useLocation } from "@reach/router";
+import useLightPages from "../../hooks/useLightPages";
 
 /**
  * Re-uses the theme header but adds a color change
@@ -10,12 +10,11 @@ import { useLocation } from "@reach/router";
  * "shrink" functionality.
  */
 function DclHeader({ classes, ...props }) {
-  const location = useLocation();
-  const isHome = location.pathname === "/";
+  const isLight = useLightPages();
   const { light, ...headerClasses } = classes;
   return (
     <Header
-      className={clsx({ [classes.light]: isHome })}
+      className={clsx({ [classes.light]: isLight })}
       classes={headerClasses}
       height={64}
       stickyOffset={500}
@@ -65,9 +64,22 @@ export default withStyles((theme) => ({
   },
   light: {
     boxShadow: "none",
+    // darken breadcrumb
+    "& + main .HypBreadcrumb-navigation .HypNavigation-link": {
+      color: "#777",
+    },
+    // darken links and buttons
     "& a, & button": {
       color: theme.palette.text.primary,
     },
+    // switch logo colors
+    "& .logo__light": {
+      fill: "#FBF9F6",
+    },
+    "& .logo__dark": {
+      fill: "#1A1716",
+    },
+    // switch back to light colors once the header is attached
     "&.HypHeader-shrunk": {
       backgroundPosition: "0 0px",
       "& a, & button": {
@@ -80,15 +92,9 @@ export default withStyles((theme) => ({
         fill: "#FBF9F6",
       },
     },
+    // ignore header offset because we don't need it
     offset: {
       minHeight: 0,
-      // marginBottom: -64,
-    },
-    "& .logo__light": {
-      fill: "#FBF9F6",
-    },
-    "& .logo__dark": {
-      fill: "#1A1716",
     },
   },
 }))(DclHeader);
