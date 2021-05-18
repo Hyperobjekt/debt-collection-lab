@@ -14,7 +14,7 @@ import {
   Tooltip,
   withStyles,
 } from "@material-ui/core";
-import FlagIcon from "@material-ui/icons/Warning";
+import FlagIcon from "../table/flag-icon";
 import TwoColBlock from "../../components/sections/two-col-block";
 import {
   applyFilter,
@@ -138,7 +138,7 @@ const getDisproportionateTooltip = (groups) => {
     const last = groups.pop();
     groupList = groups.join(", ") + " and " + last;
   }
-  return `On average, ${groupList} neighborhoods are disproportionately filed against.`;
+  return `Disproportionate filings against ${groupList} communities in this county.`;
 };
 
 const PlaceName = ({ row, view }) => {
