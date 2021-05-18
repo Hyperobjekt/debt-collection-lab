@@ -382,7 +382,6 @@ export const getDemographicChartData = (data, region = "tracts") => {
       return [group, withPercent];
     });
 
-  console.log({ summed, data, grouped });
   // Step 4: flatten summed array into chart format
   let noDems = [];
   const chart = summed

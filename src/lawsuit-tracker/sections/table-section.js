@@ -185,7 +185,6 @@ const TableSection = ({
   children,
   ...props
 }) => {
-  console.log({ source });
   /** metric to sort by */
   const [sortBy, setSortBy] = useState("lawsuits");
   /** sorting order */
