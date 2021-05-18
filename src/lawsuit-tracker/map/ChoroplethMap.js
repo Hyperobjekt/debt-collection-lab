@@ -64,7 +64,6 @@ const ChoroplethMap = ({
     info: null,
     event: { offsetCenter: { x: 0, y: 0 } },
   });
-
   const dataBounds = data ? bbox(data) : null;
   const initialViewport = data
     ? {
@@ -135,6 +134,10 @@ const ChoroplethMap = ({
         layers.forEach((layer) => addNestedLayers(layer));
     };
     addNestedLayers(layers);
+    setViewport({
+      width: map.getCanvas().offsetWidth,
+      height: map.getCanvas().offsetHeight,
+    });
     setLoaded({ loaded: true, flown: false });
     // eslint-disable-next-line
   }, []);
@@ -146,17 +149,17 @@ const ChoroplethMap = ({
   // Fly to bounds on load
   useEffect(() => {
     if (loaded.loaded && !loaded.flown) {
-      const map = mapRef.current.getMap();
-      setViewport({
-        width: map.getCanvas().offsetWidth,
-        height: map.getCanvas().offsetHeight,
+      // HACK: sometimes the map will not zoom (usually safari 14+ big sur)
+      // likely caused by a race condition with setting `initialViewport`.
+      // wrapping in timeout appears to fix this
+      setTimeout(() => {
+        dataBounds &&
+          flyToBounds([
+            [dataBounds[0], dataBounds[1]],
+            [dataBounds[2], dataBounds[3]],
+          ]);
+        setLoaded({ loaded: true, flown: true });
       });
-      dataBounds &&
-        flyToBounds([
-          [dataBounds[0], dataBounds[1]],
-          [dataBounds[2], dataBounds[3]],
-        ]);
-      setLoaded({ loaded: true, flown: true });
     }
   }, [loaded, flyToBounds, setViewport, dataBounds]);
 
