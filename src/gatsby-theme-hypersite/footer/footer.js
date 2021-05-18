@@ -130,6 +130,10 @@ const styles = (theme) => ({
 
 const Footer = ({ classes, className, children, pageContext, ...props }) => {
   const siteMetadata = useSiteMetadata();
+  const footerLinks = [
+    ...siteMetadata.menuLinks,
+    { name: "Contact Us", link: "/contact-us" },
+  ];
   return (
     <BaseFooter className={clsx(classes.root, className)}>
       <Container className={classes.row1}>
@@ -148,7 +152,7 @@ const Footer = ({ classes, className, children, pageContext, ...props }) => {
             }}
             isGatsbyLink={true}
             LinkComponent={GatsbyLink}
-            links={siteMetadata.menuLinks}
+            links={footerLinks}
           />
         </Box>
       </Container>

@@ -16,6 +16,14 @@ const styles = (theme) => ({
   root: {
     maxWidth: 720,
   },
+  submitting: {},
+  // hide form when submitting
+  submitted: {
+    "& $row": {
+      display: "none",
+    },
+  },
+  form: {},
   row: {
     display: "flex",
     flexWrap: "wrap",
@@ -42,6 +50,7 @@ const styles = (theme) => ({
   },
   submit: {},
   spinner: {},
+  message: {},
 });
 
 const ContactForm = ({
@@ -102,7 +111,18 @@ const ContactForm = ({
     ...formikOverrides,
   });
   return (
-    <Block className={clsx("contact-form", classes.root, className)} {...props}>
+    <Block
+      className={clsx(
+        "contact-form",
+        classes.root,
+        {
+          [classes.submitting]: formik.isSubmitting,
+          [classes.submitted]: isSubmitted,
+        },
+        className
+      )}
+      {...props}
+    >
       {title && (
         <Typography gutterBottom variant="h2">
           {title}
@@ -112,7 +132,7 @@ const ContactForm = ({
         name="contact"
         method="POST"
         onSubmit={formik.handleSubmit}
-        className={clsx({ submitting: formik.isSubmitting })}
+        className={classes.form}
         netlify-honeypot="bot-field"
         data-netlify="true"
       >
@@ -203,7 +223,7 @@ const ContactForm = ({
             />
           )}
         </Box>
-        <Box className={clsx("contact-form__row", classes.row)}>
+        <Box className={clsx("contact-form__message", classes.message)}>
           {isSubmitted && !isSubmittedError && (
             <Typography
               className={clsx("contact-form__success", classes.success)}
