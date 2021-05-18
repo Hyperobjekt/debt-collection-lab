@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import clsx from "clsx";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Block } from "@hyperobjekt/material-ui-website";
 import {
   TextField,
   Button,
@@ -111,7 +110,7 @@ const ContactForm = ({
     ...formikOverrides,
   });
   return (
-    <Block
+    <div
       className={clsx(
         "contact-form",
         classes.root,
@@ -242,7 +241,7 @@ const ContactForm = ({
           )}
         </Box>
       </form>
-    </Block>
+    </div>
   );
 };
 
