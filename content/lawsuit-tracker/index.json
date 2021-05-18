@@ -6,7 +6,7 @@
     },
     "about": {
       "TITLE": "About the Debt Collection Tracker",
-      "DESCRIPTION": "People who already had trouble paying their bills saw those troubles multiply during the Covid-19 pandemic. Although there were some moratoriums on debt collection, thousands of lawsuits were still being filed in a single county court per month. We have created the Debt Collection Lawsuit Tracker to monitor weekly updates to the number of debt cases being filed across the United States.",
+      "DESCRIPTION": "People who already had trouble paying their bills saw those troubles multiply during the Covid-19 pandemic. Although there were some moratoriums on debt collection, thousands of lawsuits were still being filed in a single county court per month. We have created the Debt Collection Lawsuit Tracker to monitor monthly updates to the number of debt cases being filed across the United States. We will continue to add data to the tracker over time.",
       "LINKS": [{ "name": "", "link": "" }]
     },
     "table": {
