@@ -18,6 +18,8 @@ const page = {
   editor: {
     preview: false,
   },
+  media_folder: "/static/images",
+  public_folder: "/images",
   fields: [
     {
       label: "title",
@@ -48,11 +50,16 @@ const page = {
       required: true,
     },
     {
-      label: "logo",
-      name: "logo",
-      widget: "image",
-      default: "",
+      label: "Site URL",
+      name: "siteUrl",
+      widget: "string",
       required: true,
+    },
+    {
+      label: "Copyright notice",
+      name: "copyright",
+      widget: "string",
+      required: false,
     },
     {
       label: "navigation",

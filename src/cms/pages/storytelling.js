@@ -22,7 +22,7 @@ const galleryImages = {
 };
 
 const page = {
-  file: "content/pages/arts-and-storytelling/index.mdx",
+  file: "content/pages/arts-and-storytelling.mdx",
   label: "Art & Storytelling",
   name: "Art & Storytelling",
   extension: "mdx",
