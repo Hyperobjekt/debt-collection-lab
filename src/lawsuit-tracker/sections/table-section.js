@@ -146,30 +146,32 @@ const PlaceName = ({ row, view }) => {
     view === "counties"
       ? `${row.original.name}, ${row.original.state}`
       : row.original["name"];
-  const hasDisproportionate = row.original.disproportionate?.length > 0;
-  const nameComponent = (
-    <Box
-      display="inline-flex"
-      alignItems="center"
-      style={{ whiteSpace: "nowrap", lineHeight: 1.1 }}
-    >
-      {name}{" "}
-      {hasDisproportionate && (
-        <FlagIcon style={{ fontSize: 16, marginLeft: 8 }} />
-      )}
-    </Box>
-  );
-  return hasDisproportionate ? (
-    <Tooltip
-      title={getDisproportionateTooltip(row.original.disproportionate)}
-      arrow
-      placement="right"
-    >
-      {nameComponent}
-    </Tooltip>
-  ) : (
-    nameComponent
-  );
+  return name;
+  // TODO: uncomment below to add disproportionate flags once approved
+  // const hasDisproportionate = row.original.disproportionate?.length > 0;
+  // const nameComponent = (
+  //   <Box
+  //     display="inline-flex"
+  //     alignItems="center"
+  //     style={{ whiteSpace: "nowrap", lineHeight: 1.1 }}
+  //   >
+  //     {name}{" "}
+  //     {hasDisproportionate && (
+  //       <FlagIcon style={{ fontSize: 16, marginLeft: 8 }} />
+  //     )}
+  //   </Box>
+  // );
+  // return hasDisproportionate ? (
+  //   <Tooltip
+  //     title={getDisproportionateTooltip(row.original.disproportionate)}
+  //     arrow
+  //     placement="right"
+  //   >
+  //     {nameComponent}
+  //   </Tooltip>
+  // ) : (
+  //   nameComponent
+  // );
 };
 
 /**

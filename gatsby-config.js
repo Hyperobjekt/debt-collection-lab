@@ -68,6 +68,13 @@ module.exports = {
         trackingIds: ["G-05J63KC61T"],
       },
     },
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: 2409828,
+        sv: 6,
+      },
+    },
     "gatsby-plugin-styled-components",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
