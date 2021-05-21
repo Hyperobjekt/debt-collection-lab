@@ -199,7 +199,11 @@ export default function Table({
 
   const handleRowClick = (row) => {
     // do nothing when a tract / zip row is clicked
-    if (row.original.geoid.length > 5 || row.original.name.indexOf("Zip") > -1)
+    if (
+      row.original.geoid.length > 5 ||
+      row.original.name.indexOf("Zip") > -1 ||
+      row.original.name === "Texas"
+    )
       return;
     navigate(getTrackerUrl(row.original));
   };

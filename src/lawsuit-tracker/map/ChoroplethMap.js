@@ -20,6 +20,8 @@ const MAP_STYLE = "mapbox://styles/hyperobjekt/cknuto9c60c0217qgff4tn4kb";
 const getTooltipProps = ({ info, event }) => {
   const items = info.properties.demographics
     ? Object.values(info.properties.demographics)
+        // filter out entries with no values
+        .filter((dem) => dem.value)
         .sort((a, b) => b.value - a.value)
         .map(({ label, value }) => ({
           label,
