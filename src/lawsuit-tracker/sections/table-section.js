@@ -35,6 +35,7 @@ import Table from "../table/table";
 import TrendLine from "../table/trend-line";
 import SearchIcon from "@material-ui/icons/Search";
 import Mustache from "mustache";
+import FutureRelease from "../../components/future-release";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
@@ -154,9 +155,11 @@ const PlaceName = ({ row, view }) => {
       style={{ whiteSpace: "nowrap", lineHeight: 1.1 }}
     >
       {name}{" "}
-      {hasDisproportionate && (
-        <FlagIcon style={{ fontSize: 16, marginLeft: 8 }} />
-      )}
+      <FutureRelease release="next">
+        {hasDisproportionate && (
+          <FlagIcon style={{ fontSize: 16, marginLeft: 8 }} />
+        )}
+      </FutureRelease>
     </Box>
   );
   return hasDisproportionate ? (
