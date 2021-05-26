@@ -35,7 +35,6 @@ import Table from "../table/table";
 import TrendLine from "../table/trend-line";
 import SearchIcon from "@material-ui/icons/Search";
 import Mustache from "mustache";
-import FutureRelease from "../../components/future-release";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
@@ -139,7 +138,7 @@ const getDisproportionateTooltip = (groups) => {
     const last = groups.pop();
     groupList = groups.join(", ") + " and " + last;
   }
-  return `Disproportionate filings against ${groupList} communities in this county.`;
+  return `Disproportionate filings against ${groupList} neighborhoods in this county.`;
 };
 
 const PlaceName = ({ row, view }) => {
@@ -155,11 +154,9 @@ const PlaceName = ({ row, view }) => {
       style={{ whiteSpace: "nowrap", lineHeight: 1.1 }}
     >
       {name}{" "}
-      <FutureRelease release="next">
-        {hasDisproportionate && (
-          <FlagIcon style={{ fontSize: 16, marginLeft: 8 }} />
-        )}
-      </FutureRelease>
+      {hasDisproportionate && (
+        <FlagIcon style={{ fontSize: 16, marginLeft: 8 }} />
+      )}
     </Box>
   );
   return hasDisproportionate ? (
