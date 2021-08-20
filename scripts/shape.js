@@ -1,5 +1,7 @@
 "use strict";
-
+if (typeof fetch !== 'function') {
+  global.fetch = require('node-fetch-polyfill');
+}
 const d3 = require("d3");
 const { loadCsv, writeFile } = require("./utils");
 
@@ -15,6 +17,7 @@ const COUNTY_SELECTOR = (d) =>
   isValid(d.id) && d.id.length === 11 && d.id.substring(0, 5);
 const ZIP_SELECTOR = (d) => isValid(d.id) && d.id.length === 7 && d.id;
 const TRACT_SELECTOR = (d) => isValid(d.id) && d.id.length === 11 && d.id;
+
 
 function getName(id, name) {
   // zip codes
@@ -148,7 +151,7 @@ const jsonToCsv = (jsonData) => {
 };
 
 async function shapeFullData() {
-  const path = "./data/lawsuit_data.csv";
+  const path = "https://debtcases.s3.us-east-2.amazonaws.com/lawsuit_data.csv";
   const parser = (d) => {
     return {
       id: d.id,
@@ -160,7 +163,8 @@ async function shapeFullData() {
       representation: Number(d.has_representation),
     };
   };
-  const data = loadCsv(path, parser)
+  const csvData = await loadCsv(path, parser)
+  const data = csvData
     .filter((d) => d.id && d.id !== "NA")
     .map((d) => {
       // add state fips to zip code

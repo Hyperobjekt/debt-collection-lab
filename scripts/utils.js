@@ -428,7 +428,12 @@ function getStateNameForFips(fips) {
   return null
 }
 
-function loadCsv(inputFile, parser = d3.autoType) {
+async function loadCsv(inputFile, parser = d3.autoType) {
+  if (inputFile.indexOf("https") === 0) {
+    // load the csv file from the url
+    return d3.csv(inputFile, parser)
+  }
+  // load the csv file locally
   console.info("reading file: ", inputFile);
   let file = fs.readFileSync(inputFile, {
     encoding: "utf8",
