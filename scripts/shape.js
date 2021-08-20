@@ -1,6 +1,6 @@
 "use strict";
-if (typeof fetch !== 'function') {
-  global.fetch = require('node-fetch-polyfill');
+if (typeof fetch !== "function") {
+  global.fetch = require("node-fetch-polyfill");
 }
 const d3 = require("d3");
 const { loadCsv, writeFile } = require("./utils");
@@ -17,7 +17,6 @@ const COUNTY_SELECTOR = (d) =>
   isValid(d.id) && d.id.length === 11 && d.id.substring(0, 5);
 const ZIP_SELECTOR = (d) => isValid(d.id) && d.id.length === 7 && d.id;
 const TRACT_SELECTOR = (d) => isValid(d.id) && d.id.length === 11 && d.id;
-
 
 function getName(id, name) {
   // zip codes
@@ -141,7 +140,8 @@ function aggregateBySelector(data, selector = (d) => d.id) {
 
 const dateToMonthDate = (date, dateFormat = "%m/%d/%Y") => {
   const dateParse = d3.timeParse(dateFormat);
-  return MONTH_PARSE(DATE_FORMAT(dateParse(date)));
+  const result = MONTH_PARSE(DATE_FORMAT(dateParse(date)));
+  return result;
 };
 
 const jsonToCsv = (jsonData) => {
@@ -157,13 +157,13 @@ async function shapeFullData() {
       id: d.id,
       name: d.name,
       plaintiff: d.plaintiff,
-      date: dateToMonthDate(d.date, "%m/%d/%Y"),
+      date: dateToMonthDate(d.date, "%Y-%m-%d"),
       default_judgement: Number(d.default_judgment),
       amount: Number(d.amount),
       representation: Number(d.has_representation),
     };
   };
-  const csvData = await loadCsv(path, parser)
+  const csvData = await loadCsv(path, parser);
   const data = csvData
     .filter((d) => d.id && d.id !== "NA")
     .map((d) => {

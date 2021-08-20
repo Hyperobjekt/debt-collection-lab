@@ -1,5 +1,5 @@
-if (typeof fetch !== 'function') {
-  global.fetch = require('node-fetch-polyfill');
+if (typeof fetch !== "function") {
+  global.fetch = require("node-fetch-polyfill");
 }
 const d3 = require("d3");
 const path = require("path");
