@@ -172,7 +172,7 @@ async function shapeFullData() {
   };
   const csvData = await loadCsv(path, parser);
   const data = csvData
-    .filter((d) => d.id && d.id !== "NA" && d.case_completed && d.date)
+    .filter((d) => d.id && d.id !== "NA" && d.date)
 
     .map((d) => {
       // add state fips to zip code
