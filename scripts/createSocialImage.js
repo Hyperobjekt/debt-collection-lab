@@ -18,7 +18,7 @@ async function create(name, values, postFix) {
 <line x1="258" y1="426.5" x2="942" y2="426.5" stroke="white"/>
 <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Helvetica Neue" font-size="58" font-weight="bold" letter-spacing="0.03em"><tspan x="258" y="256.4">${name}</tspan></text>
 <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Maple" font-size="16" letter-spacing="0.04em"><tspan x="490" y="370">of defendants did not have </tspan><tspan x="490" y="394">legal representation</tspan></text>
-<text fill="white" xml:space="preserve" style="white-space: pre" font-family="Maple" font-size="16" letter-spacing="0.04em"><tspan x="258" y="370">lawsuits from January </tspan><tspan x="258" y="394">2020 to December 2020</tspan></text>
+<text fill="white" xml:space="preserve" style="white-space: pre" font-family="Maple" font-size="16" letter-spacing="0.04em"><tspan x="258" y="370">lawsuits from January </tspan><tspan x="258" y="394">2020 to August 2021</tspan></text>
 <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Maple" font-size="16" letter-spacing="0.04em"><tspan x="732" y="370">of lawsuits resulted in </tspan><tspan x="732" y="394">default judgments&#10;</tspan></text>
 <text fill="#EA4A2E" xml:space="preserve" style="white-space: pre" font-family="Helvetica Neue" font-size="48" font-weight="bold" letter-spacing="0.01em"><tspan x="258" y="340.76">${values[0]}</tspan></text>
 <text fill="#EA4A2E" xml:space="preserve" style="white-space: pre" font-family="Helvetica Neue" font-size="48" font-weight="bold" letter-spacing="0.04em"><tspan x="490" y="340.76">${values[1]}</tspan></text>

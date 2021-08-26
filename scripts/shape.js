@@ -1,5 +1,7 @@
 "use strict";
-
+if (typeof fetch !== "function") {
+  global.fetch = require("node-fetch-polyfill");
+}
 const d3 = require("d3");
 const { loadCsv, writeFile } = require("./utils");
 
@@ -138,8 +140,15 @@ function aggregateBySelector(data, selector = (d) => d.id) {
 
 const dateToMonthDate = (date, dateFormat = "%m/%d/%Y") => {
   const dateParse = d3.timeParse(dateFormat);
-  return MONTH_PARSE(DATE_FORMAT(dateParse(date)));
-};
+  const parsed = dateParse(date);
+
+  const lowerBound = d3.timeParse("%m/%d/%Y")("1/1/2018");
+  if (!date || parsed < lowerBound) {
+    return null;
+  }
+
+  return MONTH_PARSE(DATE_FORMAT(parsed));
+};;
 
 const jsonToCsv = (jsonData) => {
   const headers = Object.keys(jsonData[0]).join(",");
@@ -148,20 +157,23 @@ const jsonToCsv = (jsonData) => {
 };
 
 async function shapeFullData() {
-  const path = "./data/lawsuit_data.csv";
+  const path = "https://debtcases.s3.us-east-2.amazonaws.com/lawsuit_data.csv";
   const parser = (d) => {
     return {
       id: d.id,
       name: d.name,
       plaintiff: d.plaintiff,
-      date: dateToMonthDate(d.date, "%m/%d/%Y"),
+      date: dateToMonthDate(d.date, "%Y-%m-%d"),
       default_judgement: Number(d.default_judgment),
       amount: Number(d.amount),
       representation: Number(d.has_representation),
+      case_completed: d.case_completed === "1",
     };
   };
-  const data = loadCsv(path, parser)
-    .filter((d) => d.id && d.id !== "NA")
+  const csvData = await loadCsv(path, parser);
+  const data = csvData
+    .filter((d) => d.id && d.id !== "NA" && d.case_completed && d.date)
+
     .map((d) => {
       // add state fips to zip code
       // TODO: need a way to determine state from zip code

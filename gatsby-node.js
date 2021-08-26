@@ -1,3 +1,6 @@
+if (typeof fetch !== "function") {
+  global.fetch = require("node-fetch-polyfill");
+}
 const d3 = require("d3");
 const path = require("path");
 const { getStateNameForFips, loadCsv, slugify } = require("./scripts/utils");
@@ -379,11 +382,11 @@ const createLawsuitTrackerIndex = async ({ graphql, actions }) => {
 };
 
 exports.sourceNodes = async (params) => {
-  const lawsuits = loadCsv("./static/data/lawsuits.csv", lawsuitParser);
-  const demographics = loadCsv(
-    "./static/data/demographics.csv",
+  const lawsuits = await loadCsv("./static/data/lawsuits.csv", lawsuitParser);
+  const demographics = await loadCsv(
+    "https://debtcases.s3.us-east-2.amazonaws.com/demographic_data.csv",
     demographicParser
-  );
+    );
   const countyData = getCounties(lawsuits, demographics);
   const stateData = getStates(lawsuits, demographics, countyData);
   createSourceNodes("States", stateData, params);

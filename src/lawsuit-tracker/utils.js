@@ -260,7 +260,7 @@ export const getLawsuitChartData = (data) => {
   };
 };
 
-export const getLawsuitMapData = (data, geojson, region) => {
+export const getLawsuitMapData = (data, geojson = { features: [] }, region) => {
   const childData = data[region];
   const dates = getDateRange([data]);
   const features = geojson.features
