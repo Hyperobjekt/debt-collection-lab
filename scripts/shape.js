@@ -7,6 +7,7 @@ const { loadCsv, writeFile } = require("./utils");
 
 // only pull data for these states
 const VALID_STATE_FIPS = ["09", "48", "38", "18", "29"];
+const LOWER_BOUND_DATE = d3.timeParse("%m/%d/%Y")("1/1/2018");
 const DATE_FORMAT = d3.timeFormat("%m/%Y");
 const MONTH_PARSE = d3.timeParse("%m/%Y");
 
@@ -83,6 +84,7 @@ function filterInvalidLocation(d) {
   const stateFips = d.id.substring(0, 2);
   // filter out non-Harris County counties from texas
   if (stateFips === "48" && d.id.length === 5 && d.id !== "48201") {
+    // txNonHarris.push(JSON.stringify({ name: d.name }));
     console.log(
       "removing county that is not Harris County",
       JSON.stringify({ id: d.id, name: d.name })
@@ -91,6 +93,7 @@ function filterInvalidLocation(d) {
   }
   // filter out North Dakota counties (use zip only)
   if (stateFips === "38" && d.id.length === 5) {
+    // ndNonZip.push(JSON.stringify({ name: d.name }));
     console.log(
       "removing county from North Dakota (zips only)",
       JSON.stringify({ id: d.id, name: d.name })
@@ -138,17 +141,37 @@ function aggregateBySelector(data, selector = (d) => d.id) {
   }, []);
 }
 
-const dateToMonthDate = (date, dateFormat = "%m/%d/%Y") => {
-  const dateParse = d3.timeParse(dateFormat);
-  const parsed = dateParse(date);
+// const badDates = [];
+const dateToMonthDate = (date, dateFormat = "%Y-%m-%d", separator = "-") => {
+  if (!date) {
+    // badDates.push(JSON.stringify({ missing: null }));
+    return null;
+  }
 
-  const lowerBound = d3.timeParse("%m/%d/%Y")("1/1/2018");
-  if (!date || parsed < lowerBound) {
+  let fixedDate = date;
+  if (date.startsWith("00")) {
+    // updated data has 60k dates formatted as 00mm-dd-yy
+    // TODO: remove when fixed
+    try {
+      const [mmmm, dd, yy] = date.split("-");
+      fixedDate = ["20" + yy, mmmm.slice(2), dd].join(separator);
+      // badDates.push(JSON.stringify({ fixed: date, to: fixedDate }));
+    } catch (error) {
+      // badDates.push(JSON.stringify({ unfixed: date }));
+      return null;
+    }
+  }
+
+  const dateParse = d3.timeParse(dateFormat);
+  const parsed = dateParse(fixedDate);
+
+  if (!fixedDate || parsed < LOWER_BOUND_DATE) {
+    // badDates.push(JSON.stringify({ outdated: date }));
     return null;
   }
 
   return MONTH_PARSE(DATE_FORMAT(parsed));
-};;
+};
 
 const jsonToCsv = (jsonData) => {
   const headers = Object.keys(jsonData[0]).join(",");
@@ -163,7 +186,7 @@ async function shapeFullData() {
       id: d.id,
       name: d.name,
       plaintiff: d.plaintiff,
-      date: dateToMonthDate(d.date, "%Y-%m-%d"),
+      date: dateToMonthDate(d.date),
       default_judgement: Number(d.default_judgment),
       amount: Number(d.amount),
       representation: Number(d.has_representation),
@@ -172,7 +195,7 @@ async function shapeFullData() {
   };
   const csvData = await loadCsv(path, parser);
   const data = csvData
-    .filter((d) => d.id && d.id !== "NA" && d.date)
+    .filter((d) => d.id && d.id !== "NA")
 
     .map((d) => {
       // add state fips to zip code
@@ -221,6 +244,7 @@ async function shape() {
       };
     })
     .filter((d) => Boolean(d.id));
+  // writeFile(badDates.join("\n"), "./static/data/dates");
   await writeFile(jsonToCsv(output), "./static/data/lawsuits.csv");
   console.log("wrote file to ./static/data/lawsuits.csv");
 }
