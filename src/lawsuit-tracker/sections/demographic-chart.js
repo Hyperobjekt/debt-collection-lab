@@ -67,7 +67,8 @@ const getOptionOverrides = (metric, content) => {
 };
 
 const shapeChartData = (data, metric) => {
-  return data.map((d) => ({ ...d, y: d.data[metric] }));
+  // null values break the voronoi layer
+  return data.map((d) => ({ ...d, y: d.data[metric] })).filter((d) => !!d.y);
 };
 
 const DemographicChart = ({
