@@ -343,7 +343,8 @@ const createStatePages = async ({ graphql, actions }) => {
               slug: pageName,
               state: name,
               geoid: geoid,
-              region: zips?.length > 0 ? "zips" : "counties",
+              // Assuming all zips belong to North Dakota
+              region: pageName === "north-dakota" ? "zips" : "counties",
               frontmatter: {
                 meta: {
                   title: name,
