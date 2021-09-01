@@ -144,6 +144,7 @@ const lawsuitParser = (row) => {
     geoid: row.id,
     name: row.name,
     lawsuits: Number(row.lawsuits),
+    completed_lawsuits: Number(row.completed_lawsuits),
     lawsuits_date: MONTH_PARSE(row.lawsuits_date),
     lawsuit_history: row.lawsuit_history
       .split("|")
@@ -250,6 +251,7 @@ const createCountyPages = async ({ graphql, actions }) => {
           geoid
           name
           lawsuits
+          completed_lawsuits
           no_rep_percent
           default_judgement
         }
@@ -259,7 +261,14 @@ const createCountyPages = async ({ graphql, actions }) => {
   const counties = result.data.allCounties.nodes;
   await Promise.all(
     counties.map(
-      async ({ geoid, name, lawsuits, no_rep_percent, default_judgement }) => {
+      async ({
+        geoid,
+        name,
+        lawsuits,
+        completed_lawsuits,
+        no_rep_percent,
+        default_judgement,
+      }) => {
         if (name) {
           const stateName = getStateNameForFips(geoid);
           const slugStateName = slugify(stateName);
@@ -269,7 +278,7 @@ const createCountyPages = async ({ graphql, actions }) => {
             [
               formatInt(lawsuits),
               formatPercent(no_rep_percent),
-              formatPercent(default_judgement / lawsuits),
+              formatPercent(default_judgement / completed_lawsuits),
             ],
             slugStateName
           );
@@ -308,6 +317,7 @@ const createStatePages = async ({ graphql, actions }) => {
           geoid
           name
           lawsuits
+          completed_lawsuits
           no_rep_percent
           default_judgement
           zips {
@@ -325,16 +335,17 @@ const createStatePages = async ({ graphql, actions }) => {
         geoid,
         name,
         lawsuits,
+        completed_lawsuits,
         no_rep_percent,
         default_judgement,
-        zips,
+        // zips,
       }) => {
         if (name && name !== "Texas") {
           const pageName = slugify(name);
           const socialImage = await createSocialImage(name, [
             formatInt(lawsuits),
             formatPercent(no_rep_percent),
-            formatPercent(default_judgement / lawsuits),
+            formatPercent(default_judgement / completed_lawsuits),
           ]);
           createPage({
             path: `/lawsuit-tracker/${pageName}/`,

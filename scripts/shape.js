@@ -64,12 +64,14 @@ function aggregateLawsuits(data) {
     .map((d) => d.join(";"))
     .join("|");
 
-  // console.log(data.map((d) => d.default_judgement).join(","));
-
   return {
     id: data[0].id,
     name: getName(data[0].id, data[0].name),
     lawsuits: data.length,
+    // NOTE: some d_j cases are erroneously marked as not complete (per email from Jeff)
+    completed_lawsuits: data.filter(
+      (d) => d.case_completed === 1 || d.default_judgement === 1
+    ).length,
     lawsuits_date: DATE_FORMAT(monthDates[monthDates.length - 1]),
     lawsuit_history: values,
     collectors: `"${topCollectors}"`,
@@ -80,24 +82,26 @@ function aggregateLawsuits(data) {
   };
 }
 
+// const txNonHarris = [];
+// const ndNonZip = [];
 function filterInvalidLocation(d) {
   const stateFips = d.id.substring(0, 2);
   // filter out non-Harris County counties from texas
   if (stateFips === "48" && d.id.length === 5 && d.id !== "48201") {
     // txNonHarris.push(JSON.stringify({ name: d.name }));
-    console.log(
-      "removing county that is not Harris County",
-      JSON.stringify({ id: d.id, name: d.name })
-    );
+    // console.log(
+    //   "removing county that is not Harris County",
+    //   JSON.stringify({ id: d.id, name: d.name })
+    // );
     return false;
   }
   // filter out North Dakota counties (use zip only)
   if (stateFips === "38" && d.id.length === 5) {
     // ndNonZip.push(JSON.stringify({ name: d.name }));
-    console.log(
-      "removing county from North Dakota (zips only)",
-      JSON.stringify({ id: d.id, name: d.name })
-    );
+    // console.log(
+    //   "removing county from North Dakota (zips only)",
+    //   JSON.stringify({ id: d.id, name: d.name })
+    // );
     return false;
   }
   return true;
@@ -190,7 +194,7 @@ async function shapeFullData() {
       default_judgement: Number(d.default_judgment),
       amount: Number(d.amount),
       representation: Number(d.has_representation),
-      case_completed: d.case_completed === "1",
+      case_completed: Number(d.case_completed),
     };
   };
   const csvData = await loadCsv(path, parser);
@@ -234,6 +238,7 @@ async function shape() {
       return {
         ...d,
         lawsuits: 0,
+        completed_lawsuits: 0,
         lawsuits_date: "04/2021",
         lawsuit_history: "01/2018;0",
         collectors: "",

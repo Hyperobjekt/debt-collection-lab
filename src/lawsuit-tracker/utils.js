@@ -199,7 +199,7 @@ export const getLocationHeroData = (data) => {
     lawsuits: data.lawsuits,
     no_rep_percent: data.no_rep_percent,
     default_judgement: data.default_judgement,
-    default_judgement_percent: data.default_judgement / data.lawsuits,
+    default_judgement_percent: data.default_judgement / data.completed_lawsuits,
     dateRange: getDateRange([data]),
   };
 };
