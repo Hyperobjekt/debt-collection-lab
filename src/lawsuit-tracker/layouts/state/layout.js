@@ -103,6 +103,7 @@ export const query = graphql`
         name
         region
         lawsuits
+        completed_lawsuits
         lawsuits_date
         default_judgement
         no_rep_percent

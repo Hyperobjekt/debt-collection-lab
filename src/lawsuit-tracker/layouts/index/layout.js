@@ -77,6 +77,7 @@ export const query = graphql`
         geoid
         name
         lawsuits
+        completed_lawsuits
         lawsuits_date
         no_rep_percent
         default_judgement

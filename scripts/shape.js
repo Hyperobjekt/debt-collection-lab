@@ -1,10 +1,13 @@
 "use strict";
-
+if (typeof fetch !== "function") {
+  global.fetch = require("node-fetch-polyfill");
+}
 const d3 = require("d3");
 const { loadCsv, writeFile } = require("./utils");
 
 // only pull data for these states
 const VALID_STATE_FIPS = ["09", "48", "38", "18", "29"];
+const LOWER_BOUND_DATE = d3.timeParse("%m/%d/%Y")("1/1/2018");
 const DATE_FORMAT = d3.timeFormat("%m/%Y");
 const MONTH_PARSE = d3.timeParse("%m/%Y");
 
@@ -61,12 +64,14 @@ function aggregateLawsuits(data) {
     .map((d) => d.join(";"))
     .join("|");
 
-  // console.log(data.map((d) => d.default_judgement).join(","));
-
   return {
     id: data[0].id,
     name: getName(data[0].id, data[0].name),
     lawsuits: data.length,
+    // NOTE: some d_j cases are erroneously marked as not complete (per email from Jeff)
+    completed_lawsuits: data.filter(
+      (d) => d.case_completed === 1 || d.default_judgement === 1
+    ).length,
     lawsuits_date: DATE_FORMAT(monthDates[monthDates.length - 1]),
     lawsuit_history: values,
     collectors: `"${topCollectors}"`,
@@ -77,22 +82,26 @@ function aggregateLawsuits(data) {
   };
 }
 
+// const txNonHarris = [];
+// const ndNonZip = [];
 function filterInvalidLocation(d) {
   const stateFips = d.id.substring(0, 2);
   // filter out non-Harris County counties from texas
   if (stateFips === "48" && d.id.length === 5 && d.id !== "48201") {
-    console.log(
-      "removing county that is not Harris County",
-      JSON.stringify({ id: d.id, name: d.name })
-    );
+    // txNonHarris.push(JSON.stringify({ name: d.name }));
+    // console.log(
+    //   "removing county that is not Harris County",
+    //   JSON.stringify({ id: d.id, name: d.name })
+    // );
     return false;
   }
   // filter out North Dakota counties (use zip only)
   if (stateFips === "38" && d.id.length === 5) {
-    console.log(
-      "removing county from North Dakota (zips only)",
-      JSON.stringify({ id: d.id, name: d.name })
-    );
+    // ndNonZip.push(JSON.stringify({ name: d.name }));
+    // console.log(
+    //   "removing county from North Dakota (zips only)",
+    //   JSON.stringify({ id: d.id, name: d.name })
+    // );
     return false;
   }
   return true;
@@ -136,9 +145,22 @@ function aggregateBySelector(data, selector = (d) => d.id) {
   }, []);
 }
 
-const dateToMonthDate = (date, dateFormat = "%m/%d/%Y") => {
+// const badDates = [];
+const dateToMonthDate = (date, dateFormat = "%Y-%m-%d") => {
+  if (!date) {
+    // badDates.push(JSON.stringify({ missing: null }));
+    return null;
+  }
+
   const dateParse = d3.timeParse(dateFormat);
-  return MONTH_PARSE(DATE_FORMAT(dateParse(date)));
+  const parsed = dateParse(date);
+
+  if (parsed < LOWER_BOUND_DATE) {
+    // badDates.push(JSON.stringify({ outdated: date }));
+    return null;
+  }
+
+  return MONTH_PARSE(DATE_FORMAT(parsed));
 };
 
 const jsonToCsv = (jsonData) => {
@@ -148,20 +170,23 @@ const jsonToCsv = (jsonData) => {
 };
 
 async function shapeFullData() {
-  const path = "./data/lawsuit_data.csv";
+  const path = "https://debtcases.s3.us-east-2.amazonaws.com/lawsuit_data.csv";
   const parser = (d) => {
     return {
       id: d.id,
       name: d.name,
       plaintiff: d.plaintiff,
-      date: dateToMonthDate(d.date, "%m/%d/%Y"),
+      date: dateToMonthDate(d.date),
       default_judgement: Number(d.default_judgment),
       amount: Number(d.amount),
       representation: Number(d.has_representation),
+      case_completed: Number(d.case_completed),
     };
   };
-  const data = loadCsv(path, parser)
+  const csvData = await loadCsv(path, parser);
+  const data = csvData
     .filter((d) => d.id && d.id !== "NA")
+
     .map((d) => {
       // add state fips to zip code
       // TODO: need a way to determine state from zip code
@@ -199,6 +224,7 @@ async function shape() {
       return {
         ...d,
         lawsuits: 0,
+        completed_lawsuits: 0,
         lawsuits_date: "04/2021",
         lawsuit_history: "01/2018;0",
         collectors: "",
@@ -209,6 +235,7 @@ async function shape() {
       };
     })
     .filter((d) => Boolean(d.id));
+  // writeFile(badDates.join("\n"), "./static/data/dates");
   await writeFile(jsonToCsv(output), "./static/data/lawsuits.csv");
   console.log("wrote file to ./static/data/lawsuits.csv");
 }

@@ -35,8 +35,7 @@ See [gatsby-theme-hypersite](https://github.com/Hyperobjekt/gatsby-themes/tree/m
 
 There is a data preparation step that performs the following actions:
 
-- loads the source lawsuit data (`/data/lawsuits_data.csv`)
-  - TODO: pull from S3 source
+- loads the source lawsuit data (`https://debtcases.s3.us-east-2.amazonaws.com/lawsuit_data.csv`)
 - aggregates tract level data to counties and states
 - aggregates zip code level data to states
 - shapes data into format needed for tracker
@@ -52,9 +51,8 @@ npm run build:data
 
 Source nodes are created in Gatsby from source data in `gatsby-node.js`. The following nodes are created:
 
-- `allStates`: created from `/static/data/lawsuits.csv` and `/static/data/demographics.csv`, contains all state level debt collection data
-- `allCounties`: created from `/static/data/lawsuits.csv` and `/static/data/demographics.csv`, contains all county level debt collection data
-  - TODO: pull from S3 source
+- `allStates`: created from `/static/data/lawsuits.csv` and `https://debtcases.s3.us-east-2.amazonaws.com/demographic_data.csv`, contains all state level debt collection data
+- `allCounties`: created from `/static/data/lawsuits.csv` and `https://debtcases.s3.us-east-2.amazonaws.com/demographic_data.csv`, contains all county level debt collection data
 
 ### GeoJSON Source Nodes
 
