@@ -146,30 +146,16 @@ function aggregateBySelector(data, selector = (d) => d.id) {
 }
 
 // const badDates = [];
-const dateToMonthDate = (date, dateFormat = "%Y-%m-%d", separator = "-") => {
+const dateToMonthDate = (date, dateFormat = "%Y-%m-%d") => {
   if (!date) {
     // badDates.push(JSON.stringify({ missing: null }));
     return null;
   }
 
-  let fixedDate = date;
-  if (date.startsWith("00")) {
-    // updated data has 60k dates formatted as 00mm-dd-yy
-    // TODO: remove when fixed
-    try {
-      const [mmmm, dd, yy] = date.split("-");
-      fixedDate = ["20" + yy, mmmm.slice(2), dd].join(separator);
-      // badDates.push(JSON.stringify({ fixed: date, to: fixedDate }));
-    } catch (error) {
-      // badDates.push(JSON.stringify({ unfixed: date }));
-      return null;
-    }
-  }
-
   const dateParse = d3.timeParse(dateFormat);
-  const parsed = dateParse(fixedDate);
+  const parsed = dateParse(date);
 
-  if (!fixedDate || parsed < LOWER_BOUND_DATE) {
+  if (parsed < LOWER_BOUND_DATE) {
     // badDates.push(JSON.stringify({ outdated: date }));
     return null;
   }
