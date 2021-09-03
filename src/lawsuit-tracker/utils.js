@@ -360,7 +360,7 @@ export const getDemographicChartData = (data, region = "tracts") => {
         const proportionalCount = monthTotal
           ? Math.round(groupPercent * monthTotal.lawsuits)
           : null;
-        const proportionalCountDiff = proportionalCount
+        const proportionalCountDiff = Number.isFinite(proportionalCount)
           ? lawsuits - proportionalCount
           : null;
         return {
