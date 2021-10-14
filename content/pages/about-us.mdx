@@ -4,10 +4,9 @@ template: about
 meta:
   title: About Us
   description: We make visible the practices and indignities long shielded from the light.
-  image: ./images/about-social.jpg
 embeddedImages:
-  - ./images/gallery-9.jpg
-team:
+  - ../images/gallery-9.jpg
+primaryTeam:
   - title: Frederick F. Wherry
     creds: PI - Princeton University, Sociology
     bio: "Frederick F. Wherry (PI) is the Townsend Martin, Class of 1917 Professor of Sociology 
@@ -24,7 +23,8 @@ team:
     professor at Columbia and the University of Michigan, where he began his career. Professor 
     Wherry received his MPA at the School of Public and International Affairs and his PhD in 
     Sociology from Princeton University."
-    headshot_thumbnail: ../images/circle_thumbnail_wherry.png
+    headshot: ./images/headshot_wherry.jpg
+    headshot_thumbnail: ./images/circle_thumbnail_wherry.png
   - title: Dalié Jimenez
     creds: PI - Co-PI – University of California at Irvine Law School
     bio: "Dalié Jiménez (Co-PI) is Professor of Law at the University of California at Irvine, 
@@ -42,7 +42,8 @@ team:
     issues at the Massachusetts State Senate. Professor Jiménez earned a J.D. cum laude from Harvard 
     Law School and holds dual B.S. degrees in electrical engineering/computer science and political 
     science from MIT."
-    headshot_thumbnail: ../images/circle_thumbnail_jimenez.png
+    headshot: ./images/headshot_jimenez.jpg
+    headshot_thumbnail: ./images/circle_thumbnail_jimenez.png
   - title: Lois R. Lupica
     creds: Co-PI – University of Maine Law School
     bio: "Lois R. Lupica (Co-PI) is a Visiting Professor of the Practice of Law at the Sturm College 
@@ -61,7 +62,8 @@ team:
     Practice. She practiced business and commercial law at White & Case, Arnold & Porter and 
     Thompson and Knight in New York. Professor Lupica earned a J.D. magna cum laude from 
     Boston University School of Law, and a B.S. in Consumer Economics from Cornell University."
-    headshot_thumbnail: ../images/circle_thumbnail_lupica.png
+    headshot: ./images/headshot_lupica.jpg
+    headshot_thumbnail: ./images/circle_thumbnail_lupica.png
   - title: Jeffrey Reichman
     creds: Senior investigator – January Advisors, Data Science Consulting
     bio: "Jeff Reichman (Collaborator) is a founder and principal of January Advisors, a consulting 
@@ -69,7 +71,8 @@ team:
     nonprofit community of 2,000+ people who advance technology and data in public decision making. 
     January Advisors works closely with the Eviction Lab on developing their eviction tracker and on 
     other related projects."
-    headshot_thumbnail: ../images/circle_thumbnail_reichman.png
+    headshot: ./images/headshot_reichman.jpg
+    headshot_thumbnail: ./images/circle_thumbnail_reichman.png
   - title: Robin Lee
     creds: Co-PI—Princeton University, Sociology
     bio: "Robin Lee (Co-PI) is a graduate student in the Department of Sociology at 
@@ -78,7 +81,8 @@ team:
     analysis. He received his BA at UCLA in global studies with a minor in statistics and his MA at 
     Columbia in quantitative methods in the social sciences. Robin’s goals at Princeton include 
     further research on digital communication, text analysis, social networks, and social movements."
-    headshot_thumbnail: ../images/circle_thumbnail_lee.png
+    headshot: ./images/headshot_lee.jpg
+    headshot_thumbnail: ./images/circle_thumbnail_lee.png
   - title: Jeff Himpele
     creds: Collaborator, Director, VizE Lab, Princeton University, Anthropology
     bio: "Jeffrey Himpele (Co-PI) has been the primary collaborator for developing the 
@@ -90,10 +94,20 @@ team:
     interdisciplinary working space where scholars develop projects, learn new techniques, 
     collaborate, and reflect on expanding forms of data and expression that are shaping the future 
     of ethnographic inquiry and practices."
-    headshot_thumbnail: ../images/circle_thumbnail_himpele.png
+    headshot: ./images/headshot_himpele.png
+    headshot_thumbnail: ./images/circle_thumbnail_himpele.png
+secondaryTeam:
+  - title: Ari Riggins
+    creds: Collaborating Artist
+  - title: Rachel Mrkaich
+    creds: Collaborating Artist
+  - title: Carlotta Platt
+    creds: Undergraduate Research Assistant
+  - title: Anika Duffus
+    creds: Undergraduate Research Assistant
 ---
 
-import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 <Hero className="hero--about" ContainerProps={{justifyContent : "flex-start"}}>
 
@@ -121,22 +135,14 @@ import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
   </Grid>
   <Grid item xs={12} md={8} lg={7}>
     <Grid className="list--team" component="ul" container>
-      <Modal members={props.frontmatter.team}>
-        {props.frontmatter.team.map((member) => (
+      <Modal members={props.frontmatter.primaryTeam}>
+        {props.frontmatter.primaryTeam.map((member) => (
           <Box mt={2} mb={2}>
-            <Box position={"relative"} width={100}>
-              {/* <StaticImage
-                className="image--team-thumbnail"
-                layout="fixed"
-                width={100}
-                height={100}
-                src={`${member.headshot_thumbnail}`}
-                alt="headshot"
-              /> */}
+            <Box position={"relative"} width={100} height={100}>
               <GatsbyImage
                 className="image--team-thumbnail"
-                width={"100px"}
-                alt={`headshot of ${member.name}`}
+                width={100}
+                alt={`headshot of ${member.title}`}
                 image={getImage(member.headshot_thumbnail)}
               />
               <svg
@@ -160,19 +166,26 @@ import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
               </svg>
             </Box>
             <Typography component="p" variant="h5">
-              {member.name}
-            </Typography>
-            <Typography color="grey" variant="body1">
               {member.title}
             </Typography>
-            {member.creds && (
-              <Typography color="grey" variant="body2">
-                {member.creds}
-              </Typography>
-            )}
+            <Typography color="grey" variant="body2">
+              {member.creds}
+            </Typography>
           </Box>
         ))}
       </Modal>
+      {props.frontmatter.secondaryTeam.map((member) => (
+        <Grid component="li" item xs={12} sm={6} {...props}>
+          <Box ml={2} mt={2} mb={2}>
+            <Typography component="p" variant="h5">
+              {member.title}
+            </Typography>
+            <Typography color="grey" variant="body2">
+              {member.creds}
+            </Typography>
+          </Box>
+        </Grid>
+      ))}
     </Grid>
   </Grid>
 </Grid>
