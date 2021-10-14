@@ -20,7 +20,7 @@ start in development mode with
 npm run develop
 ```
 
-## Themes
+## Gatsby Configuration
 
 This site is based off of the `gatsby-theme-hypersite` theme. Which provides:
 
@@ -35,8 +35,7 @@ See [gatsby-theme-hypersite](https://github.com/Hyperobjekt/gatsby-themes/tree/m
 
 There is a data preparation step that performs the following actions:
 
-- loads the source lawsuit data (`/data/lawsuits_data.csv`)
-  - TODO: pull from S3 source
+- loads the source lawsuit data (`https://debtcases.s3.us-east-2.amazonaws.com/lawsuit_data.csv`)
 - aggregates tract level data to counties and states
 - aggregates zip code level data to states
 - shapes data into format needed for tracker
@@ -52,10 +51,8 @@ npm run build:data
 
 Source nodes are created in Gatsby from source data in `gatsby-node.js`. The following nodes are created:
 
-- `allStates`: created from `/static/data/lawsuits.csv`, contains all state level debt collection data
-- `allCounties`: created from `/static/data/lawsuits.csv`, contains all county level debt collection data
-- `allDemographics`: created from `/static/data/demographics.csv`, contains all demographics data for census tracts and zip codes
-  - TODO: pull from S3 source
+- `allStates`: created from `/static/data/lawsuits.csv` and `https://debtcases.s3.us-east-2.amazonaws.com/demographic_data.csv`, contains all state level debt collection data
+- `allCounties`: created from `/static/data/lawsuits.csv` and `https://debtcases.s3.us-east-2.amazonaws.com/demographic_data.csv`, contains all county level debt collection data
 
 ### GeoJSON Source Nodes
 
@@ -65,9 +62,8 @@ GeoJSON for maps is sourced using `gatsby-source-filesystem` configuration in `g
 - there is a `region` property at the root level of the FeatureCollection that has the region type (e.g. "counties", "zips", "tracts")
 - GeoJson features must be of `MultiPolygon` type in order for graphql to load them correctly.
 
-> _HACK_: if your GeoJson has `Polygon` features, you'll need to convert these to `MultiPolygon`  
-TODO: find a way to allow multiple feature types (might need to create a [custom graphql schema](https://www.gatsbyjs.com/docs/reference/graphql-data-layer/schema-customization/))  
-for now, you can use a regex find (`"type":"MultiPolygon","coordinates":[[$1]]`) / replace (`"type":"MultiPolygon","coordinates":[[$1]]`) [in VS Code](https://docs.microsoft.com/en-us/visualstudio/ide/using-regular-expressions-in-visual-studio?view=vs-2019) to convert polygons to multipolygons
+> _HACK_: if your GeoJson has `Polygon` features, you'll need to convert these to `MultiPolygon` features
+> TODO: find a way to allow multiple feature types (might need to create a [custom graphql schema](https://www.gatsbyjs.com/docs/reference/graphql-data-layer/schema-customization/))
 
 ## Page Creation
 
@@ -80,9 +76,22 @@ All pages in the lawsuit tracker (index, state pages, county pages) are created 
 - maps
 - tables
 
-### Other Pages
+State and county pages have dynamic social images that can be created at build time. To re-build these images, set the `BUILD_IMAGES` env var to `1` or run `npm run build:all`.
+
+> Note: do not generate the images in a CI environment as it will not have fonts available. Run the image generation on a system that has Helvetica Neue.
+
+### Other Pages and Custom GraphQL Queries
 
 All other pages are created based on the MDX files in `/content/pages`. Functionality for creating these pages is part of `gatsby-theme-hypercore`.
+
+Some pages (about us, arts and storytelling) have custom frontmatter that is provided to the page through a custom page template.
+
+See:
+
+- `./src/about-us/layout.js`
+- `./src/arts-and-storytelling/layout.js`
+
+These custom page templates are provided to the hypersite theme in `gatsby-config.js`
 
 ## Content Management
 

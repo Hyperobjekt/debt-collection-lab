@@ -43,6 +43,7 @@ const page = {
               name: "LINKS",
               widget: "list",
               fields: linkFields,
+              required: false,
             },
           ],
         },

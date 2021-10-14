@@ -29,7 +29,7 @@ const styles = (theme) => ({
     },
   },
   gradient: {
-    backgroundImage: `linear-gradient(90deg, #000, transparent)`,
+    backgroundImage: `linear-gradient(90deg, #000, transparent), radial-gradient(transparent 50%, #000)`,
     [theme.breakpoints.down("xs")]: {
       backgroundColor: "rgba(0,0,0,0.65)",
     },

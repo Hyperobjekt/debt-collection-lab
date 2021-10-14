@@ -19,12 +19,13 @@ const IndexAbout = ({ content, ...props }) => {
       {content.TITLE}
     </Typography>
   );
+  const links = content.LINKS && content.LINKS.filter((l) => l.link && l.name);
   const rightContent = (
     <Box>
       <Typography className="description">{content.DESCRIPTION}</Typography>
-      {content.LINKS && (
+      {links && links.length > 0 && (
         <Box display="flex" mt={3}>
-          {content.LINKS.map(({ name, link }) => (
+          {links.map(({ name, link }) => (
             <Button key={name} to={link}>
               {name}
             </Button>

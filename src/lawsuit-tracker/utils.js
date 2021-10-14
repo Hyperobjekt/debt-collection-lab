@@ -199,7 +199,7 @@ export const getLocationHeroData = (data) => {
     lawsuits: data.lawsuits,
     no_rep_percent: data.no_rep_percent,
     default_judgement: data.default_judgement,
-    default_judgement_percent: data.default_judgement / data.lawsuits,
+    default_judgement_percent: data.default_judgement / data.completed_lawsuits,
     dateRange: getDateRange([data]),
   };
 };
@@ -218,6 +218,12 @@ export const getLawsuitChartData = (data) => {
     .map((d) => [d[0], d3.sum(d[1], (v) => v.y / d[1].length)]);
   // pull the month with the highest average
   const topMonth = monthlyAverages.sort((a, b) => b[1] - a[1])[0];
+  if (!topMonth) {
+    console.warn("no top month available", chartData);
+    return {
+      chartData: null,
+    };
+  }
   // get the average yearly filings
   const avgYearly = d3.sum(monthlyAverages, (d) => d[1]);
   // calculate the % of the top month's lawsuits of the yearly average
@@ -254,7 +260,7 @@ export const getLawsuitChartData = (data) => {
   };
 };
 
-export const getLawsuitMapData = (data, geojson, region, demographics) => {
+export const getLawsuitMapData = (data, geojson, region) => {
   const childData = data[region];
   const dates = getDateRange([data]);
   const features = geojson.features
@@ -262,9 +268,6 @@ export const getLawsuitMapData = (data, geojson, region, demographics) => {
       const matchLawsuit = childData.find(
         (d) => d.geoid === f.properties.GEOID
       );
-      const matchDemographic = demographics
-        ? demographics.find((d) => d.geoid === f.properties.GEOID)
-        : null;
       return matchLawsuit
         ? {
             ...f,
@@ -273,30 +276,29 @@ export const getLawsuitMapData = (data, geojson, region, demographics) => {
               value: matchLawsuit.lawsuits,
               name: matchLawsuit.name,
               selected: false,
-              demographics: matchDemographic
-                ? {
-                    pctAsian: {
-                      value: matchDemographic.percent_asian,
-                      label: "Asian",
-                    },
-                    pctBlack: {
-                      value: matchDemographic.percent_black,
-                      label: "Black",
-                    },
-                    pctLatinx: {
-                      value: matchDemographic.percent_latinx,
-                      label: "Latinx",
-                    },
-                    pctWhite: {
-                      value: matchDemographic.percent_white,
-                      label: "White",
-                    },
-                    pctOther: {
-                      value: matchDemographic.percent_other,
-                      label: "Other",
-                    },
-                  }
-                : null,
+              medianHhi: matchLawsuit?.median_hhi,
+              demographics: {
+                pctAsian: {
+                  value: matchLawsuit.percent_asian,
+                  label: "Asian",
+                },
+                pctBlack: {
+                  value: matchLawsuit.percent_black,
+                  label: "Black",
+                },
+                pctLatinx: {
+                  value: matchLawsuit.percent_latinx,
+                  label: "Latinx",
+                },
+                pctWhite: {
+                  value: matchLawsuit.percent_white,
+                  label: "White",
+                },
+                pctOther: {
+                  value: matchLawsuit.percent_other,
+                  label: "Other",
+                },
+              },
             },
           }
         : null;
@@ -314,21 +316,6 @@ export const getLawsuitMapData = (data, geojson, region, demographics) => {
   };
 };
 
-const joinDemographicsWithData = (data, demographics, region) => {
-  // console.log("joinDemographicsWithData", { data, demographics, region });
-  return demographics
-    .map((dem) => {
-      const match = data[region].find((tract) => tract.geoid === dem.geoid);
-      return match
-        ? {
-            ...dem,
-            ...match,
-          }
-        : null;
-    })
-    .filter(Boolean);
-};
-
 /**
  * Step 1: join lawsuit and demographic data
  * Step 2: group joined data by racial majority
@@ -337,26 +324,15 @@ const joinDemographicsWithData = (data, demographics, region) => {
  * @param {*} demographics
  * @returns
  */
-export const getDemographicChartData = (
-  data,
-  demographics,
-  region = "tracts"
-) => {
-  // Step 1: join lawsuit and demographic data
-  const joined = joinDemographicsWithData(data, demographics, region);
+export const getDemographicChartData = (data, region = "tracts") => {
+  const subregions = data[region];
+  const counts = data.proportions;
 
-  // Step 2: group joined data by racial majority
-  const grouped = d3.group(joined, (d) => d.majority);
-  const counts = Array.from(grouped.entries()).map(([g, entries]) => ({
-    group: g,
-    tractCount: entries.length,
-    tractPercent: entries.length / joined.length,
-    lawsuitCount: d3.sum(entries, (d) => d.lawsuits),
-    lawsuitPercent: d3.sum(entries, (d) => d.lawsuits) / data.lawsuits,
-  }));
-
-  // Step 3: aggregate all lawsuits by group, by month
+  // Step 1: group joined data by racial majority
+  const grouped = d3.group(subregions, (d) => d.majority);
+  // Step 2: aggregate all lawsuits by group, by month
   const summed = Array.from(grouped.entries())
+    // map grouped values to [group, lawsuit history by month]
     .map(([group, groupData]) => {
       const byMonth = groupData.reduce((monthObj, entry) => {
         const monthValues = entry.lawsuit_history;
@@ -368,27 +344,46 @@ export const getDemographicChartData = (
       }, {});
       return [group, Object.entries(byMonth)];
     })
+    // map history for each group to values
     .map(([group, history]) => {
       const withPercent = history.map(([month, lawsuits]) => {
         // pull the month total from lawsuit history
-        const monthTotal = data.lawsuit_history.find(
+        let monthTotal = data.lawsuit_history.find(
           (totalHistory) => totalHistory.month === month
         );
+        // assume 0 if month total is unavailable
+        if (!monthTotal) {
+          monthTotal = { month, lawsuits: 0 };
+        }
         // pull group percent from counts
         const groupPercent = counts.find((c) => c.group === group).tractPercent;
-        const proportionalCount = groupPercent * monthTotal.lawsuits;
+        const proportionalCount = monthTotal
+          ? Math.round(groupPercent * monthTotal.lawsuits)
+          : null;
+        const proportionalCountDiff = Number.isFinite(proportionalCount)
+          ? lawsuits - proportionalCount
+          : null;
         return {
           month,
+          diff:
+            proportionalCountDiff < 6 && proportionalCountDiff > -6
+              ? "roughly proportionate"
+              : proportionalCountDiff > 0
+              ? "disproportionately high"
+              : "disproportionately low",
           lawsuits,
-          lawsuitPercent: lawsuits / monthTotal.lawsuits,
-          proportionalCountDiff: lawsuits - proportionalCount,
-          proportionalPercentDiff: lawsuits / proportionalCount - 1,
+          lawsuitPercent: monthTotal ? lawsuits / monthTotal.lawsuits : null,
+          proportionalCountDiff,
+          proportionalPercentDiff: proportionalCount
+            ? lawsuits / proportionalCount - 1
+            : null,
         };
       });
       return [group, withPercent];
     });
 
   // Step 4: flatten summed array into chart format
+  let noDems = [];
   const chart = summed
     .reduce((flattened, [group, groupData]) => {
       groupData.forEach(
@@ -396,15 +391,22 @@ export const getDemographicChartData = (
           month,
           lawsuits,
           lawsuitPercent,
+          diff,
           proportionalCountDiff,
           proportionalPercentDiff,
         }) => {
+          // do not add data for where demographics are unavailabe
+          if (!group) {
+            noDems = [...noDems, ...groupData];
+            return flattened;
+          }
           flattened.push({
             group,
             x: parseMonthYear(month),
             y: proportionalCountDiff,
             data: {
               month,
+              diff,
               lawsuits,
               lawsuitPercent,
               proportionalCountDiff,
@@ -418,12 +420,25 @@ export const getDemographicChartData = (
     .sort((a, b) => a.group.localeCompare(b.group))
     .sort((a, b) => a.x - b.x);
 
-  // console.log("getDemographicChartData", { chart, data, counts, joined });
   return {
     chartData: chart,
-    tractCountByMajority: counts,
+    tractCountByMajority: data.proportions,
     totalLawsuits: data.lawsuits,
+    noDemographics: noDems,
   };
+};
+
+/**
+ * Shapes and returns data required for table section
+ * @param {*} data
+ * @param {*} demographics
+ * @param {*} region
+ */
+export const getTableData = (data, demographics, region) => {
+  // get counts for each county
+  // const joined = joinDemographicsWithData(data, demographics, region);
+  // const counts = getNeighborhoodProportions(data, joined);
+  // TODO: get data with neighborhood proportions for counties / zips
 };
 
 export const getTopCollectorsData = (data) => {

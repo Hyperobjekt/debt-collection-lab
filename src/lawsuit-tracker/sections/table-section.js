@@ -14,6 +14,7 @@ import {
   Tooltip,
   withStyles,
 } from "@material-ui/core";
+import FlagIcon from "../table/flag-icon";
 import TwoColBlock from "../../components/sections/two-col-block";
 import {
   applyFilter,
@@ -119,6 +120,58 @@ const FORMAT_NUM = (v) => (v === null ? "-" : FORMATTER(v));
 /** Parser for month dates */
 const MONTH_PARSE = d3.timeParse("%m/%Y");
 
+const getTooltipHint = (content, hasIndiana) => {
+  if (hasIndiana) {
+    return (
+      content.DEFAULT_JUDGEMENTS_HINT +
+      `<br /><br />Default judgments are not recorded by the state of Indiana.`
+    );
+  }
+  return content.DEFAULT_JUDGEMENTS_HINT;
+};
+
+const getDisproportionateTooltip = (groups) => {
+  let groupList = "";
+  if (groups.length === 1) groupList = groups[0];
+  if (groups.length === 2) groupList = groups[0] + " and " + groups[1];
+  if (groups.length > 2) {
+    const last = groups.pop();
+    groupList = groups.join(", ") + " and " + last;
+  }
+  return `Disproportionate filings against ${groupList} neighborhoods in this county.`;
+};
+
+const PlaceName = ({ row, view }) => {
+  const name =
+    view === "counties"
+      ? `${row.original.name}, ${row.original.state}`
+      : row.original["name"];
+  const hasDisproportionate = row.original.disproportionate?.length > 0;
+  const nameComponent = (
+    <Box
+      display="inline-flex"
+      alignItems="center"
+      style={{ whiteSpace: "nowrap", lineHeight: 1.1 }}
+    >
+      {name}{" "}
+      {hasDisproportionate && (
+        <FlagIcon style={{ fontSize: 16, marginLeft: 8 }} />
+      )}
+    </Box>
+  );
+  return hasDisproportionate ? (
+    <Tooltip
+      title={getDisproportionateTooltip(row.original.disproportionate)}
+      arrow
+      placement="right"
+    >
+      {nameComponent}
+    </Tooltip>
+  ) : (
+    nameComponent
+  );
+};
+
 /**
  * A section with a left column for title, description, and table controls
  * and a table on the right.
@@ -161,11 +214,7 @@ const TableSection = ({
         d.name === "Indiana" ||
         d.geoid.indexOf("18") === 0
     ).length > 0;
-  if (hasIndiana) {
-    content.DEFAULT_JUDGEMENTS_HINT =
-      content.DEFAULT_JUDGEMENTS_HINT +
-      `<br /><br />Default judgments are not recorded by the state of Indiana.`;
-  }
+  const tooltipHint = getTooltipHint(content, hasIndiana);
 
   /** memoized handler for when user changes sorting */
   const handleSort = useCallback(
@@ -214,8 +263,7 @@ const TableSection = ({
           </TableSortLabel>
         ),
         cellProps: { width: "50%" },
-        accessor: (d) =>
-          view === "counties" ? `${d.name}, ${d.state}` : d["name"],
+        Cell: ({ row }) => <PlaceName row={row} view={view} />,
       },
       {
         id: "lawsuits",
@@ -232,40 +280,6 @@ const TableSection = ({
         ),
         cellProps: { align: "right" },
         accessor: (d) => FORMAT_NUM(d["lawsuits"]),
-      },
-      {
-        id: "default_judgement",
-        Header: () => (
-          <TableSortLabel
-            active={sortBy === "default_judgement"}
-            direction={
-              sortBy === "default_judgement"
-                ? ascending
-                  ? "asc"
-                  : "desc"
-                : "asc"
-            }
-            onClick={(e) => handleSort(e, "default_judgement")}
-          >
-            <Tooltip
-              title={
-                <Typography
-                  variant="caption"
-                  dangerouslySetInnerHTML={{
-                    __html: content.DEFAULT_JUDGEMENTS_HINT,
-                  }}
-                />
-              }
-              placement="top"
-              interactive
-              arrow
-            >
-              <span>Default Judgements</span>
-            </Tooltip>
-          </TableSortLabel>
-        ),
-        cellProps: { align: "right", width: 100 },
-        accessor: (d) => FORMAT_NUM(d["default_judgement"]),
       },
       {
         id: "trend",
@@ -293,6 +307,41 @@ const TableSection = ({
             />
           ),
       },
+
+      {
+        id: "default_judgement",
+        Header: () => (
+          <TableSortLabel
+            active={sortBy === "default_judgement"}
+            direction={
+              sortBy === "default_judgement"
+                ? ascending
+                  ? "asc"
+                  : "desc"
+                : "asc"
+            }
+            onClick={(e) => handleSort(e, "default_judgement")}
+          >
+            <Tooltip
+              title={
+                <Typography
+                  variant="body2"
+                  dangerouslySetInnerHTML={{
+                    __html: tooltipHint,
+                  }}
+                />
+              }
+              placement="top"
+              interactive
+              arrow
+            >
+              <span>Default Judgments</span>
+            </Tooltip>
+          </TableSortLabel>
+        ),
+        cellProps: { align: "right", width: 100 },
+        accessor: (d) => FORMAT_NUM(d["default_judgement"]),
+      },
       view !== "tracts" && view !== "zips"
         ? {
             id: "report",
@@ -309,7 +358,7 @@ const TableSection = ({
           }
         : null,
     ].filter((v) => !!v && cols.indexOf(v.id) > -1);
-  }, [handleSort, ascending, sortBy, view, trendRange, cols]);
+  }, [handleSort, ascending, sortBy, view, trendRange, cols, tooltipHint]);
 
   const context = {
     singularRegion: getSingularRegion(view),
@@ -327,16 +376,16 @@ const TableSection = ({
         <Tooltip
           title={
             <Typography
-              variant="caption"
+              variant="body2"
               dangerouslySetInnerHTML={{
-                __html: content.DEFAULT_JUDGEMENTS_HINT,
+                __html: tooltipHint,
               }}
             />
           }
           interactive
           arrow
         >
-          <Button className="hint-button">What is a default judgement?</Button>
+          <Button className="hint-button">What is a default judgment?</Button>
         </Tooltip>
         <Typography paragraph variant="caption">
           {Mustache.render(content.LAST_UPDATED, context)}
@@ -414,7 +463,7 @@ const TableSection = ({
 
 TableSection.defaultProps = {
   views: ["tracts"],
-  cols: ["name", "lawsuits", "default_judgement", "trend", "report"],
+  cols: ["name", "lawsuits", "trend", "default_judgement", "report"],
   limit: 10,
 };
 

@@ -4,11 +4,12 @@ template: about
 meta:
   title: About Us
   description: We make visible the practices and indignities long shielded from the light.
+  image: ./images/about-social.jpg
 embeddedImages:
-  - ../images/gallery-9.jpg
+  - ./images/gallery-9.jpg
 team:
-  - name: Frederick F. Wherry
-    title: PI - Princeton University, Sociology
+  - title: Frederick F. Wherry
+    creds: PI - Princeton University, Sociology
     bio: "Frederick F. Wherry (PI) is the Townsend Martin, Class of 1917 Professor of Sociology 
     at Princeton University, and is the founding director of the Dignity and Debt Network, 
     a partnership between the Social Science Research Council and Princeton University. 
@@ -24,8 +25,8 @@ team:
     Wherry received his MPA at the School of Public and International Affairs and his PhD in 
     Sociology from Princeton University."
     headshot_thumbnail: ../images/circle_thumbnail_wherry.png
-  - name: Dalié Jimenez
-    title: PI - Co-PI – University of California at Irvine Law School
+  - title: Dalié Jimenez
+    creds: PI - Co-PI – University of California at Irvine Law School
     bio: "Dalié Jiménez (Co-PI) is Professor of Law at the University of California at Irvine, 
     where she directs the Student Loan Law Initiative. Her scholarly work focuses on contracts, 
     bankruptcy and consumer financial distress, the regulation of financial products and its 
@@ -42,8 +43,8 @@ team:
     Law School and holds dual B.S. degrees in electrical engineering/computer science and political 
     science from MIT."
     headshot_thumbnail: ../images/circle_thumbnail_jimenez.png
-  - name: Lois R. Lupica
-    title: Co-PI – University of Maine Law School
+  - title: Lois R. Lupica
+    creds: Co-PI – University of Maine Law School
     bio: "Lois R. Lupica (Co-PI) is a Visiting Professor of the Practice of Law at the Sturm College 
     of Law, University of Denver. She is an internationally recognized expert in access to civil 
     justice and legal innovation strategies. She is currently an affiliated faculty member at the 
@@ -61,16 +62,16 @@ team:
     Thompson and Knight in New York. Professor Lupica earned a J.D. magna cum laude from 
     Boston University School of Law, and a B.S. in Consumer Economics from Cornell University."
     headshot_thumbnail: ../images/circle_thumbnail_lupica.png
-  - name: Jeffrey Reichman
-    title: Senior investigator – January Advisors, Data Science Consulting
+  - title: Jeffrey Reichman
+    creds: Senior investigator – January Advisors, Data Science Consulting
     bio: "Jeff Reichman (Collaborator) is a founder and principal of January Advisors, a consulting 
     firm that works on data and technology projects. He is also the founder of Sketch City, a 
     nonprofit community of 2,000+ people who advance technology and data in public decision making. 
     January Advisors works closely with the Eviction Lab on developing their eviction tracker and on 
     other related projects."
     headshot_thumbnail: ../images/circle_thumbnail_reichman.png
-  - name: Robin Lee
-    title: Co-PI—Princeton University, Sociology
+  - title: Robin Lee
+    creds: Co-PI—Princeton University, Sociology
     bio: "Robin Lee (Co-PI) is a graduate student in the Department of Sociology at 
     Princeton University. He was previously a senior data analyst at the New York Times where he did 
     experimental design research on format messaging and best practices for reproducible data 
@@ -78,8 +79,8 @@ team:
     Columbia in quantitative methods in the social sciences. Robin’s goals at Princeton include 
     further research on digital communication, text analysis, social networks, and social movements."
     headshot_thumbnail: ../images/circle_thumbnail_lee.png
-  - name: Jeff Himpele
-    title: Collaborator, Director, VizE Lab, Princeton University, Anthropology
+  - title: Jeff Himpele
+    creds: Collaborator, Director, VizE Lab, Princeton University, Anthropology
     bio: "Jeffrey Himpele (Co-PI) has been the primary collaborator for developing the 
     visualization strategy at the Dignity and Debt Network and now for the Debt Collection Lab. 
     Jeff directs the Anthropology Department’s VizE Lab for Ethnographic Data Visualization, an 
@@ -161,9 +162,14 @@ import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
             <Typography component="p" variant="h5">
               {member.name}
             </Typography>
-            <Typography color="grey" variant="body2">
+            <Typography color="grey" variant="body1">
               {member.title}
             </Typography>
+            {member.creds && (
+              <Typography color="grey" variant="body2">
+                {member.creds}
+              </Typography>
+            )}
           </Box>
         ))}
       </Modal>

@@ -1,3 +1,6 @@
+if (typeof fetch !== "function") {
+  global.fetch = require("node-fetch-polyfill");
+}
 const d3 = require("d3");
 const path = require("path");
 const { getStateNameForFips, loadCsv, slugify } = require("./scripts/utils");
@@ -6,21 +9,45 @@ const createSocialImage = require("./scripts/createSocialImage");
 const MONTH_PARSE = d3.timeParse("%m/%Y");
 const formatPercent = d3.format(".1%");
 const formatInt = d3.format(",d");
+
+function getDemographicProportions(totalLawsuits, subregions) {
+  const grouped = d3.group(subregions, (d) => d.majority);
+  return Array.from(grouped.entries()).map(([g, entries]) => ({
+    group: g,
+    tractCount: entries.length,
+    tractPercent: entries.length / subregions.length,
+    lawsuitCount: d3.sum(entries, (d) => d.lawsuits),
+    lawsuitPercent: d3.sum(entries, (d) => d.lawsuits) / totalLawsuits,
+  }));
+}
+
 /**
  * Returns an array of county objects
  * @param {*} data
  * @returns
  */
-function getCounties(data) {
-  const counties = data.filter((d) => d.geoid.length === 5);
-  return counties.map((c) => ({
-    ...c,
-    state: getStateNameForFips(c.geoid),
-    region: "tracts",
-    tracts: data.filter(
-      (d) => d.geoid.length > 5 && d.geoid.indexOf(c.geoid) === 0
-    ),
-  }));
+function getCounties(lawsuits, demographics) {
+  const counties = lawsuits.filter((d) => d.geoid.length === 5);
+  return counties.map((c) => {
+    const countyData = {
+      ...c,
+      state: getStateNameForFips(c.geoid),
+      region: "tracts",
+      tracts: lawsuits
+        .filter((d) => d.geoid.length > 7 && d.geoid.indexOf(c.geoid) === 0)
+        .map((tract) => {
+          // add demographics
+          const match = demographics.find((row) => row.geoid === tract.geoid);
+          if (!match) return tract;
+          return { ...match, ...tract };
+        }),
+    };
+    countyData.proportions = getDemographicProportions(
+      countyData.lawsuits,
+      countyData.tracts
+    );
+    return countyData;
+  });
 }
 
 /**
@@ -28,19 +55,44 @@ function getCounties(data) {
  * @param {*} data
  * @returns
  */
-function getStates(data) {
-  const states = data.filter((d) => d.geoid.length === 2);
+function getStates(lawsuits, demographics, countyData) {
+  const states = lawsuits.filter((d) => d.geoid.length === 2);
   return states.map((s) => {
-    const zips = data
+    const zips = lawsuits
       .filter((d) => d.geoid.length === 7 && d.geoid.indexOf(s.geoid) === 0)
-      .map((c) => ({ ...c, state: s.name }));
+      .map((zip) => {
+        const zipData = { ...zip, state: s.name };
+        const match = demographics.find((row) => row.geoid === zip.geoid);
+        if (!match) return zipData;
+        return { ...zipData, ...match };
+      });
+    const counties = lawsuits
+      .filter((d) => d.geoid.length === 5 && d.geoid.indexOf(s.geoid) === 0)
+      .map((c) => {
+        const result = { ...c, state: s.name };
+        const match = countyData.find((county) => county.geoid === c.geoid);
+        // get groups that have disproportionate filings (> 133% of filings share compared to neighborhood proportion)
+        result.disproportionate = match
+          ? match.proportions
+              ?.filter(({ group, lawsuitPercent, tractPercent }) => {
+                if (group === "No Majority") return false;
+                const isDisproportionate =
+                  lawsuitPercent > tractPercent * 1.3333 ||
+                  lawsuitPercent - tractPercent > 0.04;
+                if (isDisproportionate) return isDisproportionate;
+              })
+              .map(({ group }) => group)
+          : [];
+        return result;
+      });
+    const region = zips.length > counties.length ? "zips" : "counties";
     return {
       ...s,
-      region: zips?.length > 0 ? "zips" : "counties",
-      counties: data
-        .filter((d) => d.geoid.length === 5 && d.geoid.indexOf(s.geoid) === 0)
-        .map((c) => ({ ...c, state: s.name })),
+      region,
+      counties,
       zips,
+      proportions:
+        region === "zips" ? getDemographicProportions(s.lawsuits, zips) : [],
     };
   });
 }
@@ -92,6 +144,7 @@ const lawsuitParser = (row) => {
     geoid: row.id,
     name: row.name,
     lawsuits: Number(row.lawsuits),
+    completed_lawsuits: Number(row.completed_lawsuits),
     lawsuits_date: MONTH_PARSE(row.lawsuits_date),
     lawsuit_history: row.lawsuit_history
       .split("|")
@@ -99,7 +152,11 @@ const lawsuitParser = (row) => {
         month: v.split(";")[0],
         lawsuits: Number(v.split(";")[1]),
       }))
-      .filter((d) => d.month.indexOf("1969") === -1),
+      .filter((d) => {
+        const isNoisy = row.id.length < 6 && d.lawsuits < 2;
+        const isValidDate = d.month.indexOf("1969") === -1;
+        return isValidDate && !isNoisy;
+      }),
     top_collectors: row.collectors.split("|").map((v) => {
       const values = v.split(";");
       return {
@@ -109,7 +166,9 @@ const lawsuitParser = (row) => {
       };
     }),
     collector_total: Number(row.collector_total),
-    default_judgement: Number(row.default_judgement),
+    // set indiana to null
+    default_judgement:
+      row.id.indexOf("18") === 0 ? null : Number(row.default_judgement),
     no_rep_percent: Number(row.no_rep_percent),
   };
 };
@@ -171,6 +230,7 @@ const demographicParser = (row) => {
     percent_latinx: getNumberValue(row.percent_latinx),
     percent_white: getNumberValue(row.percent_white),
     percent_other: getNumberValue(row.percent_other),
+    median_hhi: getNumberValue(row.median_hhi),
   };
   const majority = getMajority(result);
   return {
@@ -191,6 +251,7 @@ const createCountyPages = async ({ graphql, actions }) => {
           geoid
           name
           lawsuits
+          completed_lawsuits
           no_rep_percent
           default_judgement
         }
@@ -200,7 +261,14 @@ const createCountyPages = async ({ graphql, actions }) => {
   const counties = result.data.allCounties.nodes;
   await Promise.all(
     counties.map(
-      async ({ geoid, name, lawsuits, no_rep_percent, default_judgement }) => {
+      async ({
+        geoid,
+        name,
+        lawsuits,
+        completed_lawsuits,
+        no_rep_percent,
+        default_judgement,
+      }) => {
         if (name) {
           const stateName = getStateNameForFips(geoid);
           const slugStateName = slugify(stateName);
@@ -210,7 +278,7 @@ const createCountyPages = async ({ graphql, actions }) => {
             [
               formatInt(lawsuits),
               formatPercent(no_rep_percent),
-              formatPercent(default_judgement / lawsuits),
+              formatPercent(default_judgement / completed_lawsuits),
             ],
             slugStateName
           );
@@ -249,6 +317,7 @@ const createStatePages = async ({ graphql, actions }) => {
           geoid
           name
           lawsuits
+          completed_lawsuits
           no_rep_percent
           default_judgement
           zips {
@@ -266,16 +335,17 @@ const createStatePages = async ({ graphql, actions }) => {
         geoid,
         name,
         lawsuits,
+        completed_lawsuits,
         no_rep_percent,
         default_judgement,
-        zips,
+        // zips,
       }) => {
         if (name && name !== "Texas") {
           const pageName = slugify(name);
           const socialImage = await createSocialImage(name, [
             formatInt(lawsuits),
             formatPercent(no_rep_percent),
-            formatPercent(default_judgement / lawsuits),
+            formatPercent(default_judgement / completed_lawsuits),
           ]);
           createPage({
             path: `/lawsuit-tracker/${pageName}/`,
@@ -284,7 +354,8 @@ const createStatePages = async ({ graphql, actions }) => {
               slug: pageName,
               state: name,
               geoid: geoid,
-              region: zips?.length > 0 ? "zips" : "counties",
+              // Assuming all zips belong to North Dakota
+              region: pageName === "north-dakota" ? "zips" : "counties",
               frontmatter: {
                 meta: {
                   title: name,
@@ -313,6 +384,9 @@ const createLawsuitTrackerIndex = async ({ graphql, actions }) => {
       frontmatter: {
         meta: {
           title: "Debt Collection Tracker",
+          description:
+            "We are building tools for tracking debt collection nationwide.",
+          image: "/images/social/tracker-social.jpg",
         },
       },
     },
@@ -320,14 +394,17 @@ const createLawsuitTrackerIndex = async ({ graphql, actions }) => {
 };
 
 exports.sourceNodes = async (params) => {
-  const lawsuits = loadCsv("./static/data/lawsuits.csv", lawsuitParser);
-  createSourceNodes("States", getStates(lawsuits), params);
-  createSourceNodes("Counties", getCounties(lawsuits), params);
-  const demographicData = loadCsv(
-    "./static/data/demographics.csv",
+  const lawsuits = await loadCsv("./static/data/lawsuits.csv", lawsuitParser);
+  const demographics = await loadCsv(
+    "https://debtcases.s3.us-east-2.amazonaws.com/demographic_data.csv",
     demographicParser
-  );
-  createSourceNodes("Demographics", demographicData, params);
+    );
+  const countyData = getCounties(lawsuits, demographics);
+  const stateData = getStates(lawsuits, demographics, countyData);
+  createSourceNodes("States", stateData, params);
+  createSourceNodes("Counties", countyData, params);
+
+  // createSourceNodes("Demographics", demographicData, params);
 };
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -368,8 +445,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       isBlogPost: Boolean
     }
     type TeamMember {
-      name: String
       title: String
+      creds: String
       bio: String
       headshot: String
       headshot_thumbnail: File @fileByRelativePath

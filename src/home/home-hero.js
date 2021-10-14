@@ -152,7 +152,7 @@ const HomeHero = ({ classes, heading, paragraph, ...props }) => {
 
 HomeHero.defaultProps = {
   heading: `<span>More than</span> <span>70 million</span><span>adults in America have had a debt turned over to a</span> <span>private debt collector</span>`,
-  paragraph: `<strong>That’s 1 in 3 adults.</strong> Your child's teacher. The friendly bank cashier. The person just 2 seats away. Millions have been threatened with jail, tens of thousands have been summoned to court in a single county in a single county. The greatest indignities fall on lower-income debtors and on those who are Black or Latinx. During the process of debt collection, individuals learn that they can be treated as if they have no right to respect or to redress.`,
+  paragraph: `<strong>That’s 1 in 3 adults.</strong> Your child's teacher. The friendly bank cashier. The person just 2 seats away. Millions have been threatened with jail, and tens of thousands have been summoned to court in a single county. During the process of debt collection, individuals learn that they can be treated as if they have no right to respect or to redress.`,
 };
 
 HomeHero.propTypes = {};

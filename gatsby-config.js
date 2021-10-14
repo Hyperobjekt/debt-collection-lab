@@ -2,8 +2,10 @@ const path = require("path");
 const metadata = require("./config/metadata.json");
 
 module.exports = {
+  // use static file for metadata so netlify CMS can edit
   siteMetadata: metadata,
   plugins: [
+    // configure base theme and custom templates
     {
       resolve: `gatsby-theme-hypersite`,
       options: {
@@ -15,6 +17,7 @@ module.exports = {
         },
       },
     },
+    // add CMS with manual init
     {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
@@ -22,20 +25,21 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
+    // add geojson to graphql
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./data/geojson`,
-        typeName: `Geo`,
       },
     },
+    // add JSON content strings for lawsuit tracker to graphql
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./content/lawsuit-tracker`,
-        typeName: `Tracker`,
       },
     },
+    // load typekit fonts
     {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
@@ -44,6 +48,7 @@ module.exports = {
         },
       },
     },
+    // manifest configuration for home screen options
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -54,6 +59,20 @@ module.exports = {
         theme_color: `#EA4A2E`,
         display: `standalone`,
         icon: "content/pages/images/favicon-260.png",
+      },
+    },
+    // add google analytics
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ["G-05J63KC61T"],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: 2409828,
+        sv: 6,
       },
     },
     "gatsby-plugin-styled-components",

@@ -1,8 +1,8 @@
 {
   "title": "Debt Collection Lab",
   "description": "We are changing the narrative about debt collection by building a public facing resource for debtors and their advocates.",
-  "keywords": "Debt",
-  "image": "https://via.placeholder.com/1200x630",
+  "keywords": "debt collection",
+  "image": "/images/social.jpg",
   "siteUrl": "https://debtcollectionlab.org",
   "copyright": "Copyright Debt Collection Lab © 2021",
   "menuLinks": [
@@ -19,9 +19,5 @@
       "link": "/about-us"
     }
   ],
-  "social": [
-    { "name": "email", "value": "info@debtcollectionlab.org" },
-    { "name": "twitter", "value": "debtcollectionlab" },
-    { "name": "facebook", "value": "debtcollectionlab" }
-  ]
+  "social": [{ "name": "email", "value": "debtcollectionlab@gmail.com" }]
 }

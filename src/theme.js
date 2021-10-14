@@ -146,9 +146,6 @@ const overrides = {
       fontSize: theme.typography.pxToRem(14),
       paddingLeft: theme.spacing(4),
       paddingRight: theme.spacing(4),
-      "& $primary": {
-        background: "#000",
-      },
     },
     containedPrimary: {
       // accessibility fix: darker to improve contrast
@@ -174,6 +171,8 @@ const overrides = {
     tooltip: {
       backgroundColor: theme.palette.background.dark,
       padding: theme.spacing(2),
+      fontSize: theme.typography.pxToRem(14),
+      fontWeight: "normal",
       "& a": {
         color: "#fff",
         textDecoration: "underline",

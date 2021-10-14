@@ -1057,6 +1057,67 @@ Chart.prototype.addGridLines = function (overrides) {
   return this;
 };
 
+Chart.prototype.addMarklines = function (overrides = {}) {
+  // marklines { axis, value }
+  const _this = this;
+  const options = { ..._this.options, ...overrides };
+  // do nothing if no marklines
+  if (!options.marklines) return this;
+
+  options.markId = makeId();
+
+  // create group for marklines and return selection
+  function createMarklineSelection(parentSelection) {
+    return parentSelection.append("g").attr("class", "chart__marklines");
+  }
+  // create render function for marklines
+  function createMarklineRenderer(selection, chart) {
+    return function () {
+      const options = { ...chart.options, ...overrides };
+      const lineData = options.marklines.filter((d) => d.axis === "y");
+      // TODO: implement marklines for x axis when needed
+      if (lineData.length < options.marklines.length)
+        console.warn(
+          "only marklines for values on the y axis are currently supported."
+        );
+      if (!_this.yScale) {
+        console.warn("need y scale to render marklines, call addAxisY first.");
+        return;
+      }
+      var lines = selection
+        .selectAll(".chart__markline")
+        .data(lineData, (d) => d.id);
+      lines
+        .enter()
+        .append("line")
+        .attr("class", function (d, i) {
+          return "chart__markline";
+        })
+        .attr("x1", 0)
+        .attr("y1", (d) => _this.yScale(d.value))
+        .attr("x2", 0)
+        .attr("y2", (d) => _this.yScale(d.value))
+        .merge(lines)
+        .transition()
+        .duration(1000)
+        .delay(1000)
+        .attr("x1", 0)
+        .attr("y1", (d) => _this.yScale(d.value))
+        .attr("x2", chart.getInnerWidth())
+        .attr("y2", (d) => _this.yScale(d.value));
+
+      lines.exit().transition().duration(400).style("opacity", 0).remove();
+    };
+  }
+  this.addElement(
+    options.markId,
+    "data",
+    createMarklineSelection,
+    createMarklineRenderer
+  );
+  return this;
+};
+
 /**
  * Adds an axis for bar charts
  * @param {*} selector a function that accepts a data entry and returns the y value
@@ -1259,6 +1320,7 @@ Chart.prototype.addVoronoi = function (overrides = {}) {
             title: hoverData.group,
             xValue: xFormat(options.xSelector(hoverData)),
             yValue: yFormat(options.ySelector(hoverData)),
+            data: hoverData.data,
           };
         }
         const data = getDefaultTooltip();

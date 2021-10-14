@@ -96,8 +96,8 @@ export const pageQuery = graphql`
           }
         }
         team {
-          name
           title
+          creds
           bio
           headshot
           headshot_thumbnail {

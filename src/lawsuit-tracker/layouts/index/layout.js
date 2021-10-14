@@ -14,15 +14,16 @@ import Typography from "../../../components/typography";
 const intFormat = d3.format(",d");
 const monthFormat = d3.timeFormat("%B %Y");
 
+// TODO: make an MDX file for this page so metadata can be set via CMS instead of set in gatsby-node
+
 export default function TrackerIndexLayout({ children, ...props }) {
   const data = props.data.allStates.nodes;
   const { stateCount, countyCount, lawsuitTotal } = getTotals(data);
   const dateRange = getDateRange(data);
   const content = props.data.lawsuitTrackerJson;
   const image = getImage(props.data.allFile.nodes[0]);
-  console.log({ content });
   return (
-    <Layout {...props}>
+    <Layout meta={props.pageContext.frontmatter.meta} {...props}>
       <IndexHero
         stateCount={stateCount}
         countyCount={countyCount}
@@ -76,6 +77,7 @@ export const query = graphql`
         geoid
         name
         lawsuits
+        completed_lawsuits
         lawsuits_date
         no_rep_percent
         default_judgement
@@ -88,6 +90,7 @@ export const query = graphql`
           geoid
           state
           lawsuits
+          disproportionate
           lawsuit_history {
             lawsuits
             month
