@@ -40,22 +40,21 @@ export const styles = (theme) => ({
     marginTop: 'auto',
   },
   contentButton: {
-    color: theme.palette.text.primary,
+    color: theme.palette.secondary.main,
     fontSize: theme.typography.pxToRem(16),
-  },
-  creds: {
-    color: theme.palette.text.secondary
   },
 
   //styles for modal component
-  button: {
+  buttonTrigger: {
     height: "100%",
     width: "100%",
     textAlign: "left",
-    padding: "0px 20px",
+    padding: "0px 1rem",
+    alignItems: "unset",
+    color: theme.palette.text.primary,
     "& .MuiButton-label": {
       justifyContent: "left",
-    }
+    },
   },
   dialog: {
     maxWidth: theme.typography.pxToRem(900),
@@ -68,6 +67,12 @@ export const styles = (theme) => ({
   },
   content: {
     padding: theme.spacing(3, 4, 3, 4),
+  },
+  title: {
+    color: theme.palette.text.primary
+  },
+  creds: {
+    color: theme.palette.text.secondary
   },
 });
 
@@ -152,7 +157,7 @@ const Modal = ({
         >
           <Button
             onClick={() => openHandler(index)}
-            className={classes.button}
+            className={classes.buttonTrigger}
           >
             {child}
           </Button>

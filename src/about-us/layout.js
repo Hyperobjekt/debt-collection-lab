@@ -95,7 +95,7 @@ export const pageQuery = graphql`
             gatsbyImageData(layout: FULL_WIDTH)
           }
         }
-        team {
+        primaryTeam {
           title
           creds
           bio
@@ -109,6 +109,10 @@ export const pageQuery = graphql`
               gatsbyImageData(width: 100)
             }
           }
+        }
+        secondaryTeam {
+          title
+          creds
         }
       }
     }

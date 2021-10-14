@@ -435,7 +435,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       template: String
       meta: SeoFrontmatter!
       embeddedImages: [File] @fileByRelativePath
-      team: [TeamMember]
+      primaryTeam: [TeamMember]
+      secondaryTeam: [TeamMember]
     }
     type SeoFrontmatter {
       title: String!
