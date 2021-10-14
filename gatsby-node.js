@@ -448,7 +448,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       creds: String
       bio: String
-      headshot: String
+      headshot: File @fileByRelativePath
       headshot_thumbnail: File @fileByRelativePath
     }
   `;

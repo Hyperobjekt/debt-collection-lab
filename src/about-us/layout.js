@@ -99,10 +99,14 @@ export const pageQuery = graphql`
           title
           creds
           bio
-          headshot
-          headshot_thumbnail {
+          headshot {
             childImageSharp {
               gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
+          headshot_thumbnail {
+            childImageSharp {
+              gatsbyImageData(width: 100)
             }
           }
         }

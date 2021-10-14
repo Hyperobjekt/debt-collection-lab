@@ -15,66 +15,36 @@ import {
 import CloseIcon from "@material-ui/icons/Close";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
 
 export const styles = (theme) => ({
   //styles for content component
-  rootDialog: {
-    top: "0",
-    left: "0",
-    position: "fixed",
-    zIndex: "9999",
-    height: "100vh",
-    width: "100vw",
-    backgroundColor: "#000",
-    "& .MuiBox-root": {
-      height: "100%",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-  },
-  container: {
-    height: "100%",
-    width: "100%",
-  },
-  imageContainer: {
-    width: "100%",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: theme.spacing(0, 3),
-  },
-  prev: {
-    color: "#fff",
-    border: `1px solid #fff`,
-  },
-  next: {
-    color: "#fff",
-    border: `1px solid #fff`,
-  },
-  // manually size gatsby image wrapper
-  image: {
-    width: "100%",
-    height: "100%",
-    marginBottom: theme.spacing(2),
-    "&.gatsby-image-wrapper img": {
-      height: "auto",
-      maxHeight: "100%",
-      margin: "auto",
-      objectFit: "contain!important", // HACK: make sure placeholder image is not blown up
-    },
-    // HACK: do not show the image wrapper that adds spacing
-    "&.gatsby-image-wrapper > div": {
-      display: "none",
-    },
-  },
-  description: {
-    textAlign: "center",
-    maxWidth: "30em",
-  },
   divider: {
     margin: "10px 0px"
+  },
+  vertDivider: {
+    margin: 0
+  },
+  bioBox:{
+    display: "flex",
+    flexDirection: "column",
+  },
+  btnFlexBox: {
+    flexGrow: 1,
+    justifyContent: "right",
+    display: "flex"
+  },
+  btnContainerBox: {
+    display: 'flex',
+    height: 'fit-content',
+    marginTop: 'auto',
+  },
+  contentButton: {
+    color: theme.palette.text.primary,
+    fontSize: theme.typography.pxToRem(16),
+  },
+  creds: {
+    color: theme.palette.text.secondary
   },
 
   //styles for modal component
@@ -88,7 +58,7 @@ export const styles = (theme) => ({
     }
   },
   dialog: {
-    maxWidth: theme.typography.pxToRem(555),
+    maxWidth: theme.typography.pxToRem(900),
   },
   closeButton: {
     position: "absolute",
@@ -110,14 +80,12 @@ const Content = ({
 
   const [index, setIndex] = React.useState(selected);
 
-  const handleClick = (type, e) => {
+  const handleClick = (type) => {
     switch (type) {
       case "prev":
-        e.stopPropagation();
         index > 0 ? setIndex(index - 1) : setIndex(members.length - 1);
         break;
       case "next":
-        e.stopPropagation();
         index < members.length - 1 ? setIndex(index + 1) : setIndex(0);
         break;
       default:
@@ -126,29 +94,34 @@ const Content = ({
   };
 
   return(
-    <Box>
-      <Box>
-        <StaticImage
+    <Grid container spacing={3}>
+      <Grid item xs={12} sm={4}>
+        <GatsbyImage
           layout="fixed"
-          width={375}
-          height={442}
           alt="court room"
-          src={members[selected].headshot}
+          image={getImage(members[index].headshot)}
         />
-      </Box>
-      <Box>
-      <Typography component="p" variant="h5">
-        {members[selected].title}
-      </Typography>
-      <Typography color="gray" variant="body2">
-        {members[selected].creds}
-      </Typography>
-      <Divider className={classes.divider}/>
-      <Typography variant="body2">
-        {members[selected].bio}
-      </Typography>
-      </Box>
-    </Box>
+      </Grid>
+      <Grid className={classes.bioBox} item xs={12} sm={8}>
+        <Typography component="p" variant="h4">
+          {members[index].title}
+        </Typography>
+        <Typography className={classes.creds} variant="body2">
+          {members[index].creds}
+        </Typography>
+        <Divider className={classes.divider}/>
+        <Typography variant="body2">
+          {members[index].bio}
+        </Typography>
+        <Box className={classes.btnFlexBox}>
+          <Box className={classes.btnContainerBox}>
+            <Button className={classes.contentButton} startIcon={<NavigateBeforeIcon />} onClick={() => handleClick('prev')}>Previous Bio</Button>
+            <Divider className={classes.vertDivider} flexItem orientation="vertical" variant="middle" />
+            <Button className={classes.contentButton} endIcon={<NavigateNextIcon />} onClick={() => handleClick('next')}>Next Bio</Button>
+          </Box>
+        </Box>
+      </Grid>
+    </Grid>
   )
 }
 
