@@ -1,6 +1,6 @@
 "use strict";
 if (typeof fetch !== "function") {
-  global.fetch = require("node-fetch-polyfill");
+  global.fetch = require("node-fetch");
 }
 const d3 = require("d3");
 const { loadCsv, writeFile } = require("./utils");

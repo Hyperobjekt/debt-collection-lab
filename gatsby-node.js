@@ -1,5 +1,5 @@
 if (typeof fetch !== "function") {
-  global.fetch = require("node-fetch-polyfill");
+  global.fetch = require("node-fetch");
 }
 const d3 = require("d3");
 const path = require("path");
@@ -398,7 +398,7 @@ exports.sourceNodes = async (params) => {
   const demographics = await loadCsv(
     "https://debtcases.s3.us-east-2.amazonaws.com/demographic_data.csv",
     demographicParser
-    );
+  );
   const countyData = getCounties(lawsuits, demographics);
   const stateData = getStates(lawsuits, demographics, countyData);
   createSourceNodes("States", stateData, params);
