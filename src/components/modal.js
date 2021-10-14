@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import clsx from "clsx";
 import {
   IconButton,
   Dialog,
@@ -15,7 +14,7 @@ import {
 import CloseIcon from "@material-ui/icons/Close";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 export const styles = (theme) => ({
   //styles for content component
