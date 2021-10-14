@@ -1,6 +1,7 @@
-if (typeof fetch !== "function") {
-  global.fetch = require("node-fetch");
+if (!globalThis.fetch) {
+  globalThis.fetch = require("node-fetch");
 }
+
 const d3 = require("d3");
 const path = require("path");
 const { getStateNameForFips, loadCsv, slugify } = require("./scripts/utils");
