@@ -133,15 +133,15 @@ const Content = ({
           width={375}
           height={442}
           alt="court room"
-          src={members[selected].headshot_thumbnail}
+          src={members[selected].headshot}
         />
       </Box>
       <Box>
       <Typography component="p" variant="h5">
-        {members[selected].name}
+        {members[selected].title}
       </Typography>
       <Typography color="gray" variant="body2">
-        {members[selected].title}
+        {members[selected].creds}
       </Typography>
       <Divider className={classes.divider}/>
       <Typography variant="body2">
