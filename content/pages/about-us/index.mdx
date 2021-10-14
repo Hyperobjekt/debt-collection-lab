@@ -9,19 +9,90 @@ embeddedImages:
 team:
   - name: Frederick F. Wherry
     title: PI - Princeton University, Sociology
+    bio: "Frederick F. Wherry (PI) is the Townsend Martin, Class of 1917 Professor of Sociology 
+    at Princeton University, and is the founding director of the Dignity and Debt Network, 
+    a partnership between the Social Science Research Council and Princeton University. 
+    He is an economic and cultural sociologists studying how households experience and navigate debt. 
+    He is currently the president-elect of the Eastern Sociological Society and the past president 
+    of the Social Science History Association as well as the past chair of the Economic Sociology 
+    Section and the Consumers and Consumption Section of the American Sociological Association. 
+    His has authored, co-authored, or edited nine volumes, including The Oxford Handbook of 
+    Consumption, Measuring Culture, and Credit Where It’s Due: Rethinking Financial Citizenship. 
+    At Stanford University Press, he serves as the editor of the Culture and Economic Life book 
+    series, along with Jennifer Lena. He was previously a professor at Yale and an associate 
+    professor at Columbia and the University of Michigan, where he began his career. Professor 
+    Wherry received his MPA at the School of Public and International Affairs and his PhD in 
+    Sociology from Princeton University."
+    headshot_thumbnail: ../images/circle_thumbnail_wherry.png
   - name: Dalié Jimenez
     title: PI - Co-PI – University of California at Irvine Law School
+    bio: "Dalié Jiménez (Co-PI) is Professor of Law at the University of California at Irvine, 
+    where she directs the Student Loan Law Initiative. Her scholarly work focuses on contracts, 
+    bankruptcy and consumer financial distress, the regulation of financial products and its 
+    intersection with consumer protection, and access to justice. Professor Jiménez uses qualitative 
+    nd quantitative empirical methods to explore the questions of how individuals cope with financial 
+    distress, how and whether our legal framework and institutions help or hinder individuals 
+    extricate themselves from this distress, and the role of the legal profession in helping 
+    individuals with this and other civil legal problems. She spent a year as part of the founding 
+    staff of the Consumer Financial Protection Bureau working on debt collection, debt relief, 
+    credit reporting, and student loan issues. Prior to her academic career, she clerked for the 
+    Honorable Juan R. Torruella of the United States Court of Appeals for the First Circuit, 
+    was a litigation associate at Ropes & Gray, L.L.P. in Boston, and worked on consumer protection 
+    issues at the Massachusetts State Senate. Professor Jiménez earned a J.D. cum laude from Harvard 
+    Law School and holds dual B.S. degrees in electrical engineering/computer science and political 
+    science from MIT."
+    headshot_thumbnail: ../images/circle_thumbnail_jimenez.png
   - name: Lois R. Lupica
     title: Co-PI – University of Maine Law School
+    bio: "Lois R. Lupica (Co-PI) is a Visiting Professor of the Practice of Law at the Sturm College 
+    of Law, University of Denver. She is an internationally recognized expert in access to civil 
+    justice and legal innovation strategies. She is currently an affiliated faculty member at the 
+    Harvard Law School Access to Justice Lab; Co-Principal Investigator of the Financial Distress 
+    Research Study; Co-Principal Investigator of the Princeton University Debt Collection Lab; 
+    and was Principal Investigator of the Apps for Justice Project. In 2019 Professor Lupica served 
+    as Fulbright Senior Scholar at the University of Melbourne in Melbourne, Australia, where she 
+    researched access to justice and legal design. Prior to joining the law school, she was the 
+    Maine Law Foundation Professor of Law at the University of Maine School of Law and Director of 
+    the Affordable Housing Initiative at Seton Hall Law School. Professor Lupica is the recipient of 
+    numerous honors and awards and has published articles on a variety of topics including the 
+    bankruptcy system, consumer finance, securitization, property and contract theory, secured 
+    transactions, and legal ethics, as well as co-authoring a leading casebook on Bankruptcy Law & 
+    Practice. She practiced business and commercial law at White & Case, Arnold & Porter and 
+    Thompson and Knight in New York. Professor Lupica earned a J.D. magna cum laude from 
+    Boston University School of Law, and a B.S. in Consumer Economics from Cornell University."
+    headshot_thumbnail: ../images/circle_thumbnail_lupica.png
   - name: Jeffrey Reichman
     title: Senior investigator – January Advisors, Data Science Consulting
+    bio: "Jeff Reichman (Collaborator) is a founder and principal of January Advisors, a consulting 
+    firm that works on data and technology projects. He is also the founder of Sketch City, a 
+    nonprofit community of 2,000+ people who advance technology and data in public decision making. 
+    January Advisors works closely with the Eviction Lab on developing their eviction tracker and on 
+    other related projects."
+    headshot_thumbnail: ../images/circle_thumbnail_reichman.png
   - name: Robin Lee
     title: Co-PI—Princeton University, Sociology
+    bio: "Robin Lee (Co-PI) is a graduate student in the Department of Sociology at 
+    Princeton University. He was previously a senior data analyst at the New York Times where he did 
+    experimental design research on format messaging and best practices for reproducible data 
+    analysis. He received his BA at UCLA in global studies with a minor in statistics and his MA at 
+    Columbia in quantitative methods in the social sciences. Robin’s goals at Princeton include 
+    further research on digital communication, text analysis, social networks, and social movements."
+    headshot_thumbnail: ../images/circle_thumbnail_lee.png
   - name: Jeff Himpele
     title: Collaborator, Director, VizE Lab, Princeton University, Anthropology
+    bio: "Jeffrey Himpele (Co-PI) has been the primary collaborator for developing the 
+    visualization strategy at the Dignity and Debt Network and now for the Debt Collection Lab. 
+    Jeff directs the Anthropology Department’s VizE Lab for Ethnographic Data Visualization, an 
+    innovative hub for researchers interested in visualizing anthropological knowledge through 
+    documentary video and data visualization. VizE Lab is especially devoted to bringing methods 
+    of interactive data visualization and mapping into ethnographic contexts. It is a vibrant 
+    interdisciplinary working space where scholars develop projects, learn new techniques, 
+    collaborate, and reflect on expanding forms of data and expression that are shaping the future 
+    of ethnographic inquiry and practices."
+    headshot_thumbnail: ../images/circle_thumbnail_himpele.png
 ---
 
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import { getImage, GatsbyImage, StaticImage } from "gatsby-plugin-image";
 
 <Hero className="hero--about" ContainerProps={{justifyContent : "flex-start"}}>
 
@@ -49,9 +120,44 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
   </Grid>
   <Grid item xs={12} md={8} lg={7}>
     <Grid className="list--team" component="ul" container>
-      {props.frontmatter.team.map((member) => (
-        <Grid component="li" item xs={12} sm={6}>
+      <Modal members={props.frontmatter.team}>
+        {props.frontmatter.team.map((member) => (
           <Box mt={2} mb={2}>
+            <Box position={"relative"} width={100}>
+              {/* <StaticImage
+                className="image--team-thumbnail"
+                layout="fixed"
+                width={100}
+                height={100}
+                src={`${member.headshot_thumbnail}`}
+                alt="headshot"
+              /> */}
+              <GatsbyImage
+                className="image--team-thumbnail"
+                width={"100px"}
+                alt={`headshot of ${member.name}`}
+                image={getImage(member.headshot_thumbnail)}
+              />
+              <svg
+                className="expand"
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="15" cy="15" r="15" fill="#CDC7BE" />
+                <rect x="14" y="8" width="2" height="14" fill="#595247" />
+                <rect
+                  x="22"
+                  y="14"
+                  width="2"
+                  height="14"
+                  transform="rotate(90 22 14)"
+                  fill="#595247"
+                />
+              </svg>
+            </Box>
             <Typography component="p" variant="h5">
               {member.name}
             </Typography>
@@ -59,8 +165,8 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
               {member.title}
             </Typography>
           </Box>
-        </Grid>
-      ))}
+        ))}
+      </Modal>
     </Grid>
   </Grid>
 </Grid>

@@ -52,6 +52,14 @@ const useStyles = makeStyles(() =>
         marginTop: theme.spacing(-21),
         marginBottom: theme.spacing(6),
       },
+      ".image--team-thumbnail": {
+        maxWidth: 100,
+      },
+      ".expand": {
+        position: "absolute",
+        bottom: 0,
+        right: 0
+      }
     },
   })
 );
@@ -90,6 +98,13 @@ export const pageQuery = graphql`
         team {
           name
           title
+          bio
+          headshot
+          headshot_thumbnail {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
         }
       }
     }

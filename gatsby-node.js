@@ -370,6 +370,9 @@ exports.createSchemaCustomization = ({ actions }) => {
     type TeamMember {
       name: String
       title: String
+      bio: String
+      headshot: String
+      headshot_thumbnail: File @fileByRelativePath
     }
   `;
   createTypes(frontmatterTypeDefs);
