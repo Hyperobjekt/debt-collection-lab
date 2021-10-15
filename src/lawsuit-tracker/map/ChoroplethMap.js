@@ -50,6 +50,7 @@ const ChoroplethMap = ({
   data,
   onHover,
   onClick,
+  activeLocation,
   ...props
 }) => {
   // DeckGL and mapbox will both draw into this WebGL context
@@ -86,6 +87,15 @@ const ChoroplethMap = ({
     }
     setSelected({ info: object, event: event });
   };
+
+  React.useEffect(() => {
+    if(activeLocation && data.features) {
+      const found = layers[0].props.data.find(el => el.properties.GEOID === activeLocation.toString())
+      found.properties.selected = true;
+      //const coords = mapRef.current.getMap().project([lng, lat])
+      setSelected({ info: found, event: {offsetCenter: { x: 0, y: 0 } }});
+    }
+  }, [activeLocation])
 
   const layers = data
     ? [

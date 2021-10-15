@@ -182,6 +182,7 @@ const TableSection = ({
   cols,
   limit,
   content,
+  onJumpToMap,
   children,
   ...props
 }) => {
@@ -342,6 +343,17 @@ const TableSection = ({
         cellProps: { align: "right", width: 100 },
         accessor: (d) => FORMAT_NUM(d["default_judgement"]),
       },
+      onJumpToMap 
+        ? {
+            id: "jump-to",
+            Header: "",
+            cellProps: { style: { minWidth: 120 } },
+            Cell: ({ row }) =>
+              <Button onClick={(e) => onJumpToMap(e, row.original)} component={GatsbyLink}>
+                Jump To Map
+              </Button>
+          }
+        : null,
       view !== "tracts" && view !== "zips"
         ? {
             id: "report",
@@ -463,7 +475,7 @@ const TableSection = ({
 
 TableSection.defaultProps = {
   views: ["tracts"],
-  cols: ["name", "lawsuits", "trend", "default_judgement", "report"],
+  cols: ["name", "lawsuits", "trend", "default_judgement", "jump-to", "report"],
   limit: 10,
 };
 
