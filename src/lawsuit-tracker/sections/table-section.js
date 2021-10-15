@@ -347,18 +347,19 @@ const TableSection = ({
         ? {
             id: "jump-to",
             Header: "",
-            cellProps: { style: { minWidth: 120 } },
-            Cell: ({ row }) =>
+            cellProps: {className: "col--jump"},
+            Cell: ({ row }) => (
               <Button onClick={(e) => onJumpToMap(e, row.original)} component={GatsbyLink}>
-                Jump To Map
+                Jump to map
               </Button>
+            ),
           }
         : null,
       view !== "tracts" && view !== "zips"
         ? {
             id: "report",
             Header: "",
-            cellProps: { style: { minWidth: 120 } },
+            cellProps: { style: { minWidth: 120 }, className:"col--view" },
             Cell: ({ row }) =>
               row.original.name !== "Texas" ? (
                 <Button component={GatsbyLink} to={getTrackerUrl(row.original)}>

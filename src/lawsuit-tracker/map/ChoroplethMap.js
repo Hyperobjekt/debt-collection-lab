@@ -83,7 +83,7 @@ const ChoroplethMap = ({
   const handleHover = ({ object }, event) => {
     if(!locked) {
       if (object) {
-        if (selected && selected.info !== object) {
+        if (selected && selected.info && selected.info !== object) {
           selected.info.properties.selected = false;
         }
         object.properties.selected = true;

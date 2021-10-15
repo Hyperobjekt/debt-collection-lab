@@ -58,7 +58,6 @@ const Tooltip = ({
   onUnlock,
   ...props
 }) => {
-  console.log(method)
   return (
     <div
       className={clsx(classes.root, className)}

@@ -151,6 +151,18 @@ const TableContainer = withStyles((theme) => ({
     "& .MuiTableCell-root.col--trend svg": {
       marginTop: 4,
     },
+    // size text for jump to map button
+    "& .MuiTableCell-root.col--jump > a": {
+      fontSize: 12,
+      textAlign: 'center',
+    },
+    // size text for jump to map button
+    "& .MuiTableCell-root.col--view > a": {
+      background: '#FEF7F6',
+      borderStyle: 'solid',
+      borderColor: '#CA432B',
+      borderWidth: 1
+    },
   },
 }))(MuiTableContainer);
 
