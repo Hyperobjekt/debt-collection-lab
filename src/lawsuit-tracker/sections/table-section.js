@@ -370,7 +370,7 @@ const TableSection = ({
           }
         : null,
     ].filter((v) => !!v && cols.indexOf(v.id) > -1);
-  }, [handleSort, ascending, sortBy, view, trendRange, cols, tooltipHint]);
+  }, [handleSort, ascending, sortBy, view, trendRange, cols, tooltipHint, onJumpToMap]);
 
   const context = {
     singularRegion: getSingularRegion(view),

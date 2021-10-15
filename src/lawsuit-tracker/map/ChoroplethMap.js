@@ -12,12 +12,13 @@ import { DEFAULT_VIEWPORT } from "./constants";
 import { _MapContext as MapContext } from "react-map-gl";
 import { formatInt, formatPercent } from "../utils";
 import Tooltip from "./Tooltip";
+import polylabel from '@mapbox/polylabel'
 
 const MAP_TOKEN =
   "pk.eyJ1IjoiaHlwZXJvYmpla3QiLCJhIjoiY2pzZ3Bnd3piMGV6YTQzbjVqa3Z3dHQxZyJ9.rHobqsY_BjkNbqNQS4DNYw";
 const MAP_STYLE = "mapbox://styles/hyperobjekt/cknuto9c60c0217qgff4tn4kb";
 
-const getTooltipProps = ({ info, event }) => {
+const getTooltipProps = ({ info, event, method }) => {
   const items = info.properties.demographics
     ? Object.values(info.properties.demographics)
         // filter out entries with no values
@@ -41,6 +42,7 @@ const getTooltipProps = ({ info, event }) => {
     title: info.properties.name,
     subtitle: formatInt(info.properties.value) + " lawsuits",
     items: items,
+    method: method
   };
 };
 
@@ -66,7 +68,9 @@ const ChoroplethMap = ({
   const [selected, setSelected] = useState({
     info: null,
     event: { offsetCenter: { x: 0, y: 0 } },
+    method: 'hover'
   });
+  const [locked, setLocked] = useState(false);
   const dataBounds = data ? bbox(data) : null;
   const initialViewport = data
     ? {
@@ -77,23 +81,38 @@ const ChoroplethMap = ({
     : DEFAULT_VIEWPORT;
 
   const handleHover = ({ object }, event) => {
-    if (object) {
-      if (selected.info && selected.info !== object) {
-        selected.info.properties.selected = false;
+    if(!locked) {
+      if (object) {
+        if (selected && selected.info !== object) {
+          selected.info.properties.selected = false;
+        }
+        object.properties.selected = true;
+      } else {
+        if (selected) selected.info.properties.selected = false;
       }
-      object.properties.selected = true;
-    } else {
-      if (selected) selected.info.properties.selected = false;
+      setSelected({ info: object, event: event, method: 'hover' });
     }
-    setSelected({ info: object, event: event });
   };
 
+  //not updating if activelocation is set, then mouseover, then clicked again
+  //fixed by using a tooltip with x to clear the activelocation
   React.useEffect(() => {
-    if(activeLocation && data.features) {
+    if (activeLocation && data.features) {
+      setLocked(true)
       const found = layers[0].props.data.find(el => el.properties.GEOID === activeLocation.toString())
       found.properties.selected = true;
-      //const coords = mapRef.current.getMap().project([lng, lat])
-      setSelected({ info: found, event: {offsetCenter: { x: 0, y: 0 } }});
+      const polyCentroid = polylabel(found.geometry.coordinates[0])
+      setViewport({
+        longitude: polyCentroid[0],
+        latitude: polyCentroid[1],
+        transitionDuration: 0
+      })
+      //transition seems to be async, need to pause for a moment to update coords correctly
+      setTimeout(() => {
+        const coords = mapRef.current.getMap().project(polyCentroid)
+        setSelected({ info: found, event: {offsetCenter: { x: coords.x, y: coords.y } }, method: 'jump'});
+      }, 1)
+      
     }
   }, [activeLocation])
 
@@ -157,6 +176,11 @@ const ChoroplethMap = ({
   const resetState = () => {
     setSelected(null);
   };
+  const onUnlock = () => {
+    setLocked(false);
+    selected.info.properties.selected = false;
+    setSelected(null)
+  }
 
   // Fly to bounds on load
   useEffect(() => {
@@ -182,7 +206,7 @@ const ChoroplethMap = ({
       initialViewport={initialViewport}
       onWebGLInitialized={setGLContext}
       ContextProvider={MapContext.Provider}
-      controller={{ scrollZoom: false, doubleClickZoom: false }}
+      controller={locked ? false : { scrollZoom: false, doubleClickZoom: false }}
       glOptions={{
         /* To render vector tile polygons correctly */
         stencil: true,
@@ -200,6 +224,7 @@ const ChoroplethMap = ({
       >
         <NavigationControl />
       </div>
+      
       <StaticMap
         mapStyle={MAP_STYLE}
         preventStyleDiffing={true}
@@ -208,8 +233,8 @@ const ChoroplethMap = ({
         ref={mapRef}
         onLoad={onMapLoad}
       ></StaticMap>
-      {selected.info && selected.event && (
-        <Tooltip {...getTooltipProps(selected)} />
+      {selected && selected.info && selected.event && (
+        <Tooltip {...getTooltipProps(selected)} onUnlock={onUnlock} />
       )}
     </DeckGLMap>
   );
