@@ -38,6 +38,28 @@ import Mustache from "mustache";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
+    "& .fade": {
+      [theme.breakpoints.up("md")]: {
+        display: 'none'
+      },
+      display: 'flex',
+      position: 'absolute',
+      top: 0,
+      right: 10,
+      height: '100%',
+      width: 100,
+      background: 'linear-gradient(90deg, transparent, white)',
+      writingMode: 'vertical-rl',
+      justifyContent: 'center',
+      color: '#595247',
+      '&.hide': {
+        display: 'none'
+      },
+      '& > svg': {
+        marginRight: 3,
+        marginBottom: 5,
+      }
+    },
     "& .controls": {
       marginTop: theme.spacing(3),
       marginBottom: theme.spacing(3),
@@ -216,7 +238,6 @@ const TableSection = ({
         d.geoid.indexOf("18") === 0
     ).length > 0;
   const tooltipHint = getTooltipHint(content, hasIndiana);
-
   /** memoized handler for when user changes sorting */
   const handleSort = useCallback(
     (event, key) => {
@@ -463,14 +484,14 @@ const TableSection = ({
     </>
   );
   const rightContent = (
-    <Table
-      columns={columns}
-      data={tableData}
-      className={`table--${view}`}
-      view={view}
-      content={content}
-    />
-  );
+      <Table
+        columns={columns}
+        data={tableData}
+        className={`table--${view}`}
+        view={view}
+        content={content}
+      />
+    );
   return <SectionBlock left={leftContent} right={rightContent} {...props} />;
 };
 

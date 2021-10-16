@@ -9,6 +9,9 @@ const StyledBlock = withStyles((theme) => ({
     "& .two-col-block__left": {
       paddingRight: theme.spacing(6),
     },
+    "& .two-col-block__right": {
+      position: 'relative',
+    },
     "& img": {
       maxWidth: "100%",
     },
