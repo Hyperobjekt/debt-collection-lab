@@ -54,7 +54,7 @@ export const styles = (theme) => ({
     "& .MuiButton-label": {
       justifyContent: "left",
     },
-    "&:hover, &:focus": {
+    "&:hover, &:focus-visible": {
       "& p:first-of-type":{
         textDecoration: "underline"
       },      
