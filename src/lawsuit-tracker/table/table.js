@@ -139,8 +139,10 @@ const TableContainer = withStyles((theme) => ({
       "&:hover": {
         backgroundColor: theme.palette.action.hover,
         cursor: "pointer",
-        "& .MuiButton-text": {
-          textDecoration: "underline",
+        "& :not(.col--jump)" :{
+          "& .MuiButton-text": {
+            textDecoration: "underline",
+          },
         },
       },
     },
@@ -156,6 +158,9 @@ const TableContainer = withStyles((theme) => ({
     "& .MuiTableCell-root.col--jump > a": {
       fontSize: 12,
       textAlign: 'center',
+      "&:hover":{
+        textDecoration: 'underline'
+      },
     },
     // size text for jump to map button
     "& .MuiTableCell-root.col--view > a": {
