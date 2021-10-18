@@ -42,24 +42,36 @@ const useStyles = makeStyles(() =>
           backgroundRepeat: `no-repeat`,
         },
       },
+      ".block": {
+        backgroundColor: theme.palette.background.paper
+      },
       ".list--team": {
         margin: 0,
         padding: 0,
         listStyle: "none",
+      },
+      ".list--secondary-team": {
+        margin: 0,
+        padding: 0,
+        listStyle: "none",
+        marginTop: 70,
       },
       ".image--about": {
         maxWidth: 460,
         marginTop: theme.spacing(-21),
         marginBottom: theme.spacing(6),
       },
-      ".image--team-thumbnail": {
-        maxWidth: 100,
-      },
       ".expand": {
         position: "absolute",
         bottom: 0,
         right: 0
-      }
+      },
+      ".title": {
+        marginBottom: 5,
+      },
+      ".secondary-team":{
+        marginTop: 20,
+      },
     },
   })
 );

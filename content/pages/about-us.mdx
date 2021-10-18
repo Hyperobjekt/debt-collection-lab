@@ -118,7 +118,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 </Hero>
 
-<Block>
+<Block className="block">
 
 <GatsbyImage
   className="image--about"
@@ -137,8 +137,8 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
     <Grid className="list--team" component="ul" container>
       <Modal members={props.frontmatter.primaryTeam}>
         {props.frontmatter.primaryTeam.map((member) => (
-          <Box mt={2} mb={2}>
-            <Box position={"relative"} width={100} height={100}>
+          <Box mt={2} mb={3}>
+            <Box position={"relative"} width={100} height={100} mb={2}>
               <GatsbyImage
                 className="image--team-thumbnail"
                 width={100}
@@ -165,7 +165,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
                 />
               </svg>
             </Box>
-            <Typography component="p" variant="h5">
+            <Typography className="title" component="p" variant="h5">
               {member.title}
             </Typography>
             <Typography color="grey" variant="body2">
@@ -174,10 +174,12 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
           </Box>
         ))}
       </Modal>
+    </Grid>
+    <Grid className="list--secondary-team" component="ul" container>
       {props.frontmatter.secondaryTeam.map((member) => (
         <Grid component="li" item xs={12} sm={6} {...props}>
           <Box ml={2} mt={2} mb={2}>
-            <Typography component="p" variant="h5">
+            <Typography className="title" component="p" variant="h5">
               {member.title}
             </Typography>
             <Typography color="grey" variant="body2">

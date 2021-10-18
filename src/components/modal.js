@@ -58,7 +58,7 @@ export const styles = (theme) => ({
       "& p:first-of-type":{
         textDecoration: "underline"
       },      
-      backgroundColor: "white",
+      backgroundColor: "transparent",
       "& svg": {
         "& circle": {
           fill: theme.palette.action.expandBio,
