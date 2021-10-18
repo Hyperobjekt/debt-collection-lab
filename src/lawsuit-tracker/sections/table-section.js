@@ -39,9 +39,6 @@ import Mustache from "mustache";
 const SectionBlock = withStyles((theme) => ({
   root: {
     "& .fade": {
-      [theme.breakpoints.up("md")]: {
-        display: 'none'
-      },
       display: 'flex',
       position: 'absolute',
       top: 0,
@@ -52,8 +49,13 @@ const SectionBlock = withStyles((theme) => ({
       writingMode: 'vertical-rl',
       justifyContent: 'center',
       color: '#595247',
-      '&.hide': {
+      opacity: 1,
+      transition: 'opacity .5s',
+      [theme.breakpoints.up("md")]: {
         display: 'none'
+      },
+      '&.hide': {
+        opacity: 0,
       },
       '& > svg': {
         marginRight: 3,

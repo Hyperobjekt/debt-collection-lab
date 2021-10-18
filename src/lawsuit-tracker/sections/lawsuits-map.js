@@ -106,7 +106,7 @@ const LawsuitsMapSection = ({ content, data, activeLocation, ...props }) => {
     .range(["#f5eFdB", "#BC5421"])
     .nice();
   return (
-    <SectionBlock
+    <SectionBlock id="section-block"
       left={<MapContent {...{ data, content, colorScale }} />}
       right={<LawsuitMap activeLocation={activeLocation} data={data.geojson} colorScale={colorScale} />}
       {...props}

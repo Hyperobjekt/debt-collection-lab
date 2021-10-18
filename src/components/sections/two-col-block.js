@@ -11,6 +11,9 @@ const StyledBlock = withStyles((theme) => ({
     },
     "& .two-col-block__right": {
       position: 'relative',
+      [theme.breakpoints.up("sm")]: {
+        position: 'inherit'
+      }
     },
     "& img": {
       maxWidth: "100%",
