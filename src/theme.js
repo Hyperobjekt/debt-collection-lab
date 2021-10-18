@@ -11,6 +11,7 @@ export const COLORS = {
   altBackground: "#FAFAF5",
   darkBackground: "#181817",
   footerBackground: "#181817",
+  hoverExpandBio: "#CB4D38",
 };
 
 export const FONTS = {
@@ -82,6 +83,7 @@ let theme = createMuiTheme({
     },
     action: {
       hover: "rgba(120, 120, 0, 0.05)",
+      expandBio: COLORS.hoverExpandBio,
     },
   },
   spacing,

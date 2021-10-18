@@ -50,10 +50,24 @@ export const styles = (theme) => ({
     textAlign: "left",
     padding: "0px 1rem",
     alignItems: "unset",
-    color: theme.palette.text.primary,
+    color: theme.palette.text.primary,  
     "& .MuiButton-label": {
       justifyContent: "left",
     },
+    "&:hover, &:focus": {
+      "& p:first-of-type":{
+        textDecoration: "underline"
+      },      
+      backgroundColor: "white",
+      "& svg": {
+        "& circle": {
+          fill: theme.palette.action.expandBio,
+        },
+        "& rect":{
+          fill: "white",
+        },
+      }
+    }
   },
   dialog: {
     maxWidth: theme.typography.pxToRem(900),
@@ -155,6 +169,7 @@ const Modal = ({
           {...props}
         >
           <Button
+            focusRipple={false}
             onClick={() => openHandler(index)}
             className={classes.buttonTrigger}
           >
