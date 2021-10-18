@@ -137,7 +137,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
     <Grid className="list--team" component="ul" container>
       <Modal members={props.frontmatter.primaryTeam}>
         {props.frontmatter.primaryTeam.map((member) => (
-          <Box mt={2} mb={3}>
+          <Box mt={2} mb={3} maxWidth={250}>
             <Box position={"relative"} width={100} height={100} mb={2}>
               <GatsbyImage
                 className="image--team-thumbnail"
@@ -178,7 +178,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
     <Grid className="list--secondary-team" component="ul" container>
       {props.frontmatter.secondaryTeam.map((member) => (
         <Grid component="li" item xs={12} sm={6} {...props}>
-          <Box ml={2} mt={2} mb={2}>
+          <Box ml={2} mt={2} mb={2} maxWidth={250}>
             <Typography className="title" component="p" variant="h5">
               {member.title}
             </Typography>
