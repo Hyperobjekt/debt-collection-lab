@@ -43,7 +43,7 @@ const useStyles = makeStyles(() =>
         },
       },
       ".block": {
-        backgroundColor: theme.palette.background.paper
+        backgroundColor: theme.palette.background.paperSecondary
       },
       ".list--team": {
         margin: 0,
