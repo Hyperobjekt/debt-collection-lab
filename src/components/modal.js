@@ -14,6 +14,8 @@ import {
 import CloseIcon from "@material-ui/icons/Close";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import "focus-visible";
+import clsx from "clsx";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 export const styles = (theme) => ({
@@ -44,6 +46,12 @@ export const styles = (theme) => ({
   },
 
   //styles for modal component
+  jsFocusVisible:{
+
+  },
+  focusVisible: {
+    
+  },
   buttonTrigger: {
     height: "100%",
     width: "100%",
@@ -54,7 +62,7 @@ export const styles = (theme) => ({
     "& .MuiButton-label": {
       justifyContent: "left",
     },
-    "&:hover, &:focus-visible": {
+    "&:hover, &:focus:not(.focus-visible)": {
       "& p:first-of-type":{
         textDecoration: "underline"
       },      
@@ -171,7 +179,7 @@ const Modal = ({
           <Button
             focusRipple={false}
             onClick={() => openHandler(index)}
-            className={classes.buttonTrigger}
+            className={clsx("focus-visible", classes.buttonTrigger)}
           >
             {child}
           </Button>
