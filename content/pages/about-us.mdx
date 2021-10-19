@@ -7,8 +7,9 @@ meta:
 embeddedImages:
   - ../images/gallery-9.jpg
 primaryTeam:
-  - title: Frederick F. Wherry
-    creds: PI - Princeton University, Sociology
+  - name: Frederick F. Wherry
+    role: PI
+    title: Townsend Martin, Class of 1917 Professor of Sociology - Princeton University
     bio: "Frederick F. Wherry (PI) is the Townsend Martin, Class of 1917 Professor of Sociology 
     at Princeton University, and is the founding director of the Dignity and Debt Network, 
     a partnership between the Social Science Research Council and Princeton University. 
@@ -25,8 +26,9 @@ primaryTeam:
     Sociology from Princeton University."
     headshot: ./images/headshot_wherry.jpg
     headshot_thumbnail: ./images/circle_thumbnail_wherry.png
-  - title: Dalié Jimenez
-    creds: PI - Co-PI – University of California at Irvine Law School
+  - name: Dalié Jimenez
+    role: Co-PI
+    title: Professor of Law - University of California at Irvine Law School
     bio: "Dalié Jiménez (Co-PI) is Professor of Law at the University of California at Irvine, 
     where she directs the Student Loan Law Initiative. Her scholarly work focuses on contracts, 
     bankruptcy and consumer financial distress, the regulation of financial products and its 
@@ -44,8 +46,9 @@ primaryTeam:
     science from MIT."
     headshot: ./images/headshot_jimenez.jpg
     headshot_thumbnail: ./images/circle_thumbnail_jimenez.png
-  - title: Lois R. Lupica
-    creds: Co-PI – University of Maine Law School
+  - name: Lois R. Lupica
+    role: Co-PI
+    title: Visiting Professor of the Practice of Law - Sturm College of Law, University of Denver
     bio: "Lois R. Lupica (Co-PI) is a Visiting Professor of the Practice of Law at the Sturm College 
     of Law, University of Denver. She is an internationally recognized expert in access to civil 
     justice and legal innovation strategies. She is currently an affiliated faculty member at the 
@@ -64,17 +67,9 @@ primaryTeam:
     Boston University School of Law, and a B.S. in Consumer Economics from Cornell University."
     headshot: ./images/headshot_lupica.jpg
     headshot_thumbnail: ./images/circle_thumbnail_lupica.png
-  - title: Jeffrey Reichman
-    creds: Senior investigator – January Advisors, Data Science Consulting
-    bio: "Jeff Reichman (Collaborator) is a founder and principal of January Advisors, a consulting 
-    firm that works on data and technology projects. He is also the founder of Sketch City, a 
-    nonprofit community of 2,000+ people who advance technology and data in public decision making. 
-    January Advisors works closely with the Eviction Lab on developing their eviction tracker and on 
-    other related projects."
-    headshot: ./images/headshot_reichman.jpg
-    headshot_thumbnail: ./images/circle_thumbnail_reichman.png
-  - title: Robin Lee
-    creds: Co-PI—Princeton University, Sociology
+  - name: Robin Lee
+    role: Co-PI
+    title: Graduate Student, Sociology - Princeton University
     bio: "Robin Lee (Co-PI) is a graduate student in the Department of Sociology at 
     Princeton University. He was previously a senior data analyst at the New York Times where he did 
     experimental design research on format messaging and best practices for reproducible data 
@@ -83,8 +78,9 @@ primaryTeam:
     further research on digital communication, text analysis, social networks, and social movements."
     headshot: ./images/headshot_lee.jpg
     headshot_thumbnail: ./images/circle_thumbnail_lee.png
-  - title: Jeff Himpele
-    creds: Collaborator, Director, VizE Lab, Princeton University, Anthropology
+  - name: Jeff Himpele
+    role: Co-PI
+    title: Director of VizE Lab - Princeton University, Anthropology
     bio: "Jeffrey Himpele (Co-PI) has been the primary collaborator for developing the 
     visualization strategy at the Dignity and Debt Network and now for the Debt Collection Lab. 
     Jeff directs the Anthropology Department’s VizE Lab for Ethnographic Data Visualization, an 
@@ -96,15 +92,25 @@ primaryTeam:
     of ethnographic inquiry and practices."
     headshot: ./images/headshot_himpele.png
     headshot_thumbnail: ./images/circle_thumbnail_himpele.png
+  - name: Jeffrey Reichman
+    role: Collaborator
+    title: Founder, Principal - January Advisors
+    bio: "Jeff Reichman (Collaborator) is a founder and principal of January Advisors, a consulting 
+    firm that works on data and technology projects. He is also the founder of Sketch City, a 
+    nonprofit community of 2,000+ people who advance technology and data in public decision making. 
+    January Advisors works closely with the Eviction Lab on developing their eviction tracker and on 
+    other related projects."
+    headshot: ./images/headshot_reichman.jpg
+    headshot_thumbnail: ./images/circle_thumbnail_reichman.png
 secondaryTeam:
-  - title: Ari Riggins
-    creds: Collaborating Artist
-  - title: Rachel Mrkaich
-    creds: Collaborating Artist
-  - title: Carlotta Platt
-    creds: Undergraduate Research Assistant
-  - title: Anika Duffus
-    creds: Undergraduate Research Assistant
+  - name: Ari Riggins
+    role: Collaborating Artist
+  - name: Rachel Mrkaich
+    role: Collaborating Artist
+  - name: Carlotta Platt
+    role: Undergraduate Research Assistant
+  - name: Anika Duffus
+    role: Undergraduate Research Assistant
 ---
 
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
@@ -165,11 +171,14 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
                 />
               </svg>
             </Box>
-            <Typography className="title" component="p" variant="h5">
-              {member.title}
+            <Typography className="field" component="p" variant="h5">
+              {member.name}
             </Typography>
-            <Typography color="grey" variant="body2">
-              {member.creds}
+            <Typography className="field" color="grey" variant="body1">
+              {member.role}
+            </Typography>
+            <Typography className="field" color="grey" variant="body2">
+              {member.title}
             </Typography>
           </Box>
         ))}
@@ -183,7 +192,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
               {member.title}
             </Typography>
             <Typography color="grey" variant="body2">
-              {member.creds}
+              {member.role}
             </Typography>
           </Box>
         </Grid>

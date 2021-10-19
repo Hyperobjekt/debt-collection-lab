@@ -447,8 +447,9 @@ exports.createSchemaCustomization = ({ actions }) => {
       isBlogPost: Boolean
     }
     type TeamMember {
+      name: String
+      role: String
       title: String
-      creds: String
       bio: String
       headshot: File @fileByRelativePath
       headshot_thumbnail: File @fileByRelativePath

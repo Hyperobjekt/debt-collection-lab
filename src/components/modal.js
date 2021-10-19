@@ -130,10 +130,10 @@ const Content = ({
       </Grid>
       <Grid className={classes.bioBox} item xs={12} sm={8}>
         <Typography component="p" variant="h4">
-          {members[index].title}
+          {members[index].name}
         </Typography>
         <Typography className={classes.creds} variant="body2">
-          {members[index].creds}
+          {members[index].role} | {members[index].title}
         </Typography>
         <Divider className={classes.divider}/>
         <Typography variant="body2">

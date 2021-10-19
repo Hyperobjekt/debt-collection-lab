@@ -66,7 +66,7 @@ const useStyles = makeStyles(() =>
         bottom: 0,
         right: 0
       },
-      ".title": {
+      ".field": {
         marginBottom: 5,
       },
       ".secondary-team":{
@@ -108,8 +108,9 @@ export const pageQuery = graphql`
           }
         }
         primaryTeam {
+          name
+          role
           title
-          creds
           bio
           headshot {
             childImageSharp {
@@ -123,8 +124,8 @@ export const pageQuery = graphql`
           }
         }
         secondaryTeam {
-          title
-          creds
+          name
+          role
         }
       }
     }
