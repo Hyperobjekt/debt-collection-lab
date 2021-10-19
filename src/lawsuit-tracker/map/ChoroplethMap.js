@@ -222,7 +222,9 @@ const ChoroplethMap = ({
           zIndex: 1,
         }}
       >
-        <NavigationControl />
+        {!locked &&
+          <NavigationControl />
+        }
       </div>
       
       <StaticMap

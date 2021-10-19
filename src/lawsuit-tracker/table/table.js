@@ -139,6 +139,7 @@ const TableContainer = withStyles((theme) => ({
       "&:hover": {
         backgroundColor: theme.palette.action.hover,
         cursor: "pointer",
+        //don't highlight on jump to map button hover
         "& :not(.col--jump)" :{
           "& .MuiButton-text": {
             textDecoration: "underline",
