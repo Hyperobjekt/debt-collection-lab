@@ -156,6 +156,7 @@ const TableContainer = withStyles((theme) => ({
       borderStyle: 'solid',
       borderColor: '#CA432B',
       borderWidth: 1,
+      fontSize: theme.typography.pxToRem(14),
       "&:hover":{
         backgroundColor: darken('#FEF7F6', 0.05),
         textDecoration: 'underline'
@@ -210,6 +211,8 @@ export default function Table({
   const [isScrolled, setScrolled] = React.useState(false)
   const [showMore, setShowMore] = React.useState(true)
 
+  const tableRef = React.useRef(null)
+
   const isFullyScrolled = (e) => {
     let element = e.target
     if (element.scrollLeft + element.offsetWidth > element.scrollWidth - 50) {
@@ -220,16 +223,19 @@ export default function Table({
   }
 
   //only showMore when table is overflowing
-  const tableRef = React.useRef(null)
-  React.useEffect(()=>{
-    if(tableRef){
+  const determineShowMore = () => {
+    if(tableRef.current){
       if(tableRef.current.scrollWidth === tableRef.current.clientWidth){
         setShowMore(false)
       } else{
         setShowMore(true)
       }
     }
-  }, [tableRef])
+  }
+  React.useEffect(()=>{
+    determineShowMore()
+  }, [])
+  window.addEventListener('resize', determineShowMore)
 
   return (
     <>
