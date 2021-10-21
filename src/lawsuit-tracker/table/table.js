@@ -8,6 +8,8 @@ import {
   withStyles,
   darken,
   Box,
+  useTheme,
+  useMediaQuery,
 } from "@material-ui/core";
 import { GatsbyLink, Link } from "gatsby-material-ui-components";
 import React from "react";
@@ -222,20 +224,46 @@ export default function Table({
     }
   }
 
+  const useWindowSize = () => {
+    // Initialize state with undefined width/height so server and client renders match
+    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+    const [windowSize, setWindowSize] = React.useState({
+      width: undefined,
+      height: undefined,
+    });
+    React.useEffect(() => {
+      // Handler to call on window resize
+      function handleResize() {
+        // Set window width/height to state
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+      // Add event listener
+      window.addEventListener("resize", handleResize);
+      // Call handler right away so state gets updated with initial window size
+      handleResize();
+      // Remove event listener on cleanup
+      return () => window.removeEventListener("resize", handleResize);
+    }, []); // Empty array ensures that effect is only run on mount
+    return windowSize;
+  }
+
+  const theme = useTheme();
+  const isBig = useMediaQuery(theme.breakpoints.up('md'));
   //only showMore when table is overflowing
-  const determineShowMore = () => {
-    if(tableRef.current){
-      if(tableRef.current.scrollWidth === tableRef.current.clientWidth){
+  const size = useWindowSize()
+  React.useEffect(()=>{
+    console.log(tableRef.current.scrollWidth, tableRef.current.clientWidth, isBig)
+    if(tableRef){
+      if(tableRef.current.scrollWidth === tableRef.current.clientWidth || isBig){
         setShowMore(false)
-      } else{
+      } else {
         setShowMore(true)
       }
     }
-  }
-  React.useEffect(()=>{
-    determineShowMore()
-  }, [])
-  window.addEventListener('resize', determineShowMore)
+  }, [size.width, tableRef])
 
   return (
     <>
