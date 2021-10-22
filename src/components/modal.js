@@ -69,7 +69,7 @@ export const styles = (theme) => ({
         },
       }
     },
-    "&:focus:not(:focus-visible)": {
+    "&:focus:not(:focus-visible):not(:hover)": {
       "& p:first-of-type":{
         textDecoration: "none"
       },      
