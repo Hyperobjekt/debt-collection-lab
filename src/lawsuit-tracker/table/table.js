@@ -116,7 +116,7 @@ const TableContainer = withStyles((theme) => ({
       "&:first-child": {
         position: 'sticky',
         left: 0,
-        background: 'white',
+        background: 'inherit',
         paddingLeft: theme.spacing(2),
         zIndex: 1,
         '&.MuiTableCell-head': {
@@ -263,7 +263,7 @@ export default function Table({
         setShowMore(true)
       }
     }
-  }, [size.width, tableRef])
+  }, [size.width, tableRef, isBig])
 
   return (
     <>
