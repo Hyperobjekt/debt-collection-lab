@@ -121,6 +121,7 @@ const TableContainer = withStyles((theme) => ({
         zIndex: 1,
         '&.MuiTableCell-head': {
           zIndex: 11,
+          background: 'white'
         }
       },
       "&:last-child": {
