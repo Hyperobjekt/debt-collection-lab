@@ -146,8 +146,9 @@ const TableContainer = withStyles((theme) => ({
     },
     // size text for jump to map button
     "& .MuiTableCell-root.col--jump > a": {
-      fontSize: 12,
+      fontSize: theme.typography.pxToRem(12),
       textAlign: 'center',
+      lineHeight: 1,
       "&:hover":{
         textDecoration: 'underline'
       },
@@ -255,7 +256,6 @@ export default function Table({
   //only showMore when table is overflowing
   const size = useWindowSize()
   React.useEffect(()=>{
-    console.log(tableRef.current.scrollWidth, tableRef.current.clientWidth, isBig)
     if(tableRef){
       if(tableRef.current.scrollWidth === tableRef.current.clientWidth || isBig){
         setShowMore(false)
