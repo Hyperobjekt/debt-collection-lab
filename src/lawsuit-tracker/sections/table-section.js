@@ -166,7 +166,7 @@ const getDisproportionateTooltip = (groups) => {
 const PlaceName = ({ row, view }) => {
   const name =
     view === "counties"
-      ? `${row.original.name}, ${row.original.state}`
+      ? `${row.original.name}`
       : row.original["name"];
   const hasDisproportionate = row.original.disproportionate?.length > 0;
   const nameComponent = (
