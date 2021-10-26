@@ -38,7 +38,8 @@ import Mustache from "mustache";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
-    "& .fade": {
+    "& .fader": {
+      zIndex: 11,
       pointerEvents: 'none',
       display: 'flex',
       position: 'absolute',
@@ -48,7 +49,6 @@ const SectionBlock = withStyles((theme) => ({
       width: 100,
       background: 'linear-gradient(90deg, transparent, white)',
       writingMode: 'vertical-rl',
-      justifyContent: 'center',
       color: '#595247',
       opacity: 1,
       transition: 'opacity .5s',
@@ -58,7 +58,14 @@ const SectionBlock = withStyles((theme) => ({
       '& > svg': {
         marginRight: 3,
         marginBottom: 5,
-      }
+      },
+      '& .content': {
+        top: "64px",
+        //subtract 64 for header height
+        height: "calc(100vh - 64px)",
+        textAlign: "center",
+        position: "sticky",
+      },
     },
     "& .controls": {
       marginTop: theme.spacing(3),
