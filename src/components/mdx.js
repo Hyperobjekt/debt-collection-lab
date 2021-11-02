@@ -6,6 +6,7 @@ import { Callout, CalloutBlock } from "./sections";
 import { FullLawsuitTable } from "../lawsuit-tracker/table";
 import mdxComponents from "gatsby-theme-hypersite/src/gatsby-theme-hypercore/mdx";
 import Hero from "./sections/hero";
+import Modal from "./modal"
 
 const components = {
   ...mdxComponents,
@@ -19,6 +20,7 @@ const components = {
   Button,
   FullLawsuitTable,
   CalloutBlock,
+  Modal,
 };
 
 export default components;
