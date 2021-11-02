@@ -1,6 +1,7 @@
-if (typeof fetch !== "function") {
-  global.fetch = require("node-fetch-polyfill");
+if (!globalThis.fetch) {
+  globalThis.fetch = require("node-fetch");
 }
+
 const d3 = require("d3");
 const path = require("path");
 const { getStateNameForFips, loadCsv, slugify } = require("./scripts/utils");
@@ -398,7 +399,7 @@ exports.sourceNodes = async (params) => {
   const demographics = await loadCsv(
     "https://debtcases.s3.us-east-2.amazonaws.com/demographic_data.csv",
     demographicParser
-    );
+  );
   const countyData = getCounties(lawsuits, demographics);
   const stateData = getStates(lawsuits, demographics, countyData);
   createSourceNodes("States", stateData, params);
@@ -435,7 +436,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       template: String
       meta: SeoFrontmatter!
       embeddedImages: [File] @fileByRelativePath
-      team: [TeamMember]
+      primaryTeam: [TeamMember]
+      secondaryTeam: [TeamMember]
     }
     type SeoFrontmatter {
       title: String!
@@ -446,8 +448,11 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
     type TeamMember {
       name: String
+      role: String
       title: String
-      creds: String
+      bio: String
+      headshot: File @fileByRelativePath
+      headshot_thumbnail: File @fileByRelativePath
     }
   `;
   createTypes(frontmatterTypeDefs);

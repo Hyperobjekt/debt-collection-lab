@@ -42,15 +42,35 @@ const useStyles = makeStyles(() =>
           backgroundRepeat: `no-repeat`,
         },
       },
+      ".block": {
+        backgroundColor: theme.palette.background.paperSecondary
+      },
       ".list--team": {
         margin: 0,
         padding: 0,
         listStyle: "none",
       },
+      ".list--secondary-team": {
+        margin: 0,
+        padding: 0,
+        listStyle: "none",
+        marginTop: 70,
+      },
       ".image--about": {
         maxWidth: 460,
         marginTop: theme.spacing(-21),
         marginBottom: theme.spacing(6),
+      },
+      ".expand": {
+        position: "absolute",
+        bottom: 0,
+        right: 0
+      },
+      ".field": {
+        marginBottom: 5,
+      },
+      ".secondary-team":{
+        marginTop: 20,
       },
     },
   })
@@ -87,10 +107,25 @@ export const pageQuery = graphql`
             gatsbyImageData(layout: FULL_WIDTH)
           }
         }
-        team {
+        primaryTeam {
           name
+          role
           title
-          creds
+          bio
+          headshot {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
+          headshot_thumbnail {
+            childImageSharp {
+              gatsbyImageData(width: 100)
+            }
+          }
+        }
+        secondaryTeam {
+          name
+          role
         }
       }
     }
