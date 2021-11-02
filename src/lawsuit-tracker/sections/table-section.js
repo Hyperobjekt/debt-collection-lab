@@ -212,6 +212,7 @@ const TableSection = ({
   limit,
   content,
   onJumpToMap,
+  onCloseJumpTo,
   children,
   ...props
 }) => {
@@ -371,13 +372,13 @@ const TableSection = ({
         cellProps: { align: "right", width: 100 },
         accessor: (d) => FORMAT_NUM(d["default_judgement"]),
       },
-      onJumpToMap 
+      onJumpToMap
         ? {
             id: "jump-to",
             Header: "",
             cellProps: {className: "col--jump"},
             Cell: ({ row }) => (
-              <Button onClick={(e) => onJumpToMap(e, row.original)} component={GatsbyLink}>
+              <Button onClick={() => onJumpToMap(row.original)} component={GatsbyLink}>
                 Jump to map
               </Button>
             ),

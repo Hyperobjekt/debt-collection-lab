@@ -53,6 +53,7 @@ const ChoroplethMap = ({
   onHover,
   onClick,
   activeLocation,
+  setActiveLocation,
   ...props
 }) => {
   // DeckGL and mapbox will both draw into this WebGL context
@@ -80,43 +81,23 @@ const ChoroplethMap = ({
       }
     : DEFAULT_VIEWPORT;
 
-  const handleHover = ({ object }, event) => {
-    if(!locked) {
-      if (object) {
-        if (selected && selected.info && selected.info !== object) {
-          selected.info.properties.selected = false;
+  const layers = React.useMemo(() => {
+    
+    const handleHover = ({ object }, event) => {
+      if(!locked) {
+        if (object) {
+          if (selected && selected.info && selected.info !== object) {
+            selected.info.properties.selected = false;
+          }
+          object.properties.selected = true;
+        } else {
+          if (selected) selected.info.properties.selected = false;
         }
-        object.properties.selected = true;
-      } else {
-        if (selected) selected.info.properties.selected = false;
+        setSelected({ info: object, event: event, method: 'hover' });
       }
-      setSelected({ info: object, event: event, method: 'hover' });
-    }
-  };
+    };
 
-  //not updating if activelocation is set, then mouseover, then clicked again
-  //fixed by using a tooltip with x to clear the activelocation
-  React.useEffect(() => {
-    if (activeLocation && data.features) {
-      setLocked(true)
-      const found = layers[0].props.data.find(el => el.properties.GEOID === activeLocation.toString())
-      found.properties.selected = true;
-      const polyCentroid = polylabel(found.geometry.coordinates[0])
-      setViewport({
-        longitude: polyCentroid[0],
-        latitude: polyCentroid[1],
-        transitionDuration: 0
-      })
-      //transition seems to be async, need to pause for a moment to update coords correctly
-      setTimeout(() => {
-        const coords = mapRef.current.getMap().project(polyCentroid)
-        setSelected({ info: found, event: {offsetCenter: { x: coords.x, y: coords.y } }, method: 'jump'});
-      }, 1)
-      
-    }
-  }, [activeLocation])
-
-  const layers = data
+    return data
     ? [
         new GeoJsonLayer({
           id: "shapes",
@@ -146,6 +127,29 @@ const ChoroplethMap = ({
         }),
       ]
     : [];
+  }, [data, colorScale, locked, selected]);
+
+  //create layerData var to encapsulate array of data, removing the need to include
+  //layers object in dependency for below effect (which caused looping)
+  const layerData = layers[0].props.data;
+  useEffect(() => {
+    if (activeLocation && data.features) {
+      setLocked(true)
+      const found = layerData.find(el => el.properties.GEOID === activeLocation.toString())
+      found.properties.selected = true;
+      const polyCentroid = polylabel(found.geometry.coordinates[0])
+      setViewport({
+        longitude: polyCentroid[0],
+        latitude: polyCentroid[1],
+        transitionDuration: 0
+      })
+      //transition seems to be async, need to pause for a moment to update coords correctly
+      setTimeout(() => {
+        const coords = mapRef.current.getMap().project(polyCentroid)
+        setSelected({ info: found, event: {offsetCenter: { x: coords.x, y: coords.y } }, method: 'jump'});
+      }, 100)
+    }
+  }, [activeLocation, setViewport, data, layerData])
 
   /**
    * On map load, insert the map layers in the correct order
@@ -180,6 +184,7 @@ const ChoroplethMap = ({
     setLocked(false);
     selected.info.properties.selected = false;
     setSelected(null)
+    setActiveLocation(null)
   }
 
   // Fly to bounds on load

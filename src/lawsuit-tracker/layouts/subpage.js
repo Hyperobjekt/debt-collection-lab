@@ -31,14 +31,17 @@ export default function SubpageLayout({
   const hasDemographicChart =
     type === "county" || (region === "zips" && data.zips.length > 0);
   const [activeLocation, setActiveLocation] = React.useState(null);
-  const handleJumpToSection = (e, original, section) => {
-    e.stopPropagation();
+  const jumpToSection = (section) => {
     const yOffset = -64; 
     const element = document.getElementById(section);
     const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    window.scrollTo({top: y, behavior: 'smooth'});  
-    setActiveLocation(original.geoid)
+    window.scrollTo({top: y, behavior: 'smooth'}); 
   }
+  const onJumpToMap = (selected) => { 
+    jumpToSection('map')
+    setActiveLocation(selected.geoid)
+  }
+
   return (
     <Layout meta={meta} {...props}>
       <LocationHero
@@ -56,6 +59,7 @@ export default function SubpageLayout({
       />
       <LawsuitsMapSection
         id="map"
+        setActiveLocation={setActiveLocation}
         activeLocation={activeLocation}
         content={content[type].map}
         data={getLawsuitMapData(data, geojson, region)}
@@ -64,7 +68,7 @@ export default function SubpageLayout({
         views={[region]}
         content={{ ...content[type].table, ...content.table }}
         data={[data]}
-        onJumpToMap={(e, origin) => handleJumpToSection(e, origin, 'map')}
+        onJumpToMap={(selected) => onJumpToMap(selected)}
       />
       {hasDemographicChart && (
         <DemographicChartSection
