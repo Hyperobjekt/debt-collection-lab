@@ -63,7 +63,7 @@ export default function TrendLine({ range, data }) {
         fill="none"
         strokeWidth={2}
         stroke="#ccc"
-        stroke-dasharray="4 2"
+        strokeDasharray="4 2"
       />
     </svg>
   );
