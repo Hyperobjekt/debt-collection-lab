@@ -5,12 +5,14 @@ export const COLORS = {
   primary: "#EA4A2E",
   secondary: "#595247",
   paper: "#FAFAF5",
+  paperSecondary: "#FBFBF3",
   default: "#fff",
   text: "#1A1716",
   secondaryText: "#595247",
   altBackground: "#FAFAF5",
   darkBackground: "#181817",
   footerBackground: "#181817",
+  hoverExpandBio: "#CB4D38",
 };
 
 export const FONTS = {
@@ -76,12 +78,14 @@ let theme = createMuiTheme({
     background: {
       default: COLORS.default,
       paper: COLORS.paper,
+      paperSecondary: COLORS.paperSecondary,
       dark: COLORS.darkBackground,
       alt: COLORS.altBackground,
       footer: COLORS.footerBackground,
     },
     action: {
       hover: "rgba(120, 120, 0, 0.05)",
+      expandBio: COLORS.hoverExpandBio,
     },
   },
   spacing,
