@@ -12,12 +12,13 @@ import { DEFAULT_VIEWPORT } from "./constants";
 import { _MapContext as MapContext } from "react-map-gl";
 import { formatInt, formatPercent } from "../utils";
 import Tooltip from "./Tooltip";
+import polylabel from '@mapbox/polylabel'
 
 const MAP_TOKEN =
   "pk.eyJ1IjoiaHlwZXJvYmpla3QiLCJhIjoiY2pzZ3Bnd3piMGV6YTQzbjVqa3Z3dHQxZyJ9.rHobqsY_BjkNbqNQS4DNYw";
 const MAP_STYLE = "mapbox://styles/hyperobjekt/cknuto9c60c0217qgff4tn4kb";
 
-const getTooltipProps = ({ info, event }) => {
+const getTooltipProps = ({ info, event, method }) => {
   const items = info.properties.demographics
     ? Object.values(info.properties.demographics)
         // filter out entries with no values
@@ -41,6 +42,7 @@ const getTooltipProps = ({ info, event }) => {
     title: info.properties.name,
     subtitle: formatInt(info.properties.value) + " lawsuits",
     items: items,
+    method: method
   };
 };
 
@@ -50,6 +52,8 @@ const ChoroplethMap = ({
   data,
   onHover,
   onClick,
+  activeLocation,
+  setActiveLocation,
   ...props
 }) => {
   // DeckGL and mapbox will both draw into this WebGL context
@@ -65,7 +69,9 @@ const ChoroplethMap = ({
   const [selected, setSelected] = useState({
     info: null,
     event: { offsetCenter: { x: 0, y: 0 } },
+    method: 'hover'
   });
+  const [locked, setLocked] = useState(false);
   const dataBounds = data ? bbox(data) : null;
   const initialViewport = data
     ? {
@@ -75,19 +81,23 @@ const ChoroplethMap = ({
       }
     : DEFAULT_VIEWPORT;
 
-  const handleHover = ({ object }, event) => {
-    if (object) {
-      if (selected.info && selected.info !== object) {
-        selected.info.properties.selected = false;
+  const layers = React.useMemo(() => {
+    
+    const handleHover = ({ object }, event) => {
+      if(!locked) {
+        if (object) {
+          if (selected && selected.info && selected.info !== object) {
+            selected.info.properties.selected = false;
+          }
+          object.properties.selected = true;
+        } else {
+          if (selected) selected.info.properties.selected = false;
+        }
+        setSelected({ info: object, event: event, method: 'hover' });
       }
-      object.properties.selected = true;
-    } else {
-      if (selected) selected.info.properties.selected = false;
-    }
-    setSelected({ info: object, event: event });
-  };
+    };
 
-  const layers = data
+    return data
     ? [
         new GeoJsonLayer({
           id: "shapes",
@@ -117,6 +127,29 @@ const ChoroplethMap = ({
         }),
       ]
     : [];
+  }, [data, colorScale, locked, selected]);
+
+  //create layerData var to encapsulate array of data, removing the need to include
+  //layers object in dependency for below effect (which caused looping)
+  const layerData = layers[0].props.data;
+  useEffect(() => {
+    if (activeLocation && data.features) {
+      setLocked(true)
+      const found = layerData.find(el => el.properties.GEOID === activeLocation.toString())
+      found.properties.selected = true;
+      const polyCentroid = polylabel(found.geometry.coordinates[0])
+      setViewport({
+        longitude: polyCentroid[0],
+        latitude: polyCentroid[1],
+        transitionDuration: 0
+      })
+      //transition seems to be async, need to pause for a moment to update coords correctly
+      setTimeout(() => {
+        const coords = mapRef.current.getMap().project(polyCentroid)
+        setSelected({ info: found, event: {offsetCenter: { x: coords.x, y: coords.y } }, method: 'jump'});
+      }, 100)
+    }
+  }, [activeLocation, setViewport, data, layerData])
 
   /**
    * On map load, insert the map layers in the correct order
@@ -147,6 +180,12 @@ const ChoroplethMap = ({
   const resetState = () => {
     setSelected(null);
   };
+  const onUnlock = () => {
+    setLocked(false);
+    selected.info.properties.selected = false;
+    setSelected(null)
+    setActiveLocation(null)
+  }
 
   // Fly to bounds on load
   useEffect(() => {
@@ -172,7 +211,7 @@ const ChoroplethMap = ({
       initialViewport={initialViewport}
       onWebGLInitialized={setGLContext}
       ContextProvider={MapContext.Provider}
-      controller={{ scrollZoom: false, doubleClickZoom: false }}
+      controller={locked ? false : { scrollZoom: false, doubleClickZoom: false }}
       glOptions={{
         /* To render vector tile polygons correctly */
         stencil: true,
@@ -188,8 +227,11 @@ const ChoroplethMap = ({
           zIndex: 1,
         }}
       >
-        <NavigationControl />
+        {!locked &&
+          <NavigationControl />
+        }
       </div>
+      
       <StaticMap
         mapStyle={MAP_STYLE}
         preventStyleDiffing={true}
@@ -198,8 +240,8 @@ const ChoroplethMap = ({
         ref={mapRef}
         onLoad={onMapLoad}
       ></StaticMap>
-      {selected.info && selected.event && (
-        <Tooltip {...getTooltipProps(selected)} />
+      {selected && selected.info && selected.event && (
+        <Tooltip {...getTooltipProps(selected)} onUnlock={onUnlock} />
       )}
     </DeckGLMap>
   );
