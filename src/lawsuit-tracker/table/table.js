@@ -7,13 +7,15 @@ import {
   TableCell,
   withStyles,
   darken,
+  Box,
+  useTheme,
+  useMediaQuery,
 } from "@material-ui/core";
 import { GatsbyLink, Link } from "gatsby-material-ui-components";
 import React from "react";
 import { useTable, useExpanded } from "react-table";
 import Typography from "../../components/typography";
 import { getTrackerUrl } from "../utils";
-import { navigate } from "gatsby";
 
 /**
  * Returns if an additional row with additional content should be added
@@ -112,11 +114,21 @@ const TableContainer = withStyles((theme) => ({
     "& .MuiTableCell-root": {
       padding: theme.spacing(1),
       "&:first-child": {
+        position: 'sticky',
+        left: 0,
+        background: 'inherit',
         paddingLeft: theme.spacing(2),
+        zIndex: 1,
+        '&.MuiTableCell-head': {
+          zIndex: 11,
+        }
       },
       "&:last-child": {
         paddingRight: theme.spacing(0),
       },
+    },
+    "& .MuiTableRow-root": {
+      background: "#fff",
     },
     // highlight state rows in nested table
     "& .table--nested .MuiTableRow-root.row--0": {
@@ -126,22 +138,6 @@ const TableContainer = withStyles((theme) => ({
         height: 56,
         fontSize: theme.typography.pxToRem(16),
       },
-      "&:hover": {
-        backgroundColor: darken(theme.palette.background.alt, 0.05),
-      },
-    },
-    // row hover states
-    "& .MuiTableRow-root.row--1, .MuiTableRow-root.row--0": {
-      transition: theme.transitions.create(["background-color"], {
-        duration: theme.transitions.duration.short,
-      }),
-      "&:hover": {
-        backgroundColor: theme.palette.action.hover,
-        cursor: "pointer",
-        "& .MuiButton-text": {
-          textDecoration: "underline",
-        },
-      },
     },
     // indent nested rows
     "& .MuiTableRow-root.row--1 .MuiTableCell-root:first-child": {
@@ -150,6 +146,27 @@ const TableContainer = withStyles((theme) => ({
     // align trend line
     "& .MuiTableCell-root.col--trend svg": {
       marginTop: 4,
+    },
+    // size text for jump to map button
+    "& .MuiTableCell-root.col--jump > a": {
+      fontSize: theme.typography.pxToRem(12),
+      textAlign: 'center',
+      lineHeight: 1,
+      "&:hover":{
+        textDecoration: 'underline'
+      },
+    },
+    // size text for jump to map button
+    "& .MuiTableCell-root.col--view > a": {
+      background: '#FEF7F6',
+      borderStyle: 'solid',
+      borderColor: '#CA432B',
+      borderWidth: 1,
+      fontSize: theme.typography.pxToRem(14),
+      "&:hover":{
+        backgroundColor: darken('#FEF7F6', 0.05),
+        textDecoration: 'underline'
+      },
     },
   },
 }))(MuiTableContainer);
@@ -197,88 +214,135 @@ export default function Table({
   /** used to track the parent row when rendering the table */
   let prevParentRow = null;
 
-  const handleRowClick = (row) => {
-    // do nothing when a tract / zip row is clicked
-    if (
-      row.original.geoid.length > 5 ||
-      row.original.name.indexOf("Zip") > -1 ||
-      row.original.name === "Texas"
-    )
-      return;
-    navigate(getTrackerUrl(row.original));
-  };
+  const [isScrolled, setScrolled] = React.useState(false)
+  const [showMore, setShowMore] = React.useState(true)
+
+  const tableRef = React.useRef(null)
+
+  const isFullyScrolled = (e) => {
+    let element = e.target
+    if (element.scrollLeft + element.offsetWidth > element.scrollWidth - 50) {
+      setScrolled(true)
+    } else {
+      setScrolled(false)
+    }
+  }
+
+  const useWindowSize = () => {
+    const [windowSize, setWindowSize] = React.useState({
+      width: undefined,
+      height: undefined,
+    });
+    React.useEffect(() => {
+      function handleResize() {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+      window.addEventListener("resize", handleResize);
+      handleResize();
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+    return windowSize;
+  }
+
+  const theme = useTheme();
+  const isBig = useMediaQuery(theme.breakpoints.up('md'));
+  //only showMore when table is overflowing
+  const size = useWindowSize()
+  React.useEffect(()=>{
+    if(tableRef){
+      if(tableRef.current.scrollWidth === tableRef.current.clientWidth || isBig){
+        setShowMore(false)
+      } else {
+        setShowMore(true)
+      }
+    }
+  }, [size.width, tableRef, isBig])
 
   return (
-    <TableContainer>
-      <MuiTable className={className} {...getTableProps()}>
-        <TableHead>
-          {headerGroups.map((headerGroup, i) => (
-            <TableRow key={"header" + i} {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column, j) => (
-                <TableCell
-                  key={"col" + j}
-                  {...column.getHeaderProps()}
-                  {...(column.cellProps || {})}
-                >
-                  {column.render("Header")}
-                </TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableHead>
-        <TableBody {...getTableBodyProps()}>
-          {truncatedRows.map((row, i) => {
-            prepareRow(row);
-            let nextRow =
-              i < truncatedRows.length ? truncatedRows[i + 1] : null;
-            // boolean to indicate if an additional row should be tacked on
-            let showMore = getAdditionalRowContent(
-              view,
-              row,
-              prevParentRow,
-              nextRow,
-              content
-            );
-            // if top level row, set prev parent
-            if (row.depth === 0) prevParentRow = row.original;
-            return (
-              <React.Fragment key={"row" + i}>
-                <TableRow
-                  className={`row row--${row.depth}`}
-                  {...row.getRowProps()}
-                  onClick={() => handleRowClick(row)}
-                >
-                  {row.cells.map((cell, j) => {
-                    return (
-                      <TableCell
-                        key={"cell" + j}
-                        {...cell.getCellProps()}
-                        {...(cell.column.cellProps || {})}
-                      >
-                        {cell.value !== "0" ? cell.render("Cell") : "-"}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-                {showMore && (
-                  <TableRow className="row--more">
-                    <TableCell align="center" colSpan="5">
-                      {showMore}
-                    </TableCell>
+    <>
+      <TableContainer ref={tableRef} onScroll={(e) => isFullyScrolled(e)}>
+        <MuiTable id="table" className={className} {...getTableProps()}>
+          <TableHead>
+            {headerGroups.map((headerGroup, i) => (
+              <TableRow key={"header" + i} {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column, j) => (
+                  <TableCell
+                    key={"col" + j}
+                    {...column.getHeaderProps()}
+                    {...(column.cellProps || {})}
+                  >
+                    {column.render("Header")}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableHead>
+          <TableBody {...getTableBodyProps()}>
+            {truncatedRows.map((row, i) => {
+              prepareRow(row);
+              let nextRow =
+                i < truncatedRows.length ? truncatedRows[i + 1] : null;
+              // boolean to indicate if an additional row should be tacked on
+              let showMore = getAdditionalRowContent(
+                view,
+                row,
+                prevParentRow,
+                nextRow,
+                content
+              );
+              // if top level row, set prev parent
+              if (row.depth === 0) prevParentRow = row.original;
+              return (
+                <React.Fragment key={"row" + i}>
+                  <TableRow
+                    className={`row row--${row.depth}`}
+                    {...row.getRowProps()}
+                  >
+                    {row.cells.map((cell, j) => {
+                      return (
+                        <TableCell
+                          key={"cell" + j}
+                          {...cell.getCellProps()}
+                          {...(cell.column.cellProps || {})}
+                        >
+                          {cell.value !== "0" ? cell.render("Cell") : "-"}
+                        </TableCell>
+                      );
+                    })}
                   </TableRow>
-                )}
-              </React.Fragment>
-            );
-          })}
-          {note && (
-            <TableRow className="row--more">
-              <TableCell align="center" colSpan="5">
-                <Typography variant="caption">{note}</Typography>
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </MuiTable>
-    </TableContainer>
+                  {showMore && (
+                    <TableRow className="row--more">
+                      <TableCell align="center" colSpan="5">
+                        {showMore}
+                      </TableCell>
+                    </TableRow>
+                  )}
+                </React.Fragment>
+              );
+            })}
+            {note && (
+              <TableRow className="row--more">
+                <TableCell align="center" colSpan="5">
+                  <Typography variant="caption">{note}</Typography>
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </MuiTable>
+      </TableContainer>
+      {showMore &&
+        <Box className={isScrolled ? "fader hide" : "fader"}>
+          <Box className="content">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0C9.3144 0 12 2.6862 12 6C12 9.3138 9.3144 12 6 12C2.6868 12 0 9.3138 0 6C0 2.6862 2.6868 0 6 0ZM6.4686 3.2814L6.4182 3.2376C6.34169 3.18095 6.24918 3.15002 6.15398 3.14927C6.05878 3.14851 5.9658 3.17797 5.8884 3.2334L5.832 3.2814L5.7888 3.3318C5.73215 3.40831 5.70122 3.50082 5.70047 3.59602C5.69971 3.69122 5.72917 3.7842 5.7846 3.8616L5.8326 3.918L7.464 5.55H3.45L3.3888 5.5536C3.29142 5.56699 3.20111 5.6119 3.13165 5.68146C3.0622 5.75101 3.01744 5.8414 3.0042 5.9388L3 5.9994L3.0042 6.0606C3.01756 6.15789 3.06238 6.24814 3.13182 6.31758C3.20126 6.38702 3.29151 6.43184 3.3888 6.4452L3.45 6.4494H7.464L5.832 8.0814L5.7882 8.1324C5.72321 8.21906 5.69165 8.32625 5.69933 8.4343C5.70701 8.54235 5.75341 8.644 5.83 8.7206C5.9066 8.79719 6.00825 8.84359 6.1163 8.85127C6.22435 8.85895 6.33154 8.82739 6.4182 8.7624L6.468 8.7186L8.8692 6.3186L8.9124 6.2676C8.969 6.19121 8.99996 6.09885 9.00082 6.00378C9.00168 5.90871 8.97241 5.81581 8.9172 5.7384L8.8692 5.682L6.4692 3.2814L6.4182 3.2376L6.4686 3.2814Z" fill="#595247"/>
+            </svg>
+            Scroll for more
+          </Box>
+        </Box>
+      }
+    </>
   );
 }

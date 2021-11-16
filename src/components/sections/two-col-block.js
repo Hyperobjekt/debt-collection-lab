@@ -9,6 +9,12 @@ const StyledBlock = withStyles((theme) => ({
     "& .two-col-block__left": {
       paddingRight: theme.spacing(6),
     },
+    "& .two-col-block__right": {
+      position: 'relative',
+      [theme.breakpoints.up("sm")]: {
+        position: 'inherit'
+      }
+    },
     "& img": {
       maxWidth: "100%",
     },

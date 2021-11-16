@@ -38,6 +38,35 @@ import Mustache from "mustache";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
+    "& .fader": {
+      zIndex: 11,
+      pointerEvents: 'none',
+      display: 'flex',
+      position: 'absolute',
+      top: 0,
+      right: 10,
+      height: '100%',
+      width: 100,
+      background: 'linear-gradient(90deg, transparent, white)',
+      writingMode: 'vertical-rl',
+      color: '#595247',
+      opacity: 1,
+      transition: 'opacity .5s',
+      '&.hide': {
+        opacity: 0,
+      },
+      '& > svg': {
+        marginRight: 3,
+        marginBottom: 5,
+      },
+      '& .content': {
+        top: "64px",
+        //subtract 64 for header height
+        height: "calc(100vh - 64px)",
+        textAlign: "center",
+        position: "sticky",
+      },
+    },
     "& .controls": {
       marginTop: theme.spacing(3),
       marginBottom: theme.spacing(3),
@@ -144,7 +173,7 @@ const getDisproportionateTooltip = (groups) => {
 const PlaceName = ({ row, view }) => {
   const name =
     view === "counties"
-      ? `${row.original.name}, ${row.original.state}`
+      ? `${row.original.name}`
       : row.original["name"];
   const hasDisproportionate = row.original.disproportionate?.length > 0;
   const nameComponent = (
@@ -182,6 +211,8 @@ const TableSection = ({
   cols,
   limit,
   content,
+  onJumpToMap,
+  onCloseJumpTo,
   children,
   ...props
 }) => {
@@ -215,7 +246,6 @@ const TableSection = ({
         d.geoid.indexOf("18") === 0
     ).length > 0;
   const tooltipHint = getTooltipHint(content, hasIndiana);
-
   /** memoized handler for when user changes sorting */
   const handleSort = useCallback(
     (event, key) => {
@@ -342,11 +372,23 @@ const TableSection = ({
         cellProps: { align: "right", width: 100 },
         accessor: (d) => FORMAT_NUM(d["default_judgement"]),
       },
+      onJumpToMap
+        ? {
+            id: "jump-to",
+            Header: "",
+            cellProps: {className: "col--jump"},
+            Cell: ({ row }) => (
+              <Button onClick={() => onJumpToMap(row.original)} component={GatsbyLink}>
+                Jump to map
+              </Button>
+            ),
+          }
+        : null,
       view !== "tracts" && view !== "zips"
         ? {
             id: "report",
             Header: "",
-            cellProps: { style: { minWidth: 120 } },
+            cellProps: { style: { minWidth: 120 }, className:"col--view" },
             Cell: ({ row }) =>
               row.original.name !== "Texas" ? (
                 <Button component={GatsbyLink} to={getTrackerUrl(row.original)}>
@@ -358,7 +400,7 @@ const TableSection = ({
           }
         : null,
     ].filter((v) => !!v && cols.indexOf(v.id) > -1);
-  }, [handleSort, ascending, sortBy, view, trendRange, cols, tooltipHint]);
+  }, [handleSort, ascending, sortBy, view, trendRange, cols, tooltipHint, onJumpToMap]);
 
   const context = {
     singularRegion: getSingularRegion(view),
@@ -450,20 +492,20 @@ const TableSection = ({
     </>
   );
   const rightContent = (
-    <Table
-      columns={columns}
-      data={tableData}
-      className={`table--${view}`}
-      view={view}
-      content={content}
-    />
-  );
+      <Table
+        columns={columns}
+        data={tableData}
+        className={`table--${view}`}
+        view={view}
+        content={content}
+      />
+    );
   return <SectionBlock left={leftContent} right={rightContent} {...props} />;
 };
 
 TableSection.defaultProps = {
   views: ["tracts"],
-  cols: ["name", "lawsuits", "trend", "default_judgement", "report"],
+  cols: ["name", "lawsuits", "trend", "default_judgement", "jump-to", "report"],
   limit: 10,
 };
 
