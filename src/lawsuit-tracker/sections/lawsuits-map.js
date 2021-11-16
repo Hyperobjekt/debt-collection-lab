@@ -36,11 +36,16 @@ const useMapStyles = makeStyles((theme) => ({
   },
 }));
 
-const LawsuitMap = ({ data, colorScale }) => {
+const LawsuitMap = ({ data, colorScale, activeLocation, setActiveLocation }) => {
   const classes = useMapStyles();
   return (
     <div className={classes.container}>
-      <ChoroplethMap data={data} colorScale={colorScale} />
+      <ChoroplethMap 
+        setActiveLocation={setActiveLocation}
+        activeLocation={activeLocation} 
+        data={data} 
+        colorScale={colorScale} 
+      />
     </div>
   );
 };
@@ -99,16 +104,16 @@ const MapContent = ({ data, content, colorScale }) => {
   );
 };
 
-const LawsuitsMapSection = ({ content, data, ...props }) => {
+const LawsuitsMapSection = ({ content, data, activeLocation, setActiveLocation, ...props }) => {
   const colorScale = d3
     .scaleLinear()
     .domain(d3.extent(data.geojson.features, (d) => d.properties.value))
     .range(["#f5eFdB", "#BC5421"])
     .nice();
   return (
-    <SectionBlock
+    <SectionBlock id="section-block"
       left={<MapContent {...{ data, content, colorScale }} />}
-      right={<LawsuitMap data={data.geojson} colorScale={colorScale} />}
+      right={<LawsuitMap setActiveLocation={setActiveLocation} activeLocation={activeLocation} data={data.geojson} colorScale={colorScale} />}
       {...props}
     />
   );
