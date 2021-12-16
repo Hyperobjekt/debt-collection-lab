@@ -29,6 +29,8 @@ import { getTrackerUrl, renderTemplate } from "../utils";
  */
 const getAdditionalRowContent = (
   view,
+  ascending,
+  sortBy,
   currentRow,
   prevParentRow,
   nextRow,
@@ -76,7 +78,9 @@ const getAdditionalRowContent = (
     const keys = { 
       page: <Link component={GatsbyLink} to={getTrackerUrl(prevParentRow)}>
           {prevParentRow.name} report
-        </Link>
+        </Link>,
+      param: sortBy.replace('_', ' '),
+      direction: ascending ? 'ascending' : 'descending',
     };
     return (
       <Typography variant="caption">
@@ -181,7 +185,8 @@ export default function Table({
   data,
   className,
   view,
-  noteLangKeys,
+  ascending,
+  sortBy,
   content,
 }) {
   const {
@@ -201,6 +206,13 @@ export default function Table({
   /** get the note (if any) to append to the table */
 
   const noteKey = view.toUpperCase() + "_NOTE";
+  /** construct key object for note template string  */
+  const noteLangKeys = {
+    direction: ascending ? "ascending" : "descending",
+    number: '10',
+    view: view,
+    param: sortBy.replace('_', ' ')
+  }
   const note = content.hasOwnProperty(noteKey) ? 
     Mustache.render(content[noteKey], noteLangKeys) : 
     null;
@@ -293,6 +305,8 @@ export default function Table({
               // boolean to indicate if an additional row should be tacked on
               let showMore = getAdditionalRowContent(
                 view,
+                ascending,
+                sortBy,
                 row,
                 prevParentRow,
                 nextRow,

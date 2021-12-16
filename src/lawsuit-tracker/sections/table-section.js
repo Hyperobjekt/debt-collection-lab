@@ -237,13 +237,6 @@ const TableSection = ({
     tableData = tableData.slice(0, limit);
   /** range of dates used for trend lines */
   const trendRange = getDateRange(source);
-  /** construct key object for note template string  */
-  const noteLangKeys = {
-    direction: ascending ? 'top' : 'bottom',
-    number: '10',
-    view: view,
-    param: sortBy.replace('_', ' ')
-  }
   /** check if table contains data for indiana so we can flag default judgements are unavailable */
   const hasIndiana =
     data.filter(
@@ -504,7 +497,8 @@ const TableSection = ({
         data={tableData}
         className={`table--${view}`}
         view={view}
-        noteLangKeys={noteLangKeys}
+        ascending={ascending}
+        sortBy={sortBy}
         content={content}
       />
     );
