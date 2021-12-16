@@ -237,6 +237,26 @@ const TableSection = ({
     tableData = tableData.slice(0, limit);
   /** range of dates used for trend lines */
   const trendRange = getDateRange(source);
+  /** construct key array for lang string  */
+  const noteLangKeys = [
+    {
+      key: '{direction}',
+      value: ascending ? 'top' : 'bottom',
+    },
+    {
+      key: '{number}',
+      value: '10'
+    },
+    {
+      key: '{geo}',
+      value: view
+    },
+    {
+      key: '{param}',
+      //better to have lang for params?
+      value: sortBy.replace('_', ' ')
+    },
+  ];
   /** check if table contains data for indiana so we can flag default judgements are unavailable */
   const hasIndiana =
     data.filter(
@@ -497,6 +517,7 @@ const TableSection = ({
         data={tableData}
         className={`table--${view}`}
         view={view}
+        noteLangKeys={noteLangKeys}
         content={content}
       />
     );

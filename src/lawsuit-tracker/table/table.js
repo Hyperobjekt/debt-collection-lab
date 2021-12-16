@@ -15,7 +15,7 @@ import { GatsbyLink, Link } from "gatsby-material-ui-components";
 import React from "react";
 import { useTable, useExpanded } from "react-table";
 import Typography from "../../components/typography";
-import { getTrackerUrl } from "../utils";
+import { getTrackerUrl, replaceLangParams } from "../utils";
 
 /**
  * Returns if an additional row with additional content should be added
@@ -33,6 +33,7 @@ const getAdditionalRowContent = (
   nextRow,
   content
 ) => {
+
   const isNested = view === "nested";
   const isNextTopLevel = !nextRow || nextRow.depth === 0; // next row is top level or end of table
   const isParentTexas = prevParentRow?.name === "Texas";
@@ -40,46 +41,48 @@ const getAdditionalRowContent = (
   const pastLimitThreshold = prevParentRow?.subRows?.length > 5;
   // show note after Harris county
   if (isNested && isNextTopLevel && isParentTexas) {
-    const parts = content["TEXAS_NOTE"].split("{{page}}");
+    const keys = [{ 
+      key: "{page}", 
+      value: <Link
+        component={GatsbyLink}
+        to={getTrackerUrl({ name: "Harris County", state: "Texas" })}
+      >
+        Harris county report
+      </Link>
+    }];
+
     return (
       <Typography variant="caption">
-        {parts[0]}
-        {parts.length > 1 && (
-          <Link
-            component={GatsbyLink}
-            to={getTrackerUrl({ name: "Harris County", state: "Texas" })}
-          >
-            Harris county report
-          </Link>
-        )}
-        {parts[1]}
+        {replaceLangParams(content["TEXAS_NOTE"], keys)}
       </Typography>
     );
   }
   if (isNested && isNextTopLevel && isNorthDakota) {
-    const parts = content["NORTH_DAKOTA_NOTE"].split("{{page}}");
+    const keys = [{ 
+      key: "{page}", 
+      value: <Link
+      component={GatsbyLink}
+      to={getTrackerUrl({ name: "North Dakota" })}
+    >
+      state report
+    </Link>
+    }];
     return (
       <Typography variant="caption">
-        {parts[0]}
-        <Link
-          component={GatsbyLink}
-          to={getTrackerUrl({ name: "North Dakota" })}
-        >
-          state report
-        </Link>{" "}
-        {parts[1]}
+        {replaceLangParams(content["NORTH_DAKOTA_NOTE"], keys)}
       </Typography>
     );
   }
   if (isNested && isNextTopLevel && pastLimitThreshold) {
-    const parts = content["TOP_LIMIT"].split("{{page}}");
+    const keys = [{ 
+      key: "{page}", 
+      value: <Link component={GatsbyLink} to={getTrackerUrl(prevParentRow)}>
+        {prevParentRow.name} report
+      </Link>
+    }];
     return (
       <Typography variant="caption">
-        {parts[0]}
-        <Link component={GatsbyLink} to={getTrackerUrl(prevParentRow)}>
-          {prevParentRow.name} report
-        </Link>{" "}
-        {parts[1]}
+        {replaceLangParams(content["TOP_LIMIT"], keys)}
       </Typography>
     );
   }
@@ -180,6 +183,7 @@ export default function Table({
   data,
   className,
   view,
+  noteLangKeys,
   content,
 }) {
   const {
@@ -197,8 +201,11 @@ export default function Table({
   );
 
   /** get the note (if any) to append to the table */
+
   const noteKey = view.toUpperCase() + "_NOTE";
-  const note = content.hasOwnProperty(noteKey) ? content[noteKey] : null;
+  const note = content.hasOwnProperty(noteKey) ? 
+    replaceLangParams(content[noteKey], noteLangKeys) : 
+    null;
 
   /** limit rows for nested view, so only 5 rows appear below parent */
   let subRowCount = 0;

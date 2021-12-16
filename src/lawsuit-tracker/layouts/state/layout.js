@@ -75,6 +75,7 @@ export const query = graphql`
           NORTH_DAKOTA_NOTE
           TEXAS_NOTE
           COUNTIES_NOTE
+          TRACTS_NOTE
           ZIPS_NOTE
           STATES_NOTE
           NO_RESULTS
