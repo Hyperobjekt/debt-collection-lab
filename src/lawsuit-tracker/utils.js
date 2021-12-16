@@ -467,20 +467,16 @@ export const getTopCollectorsData = (data) => {
 
 /**
  * returns constructed html
- * @param {object[]} keys
+ * @param {object} keys
  * @param {string} lang
 */
-export const replaceLangParams = (lang, keys) => {
+export const renderTemplate = (lang, keys) => {
   let contentArr = [];
-  const splitLang = lang.split(/\{(.*?})\}/);
+  const splitLang = lang.split(/\{{(.*?)\}}/);
+  console.log(splitLang)
   if (keys) {
     splitLang.forEach((item) => {
-      const matchIndex = keys.findIndex(key => key.key === item);
-      if(matchIndex === -1) {
-        contentArr.push(item);
-      } else {
-        contentArr.push(keys[matchIndex].value);
-      }
+      keys[item] ? contentArr.push(keys[item]) : contentArr.push(item);
     });
   } else {
     contentArr.push(lang)

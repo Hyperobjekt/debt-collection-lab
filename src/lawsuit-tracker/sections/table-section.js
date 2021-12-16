@@ -237,26 +237,13 @@ const TableSection = ({
     tableData = tableData.slice(0, limit);
   /** range of dates used for trend lines */
   const trendRange = getDateRange(source);
-  /** construct key array for lang string  */
-  const noteLangKeys = [
-    {
-      key: '{direction}',
-      value: ascending ? 'top' : 'bottom',
-    },
-    {
-      key: '{number}',
-      value: '10'
-    },
-    {
-      key: '{geo}',
-      value: view
-    },
-    {
-      key: '{param}',
-      //better to have lang for params?
-      value: sortBy.replace('_', ' ')
-    },
-  ];
+  /** construct key object for note template string  */
+  const noteLangKeys = {
+    direction: ascending ? 'top' : 'bottom',
+    number: '10',
+    view: view,
+    param: sortBy.replace('_', ' ')
+  }
   /** check if table contains data for indiana so we can flag default judgements are unavailable */
   const hasIndiana =
     data.filter(

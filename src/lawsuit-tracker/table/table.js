@@ -15,7 +15,8 @@ import { GatsbyLink, Link } from "gatsby-material-ui-components";
 import React from "react";
 import { useTable, useExpanded } from "react-table";
 import Typography from "../../components/typography";
-import { getTrackerUrl, replaceLangParams } from "../utils";
+import Mustache from "mustache";
+import { getTrackerUrl, renderTemplate } from "../utils";
 
 /**
  * Returns if an additional row with additional content should be added
@@ -41,48 +42,45 @@ const getAdditionalRowContent = (
   const pastLimitThreshold = prevParentRow?.subRows?.length > 5;
   // show note after Harris county
   if (isNested && isNextTopLevel && isParentTexas) {
-    const keys = [{ 
-      key: "{page}", 
-      value: <Link
-        component={GatsbyLink}
-        to={getTrackerUrl({ name: "Harris County", state: "Texas" })}
-      >
-        Harris county report
-      </Link>
-    }];
+    const keys = { 
+      page: <Link
+          component={GatsbyLink}
+          to={getTrackerUrl({ name: "Harris County", state: "Texas" })}
+        >
+          Harris county report
+        </Link>
+    };
 
     return (
       <Typography variant="caption">
-        {replaceLangParams(content["TEXAS_NOTE"], keys)}
+        {renderTemplate(content["TEXAS_NOTE"], keys)}
       </Typography>
     );
   }
   if (isNested && isNextTopLevel && isNorthDakota) {
-    const keys = [{ 
-      key: "{page}", 
-      value: <Link
-      component={GatsbyLink}
-      to={getTrackerUrl({ name: "North Dakota" })}
-    >
-      state report
-    </Link>
-    }];
+    const keys = { 
+      page: <Link
+          component={GatsbyLink}
+          to={getTrackerUrl({ name: "North Dakota" })}
+        >
+          state report
+        </Link>
+    };
     return (
       <Typography variant="caption">
-        {replaceLangParams(content["NORTH_DAKOTA_NOTE"], keys)}
+        {renderTemplate(content["NORTH_DAKOTA_NOTE"], keys)}
       </Typography>
     );
   }
   if (isNested && isNextTopLevel && pastLimitThreshold) {
-    const keys = [{ 
-      key: "{page}", 
-      value: <Link component={GatsbyLink} to={getTrackerUrl(prevParentRow)}>
-        {prevParentRow.name} report
-      </Link>
-    }];
+    const keys = { 
+      page: <Link component={GatsbyLink} to={getTrackerUrl(prevParentRow)}>
+          {prevParentRow.name} report
+        </Link>
+    };
     return (
       <Typography variant="caption">
-        {replaceLangParams(content["TOP_LIMIT"], keys)}
+        {renderTemplate(content["TOP_LIMIT"], keys)}
       </Typography>
     );
   }
@@ -204,7 +202,7 @@ export default function Table({
 
   const noteKey = view.toUpperCase() + "_NOTE";
   const note = content.hasOwnProperty(noteKey) ? 
-    replaceLangParams(content[noteKey], noteLangKeys) : 
+    Mustache.render(content[noteKey], noteLangKeys) : 
     null;
 
   /** limit rows for nested view, so only 5 rows appear below parent */
