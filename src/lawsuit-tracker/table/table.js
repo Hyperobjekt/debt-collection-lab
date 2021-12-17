@@ -79,8 +79,8 @@ const getAdditionalRowContent = (
       page: <Link component={GatsbyLink} to={getTrackerUrl(prevParentRow)}>
           {prevParentRow.name} report
         </Link>,
-      param: sortBy.replace('_', ' '),
-      direction: ascending ? 'ascending' : 'descending',
+      param: sortBy === 'lawsuits' ? 'number of lawsuits' : sortBy === 'name' ? 'name' : 'default judgements',
+      direction: ascending ? sortBy === 'name' ? 'first' : 'bottom' : sortBy === 'name' ? 'last' : 'top',
     };
     return (
       <Typography variant="caption">
@@ -208,10 +208,10 @@ export default function Table({
   const noteKey = view.toUpperCase() + "_NOTE";
   /** construct key object for note template string  */
   const noteLangKeys = {
-    direction: ascending ? "ascending" : "descending",
+    direction: ascending ? (sortBy === 'name' ? 'first' : 'bottom') : (sortBy === 'name' ? 'last' : 'top'),
     number: '10',
     view: view,
-    param: sortBy.replace('_', ' ')
+    param: sortBy === 'lawsuits' ? 'number of lawsuits' : sortBy === 'name' ? 'name' : 'default judgements',
   }
   const note = content.hasOwnProperty(noteKey) ? 
     Mustache.render(content[noteKey], noteLangKeys) : 
