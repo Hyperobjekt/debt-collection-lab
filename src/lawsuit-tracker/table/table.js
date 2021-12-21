@@ -334,7 +334,7 @@ export default function Table({
                   </TableRow>
                   {showMore && (
                     <TableRow className="row--more">
-                      <TableCell align="center" colSpan="5">
+                      <TableCell align="center" colSpan="6">
                         {showMore}
                       </TableCell>
                     </TableRow>
@@ -344,7 +344,7 @@ export default function Table({
             })}
             {note && (
               <TableRow className="row--more">
-                <TableCell align="center" colSpan="5">
+                <TableCell align="center" colSpan="6">
                   <Typography variant="caption">{note}</Typography>
                 </TableCell>
               </TableRow>
