@@ -15,7 +15,8 @@ import { GatsbyLink, Link } from "gatsby-material-ui-components";
 import React from "react";
 import { useTable, useExpanded } from "react-table";
 import Typography from "../../components/typography";
-import { getTrackerUrl } from "../utils";
+import Mustache from "mustache";
+import { getTrackerUrl, renderTemplate } from "../utils";
 
 /**
  * Returns if an additional row with additional content should be added
@@ -28,11 +29,14 @@ import { getTrackerUrl } from "../utils";
  */
 const getAdditionalRowContent = (
   view,
+  ascending,
+  sortBy,
   currentRow,
   prevParentRow,
   nextRow,
   content
 ) => {
+
   const isNested = view === "nested";
   const isNextTopLevel = !nextRow || nextRow.depth === 0; // next row is top level or end of table
   const isParentTexas = prevParentRow?.name === "Texas";
@@ -40,46 +44,47 @@ const getAdditionalRowContent = (
   const pastLimitThreshold = prevParentRow?.subRows?.length > 5;
   // show note after Harris county
   if (isNested && isNextTopLevel && isParentTexas) {
-    const parts = content["TEXAS_NOTE"].split("{{page}}");
+    const keys = { 
+      page: <Link
+          component={GatsbyLink}
+          to={getTrackerUrl({ name: "Harris County", state: "Texas" })}
+        >
+          Harris county report
+        </Link>
+    };
+
     return (
       <Typography variant="caption">
-        {parts[0]}
-        {parts.length > 1 && (
-          <Link
-            component={GatsbyLink}
-            to={getTrackerUrl({ name: "Harris County", state: "Texas" })}
-          >
-            Harris county report
-          </Link>
-        )}
-        {parts[1]}
+        {renderTemplate(content["TEXAS_NOTE"], keys)}
       </Typography>
     );
   }
   if (isNested && isNextTopLevel && isNorthDakota) {
-    const parts = content["NORTH_DAKOTA_NOTE"].split("{{page}}");
-    return (
-      <Typography variant="caption">
-        {parts[0]}
-        <Link
+    const keys = { 
+      page: <Link
           component={GatsbyLink}
           to={getTrackerUrl({ name: "North Dakota" })}
         >
           state report
-        </Link>{" "}
-        {parts[1]}
+        </Link>
+    };
+    return (
+      <Typography variant="caption">
+        {renderTemplate(content["NORTH_DAKOTA_NOTE"], keys)}
       </Typography>
     );
   }
   if (isNested && isNextTopLevel && pastLimitThreshold) {
-    const parts = content["TOP_LIMIT"].split("{{page}}");
+    const keys = { 
+      page: <Link component={GatsbyLink} to={getTrackerUrl(prevParentRow)}>
+          {prevParentRow.name} report
+        </Link>,
+      param: sortBy === 'lawsuits' ? 'number of lawsuits' : sortBy === 'name' ? 'name' : 'default judgements',
+      direction: ascending ? sortBy === 'name' ? 'first' : 'bottom' : sortBy === 'name' ? 'last' : 'top',
+    };
     return (
       <Typography variant="caption">
-        {parts[0]}
-        <Link component={GatsbyLink} to={getTrackerUrl(prevParentRow)}>
-          {prevParentRow.name} report
-        </Link>{" "}
-        {parts[1]}
+        {renderTemplate(content["TOP_LIMIT"], keys)}
       </Typography>
     );
   }
@@ -180,6 +185,8 @@ export default function Table({
   data,
   className,
   view,
+  ascending,
+  sortBy,
   content,
 }) {
   const {
@@ -197,8 +204,18 @@ export default function Table({
   );
 
   /** get the note (if any) to append to the table */
+
   const noteKey = view.toUpperCase() + "_NOTE";
-  const note = content.hasOwnProperty(noteKey) ? content[noteKey] : null;
+  /** construct key object for note template string  */
+  const noteLangKeys = {
+    direction: ascending ? (sortBy === 'name' ? 'first' : 'bottom') : (sortBy === 'name' ? 'last' : 'top'),
+    number: '10',
+    view: view,
+    param: sortBy === 'lawsuits' ? 'number of lawsuits' : sortBy === 'name' ? 'name' : 'default judgements',
+  }
+  const note = content.hasOwnProperty(noteKey) ? 
+    Mustache.render(content[noteKey], noteLangKeys) : 
+    null;
 
   /** limit rows for nested view, so only 5 rows appear below parent */
   let subRowCount = 0;
@@ -288,6 +305,8 @@ export default function Table({
               // boolean to indicate if an additional row should be tacked on
               let showMore = getAdditionalRowContent(
                 view,
+                ascending,
+                sortBy,
                 row,
                 prevParentRow,
                 nextRow,
@@ -315,7 +334,7 @@ export default function Table({
                   </TableRow>
                   {showMore && (
                     <TableRow className="row--more">
-                      <TableCell align="center" colSpan="5">
+                      <TableCell align="center" colSpan="6">
                         {showMore}
                       </TableCell>
                     </TableRow>
@@ -325,7 +344,7 @@ export default function Table({
             })}
             {note && (
               <TableRow className="row--more">
-                <TableCell align="center" colSpan="5">
+                <TableCell align="center" colSpan="6">
                   <Typography variant="caption">{note}</Typography>
                 </TableCell>
               </TableRow>
