@@ -195,6 +195,7 @@ export const query = graphql`
         LAST_UPDATED
         DEFAULT_JUDGEMENTS_HINT
         COUNTIES_NOTE
+        TRACTS_NOTE
       }
       index {
         about {

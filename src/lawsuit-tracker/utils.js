@@ -465,6 +465,25 @@ export const getTopCollectorsData = (data) => {
   };
 };
 
+/**
+ * returns constructed html
+ * @param {object} keys
+ * @param {string} lang
+*/
+export const renderTemplate = (lang, keys) => {
+  let contentArr = [];
+  const splitLang = lang.split(/\{{(.*?)\}}/);
+  console.log(splitLang)
+  if (keys) {
+    splitLang.forEach((item) => {
+      keys[item] ? contentArr.push(keys[item]) : contentArr.push(item);
+    });
+  } else {
+    contentArr.push(lang)
+  }
+  return contentArr;
+}
+
 export const parseMonthYear = d3.timeParse("%m/%Y");
 export const formatPercent = d3.format(".1%");
 export const formatInt = d3.format(",d");
