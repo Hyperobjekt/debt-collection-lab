@@ -90,6 +90,7 @@ const page = {
         },
         { label: "Texas Note", name: "TEXAS_NOTE", widget: "string" },
         { label: "Counties Note", name: "COUNTIES_NOTE", widget: "string" },
+        { label: "Tracts Note", name: "TRACTS_NOTE", widget: "string" },
         { label: "Zips Note", name: "ZIPS_NOTE", widget: "string" },
         { label: "States Note", name: "STATES_NOTE", widget: "string" },
         { label: "No Results", name: "NO_RESULTS", widget: "string" },

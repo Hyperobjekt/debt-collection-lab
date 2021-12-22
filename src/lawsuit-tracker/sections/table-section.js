@@ -497,6 +497,8 @@ const TableSection = ({
         data={tableData}
         className={`table--${view}`}
         view={view}
+        ascending={ascending}
+        sortBy={sortBy}
         content={content}
       />
     );
