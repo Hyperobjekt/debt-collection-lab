@@ -54,7 +54,7 @@
     },
     "table": {
       "TITLE": "Overview of Lawsuits by Census Tract",
-      "DESCRIPTION": "The table to the right shows data for the {{count}} census tracts in {{name}}.  Use the search below to find a specific tract.",
+      "DESCRIPTION": "The table to the right shows data for the {{count}} {{view}} in {{name}}.  Use the search below to find a specific tract.",
       "FOOTNOTE": ""
     },
     "demographics": {
@@ -127,6 +127,7 @@
     "TEXAS_NOTE": "State level data is unavailable for Texas. Only the {{page}} is available.",
     "COUNTIES_NOTE": "The top counties are listed above. Use the search to find a specific location.",
     "ZIPS_NOTE": "The top zip codes are listed above. Use the search to find a specific location.",
+    "TRACTS_NOTE": "The top tracts are listed above. Use the search to find a specific location.",
     "STATES_NOTE": "Only a limited number of states are currently available.  We are working on getting more data.",
     "NO_RESULTS": "No results that match your filter.",
     "REPORT_LINK": "View Report",
