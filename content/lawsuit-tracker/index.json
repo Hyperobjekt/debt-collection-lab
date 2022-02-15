@@ -105,7 +105,7 @@
     },
     "table": {
       "TITLE": "Overview of Lawsuits by {{singularRegion}}",
-      "DESCRIPTION": "The table to the right shows data for the {{count}} census tracts in {{name}}.  Use the search below to find a specific tract.",
+      "DESCRIPTION": "The table to the right shows data for the {{count}} {{view}} in {{name}}.  Use the search below to find a specific tract.",
       "FOOTNOTE": ""
     },
     "demographics": {
