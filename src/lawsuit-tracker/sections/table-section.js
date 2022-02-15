@@ -406,6 +406,7 @@ const TableSection = ({
     singularRegion: getSingularRegion(view),
     name: data[0].state || data[0].county,
     count: data.length,
+    view: view === "counties" ? "counties" : "census tracts",
     lastUpdated: formatMonthYear(trendRange[1]),
   };
   const leftContent = (
