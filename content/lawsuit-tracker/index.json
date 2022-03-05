@@ -37,7 +37,7 @@
     },
     "collectors": {
       "TITLE": "Top Debt Collectors",
-      "DESCRIPTION": "Out of {{ collectorTotal }} debt collectors in {{ name }}, the top 5 ({{topCollectorPercent}}) are responsible for {{topCount}} ({{topPercent}}) of {{totalCount}} lawsuits.",
+      "DESCRIPTION": "Out of {{ collectorTotal }} debt collectors in {{ name }}, the top 10 ({{topCollectorPercent}}) are responsible for {{topCount}} ({{topPercent}}) of {{totalCount}} lawsuits.",
       "FOOTNOTE": ""
     },
     "lawsuits": {
@@ -88,7 +88,7 @@
     },
     "collectors": {
       "TITLE": "Top Debt Collectors",
-      "DESCRIPTION": "Out of {{collectorTotal}} debt collectors in {{name}}, the top 5 ({{topCollectorPercent}}) are responsible for {{topCount}} ({{topPercent}}) of {{totalCount}} lawsuits.",
+      "DESCRIPTION": "Out of {{collectorTotal}} debt collectors in {{name}}, the top 10 ({{topCollectorPercent}}) are responsible for {{topCount}} ({{topPercent}}) of {{totalCount}} lawsuits.",
       "FOOTNOTE": ""
     },
     "lawsuits": {

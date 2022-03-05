@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Typography from "../../components/typography";
-import { makeStyles, withStyles } from "@material-ui/core";
+import { Button, makeStyles, withStyles } from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import { formatInt, formatPercent } from "../utils";
 import DonutChart from "../charts/donut-chart";
 import Mustache from "mustache";
+import { slugify } from "../../utils";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
     background: theme.palette.background.alt,
   },
 }))(TwoColBlock);
+
+const useStyles = makeStyles((theme) => ({
+  root: {},
+  getDataIcon: {
+    marginLeft: theme.spacing(0.5),
+    width: 15,
+  },
+}));
 
 const useChartStyles = makeStyles((theme) => ({
   root: {
@@ -31,6 +40,9 @@ const useChartStyles = makeStyles((theme) => ({
       flexDirection: "column",
       alignItems: "flex-start",
       justifyContent: "center",
+      // overflowY: "scroll",
+      // overflowX: "hidden",
+      // maxHeight: 320,
     },
     "& .legend .legend__item": {
       alignItems: "flex-start",
@@ -77,6 +89,11 @@ const TopCollectorsChart = ({ data }) => {
             "#BFDCE0",
             "#DEAC4E",
             "#888494",
+            "#6897c7",
+            "#df9376",
+            "#aba94a",
+            "#bb8aa5",
+            "#94671a",
             "#C7C0A9",
           ],
         }}
@@ -90,6 +107,7 @@ const TopCollectorsChart = ({ data }) => {
 };
 
 const DebtCollectorsSection = ({ content, data, children, ...props }) => {
+  const classes = useStyles();
   const context = {
     name: data.name,
     collectorTotal: formatInt(data.collector_total),
@@ -106,6 +124,14 @@ const DebtCollectorsSection = ({ content, data, children, ...props }) => {
       <Typography paragraph>
         {Mustache.render(content.DESCRIPTION, context)}
       </Typography>
+      <Button
+        href={`/data/${slugify(context.name)}.csv`}
+        download
+        target="_blank"
+      >
+        Get the data
+        <img className={classes.getDataIcon} src="/images/open-new.svg" />
+      </Button>
       {children}
     </>
   );

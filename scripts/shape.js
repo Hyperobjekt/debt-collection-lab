@@ -3,7 +3,9 @@ if (!globalThis.fetch) {
   globalThis.fetch = require("node-fetch");
 }
 const d3 = require("d3");
-const { loadCsv, writeFile } = require("./utils");
+const { loadCsv, writeFile, slugify } = require("./utils");
+
+const csvShapes = ["states", "counties"];
 
 // only pull data for these states
 const VALID_STATE_FIPS = ["09", "48", "38", "18", "29"];
@@ -31,7 +33,7 @@ function getName(id, name) {
   return name.split(",")[0].trim();
 }
 
-function aggregateLawsuits(data) {
+function aggregateLawsuits(data, region) {
   // shape lawsuit history
   const lawsuitsByMonth = d3.group(data, (d) => d.date);
   const monthDates = Array.from(lawsuitsByMonth.keys()).sort((a, b) => a - b);
@@ -39,34 +41,115 @@ function aggregateLawsuits(data) {
     .map((v) => [DATE_FORMAT(v), lawsuitsByMonth.get(v).length].join(";"))
     .join("|");
 
-  // shape top 5 debt collectors
-  const lawsuitsByCollector = d3
-    .groups(data, (d) =>
-      d.plaintiff
-        .toLowerCase()
-        .replace(/"/g, "")
-        .replace(/,/g, "")
-        .replace("inc.", "inc")
-        .replace("llc.", "llc")
-        .replace(" assignee of credit one bank n.a.", "")
-    )
-    .map(([collector, lawsuits]) => [
+  // shape top 10 debt collectors
+  const lawsuitsByCollectorRaw = d3.groups(data, (d) =>
+    d.plaintiff
+      .toLowerCase()
+      .replace(/"/g, "")
+      .replace(/,/g, "")
+      .replace("inc.", "inc")
+      .replace("llc.", "llc")
+      .replace(" assignee of credit one bank n.a.", "")
+  );
+
+  const lawsuitsByCollector = lawsuitsByCollectorRaw.map(
+    ([collector, lawsuits]) => [
       `'${collector}'`,
       lawsuits.length,
       d3.sum(lawsuits, (d) => d.amount),
-    ]);
+      d3.sum(lawsuits, (d) => d.default_judgement), // TODO: remove?
+    ]
+  );
 
   const collectorTotal = lawsuitsByCollector.length;
 
+  const name = getName(data[0].id, data[0].name);
+
+  if (csvShapes.includes(region)) {
+    // TODO: refactor
+    const D21 = new Date("1/1/2021");
+    const totals = { count: 0, count20: 0, count21: 0 };
+    const lawsuitsByCollectorForEx = lawsuitsByCollectorRaw
+      .map(([collector, lawsuits]) => ({
+        collector,
+        count: lawsuits.length,
+        count20: d3.sum(lawsuits, ({ date }) => {
+          const D = new Date(date);
+          if (D < D21) {
+            totals.count += 1;
+            totals.count20 += 1;
+            return 1;
+          } else {
+            return 0;
+          }
+        }),
+        count21: d3.sum(lawsuits, ({ date }) => {
+          const D = new Date(date);
+          if (D >= D21) {
+            totals.count += 1;
+            totals.count21 += 1;
+            return 1;
+          } else {
+            return 0;
+          }
+        }),
+        dollar_amount: d3.sum(lawsuits, (d) => d.amount),
+        dollar_amount20: d3.sum(lawsuits, ({ date, amount }) => {
+          const D = new Date(date);
+          return D < D21 ? amount : 0;
+        }),
+        dollar_amount21: d3.sum(lawsuits, ({ date, amount }) => {
+          const D = new Date(date);
+          return D >= D21 ? amount : 0;
+        }),
+        // count_with_representation: d3.sum(lawsuits, (d) => d.representation),
+        // count_default_judgement: d3.sum(lawsuits, (d) => d.default_judgement),
+        // count_case_completed: d3.sum(lawsuits, (d) => d.case_completed),
+      }))
+      .map(
+        ({
+          collector,
+          count,
+          count20,
+          count21,
+          dollar_amount,
+          dollar_amount20,
+          dollar_amount21,
+        }) => {
+          const percent_total = d3.format(".1%")(count / totals.count);
+          const percent_total20 = d3.format(".1%")(count20 / totals.count20);
+          const percent_total21 = d3.format(".1%")(count21 / totals.count21);
+          return {
+            collector,
+            count,
+            percent_total,
+            dollar_amount,
+            count21,
+            percent_total21,
+            dollar_amount21,
+            count20,
+            percent_total20,
+            dollar_amount20,
+          };
+        }
+      )
+      .sort((a, b) => b.count - a.count);
+    // console.log(region, name, i, lawsuitsByCollectorRaw);
+    writeFile(
+      jsonToCsv(lawsuitsByCollectorForEx),
+      `./static/data/${slugify(name)}.csv`
+    );
+  }
+
   const topCollectors = lawsuitsByCollector
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 5)
+    .slice(0, 10)
     .map((d) => d.join(";"))
     .join("|");
 
   return {
     id: data[0].id,
-    name: getName(data[0].id, data[0].name),
+    name,
     lawsuits: data.length,
     // NOTE: some d_j cases are erroneously marked as not complete (per email from Jeff)
     completed_lawsuits: data.filter(
@@ -123,7 +206,7 @@ const aggregateByRegion = (data, region) => {
   console.log(`SHAPING DATA FOR REGION: ${region}`);
   console.log("-----");
   const selector = getSelectorForRegion(region);
-  const result = aggregateBySelector(data, selector);
+  const result = aggregateBySelector(data, selector, region);
   console.log("done shaping states");
   return result;
 };
@@ -133,14 +216,17 @@ const aggregateByRegion = (data, region) => {
  * @param {*} id
  * @param {*} data
  */
-function aggregateBySelector(data, selector = (d) => d.id) {
+function aggregateBySelector(data, selector = (d) => d.id, region) {
   const reshapedIdData = data
     .map((d) => ({ ...d, id: selector(d) }))
     .filter((d) => Boolean(d.id)) // remove rows where valid id was not returned
     .filter(filterInvalidLocation);
   const groups = d3.groups(reshapedIdData, (d) => d.id);
-  return groups.reduce((result, current) => {
-    result.push(aggregateLawsuits(current[1]));
+  // if (blah) console.log(JSON.stringify(groups));
+  // blah = false;
+  // console.log(groups.length, groups[0].length, groups[1].length);
+  return groups.reduce((result, current, i) => {
+    result.push(aggregateLawsuits(current[1], region, i));
     return result;
   }, []);
 }
@@ -183,7 +269,10 @@ async function shapeFullData() {
       case_completed: Number(d.case_completed),
     };
   };
+
   const csvData = await loadCsv(path, parser);
+  // TODO: revert
+  // const csvData = await loadCsv("./static/data/lawsuit_data-4.csv", parser);
   const data = csvData
     .filter((d) => d.id && d.id !== "NA")
 
