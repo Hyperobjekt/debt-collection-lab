@@ -111,7 +111,7 @@ const DebtCollectorsSection = ({ content, data, children, ...props }) => {
   const context = {
     name: data.name,
     collectorTotal: formatInt(data.collector_total),
-    topCollectorPercent: formatPercent(5 / data.collector_total),
+    topCollectorPercent: formatPercent(10 / data.collector_total),
     topCount: formatInt(data.topLawsuits),
     topPercent: formatPercent(data.topPercent),
     totalCount: formatInt(data.total),
