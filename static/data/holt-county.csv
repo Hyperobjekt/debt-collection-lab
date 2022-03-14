@@ -1,25 +1,24 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-midwestern health management inc,55,50.9%,0,26,50.0%,0,29,51.8%,0
-lvnv funding llc,12,11.1%,0,6,11.5%,0,6,10.7%,0
-midland funding llc,6,5.6%,0,1,1.9%,0,5,8.9%,0
-portfolio recovery associates llc,6,5.6%,0,2,3.8%,0,4,7.1%,0
-midwestern health management inc - c/o david schmitt,6,5.6%,0,6,11.5%,0,0,0.0%,0
-jefferson capital systems llc,2,1.9%,0,1,1.9%,0,1,1.8%,0
-td bank usa n.a. - st louis,2,1.9%,0,1,1.9%,0,1,1.8%,0
-clear recovery inc,2,1.9%,0,1,1.9%,0,1,1.8%,0
-jefferson capital systems - chicago il,2,1.9%,0,2,3.8%,0,0,0.0%,0
-midland credit management inc,1,0.9%,0,0,0.0%,0,1,1.8%,0
-second round sub llc - st louis,1,0.9%,0,0,0.0%,0,1,1.8%,0
-mm finance llc,1,0.9%,0,0,0.0%,0,1,1.8%,0
-ford motor credit - w des moines ia,1,0.9%,0,0,0.0%,0,1,1.8%,0
-cavalry spv i llc - st louis,1,0.9%,0,0,0.0%,0,1,1.8%,0
-cvi sgp acquisition trust,1,0.9%,0,0,0.0%,0,1,1.8%,0
-crown asset management llc,1,0.9%,0,0,0.0%,0,1,1.8%,0
-capital one bank n.a.,1,0.9%,0,1,1.9%,0,0,0.0%,0
-jh met subsidiary b liquidating trust,1,0.9%,0,1,1.9%,0,0,0.0%,0
-pca acquisitions v llc,1,0.9%,0,1,1.9%,0,0,0.0%,0
-absolute resolutions investments llc,1,0.9%,0,1,1.9%,0,0,0.0%,0
-capital one bank (usa) n.a.,1,0.9%,0,1,1.9%,0,0,0.0%,0
-lvnv funding llc petitioner,1,0.9%,0,0,0.0%,0,1,1.8%,0
-nw mo tow and recovery inc,1,0.9%,0,0,0.0%,0,1,1.8%,0
-midland credit management inc-ia,1,0.9%,0,1,1.9%,0,0,0.0%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+midwestern health management inc,55,26,29,50.9%,50.0%,51.8%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,16.4%,15.4%,17.2%,90.9%,80.8%,100.0%
+lvnv funding llc,13,6,7,12.0%,11.5%,12.5%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,53.8%,33.3%,71.4%,61.5%,33.3%,85.7%
+midland funding llc,6,1,5,5.6%,1.9%,8.9%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,16.7%,0.0%,20.0%,66.7%,0.0%,80.0%
+portfolio recovery associates llc,6,2,4,5.6%,3.8%,7.1%,0,0,0,0%,0%,0%,16.7%,0.0%,25.0%,0.0%,0.0%,0.0%,83.3%,50.0%,100.0%
+midwestern health management inc - c/o david schmitt,6,6,0,5.6%,11.5%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+jefferson capital systems llc,2,1,1,1.9%,1.9%,1.8%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%,100.0%,100.0%,100.0%
+td bank usa na - st louis,2,1,1,1.9%,1.9%,1.8%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+clear recovery inc,2,1,1,1.9%,1.9%,1.8%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,100.0%,0.0%,100.0%,100.0%,100.0%
+jefferson capital systems - chicago il,2,2,0,1.9%,3.8%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,50.0%,50.0%,0%,100.0%,100.0%,0%
+midland credit management inc,1,0,1,0.9%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+second round sub llc - st louis,1,0,1,0.9%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+mm finance llc,1,0,1,0.9%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+ford motor credit - w des moines ia,1,0,1,0.9%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+cavalry spv i llc - st louis,1,0,1,0.9%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cvi sgp acquisition trust,1,0,1,0.9%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+crown asset management llc,1,0,1,0.9%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+capital one bank na,1,1,0,0.9%,1.9%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+jh met subsidiary b liquidating trust,1,1,0,0.9%,1.9%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+pca acquisitions v llc,1,1,0,0.9%,1.9%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+absolute resolutions investments llc,1,1,0,0.9%,1.9%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+capital one bank (usa) na,1,1,0,0.9%,1.9%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+nw mo tow and recovery inc,1,0,1,0.9%,0.0%,1.8%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+midland credit management inc-ia,1,1,0,0.9%,1.9%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%

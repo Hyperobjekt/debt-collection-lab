@@ -1,48 +1,44 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-lvnv funding llc,30,18.4%,0,18,28.1%,0,12,12.1%,0
-midland credit management inc,18,11.0%,0,4,6.3%,0,14,14.1%,0
-consumer adjustment company inc,17,10.4%,0,9,14.1%,0,8,8.1%,0
-portfolio recovery associates llc,16,9.8%,0,2,3.1%,0,14,14.1%,0
-hannibal regional hospital,10,6.1%,0,0,0.0%,0,10,10.1%,0
-cavalry spv i llc,8,4.9%,0,2,3.1%,0,6,6.1%,0
-citibank n.a.,5,3.1%,0,3,4.7%,0,2,2.0%,0
-capital one bank (usa) n.a.,4,2.5%,0,1,1.6%,0,3,3.0%,0
-bank of america n.a.,4,2.5%,0,1,1.6%,0,3,3.0%,0
-jefferson capital systems llc,4,2.5%,0,4,6.3%,0,0,0.0%,0
-kirksville missouri hospital company l.l.c.,3,1.8%,0,2,3.1%,0,1,1.0%,0
-curl hark & holliday llc,3,1.8%,0,0,0.0%,0,3,3.0%,0
-midland funding llc,3,1.8%,0,0,0.0%,0,3,3.0%,0
-farmers cooperative services,2,1.2%,0,1,1.6%,0,1,1.0%,0
-jp morgan chase bank na,2,1.2%,0,0,0.0%,0,2,2.0%,0
-wasinger parham lc,2,1.2%,0,0,0.0%,0,2,2.0%,0
-northeast missouri ambulatory surgery center llc,2,1.2%,0,1,1.6%,0,1,1.0%,0
-barclays bank delaware,1,0.6%,0,0,0.0%,0,1,1.0%,0
-kirksville missouri hospital company llc,1,0.6%,0,0,0.0%,0,1,1.0%,0
-northeast regional medical center,1,0.6%,0,0,0.0%,0,1,1.0%,0
-midland credit management llc,1,0.6%,0,0,0.0%,0,1,1.0%,0
-citibank na,1,0.6%,0,0,0.0%,0,1,1.0%,0
-credit bureau services of iowa inc aao kah,1,0.6%,0,0,0.0%,0,1,1.0%,0
-northeast mo ambulatory surgery center llc,1,0.6%,0,0,0.0%,0,1,1.0%,0
-mm finance llc dba ez money check cashing,1,0.6%,0,0,0.0%,0,1,1.0%,0
-the hannibal clinic inc,1,0.6%,0,0,0.0%,0,1,1.0%,0
-fleer feeds inc,1,0.6%,0,1,1.6%,0,0,0.0%,0
-jpmorgan chase bank n.a.,1,0.6%,0,1,1.6%,0,0,0.0%,0
-discover bank,1,0.6%,0,1,1.6%,0,0,0.0%,0
-prairieland fs inc,1,0.6%,0,1,1.6%,0,0,0.0%,0
-credit corp solutions inc,1,0.6%,0,1,1.6%,0,0,0.0%,0
-cks prime investments llc,1,0.6%,0,1,1.6%,0,0,0.0%,0
-easy cash asap llc,1,0.6%,0,1,1.6%,0,0,0.0%,0
-citibank  n a,1,0.6%,0,1,1.6%,0,0,0.0%,0
-consumer adjustment co,1,0.6%,0,1,1.6%,0,0,0.0%,0
-wakefield & associates inc,1,0.6%,0,1,1.6%,0,0,0.0%,0
-fleer feed. inc,1,0.6%,0,1,1.6%,0,0,0.0%,0
-crown asset management llc,1,0.6%,0,0,0.0%,0,1,1.0%,0
-absolute resolutions corporation,1,0.6%,0,0,0.0%,0,1,1.0%,0
-ncb management services inc,1,0.6%,0,0,0.0%,0,1,1.0%,0
-absolute resolutions investments llc,1,0.6%,0,0,0.0%,0,1,1.0%,0
-cvi sgp acquisition trust,1,0.6%,0,0,0.0%,0,1,1.0%,0
-jp morgan chase bank n.a.,1,0.6%,0,1,1.6%,0,0,0.0%,0
-national credit adjusters llc,1,0.6%,0,1,1.6%,0,0,0.0%,0
-kirksville missouri hospital co llc,1,0.6%,0,1,1.6%,0,0,0.0%,0
-mm finance llc,1,0.6%,0,1,1.6%,0,0,0.0%,0
-hannibal anesthesia associates llc,1,0.6%,0,1,1.6%,0,0,0.0%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+lvnv funding llc,30,18,12,18.4%,28.1%,12.1%,0,0,0,0%,0%,0%,3.3%,0.0%,8.3%,20.0%,5.6%,41.7%,40.0%,5.6%,91.7%
+midland credit management inc,19,4,15,11.7%,6.3%,15.2%,0,0,0,0%,0%,0%,5.3%,0.0%,6.7%,63.2%,75.0%,60.0%,89.5%,75.0%,93.3%
+consumer adjustment company inc,17,9,8,10.4%,14.1%,8.1%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,17.6%,11.1%,25.0%,88.2%,77.8%,100.0%
+portfolio recovery associates llc,16,2,14,9.8%,3.1%,14.1%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,50.0%,50.0%,87.5%,100.0%,85.7%
+hannibal regional hospital,10,0,10,6.1%,0.0%,10.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,40.0%,0%,40.0%,80.0%,0%,80.0%
+cavalry spv i llc,8,2,6,4.9%,3.1%,6.1%,0,0,0,0%,0%,0%,12.5%,0.0%,16.7%,25.0%,50.0%,16.7%,100.0%,100.0%,100.0%
+citibank na,6,3,3,3.7%,4.7%,3.0%,0,0,0,0%,0%,0%,16.7%,0.0%,33.3%,33.3%,0.0%,66.7%,66.7%,33.3%,100.0%
+kirksville missouri hospital company llc,4,2,2,2.5%,3.1%,2.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%,100.0%,100.0%,100.0%
+capital one bank (usa) na,4,1,3,2.5%,1.6%,3.0%,0,0,0,0%,0%,0%,25.0%,0.0%,33.3%,0.0%,0.0%,0.0%,75.0%,100.0%,66.7%
+bank of america na,4,1,3,2.5%,1.6%,3.0%,0,0,0,0%,0%,0%,25.0%,0.0%,33.3%,25.0%,0.0%,33.3%,75.0%,0.0%,100.0%
+jefferson capital systems llc,4,4,0,2.5%,6.3%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,25.0%,25.0%,0%
+jp morgan chase bank na,3,1,2,1.8%,1.6%,2.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,66.7%,0.0%,100.0%
+curl hark & holliday llc,3,0,3,1.8%,0.0%,3.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,33.3%,0%,33.3%,100.0%,0%,100.0%
+midland funding llc,3,0,3,1.8%,0.0%,3.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,33.3%,0%,33.3%,66.7%,0%,66.7%
+farmers cooperative services,2,1,1,1.2%,1.6%,1.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%,50.0%,0.0%,100.0%
+wasinger parham lc,2,0,2,1.2%,0.0%,2.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,50.0%,0%,50.0%,100.0%,0%,100.0%
+northeast missouri ambulatory surgery center llc,2,1,1,1.2%,1.6%,1.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,100.0%,0.0%,100.0%,100.0%,100.0%
+barclays bank delaware,1,0,1,0.6%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+northeast regional medical center,1,0,1,0.6%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+credit bureau services of iowa inc aao kah,1,0,1,0.6%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+northeast mo ambulatory surgery center llc,1,0,1,0.6%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+mm finance llc dba ez money check cashing,1,0,1,0.6%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+the hannibal clinic inc,1,0,1,0.6%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+fleer feeds inc,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+jpmorgan chase bank na,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,100.0%,100.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+discover bank,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+prairieland fs inc,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+credit corp solutions inc,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+cks prime investments llc,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+easy cash asap llc,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+citibank n a,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+consumer adjustment co,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+wakefield & associates inc,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+fleer feed. inc,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+crown asset management llc,1,0,1,0.6%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+absolute resolutions corporation,1,0,1,0.6%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+ncb management services inc,1,0,1,0.6%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+absolute resolutions investments llc,1,0,1,0.6%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cvi sgp acquisition trust,1,0,1,0.6%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+national credit adjusters llc,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+kirksville missouri hospital co llc,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+mm finance llc,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+hannibal anesthesia associates llc,1,1,0,0.6%,1.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%

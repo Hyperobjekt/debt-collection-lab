@@ -1,28 +1,28 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-hannibal regional hospital,35,28.2%,0,1,10.0%,0,34,29.8%,0
-midland credit management inc,15,12.1%,0,0,0.0%,0,15,13.2%,0
-lvnv funding llc,13,10.5%,0,3,30.0%,0,10,8.8%,0
-bank of america n a,8,6.5%,0,0,0.0%,0,8,7.0%,0
-portfolio recovery associates llc,7,5.6%,0,1,10.0%,0,6,5.3%,0
-midland funding llc,6,4.8%,0,0,0.0%,0,6,5.3%,0
-hannibal clinic operations llc,5,4.0%,0,0,0.0%,0,5,4.4%,0
-northeast mo ambulatory surgery center llc,5,4.0%,0,1,10.0%,0,4,3.5%,0
-curl hark & holliday llc,3,2.4%,0,0,0.0%,0,3,2.6%,0
-the hannibal clinic inc,3,2.4%,0,0,0.0%,0,3,2.6%,0
-citibank  n a,3,2.4%,0,2,20.0%,0,1,0.9%,0
-consumer adjustment company inc,2,1.6%,0,0,0.0%,0,2,1.8%,0
-velocity investments llc,2,1.6%,0,0,0.0%,0,2,1.8%,0
-capital one bank (usa) n.a.,2,1.6%,0,0,0.0%,0,2,1.8%,0
-northeast missouri ambulatory surgery center llc,2,1.6%,0,2,20.0%,0,0,0.0%,0
-citibank n.a.,2,1.6%,0,0,0.0%,0,2,1.8%,0
-jefferson capital systems llc,1,0.8%,0,0,0.0%,0,1,0.9%,0
-robey building supply llc,1,0.8%,0,0,0.0%,0,1,0.9%,0
-farmers cooperative services inc,1,0.8%,0,0,0.0%,0,1,0.9%,0
-sound health services p.c.,1,0.8%,0,0,0.0%,0,1,0.9%,0
-world finance corp,1,0.8%,0,0,0.0%,0,1,0.9%,0
-cavalry spv i llc,1,0.8%,0,0,0.0%,0,1,0.9%,0
-meek lumber yard dba meeks building center,1,0.8%,0,0,0.0%,0,1,0.9%,0
-randy sprock d.b.a. star farms,1,0.8%,0,0,0.0%,0,1,0.9%,0
-john fitzgibbon memorial hospital,1,0.8%,0,0,0.0%,0,1,0.9%,0
-jp morgan chase bank n.a.,1,0.8%,0,0,0.0%,0,1,0.9%,0
-creditone llc,1,0.8%,0,0,0.0%,0,1,0.9%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+hannibal regional hospital,35,1,34,28.2%,10.0%,29.8%,0,0,0,0%,0%,0%,5.7%,0.0%,5.9%,48.6%,100.0%,47.1%,97.1%,100.0%,97.1%
+midland credit management inc,15,0,15,12.1%,0.0%,13.2%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,46.7%,0%,46.7%,100.0%,0%,100.0%
+lvnv funding llc,13,3,10,10.5%,30.0%,8.8%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,53.8%,33.3%,60.0%,100.0%,100.0%,100.0%
+bank of america n a,8,0,8,6.5%,0.0%,7.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,75.0%,0%,75.0%,87.5%,0%,87.5%
+portfolio recovery associates llc,7,1,6,5.6%,10.0%,5.3%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+midland funding llc,6,0,6,4.8%,0.0%,5.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,50.0%,0%,50.0%,100.0%,0%,100.0%
+hannibal clinic operations llc,5,0,5,4.0%,0.0%,4.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,60.0%,0%,60.0%,100.0%,0%,100.0%
+northeast mo ambulatory surgery center llc,5,1,4,4.0%,10.0%,3.5%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,20.0%,0.0%,25.0%,100.0%,100.0%,100.0%
+curl hark & holliday llc,3,0,3,2.4%,0.0%,2.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,33.3%,0%,33.3%,100.0%,0%,100.0%
+the hannibal clinic inc,3,0,3,2.4%,0.0%,2.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,66.7%,0%,66.7%,100.0%,0%,100.0%
+citibank n a,3,2,1,2.4%,20.0%,0.9%,0,0,0,0%,0%,0%,33.3%,0.0%,100.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+consumer adjustment company inc,2,0,2,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+velocity investments llc,2,0,2,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+capital one bank (usa) na,2,0,2,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,50.0%,0%,50.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+northeast missouri ambulatory surgery center llc,2,2,0,1.6%,20.0%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+citibank na,2,0,2,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,50.0%,0%,50.0%,100.0%,0%,100.0%
+jefferson capital systems llc,1,0,1,0.8%,0.0%,0.9%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+robey building supply llc,1,0,1,0.8%,0.0%,0.9%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+farmers cooperative services inc,1,0,1,0.8%,0.0%,0.9%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+sound health services p.c.,1,0,1,0.8%,0.0%,0.9%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+world finance corp,1,0,1,0.8%,0.0%,0.9%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+cavalry spv i llc,1,0,1,0.8%,0.0%,0.9%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+meek lumber yard dba meeks building center,1,0,1,0.8%,0.0%,0.9%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+randy sprock d.b.a. star farms,1,0,1,0.8%,0.0%,0.9%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+john fitzgibbon memorial hospital,1,0,1,0.8%,0.0%,0.9%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jp morgan chase bank na,1,0,1,0.8%,0.0%,0.9%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+creditone llc,1,0,1,0.8%,0.0%,0.9%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%

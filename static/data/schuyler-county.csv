@@ -1,29 +1,27 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-kirksville missouri hospital company l.l.c,26,21.8%,0,20,44.4%,0,6,8.1%,0
-kmhc llc d/b/a nrmc,23,19.3%,0,0,0.0%,0,23,31.1%,0
-kirksville missouri hospital company l.l.c.,13,10.9%,0,5,11.1%,0,8,10.8%,0
-kirksville mo hospital company,8,6.7%,0,0,0.0%,0,8,10.8%,0
-portfolio recovery associates llc,7,5.9%,0,1,2.2%,0,6,8.1%,0
-lvnv funding llc,6,5.0%,0,3,6.7%,0,3,4.1%,0
-midland credit management inc,5,4.2%,0,3,6.7%,0,2,2.7%,0
-jefferson capital systems llc,3,2.5%,0,1,2.2%,0,2,2.7%,0
-wakefield & associates inc,3,2.5%,0,0,0.0%,0,3,4.1%,0
-capital one bank (usa) n.a.,3,2.5%,0,2,4.4%,0,1,1.4%,0
-kirksville missouri hospital co llc,3,2.5%,0,1,2.2%,0,2,2.7%,0
-lvnv funding llc a limited liability co,2,1.7%,0,1,2.2%,0,1,1.4%,0
-citibank n.a.,2,1.7%,0,2,4.4%,0,0,0.0%,0
-second round lp,1,0.8%,0,0,0.0%,0,1,1.4%,0
-onemain financial group llc,1,0.8%,0,0,0.0%,0,1,1.4%,0
-kirksville mo hospital co llc d/b/a ne regional medical,1,0.8%,0,1,2.2%,0,0,0.0%,0
-kirksville missouri hospital company llc,1,0.8%,0,0,0.0%,0,1,1.4%,0
-kmhc llc d/b/a nrmc petitioner,1,0.8%,0,0,0.0%,0,1,1.4%,0
-kirksville missouri hospital company l.l.c. d/b/a northeast,1,0.8%,0,0,0.0%,0,1,1.4%,0
-jp morgan chase bank n.a.,1,0.8%,0,0,0.0%,0,1,1.4%,0
-midland funding llc,1,0.8%,0,0,0.0%,0,1,1.4%,0
-moberly hospital company llc,1,0.8%,0,0,0.0%,0,1,1.4%,0
-cbs of iowa- ottumwa regional health center,1,0.8%,0,1,2.2%,0,0,0.0%,0
-kirksville missouri hospital co llc dba norhteast regional,1,0.8%,0,1,2.2%,0,0,0.0%,0
-velocity investments llc,1,0.8%,0,0,0.0%,0,1,1.4%,0
-u.s. bank national association,1,0.8%,0,1,2.2%,0,0,0.0%,0
-world acceptance corporation of missouri petitioner,1,0.8%,0,1,2.2%,0,0,0.0%,0
-cavalry spv i llc,1,0.8%,0,1,2.2%,0,0,0.0%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+kirksville missouri hospital company l.l.c,26,20,6,21.8%,44.4%,8.1%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,11.5%,5.0%,33.3%,76.9%,70.0%,100.0%
+kmhc llc d/b/a nrmc,23,0,23,19.3%,0.0%,31.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,21.7%,0%,21.7%,100.0%,0%,100.0%
+kirksville missouri hospital company llc,14,5,9,11.8%,11.1%,12.2%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,21.4%,20.0%,22.2%,78.6%,40.0%,100.0%
+kirksville mo hospital company,8,0,8,6.7%,0.0%,10.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,25.0%,0%,25.0%,100.0%,0%,100.0%
+lvnv funding llc,8,4,4,6.7%,8.9%,5.4%,0,0,0,0%,0%,0%,12.5%,25.0%,0.0%,25.0%,25.0%,25.0%,62.5%,25.0%,100.0%
+portfolio recovery associates llc,7,1,6,5.9%,2.2%,8.1%,0,0,0,0%,0%,0%,28.6%,0.0%,33.3%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+midland credit management inc,5,3,2,4.2%,6.7%,2.7%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,20.0%,33.3%,0.0%,60.0%,33.3%,100.0%
+jefferson capital systems llc,3,1,2,2.5%,2.2%,2.7%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,33.3%,100.0%,0.0%,100.0%,100.0%,100.0%
+wakefield & associates inc,3,0,3,2.5%,0.0%,4.1%,0,0,0,0%,0%,0%,33.3%,0%,33.3%,33.3%,0%,33.3%,100.0%,0%,100.0%
+capital one bank (usa) na,3,2,1,2.5%,4.4%,1.4%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,33.3%,50.0%,0.0%,66.7%,50.0%,100.0%
+kirksville missouri hospital co llc,3,1,2,2.5%,2.2%,2.7%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,66.7%,100.0%,50.0%,100.0%,100.0%,100.0%
+citibank na,2,2,0,1.7%,4.4%,0.0%,0,0,0,0%,0%,0%,50.0%,50.0%,0%,0.0%,0.0%,0%,50.0%,50.0%,0%
+second round lp,1,0,1,0.8%,0.0%,1.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+onemain financial group llc,1,0,1,0.8%,0.0%,1.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+kirksville mo hospital co llc d/b/a ne regional medical,1,1,0,0.8%,2.2%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+kmhc llc d/b/a nrmc petitioner,1,0,1,0.8%,0.0%,1.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+kirksville missouri hospital company llc d/b/a northeast,1,0,1,0.8%,0.0%,1.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jp morgan chase bank na,1,0,1,0.8%,0.0%,1.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+midland funding llc,1,0,1,0.8%,0.0%,1.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+moberly hospital company llc,1,0,1,0.8%,0.0%,1.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cbs of iowa- ottumwa regional health center,1,1,0,0.8%,2.2%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%
+kirksville missouri hospital co llc dba norhteast regional,1,1,0,0.8%,2.2%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%
+velocity investments llc,1,0,1,0.8%,0.0%,1.4%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+u.s. bank national association,1,1,0,0.8%,2.2%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+world acceptance corporation of missouri petitioner,1,1,0,0.8%,2.2%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+cavalry spv i llc,1,1,0,0.8%,2.2%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%

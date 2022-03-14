@@ -1,50 +1,49 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-lvnv funding llc,28,16.4%,0,11,40.7%,0,17,11.8%,0
-portfolio recovery associates llc,26,15.2%,0,1,3.7%,0,25,17.4%,0
-midland credit management llc,17,9.9%,0,2,7.4%,0,15,10.4%,0
-midland credit management inc,11,6.4%,0,1,3.7%,0,10,6.9%,0
-midland funding llc,7,4.1%,0,0,0.0%,0,7,4.9%,0
-cavalry spv i llc,6,3.5%,0,0,0.0%,0,6,4.2%,0
-hannibal regional hospital,5,2.9%,0,1,3.7%,0,4,2.8%,0
-wakefield &  associates inc,5,2.9%,0,0,0.0%,0,5,3.5%,0
-moberly hospital co llc,5,2.9%,0,0,0.0%,0,5,3.5%,0
-capital one bank (usa) n.a.,5,2.9%,0,0,0.0%,0,5,3.5%,0
-jefferson capital systems llc,5,2.9%,0,1,3.7%,0,4,2.8%,0
-td bank usa n.a.,4,2.3%,0,3,11.1%,0,1,0.7%,0
-velocity investments llc,3,1.8%,0,0,0.0%,0,3,2.1%,0
-la crosse lumber company / main,3,1.8%,0,0,0.0%,0,3,2.1%,0
-curl hark & holliday llc,2,1.2%,0,0,0.0%,0,2,1.4%,0
-jp morgan chase bank n.a.,2,1.2%,0,1,3.7%,0,1,0.7%,0
-citibank n.a.,2,1.2%,0,0,0.0%,0,2,1.4%,0
-credit corp solutions inc,2,1.2%,0,0,0.0%,0,2,1.4%,0
-moberly hospital company llc d/b/a moberly regional med,2,1.2%,0,1,3.7%,0,1,0.7%,0
-bank of america n.a.,2,1.2%,0,0,0.0%,0,2,1.4%,0
-laubert's auto sales llc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-the ferman law group llc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-sun loan company missouri no 2 inc a corporation,1,0.6%,0,0,0.0%,0,1,0.7%,0
-barclays bank delaware,1,0.6%,0,0,0.0%,0,1,0.7%,0
-moberly regional medical center,1,0.6%,0,0,0.0%,0,1,0.7%,0
-saint louis university d/b/a slucare,1,0.6%,0,0,0.0%,0,1,0.7%,0
-velocity investments,1,0.6%,0,0,0.0%,0,1,0.7%,0
-first financial investment fund iii llc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-the central trust bank,1,0.6%,0,0,0.0%,0,1,0.7%,0
-kirksville missouri hospital company llc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-pike county r-iii school district,1,0.6%,0,0,0.0%,0,1,0.7%,0
-cash link usa llc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-ncb management services inc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-jh met subsidiary b liquidating trust,1,0.6%,0,0,0.0%,0,1,0.7%,0
-peak farms,1,0.6%,0,0,0.0%,0,1,0.7%,0
-moberly hospital company llc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-the hannibal clinic inc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-credit one llc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-absolute resolutions investments llc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-pike county memorial hospital,1,0.6%,0,1,3.7%,0,0,0.0%,0
-city of laddonia,1,0.6%,0,0,0.0%,0,1,0.7%,0
-capital region medical center d/b/a capital region physician,1,0.6%,0,0,0.0%,0,1,0.7%,0
-mexico cardiovascular associates llc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-consumer adjustment company inc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-mhc llc d/b/a mrmc,1,0.6%,0,0,0.0%,0,1,0.7%,0
-jpmorgan chase bank n.a.,1,0.6%,0,1,3.7%,0,0,0.0%,0
-john j coyne and terrance hamilton,1,0.6%,0,1,3.7%,0,0,0.0%,0
-columbia orthopaedic group l.l.p.,1,0.6%,0,1,3.7%,0,0,0.0%,0
-saint louis university,1,0.6%,0,1,3.7%,0,0,0.0%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+lvnv funding llc,28,11,17,16.4%,40.7%,11.8%,0,0,0,0%,0%,0%,3.6%,0.0%,5.9%,57.1%,72.7%,47.1%,96.4%,90.9%,100.0%
+midland credit management inc,28,3,25,16.4%,11.1%,17.4%,0,0,0,0%,0%,0%,10.7%,33.3%,8.0%,42.9%,33.3%,44.0%,85.7%,66.7%,88.0%
+portfolio recovery associates llc,26,1,25,15.2%,3.7%,17.4%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,15.4%,0.0%,16.0%,96.2%,100.0%,96.0%
+midland funding llc,7,0,7,4.1%,0.0%,4.9%,0,0,0,0%,0%,0%,14.3%,0%,14.3%,42.9%,0%,42.9%,100.0%,0%,100.0%
+cavalry spv i llc,6,0,6,3.5%,0.0%,4.2%,0,0,0,0%,0%,0%,33.3%,0%,33.3%,16.7%,0%,16.7%,83.3%,0%,83.3%
+hannibal regional hospital,5,1,4,2.9%,3.7%,2.8%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,40.0%,0.0%,50.0%,100.0%,100.0%,100.0%
+wakefield & associates inc,5,0,5,2.9%,0.0%,3.5%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,40.0%,0%,40.0%,100.0%,0%,100.0%
+moberly hospital co llc,5,0,5,2.9%,0.0%,3.5%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+capital one bank (usa) na,5,0,5,2.9%,0.0%,3.5%,0,0,0,0%,0%,0%,40.0%,0%,40.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jefferson capital systems llc,5,1,4,2.9%,3.7%,2.8%,0,0,0,0%,0%,0%,20.0%,0.0%,25.0%,40.0%,0.0%,50.0%,100.0%,100.0%,100.0%
+td bank usa na,4,3,1,2.3%,11.1%,0.7%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,75.0%,66.7%,100.0%
+velocity investments llc,3,0,3,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,33.3%,0%,33.3%,100.0%,0%,100.0%
+la crosse lumber company / main,3,0,3,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+curl hark & holliday llc,2,0,2,1.2%,0.0%,1.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jp morgan chase bank na,2,1,1,1.2%,3.7%,0.7%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,100.0%,0.0%,100.0%,100.0%,100.0%
+citibank na,2,0,2,1.2%,0.0%,1.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,50.0%,0%,50.0%,100.0%,0%,100.0%
+credit corp solutions inc,2,0,2,1.2%,0.0%,1.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,50.0%,0%,50.0%,100.0%,0%,100.0%
+moberly hospital company llc d/b/a moberly regional med,2,1,1,1.2%,3.7%,0.7%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+bank of america na,2,0,2,1.2%,0.0%,1.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+laubert's auto sales llc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+the ferman law group llc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+sun loan company missouri no 2 inc a corporation,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+barclays bank delaware,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+moberly regional medical center,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+saint louis university d/b/a slucare,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+velocity investments,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+first financial investment fund iii llc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+the central trust bank,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+kirksville missouri hospital company llc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+pike county r-iii school district,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cash link usa llc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+ncb management services inc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jh met subsidiary b liquidating trust,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+peak farms,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+moberly hospital company llc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+the hannibal clinic inc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+credit one llc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+absolute resolutions investments llc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+pike county memorial hospital,1,1,0,0.6%,3.7%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+city of laddonia,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+capital region medical center d/b/a capital region physician,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+mexico cardiovascular associates llc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+consumer adjustment company inc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+mhc llc d/b/a mrmc,1,0,1,0.6%,0.0%,0.7%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jpmorgan chase bank na,1,1,0,0.6%,3.7%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+john j coyne and terrance hamilton,1,1,0,0.6%,3.7%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%
+columbia orthopaedic group l.l.p.,1,1,0,0.6%,3.7%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%
+saint louis university,1,1,0,0.6%,3.7%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%

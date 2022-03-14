@@ -1,7 +1,7 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-professional credit management inc,3,33.3%,0,0,NaN%,0,3,33.3%,0
-heights finance corporation,2,22.2%,0,0,NaN%,0,2,22.2%,0
-wasinger parham lc,1,11.1%,0,0,NaN%,0,1,11.1%,0
-professional credit management inc petitioner,1,11.1%,0,0,NaN%,0,1,11.1%,0
-lvnv funding llc,1,11.1%,0,0,NaN%,0,1,11.1%,0
-chas c meek lumber co of branson d/b/a meeks building center,1,11.1%,0,0,NaN%,0,1,11.1%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+professional credit management inc,3,0,3,33.3%,0%,33.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+heights finance corporation,2,0,2,22.2%,0%,22.2%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,50.0%,0%,50.0%,100.0%,0%,100.0%
+wasinger parham lc,1,0,1,11.1%,0%,11.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+professional credit management inc petitioner,1,0,1,11.1%,0%,11.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+lvnv funding llc,1,0,1,11.1%,0%,11.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+chas c meek lumber co of branson d/b/a meeks building center,1,0,1,11.1%,0%,11.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%

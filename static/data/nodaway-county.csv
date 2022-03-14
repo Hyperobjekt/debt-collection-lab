@@ -1,43 +1,42 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-midwestern health management inc,135,47.0%,0,66,50.8%,0,69,43.9%,0
-lvnv funding llc,31,10.8%,0,14,10.8%,0,17,10.8%,0
-portfolio recovery associates llc,16,5.6%,0,2,1.5%,0,14,8.9%,0
-midland funding llc,14,4.9%,0,0,0.0%,0,14,8.9%,0
-midland credit manag,11,3.8%,0,11,8.5%,0,0,0.0%,0
-midwestern health management inc - c/o david schmitt,9,3.1%,0,9,6.9%,0,0,0.0%,0
-capital one bank (usa) n.a.,7,2.4%,0,5,3.8%,0,2,1.3%,0
-midland credit management inc-ia,7,2.4%,0,1,0.8%,0,6,3.8%,0
-mm finance llc,6,2.1%,0,2,1.5%,0,4,2.5%,0
-ozark advances - maryville,4,1.4%,0,0,0.0%,0,4,2.5%,0
-cavalry spv i llc,4,1.4%,0,2,1.5%,0,2,1.3%,0
-jefferson capital systems llc,3,1.0%,0,1,0.8%,0,2,1.3%,0
-clear recovery inc,3,1.0%,0,2,1.5%,0,1,0.6%,0
-citibank n.a.,3,1.0%,0,2,1.5%,0,1,0.6%,0
-ozark advances llc (d/b/a maryville quick cash),2,0.7%,0,0,0.0%,0,2,1.3%,0
-cavalry spv i llc - st louis,2,0.7%,0,1,0.8%,0,1,0.6%,0
-lawrence memorial hospital,2,0.7%,0,0,0.0%,0,2,1.3%,0
-cvi sgp acquisition trust,2,0.7%,0,1,0.8%,0,1,0.6%,0
-velocity investments llc,2,0.7%,0,1,0.8%,0,1,0.6%,0
-jefferson capital systems - chicago il,2,0.7%,0,2,1.5%,0,0,0.0%,0
-vintage landing condominium poa  inc,1,0.3%,0,0,0.0%,0,1,0.6%,0
-midland credit management,1,0.3%,0,0,0.0%,0,1,0.6%,0
-title lenders of missouri inc,1,0.3%,0,0,0.0%,0,1,0.6%,0
-mercury surgery center llc,1,0.3%,0,0,0.0%,0,1,0.6%,0
-td bank usa n.a. - st louis,1,0.3%,0,0,0.0%,0,1,0.6%,0
-ozark advances llc (d/b/a maryville quick cash) petitioner,1,0.3%,0,0,0.0%,0,1,0.6%,0
-barclays bank delaware - st louis,1,0.3%,0,0,0.0%,0,1,0.6%,0
-novus ag llc,1,0.3%,0,0,0.0%,0,1,0.6%,0
-pruitt marc,1,0.3%,0,0,0.0%,0,1,0.6%,0
-tiffany care centers inc petitioner,1,0.3%,0,0,0.0%,0,1,0.6%,0
-bearcat lumber company inc,1,0.3%,0,0,0.0%,0,1,0.6%,0
-midland credit management inc,1,0.3%,0,0,0.0%,0,1,0.6%,0
-crown asset management llc,1,0.3%,0,0,0.0%,0,1,0.6%,0
-credit corp solutions inc,1,0.3%,0,0,0.0%,0,1,0.6%,0
-second round sub llc,1,0.3%,0,1,0.8%,0,0,0.0%,0
-harrison county community hospital,1,0.3%,0,1,0.8%,0,0,0.0%,0
-bank of america n.a.,1,0.3%,0,1,0.8%,0,0,0.0%,0
-mercury surgery center l.l.c.,1,0.3%,0,1,0.8%,0,0,0.0%,0
-northwest mo truck & trailer repair inc,1,0.3%,0,1,0.8%,0,0,0.0%,0
-absolute resolutions investments llc,1,0.3%,0,1,0.8%,0,0,0.0%,0
-harrison county community hospital - bethany mo,1,0.3%,0,1,0.8%,0,0,0.0%,0
-u.s. bank national association,1,0.3%,0,1,0.8%,0,0,0.0%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+midwestern health management inc,135,66,69,47.0%,50.8%,43.9%,0,0,0,0%,0%,0%,2.2%,1.5%,2.9%,30.4%,27.3%,33.3%,85.9%,71.2%,100.0%
+lvnv funding llc,31,14,17,10.8%,10.8%,10.8%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,38.7%,35.7%,41.2%,74.2%,42.9%,100.0%
+portfolio recovery associates llc,16,2,14,5.6%,1.5%,8.9%,0,0,0,0%,0%,0%,6.3%,0.0%,7.1%,25.0%,100.0%,14.3%,100.0%,100.0%,100.0%
+midland funding llc,14,0,14,4.9%,0.0%,8.9%,0,0,0,0%,0%,0%,7.1%,0%,7.1%,21.4%,0%,21.4%,100.0%,0%,100.0%
+midland credit manag,11,11,0,3.8%,8.5%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,18.2%,18.2%,0%,45.5%,45.5%,0%
+midwestern health management inc - c/o david schmitt,9,9,0,3.1%,6.9%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,33.3%,33.3%,0%
+capital one bank (usa) na,7,5,2,2.4%,3.8%,1.3%,0,0,0,0%,0%,0%,14.3%,20.0%,0.0%,0.0%,0.0%,0.0%,71.4%,60.0%,100.0%
+midland credit management inc-ia,7,1,6,2.4%,0.8%,3.8%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,57.1%,0.0%,66.7%,100.0%,100.0%,100.0%
+mm finance llc,6,2,4,2.1%,1.5%,2.5%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,100.0%,25.0%,100.0%,100.0%,100.0%
+ozark advances - maryville,4,0,4,1.4%,0.0%,2.5%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,75.0%,0%,75.0%,100.0%,0%,100.0%
+cavalry spv i llc,4,2,2,1.4%,1.5%,1.3%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,75.0%,100.0%,50.0%,100.0%,100.0%,100.0%
+jefferson capital systems llc,3,1,2,1.0%,0.8%,1.3%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,66.7%,0.0%,100.0%,100.0%,100.0%,100.0%
+clear recovery inc,3,2,1,1.0%,1.5%,0.6%,0,0,0,0%,0%,0%,33.3%,50.0%,0.0%,33.3%,0.0%,100.0%,66.7%,50.0%,100.0%
+citibank na,3,2,1,1.0%,1.5%,0.6%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,33.3%,0.0%,100.0%
+mercury surgery center llc,2,1,1,0.7%,0.8%,0.6%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,100.0%,0.0%,100.0%,100.0%,100.0%
+ozark advances llc (d/b/a maryville quick cash),2,0,2,0.7%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+cavalry spv i llc - st louis,2,1,1,0.7%,0.8%,0.6%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%
+lawrence memorial hospital,2,0,2,0.7%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,50.0%,0%,50.0%,100.0%,0%,100.0%
+cvi sgp acquisition trust,2,1,1,0.7%,0.8%,0.6%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%,50.0%,0.0%,100.0%
+velocity investments llc,2,1,1,0.7%,0.8%,0.6%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+jefferson capital systems - chicago il,2,2,0,0.7%,1.5%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,50.0%,50.0%,0%
+vintage landing condominium poa inc,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+midland credit management,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+title lenders of missouri inc,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+td bank usa na - st louis,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+ozark advances llc (d/b/a maryville quick cash) petitioner,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+barclays bank delaware - st louis,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+novus ag llc,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+pruitt marc,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+tiffany care centers inc petitioner,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+bearcat lumber company inc,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+midland credit management inc,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+crown asset management llc,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+credit corp solutions inc,1,0,1,0.3%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+second round sub llc,1,1,0,0.3%,0.8%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%
+harrison county community hospital,1,1,0,0.3%,0.8%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+bank of america na,1,1,0,0.3%,0.8%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+northwest mo truck & trailer repair inc,1,1,0,0.3%,0.8%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+absolute resolutions investments llc,1,1,0,0.3%,0.8%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+harrison county community hospital - bethany mo,1,1,0,0.3%,0.8%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%
+u.s. bank national association,1,1,0,0.3%,0.8%,0.0%,0,0,0,0%,0%,0%,100.0%,100.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%

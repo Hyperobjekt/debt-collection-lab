@@ -1,39 +1,37 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-lvnv funding llc,42,20.5%,0,14,35.9%,0,28,16.9%,0
-midland credit management inc,23,11.2%,0,2,5.1%,0,21,12.7%,0
-portfolio recovery associates llc,20,9.8%,0,2,5.1%,0,18,10.8%,0
-freeman health systems,19,9.3%,0,0,0.0%,0,19,11.4%,0
-freeman health system,19,9.3%,0,4,10.3%,0,15,9.0%,0
-midland funding llc,10,4.9%,0,3,7.7%,0,7,4.2%,0
-cavalry spv i llc,7,3.4%,0,1,2.6%,0,6,3.6%,0
-midland credit management llc,7,3.4%,0,1,2.6%,0,6,3.6%,0
-consumer adjustment company inc,5,2.4%,0,0,0.0%,0,5,3.0%,0
-jefferson capital system llc,5,2.4%,0,2,5.1%,0,3,1.8%,0
-capital one bank (usa) n.a.,4,2.0%,0,0,0.0%,0,4,2.4%,0
-cardinal loans llc d/b/a cash n go,4,2.0%,0,3,7.7%,0,1,0.6%,0
-cedar county memorial hospital,3,1.5%,0,0,0.0%,0,3,1.8%,0
-bank of america n.a.,3,1.5%,0,0,0.0%,0,3,1.8%,0
-jp morgan chase bank n.a.,2,1.0%,0,1,2.6%,0,1,0.6%,0
-td bank usa n.a.,2,1.0%,0,1,2.6%,0,1,0.6%,0
-second round sub llc,2,1.0%,0,0,0.0%,0,2,1.2%,0
-freeman surgical center llc,2,1.0%,0,1,2.6%,0,1,0.6%,0
-cash link usa,2,1.0%,0,0,0.0%,0,2,1.2%,0
-absolute resolutions investments llc,2,1.0%,0,0,0.0%,0,2,1.2%,0
-nevada medical clinic llc,2,1.0%,0,0,0.0%,0,2,1.2%,0
-lvnv funding llc as assignee of wells fargo,2,1.0%,0,0,0.0%,0,2,1.2%,0
-absolute resolutions corporation,2,1.0%,0,0,0.0%,0,2,1.2%,0
-clear recovery inc,2,1.0%,0,1,2.6%,0,1,0.6%,0
-barclays bank delaware,1,0.5%,0,0,0.0%,0,1,0.6%,0
-southeast kansas orthopedic clinic,1,0.5%,0,0,0.0%,0,1,0.6%,0
-community bank of el dorado springs,1,0.5%,0,0,0.0%,0,1,0.6%,0
-jp morgan chase bank na   chicago il,1,0.5%,0,0,0.0%,0,1,0.6%,0
-velocity investments llc,1,0.5%,0,0,0.0%,0,1,0.6%,0
-metropolitan st. louis sewer district,1,0.5%,0,0,0.0%,0,1,0.6%,0
-mm finance llc,1,0.5%,0,0,0.0%,0,1,0.6%,0
-northwest arkansas hospital llc,1,0.5%,0,0,0.0%,0,1,0.6%,0
-credit corp solutions inc,1,0.5%,0,1,2.6%,0,0,0.0%,0
-university of kansas hospital,1,0.5%,0,1,2.6%,0,0,0.0%,0
-meeks lumber yard inc,1,0.5%,0,0,0.0%,0,1,0.6%,0
-world acceptance corp,1,0.5%,0,0,0.0%,0,1,0.6%,0
-jamie paul dmd ms llc,1,0.5%,0,0,0.0%,0,1,0.6%,0
-ozark tri-county health care consortium,1,0.5%,0,1,2.6%,0,0,0.0%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+lvnv funding llc,44,14,30,21.5%,35.9%,18.1%,0,0,0,0%,0%,0%,2.3%,0.0%,3.3%,25.0%,35.7%,20.0%,90.9%,85.7%,93.3%
+midland credit management inc,30,3,27,14.6%,7.7%,16.3%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,13.3%,0.0%,14.8%,90.0%,33.3%,96.3%
+portfolio recovery associates llc,20,2,18,9.8%,5.1%,10.8%,0,0,0,0%,0%,0%,5.0%,0.0%,5.6%,10.0%,0.0%,11.1%,95.0%,100.0%,94.4%
+freeman health systems,19,0,19,9.3%,0.0%,11.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,47.4%,0%,47.4%,100.0%,0%,100.0%
+freeman health system,19,4,15,9.3%,10.3%,9.0%,0,0,0,0%,0%,0%,10.5%,0.0%,13.3%,42.1%,50.0%,40.0%,89.5%,75.0%,93.3%
+midland funding llc,10,3,7,4.9%,7.7%,4.2%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,40.0%,33.3%,42.9%,90.0%,66.7%,100.0%
+cavalry spv i llc,7,1,6,3.4%,2.6%,3.6%,0,0,0,0%,0%,0%,28.6%,0.0%,33.3%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+consumer adjustment company inc,5,0,5,2.4%,0.0%,3.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,20.0%,0%,20.0%,100.0%,0%,100.0%
+jefferson capital system llc,5,2,3,2.4%,5.1%,1.8%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,40.0%,0.0%,66.7%,80.0%,50.0%,100.0%
+capital one bank (usa) na,4,0,4,2.0%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cardinal loans llc d/b/a cash n go,4,3,1,2.0%,7.7%,0.6%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,25.0%,33.3%,0.0%,100.0%,100.0%,100.0%
+cedar county memorial hospital,3,0,3,1.5%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,66.7%,0%,66.7%,100.0%,0%,100.0%
+bank of america na,3,0,3,1.5%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,66.7%,0%,66.7%
+jp morgan chase bank na,2,1,1,1.0%,2.6%,0.6%,0,0,0,0%,0%,0%,50.0%,0.0%,100.0%,50.0%,100.0%,0.0%,100.0%,100.0%,100.0%
+td bank usa na,2,1,1,1.0%,2.6%,0.6%,0,0,0,0%,0%,0%,50.0%,0.0%,100.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+second round sub llc,2,0,2,1.0%,0.0%,1.2%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+freeman surgical center llc,2,1,1,1.0%,2.6%,0.6%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%,100.0%,100.0%,100.0%
+cash link usa,2,0,2,1.0%,0.0%,1.2%,0,0,0,0%,0%,0%,50.0%,0%,50.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+absolute resolutions investments llc,2,0,2,1.0%,0.0%,1.2%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+nevada medical clinic llc,2,0,2,1.0%,0.0%,1.2%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+absolute resolutions corporation,2,0,2,1.0%,0.0%,1.2%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+clear recovery inc,2,1,1,1.0%,2.6%,0.6%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+barclays bank delaware,1,0,1,0.5%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+southeast kansas orthopedic clinic,1,0,1,0.5%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+community bank of el dorado springs,1,0,1,0.5%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+jp morgan chase bank na  chicago il,1,0,1,0.5%,0.0%,0.6%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+velocity investments llc,1,0,1,0.5%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+metropolitan st louis sewer district,1,0,1,0.5%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+mm finance llc,1,0,1,0.5%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+northwest arkansas hospital llc,1,0,1,0.5%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+credit corp solutions inc,1,1,0,0.5%,2.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+university of kansas hospital,1,1,0,0.5%,2.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+meeks lumber yard inc,1,0,1,0.5%,0.0%,0.6%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+world acceptance corp,1,0,1,0.5%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+jamie paul dmd ms llc,1,0,1,0.5%,0.0%,0.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+ozark tri-county health care consortium,1,1,0,0.5%,2.6%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%

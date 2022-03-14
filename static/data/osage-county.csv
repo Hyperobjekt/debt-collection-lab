@@ -1,28 +1,27 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-capital region medical center,42,36.2%,0,2,13.3%,0,40,39.6%,0
-midland credit management inc,10,8.6%,0,0,0.0%,0,10,9.9%,0
-portfolio recovery associates llc,10,8.6%,0,1,6.7%,0,9,8.9%,0
-lvnv funding llc,9,7.8%,0,3,20.0%,0,6,5.9%,0
-consumer adjustment company inc,9,7.8%,0,1,6.7%,0,8,7.9%,0
-midland funding llc,5,4.3%,0,0,0.0%,0,5,5.0%,0
-capital region medical center - kansas city mo,5,4.3%,0,2,13.3%,0,3,3.0%,0
-ozark central ambulance district,4,3.4%,0,0,0.0%,0,4,4.0%,0
-wakefield & associates inc,2,1.7%,0,1,6.7%,0,1,1.0%,0
-cavalry spv i llc,2,1.7%,0,1,6.7%,0,1,1.0%,0
-lvnv funding llc - st louis,2,1.7%,0,0,0.0%,0,2,2.0%,0
-velocity investments llc,1,0.9%,0,0,0.0%,0,1,1.0%,0
-capital one bank (usa) na,1,0.9%,0,0,0.0%,0,1,1.0%,0
-osage ambulance district,1,0.9%,0,0,0.0%,0,1,1.0%,0
-second round lp,1,0.9%,0,0,0.0%,0,1,1.0%,0
-credit corp solutions inc,1,0.9%,0,0,0.0%,0,1,1.0%,0
-bank of america n.a.,1,0.9%,0,0,0.0%,0,1,1.0%,0
-hermann area district hospital,1,0.9%,0,0,0.0%,0,1,1.0%,0
-little hills healthcare llc,1,0.9%,0,0,0.0%,0,1,1.0%,0
-saint louis university,1,0.9%,0,0,0.0%,0,1,1.0%,0
-citibank n.a.,1,0.9%,0,0,0.0%,0,1,1.0%,0
-consumer adjustment co inc,1,0.9%,0,0,0.0%,0,1,1.0%,0
-freeman health system,1,0.9%,0,0,0.0%,0,1,1.0%,0
-logan lori ann,1,0.9%,0,1,6.7%,0,0,0.0%,0
-ccdf llc dba flexicash,1,0.9%,0,1,6.7%,0,0,0.0%,0
-td bank usa na,1,0.9%,0,1,6.7%,0,0,0.0%,0
-tower loan of mo llc d/b/a tower loan of jefferson city,1,0.9%,0,1,6.7%,0,0,0.0%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+capital region medical center,42,2,40,36.2%,13.3%,39.6%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,35.7%,0.0%,37.5%,100.0%,100.0%,100.0%
+lvnv funding llc,11,3,8,9.5%,20.0%,7.9%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,63.6%,33.3%,75.0%,100.0%,100.0%,100.0%
+midland credit management inc,10,0,10,8.6%,0.0%,9.9%,0,0,0,0%,0%,0%,10.0%,0%,10.0%,30.0%,0%,30.0%,100.0%,0%,100.0%
+portfolio recovery associates llc,10,1,9,8.6%,6.7%,8.9%,0,0,0,0%,0%,0%,10.0%,100.0%,0.0%,40.0%,100.0%,33.3%,100.0%,100.0%,100.0%
+consumer adjustment company inc,9,1,8,7.8%,6.7%,7.9%,0,0,0,0%,0%,0%,11.1%,100.0%,0.0%,55.6%,0.0%,62.5%,100.0%,100.0%,100.0%
+midland funding llc,5,0,5,4.3%,0.0%,5.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,40.0%,0%,40.0%,100.0%,0%,100.0%
+capital region medical center - kansas city mo,5,2,3,4.3%,13.3%,3.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,80.0%,100.0%,66.7%
+ozark central ambulance district,4,0,4,3.4%,0.0%,4.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,25.0%,0%,25.0%,100.0%,0%,100.0%
+wakefield & associates inc,2,1,1,1.7%,6.7%,1.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%,100.0%,100.0%,100.0%
+cavalry spv i llc,2,1,1,1.7%,6.7%,1.0%,0,0,0,0%,0%,0%,50.0%,0.0%,100.0%,50.0%,100.0%,0.0%,100.0%,100.0%,100.0%
+velocity investments llc,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+capital one bank (usa) na,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+osage ambulance district,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+second round lp,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+credit corp solutions inc,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+bank of america na,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+hermann area district hospital,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+little hills healthcare llc,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+saint louis university,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+citibank na,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+consumer adjustment co inc,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+freeman health system,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+logan lori ann,1,1,0,0.9%,6.7%,0.0%,0,0,0,0%,0%,0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+ccdf llc dba flexicash,1,1,0,0.9%,6.7%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+td bank usa na,1,1,0,0.9%,6.7%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+tower loan of mo llc d/b/a tower loan of jefferson city,1,1,0,0.9%,6.7%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%

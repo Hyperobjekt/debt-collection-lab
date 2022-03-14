@@ -1,28 +1,27 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-midland credit management inc,13,15.7%,0,1,20.0%,0,12,15.4%,0
-lvnv funding llc,11,13.3%,0,1,20.0%,0,10,12.8%,0
-portfolio recovery associates llc,10,12.0%,0,0,0.0%,0,10,12.8%,0
-madison medical center -faberbrand,8,9.6%,0,0,0.0%,0,8,10.3%,0
-madison medical center,7,8.4%,0,1,20.0%,0,6,7.7%,0
-midland funding llc,4,4.8%,0,0,0.0%,0,4,5.1%,0
-barclays bank delaware,3,3.6%,0,0,0.0%,0,3,3.8%,0
-cavalry spv i llc,3,3.6%,0,1,20.0%,0,2,2.6%,0
-carroll county memorial hospital,2,2.4%,0,0,0.0%,0,2,2.6%,0
-st. louis university,2,2.4%,0,0,0.0%,0,2,2.6%,0
-poplar bluff regional medical center-faber brand,2,2.4%,0,0,0.0%,0,2,2.6%,0
-portfolio recovery associates llc - blitt & gaines,2,2.4%,0,0,0.0%,0,2,2.6%,0
-lvnv funding llc a limited liability co,2,2.4%,0,0,0.0%,0,2,2.6%,0
-dockins broadcast group llc,1,1.2%,0,0,0.0%,0,1,1.3%,0
-roberts & roberts llc,1,1.2%,0,0,0.0%,0,1,1.3%,0
-taboola inc,1,1.2%,0,0,0.0%,0,1,1.3%,0
-midland credit mgt,1,1.2%,0,0,0.0%,0,1,1.3%,0
-td bank usa n.a.,1,1.2%,0,0,0.0%,0,1,1.3%,0
-capital one bank petitioner,1,1.2%,0,0,0.0%,0,1,1.3%,0
-poplar bluff regional medical center llc,1,1.2%,0,0,0.0%,0,1,1.3%,0
-accounts management services a/a/o gjjpmha,1,1.2%,0,0,0.0%,0,1,1.3%,0
-credit corp solutions inc,1,1.2%,0,0,0.0%,0,1,1.3%,0
-jefferson capital systems llc,1,1.2%,0,0,0.0%,0,1,1.3%,0
-midland credit management inc a corporation,1,1.2%,0,0,0.0%,0,1,1.3%,0
-citibank na - oklahoma,1,1.2%,0,0,0.0%,0,1,1.3%,0
-perry county memorial hospital,1,1.2%,0,0,0.0%,0,1,1.3%,0
-jp morgan chase bank n.a.,1,1.2%,0,1,20.0%,0,0,0.0%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+lvnv funding llc,13,1,12,15.7%,20.0%,15.4%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,23.1%,0.0%,25.0%,92.3%,100.0%,91.7%
+midland credit management inc,13,1,12,15.7%,20.0%,15.4%,0,0,0,0%,0%,0%,7.7%,0.0%,8.3%,30.8%,0.0%,33.3%,92.3%,100.0%,91.7%
+portfolio recovery associates llc,10,0,10,12.0%,0.0%,12.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,70.0%,0%,70.0%,100.0%,0%,100.0%
+madison medical center -faberbrand,8,0,8,9.6%,0.0%,10.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,37.5%,0%,37.5%,87.5%,0%,87.5%
+madison medical center,7,1,6,8.4%,20.0%,7.7%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,14.3%,0.0%,16.7%,100.0%,100.0%,100.0%
+midland funding llc,4,0,4,4.8%,0.0%,5.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+barclays bank delaware,3,0,3,3.6%,0.0%,3.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cavalry spv i llc,3,1,2,3.6%,20.0%,2.6%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,33.3%,0.0%,50.0%,100.0%,100.0%,100.0%
+carroll county memorial hospital,2,0,2,2.4%,0.0%,2.6%,0,0,0,0%,0%,0%,50.0%,0%,50.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+st louis university,2,0,2,2.4%,0.0%,2.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+poplar bluff regional medical center-faber brand,2,0,2,2.4%,0.0%,2.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+portfolio recovery associates llc - blitt & gaines,2,0,2,2.4%,0.0%,2.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,50.0%,0%,50.0%,100.0%,0%,100.0%
+dockins broadcast group llc,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+roberts & roberts llc,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+taboola inc,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+midland credit mgt,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+td bank usa na,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+capital one bank petitioner,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+poplar bluff regional medical center llc,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+accounts management services a/a/o gjjpmha,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+credit corp solutions inc,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jefferson capital systems llc,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+midland credit management inc a corporation,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+citibank na - oklahoma,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+perry county memorial hospital,1,0,1,1.2%,0.0%,1.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+jp morgan chase bank na,1,1,0,1.2%,20.0%,0.0%,0,0,0,0%,0%,0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%

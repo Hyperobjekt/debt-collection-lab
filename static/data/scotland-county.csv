@@ -1,30 +1,29 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-lvnv funding llc,8,13.3%,0,4,21.1%,0,4,9.8%,0
-wakefield & associates inc,7,11.7%,0,0,0.0%,0,7,17.1%,0
-portfolio recovery associates llc,6,10.0%,0,2,10.5%,0,4,9.8%,0
-prairieland fs inc,5,8.3%,0,2,10.5%,0,3,7.3%,0
-kirksville missouri hospital company l.l.c.,3,5.0%,0,1,5.3%,0,2,4.9%,0
-midland credit management inc,3,5.0%,0,1,5.3%,0,2,4.9%,0
-kirksville missouri hospital co llc,3,5.0%,0,0,0.0%,0,3,7.3%,0
-capital one bank (usa) n.a.,3,5.0%,0,3,15.8%,0,0,0.0%,0
-wakefield &associate inc,2,3.3%,0,0,0.0%,0,2,4.9%,0
-northeast regional medical center,1,1.7%,0,0,0.0%,0,1,2.4%,0
-hannibal clinic operations llc,1,1.7%,0,0,0.0%,0,1,2.4%,0
-curl hark & holliday llc,1,1.7%,0,0,0.0%,0,1,2.4%,0
-meek lumber yard dba meeks building center,1,1.7%,0,0,0.0%,0,1,2.4%,0
-portfolio recovery associates,1,1.7%,0,0,0.0%,0,1,2.4%,0
-kmhc llc d/b/a nrmc,1,1.7%,0,0,0.0%,0,1,2.4%,0
-bank of america n.a.,1,1.7%,0,0,0.0%,0,1,2.4%,0
-citibank n.a.,1,1.7%,0,0,0.0%,0,1,2.4%,0
-velocity investments llc,1,1.7%,0,0,0.0%,0,1,2.4%,0
-success bank,1,1.7%,0,0,0.0%,0,1,2.4%,0
-second round sub llc,1,1.7%,0,0,0.0%,0,1,2.4%,0
-mfa oil company,1,1.7%,0,0,0.0%,0,1,2.4%,0
-jefferson capital systems llc,1,1.7%,0,0,0.0%,0,1,2.4%,0
-midland funding llc,1,1.7%,0,0,0.0%,0,1,2.4%,0
-easy cash asap llc,1,1.7%,0,1,5.3%,0,0,0.0%,0
-capital one n.a.,1,1.7%,0,1,5.3%,0,0,0.0%,0
-jpmorgan chase bank n.a.,1,1.7%,0,1,5.3%,0,0,0.0%,0
-cach llc,1,1.7%,0,1,5.3%,0,0,0.0%,0
-kirksville missouri hospital co llc d/b/a ne regional med,1,1.7%,0,1,5.3%,0,0,0.0%,0
-citibank na,1,1.7%,0,1,5.3%,0,0,0.0%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+lvnv funding llc,8,4,4,13.3%,21.1%,9.8%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,25.0%,25.0%,25.0%,75.0%,50.0%,100.0%
+wakefield & associates inc,7,0,7,11.7%,0.0%,17.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,28.6%,0%,28.6%,100.0%,0%,100.0%
+portfolio recovery associates llc,6,2,4,10.0%,10.5%,9.8%,0,0,0,0%,0%,0%,33.3%,0.0%,50.0%,16.7%,50.0%,0.0%,100.0%,100.0%,100.0%
+prairieland fs inc,5,2,3,8.3%,10.5%,7.3%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,20.0%,0.0%,33.3%,100.0%,100.0%,100.0%
+kirksville missouri hospital company llc,3,1,2,5.0%,5.3%,4.9%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+midland credit management inc,3,1,2,5.0%,5.3%,4.9%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,33.3%,0.0%,50.0%,66.7%,0.0%,100.0%
+kirksville missouri hospital co llc,3,0,3,5.0%,0.0%,7.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,33.3%,0%,33.3%,100.0%,0%,100.0%
+capital one bank (usa) na,3,3,0,5.0%,15.8%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,33.3%,33.3%,0%,100.0%,100.0%,0%
+wakefield &associate inc,2,0,2,3.3%,0.0%,4.9%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,50.0%,0%,50.0%,100.0%,0%,100.0%
+citibank na,2,1,1,3.3%,5.3%,2.4%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%
+northeast regional medical center,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+hannibal clinic operations llc,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+curl hark & holliday llc,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+meek lumber yard dba meeks building center,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+portfolio recovery associates,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+kmhc llc d/b/a nrmc,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+bank of america na,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+velocity investments llc,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+success bank,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+second round sub llc,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+mfa oil company,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jefferson capital systems llc,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+midland funding llc,1,0,1,1.7%,0.0%,2.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+easy cash asap llc,1,1,0,1.7%,5.3%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+capital one na,1,1,0,1.7%,5.3%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+jpmorgan chase bank na,1,1,0,1.7%,5.3%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+cach llc,1,1,0,1.7%,5.3%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%
+kirksville missouri hospital co llc d/b/a ne regional med,1,1,0,1.7%,5.3%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%

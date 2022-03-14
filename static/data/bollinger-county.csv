@@ -1,31 +1,31 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-southeast missouri hospital association,30,25.9%,0,5,25.0%,0,25,26.0%,0
-lvnv funding llc,16,13.8%,0,1,5.0%,0,15,15.6%,0
-perry county memorial hospital,9,7.8%,0,0,0.0%,0,9,9.4%,0
-portfolio recovery associates llc,8,6.9%,0,0,0.0%,0,8,8.3%,0
-madison medical center,7,6.0%,0,1,5.0%,0,6,6.3%,0
-jefferson capital systems llc,6,5.2%,0,0,0.0%,0,6,6.3%,0
-midland credit management inc,5,4.3%,0,3,15.0%,0,2,2.1%,0
-cbs llc a/a/o cape radiology group,4,3.4%,0,0,0.0%,0,4,4.2%,0
-credit bureau of columbia,3,2.6%,0,1,5.0%,0,2,2.1%,0
-poplar bluff regional medical center llc dba poplar bluff re,3,2.6%,0,2,10.0%,0,1,1.0%,0
-credit bureau services llc,3,2.6%,0,0,0.0%,0,3,3.1%,0
-cavalry spv i llc,2,1.7%,0,1,5.0%,0,1,1.0%,0
-midland credit management,2,1.7%,0,1,5.0%,0,1,1.0%,0
-ncb management services inc,2,1.7%,0,0,0.0%,0,2,2.1%,0
-credit bureau services inc,1,0.9%,0,0,0.0%,0,1,1.0%,0
-poplar bluff regional medical center,1,0.9%,0,0,0.0%,0,1,1.0%,0
-velocity investments llc,1,0.9%,0,0,0.0%,0,1,1.0%,0
-perry county health system d/b/a perry county memorial hosp,1,0.9%,0,0,0.0%,0,1,1.0%,0
-midland funding llc,1,0.9%,0,0,0.0%,0,1,1.0%,0
-credit bureau services llc aao jdh dds pc,1,0.9%,0,0,0.0%,0,1,1.0%,0
-credit bureau services llc as assignee of perryville surgica,1,0.9%,0,0,0.0%,0,1,1.0%,0
-cbs a/a/o cape radiol. group & cape radiology group i llc,1,0.9%,0,0,0.0%,0,1,1.0%,0
-cbs inc aaopcmh,1,0.9%,0,0,0.0%,0,1,1.0%,0
-citibank n.a.,1,0.9%,0,1,5.0%,0,0,0.0%,0
-credit bureau services l.l.c. as assignee of cape radiology,1,0.9%,0,0,0.0%,0,1,1.0%,0
-messmer jeffrey s,1,0.9%,0,0,0.0%,0,1,1.0%,0
-credit bureau,1,0.9%,0,1,5.0%,0,0,0.0%,0
-td bank usa n.a. (target),1,0.9%,0,1,5.0%,0,0,0.0%,0
-second round sub llc,1,0.9%,0,1,5.0%,0,0,0.0%,0
-wakefield & associates inc,1,0.9%,0,1,5.0%,0,0,0.0%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+southeast missouri hospital association,30,5,25,25.9%,25.0%,26.0%,0,0,0,0%,0%,0%,10.0%,0.0%,12.0%,26.7%,20.0%,28.0%,96.7%,80.0%,100.0%
+lvnv funding llc,16,1,15,13.8%,5.0%,15.6%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,37.5%,0.0%,40.0%,100.0%,100.0%,100.0%
+perry county memorial hospital,9,0,9,7.8%,0.0%,9.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,77.8%,0%,77.8%,100.0%,0%,100.0%
+portfolio recovery associates llc,8,0,8,6.9%,0.0%,8.3%,0,0,0,0%,0%,0%,12.5%,0%,12.5%,37.5%,0%,37.5%,100.0%,0%,100.0%
+madison medical center,7,1,6,6.0%,5.0%,6.3%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,57.1%,0.0%,66.7%,85.7%,0.0%,100.0%
+jefferson capital systems llc,6,0,6,5.2%,0.0%,6.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+midland credit management inc,5,3,2,4.3%,15.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,80.0%,66.7%,100.0%,100.0%,100.0%,100.0%
+cbs llc a/a/o cape radiology group,4,0,4,3.4%,0.0%,4.2%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,25.0%,0%,25.0%,100.0%,0%,100.0%
+credit bureau of columbia,3,1,2,2.6%,5.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,33.3%,0.0%,50.0%,66.7%,0.0%,100.0%
+poplar bluff regional medical center llc dba poplar bluff re,3,2,1,2.6%,10.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,33.3%,0.0%,100.0%
+credit bureau services llc,3,0,3,2.6%,0.0%,3.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,33.3%,0%,33.3%,100.0%,0%,100.0%
+cavalry spv i llc,2,1,1,1.7%,5.0%,1.0%,0,0,0,0%,0%,0%,50.0%,100.0%,0.0%,50.0%,0.0%,100.0%,100.0%,100.0%,100.0%
+midland credit management,2,1,1,1.7%,5.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%,100.0%,100.0%,100.0%
+ncb management services inc,2,0,2,1.7%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,50.0%,0%,50.0%,100.0%,0%,100.0%
+credit bureau services inc,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+poplar bluff regional medical center,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+velocity investments llc,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+perry county health system d/b/a perry county memorial hosp,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+midland funding llc,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+credit bureau services llc aao jdh dds pc,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+credit bureau services llc as assignee of perryville surgica,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+cbs a/a/o cape radiol. group & cape radiology group i llc,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cbs inc aaopcmh,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+citibank na,1,1,0,0.9%,5.0%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+credit bureau services llc as assignee of cape radiology,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+messmer jeffrey s,1,0,1,0.9%,0.0%,1.0%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+credit bureau,1,1,0,0.9%,5.0%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+td bank usa na (target),1,1,0,0.9%,5.0%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%
+second round sub llc,1,1,0,0.9%,5.0%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+wakefield & associates inc,1,1,0,0.9%,5.0%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%

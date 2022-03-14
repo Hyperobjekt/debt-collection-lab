@@ -1,26 +1,25 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-portfolio recovery associates llc,9,14.8%,0,0,0.0%,0,9,16.4%,0
-citibank n.a.,6,9.8%,0,0,0.0%,0,6,10.9%,0
-lvnv funding llc st louis,6,9.8%,0,5,83.3%,0,1,1.8%,0
-lvnv funding llc,5,8.2%,0,0,0.0%,0,5,9.1%,0
-midland funding llc,4,6.6%,0,0,0.0%,0,4,7.3%,0
-midland credit management inc,4,6.6%,0,0,0.0%,0,4,7.3%,0
-wakefield & associates inc,3,4.9%,0,0,0.0%,0,3,5.5%,0
-midland credit mgt,3,4.9%,0,1,16.7%,0,2,3.6%,0
-absolute resolutions investments llc,3,4.9%,0,0,0.0%,0,3,5.5%,0
-consumer adjustment company inc,2,3.3%,0,0,0.0%,0,2,3.6%,0
-jefferson capital systems llc chicago il,2,3.3%,0,0,0.0%,0,2,3.6%,0
-barclays bank delaware,1,1.6%,0,0,0.0%,0,1,1.8%,0
-st mary's medical center,1,1.6%,0,0,0.0%,0,1,1.8%,0
-cavalry spv i llc,1,1.6%,0,0,0.0%,0,1,1.8%,0
-uhg i llc,1,1.6%,0,0,0.0%,0,1,1.8%,0
-jefferson capital systems llc,1,1.6%,0,0,0.0%,0,1,1.8%,0
-portfolio recovery,1,1.6%,0,0,0.0%,0,1,1.8%,0
-sw baptist university,1,1.6%,0,0,0.0%,0,1,1.8%,0
-jp morgan chase bank -- chicago,1,1.6%,0,0,0.0%,0,1,1.8%,0
-crown assest management llc,1,1.6%,0,0,0.0%,0,1,1.8%,0
-bank of america n.a.,1,1.6%,0,0,0.0%,0,1,1.8%,0
-commerce bank na,1,1.6%,0,0,0.0%,0,1,1.8%,0
-cach llc,1,1.6%,0,0,0.0%,0,1,1.8%,0
-cooperative association no. 52 d/b/a bolivar farmers,1,1.6%,0,0,0.0%,0,1,1.8%,0
-department stores national bank,1,1.6%,0,0,0.0%,0,1,1.8%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+lvnv funding llc,11,5,6,18.0%,83.3%,10.9%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,36.4%,40.0%,33.3%,100.0%,100.0%,100.0%
+portfolio recovery associates llc,9,0,9,14.8%,0.0%,16.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,44.4%,0%,44.4%,100.0%,0%,100.0%
+citibank na,6,0,6,9.8%,0.0%,10.9%,0,0,0,0%,0%,0%,33.3%,0%,33.3%,0.0%,0%,0.0%,83.3%,0%,83.3%
+midland funding llc,4,0,4,6.6%,0.0%,7.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,50.0%,0%,50.0%,100.0%,0%,100.0%
+midland credit management inc,4,0,4,6.6%,0.0%,7.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,25.0%,0%,25.0%,100.0%,0%,100.0%
+wakefield & associates inc,3,0,3,4.9%,0.0%,5.5%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,66.7%,0%,66.7%,100.0%,0%,100.0%
+midland credit mgt,3,1,2,4.9%,16.7%,3.6%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+absolute resolutions investments llc,3,0,3,4.9%,0.0%,5.5%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,66.7%,0%,66.7%
+consumer adjustment company inc,2,0,2,3.3%,0.0%,3.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+jefferson capital systems llc chicago il,2,0,2,3.3%,0.0%,3.6%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+barclays bank delaware,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+st mary's medical center,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cavalry spv i llc,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+uhg i llc,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jefferson capital systems llc,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+portfolio recovery,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+sw baptist university,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jp morgan chase bank -- chicago,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+crown assest management llc,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+bank of america na,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+commerce bank na,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cach llc,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cooperative association no. 52 d/b/a bolivar farmers,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+department stores national bank,1,0,1,1.6%,0.0%,1.8%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%

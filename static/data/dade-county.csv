@@ -1,26 +1,22 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-lvnv funding llc,11,20.0%,0,4,50.0%,0,7,14.9%,0
-midland credit management inc,4,7.3%,0,0,0.0%,0,4,8.5%,0
-portfolio recovery associates llc,4,7.3%,0,0,0.0%,0,4,8.5%,0
-simmons bank,3,5.5%,0,0,0.0%,0,3,6.4%,0
-lvnv funding llc as assignee of wells fargo,3,5.5%,0,1,12.5%,0,2,4.3%,0
-freeman health system,3,5.5%,0,0,0.0%,0,3,6.4%,0
-bank of america n.a.,3,5.5%,0,0,0.0%,0,3,6.4%,0
-midland credit management llc,3,5.5%,0,1,12.5%,0,2,4.3%,0
-midland funding llc,3,5.5%,0,0,0.0%,0,3,6.4%,0
-cavalry spv i llc,2,3.6%,0,0,0.0%,0,2,4.3%,0
-southwest baptist university,2,3.6%,0,1,12.5%,0,1,2.1%,0
-jp morgan chase bank n.a.,1,1.8%,0,0,0.0%,0,1,2.1%,0
-cach llc,1,1.8%,0,0,0.0%,0,1,2.1%,0
-citibank n.a.,1,1.8%,0,0,0.0%,0,1,2.1%,0
-absolute resolutions investments llc,1,1.8%,0,0,0.0%,0,1,2.1%,0
-td bank usa n.a.,1,1.8%,0,0,0.0%,0,1,2.1%,0
-commerce bank a mo banking corp,1,1.8%,0,0,0.0%,0,1,2.1%,0
-capital one bank (usa) n.a.,1,1.8%,0,0,0.0%,0,1,2.1%,0
-lvnv funding llc a limited liability company,1,1.8%,0,0,0.0%,0,1,2.1%,0
-lvnv funding llc st louis,1,1.8%,0,0,0.0%,0,1,2.1%,0
-meek lumber yard inc dba/ meeks building center mt. vernon,1,1.8%,0,0,0.0%,0,1,2.1%,0
-jefferson capital system llc,1,1.8%,0,0,0.0%,0,1,2.1%,0
-midland credit management inc - 974 73rd st w des moines ia,1,1.8%,0,1,12.5%,0,0,0.0%,0
-crown asset management llc,1,1.8%,0,0,0.0%,0,1,2.1%,0
-freeman neosho hospital,1,1.8%,0,0,0.0%,0,1,2.1%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+lvnv funding llc,16,5,11,29.1%,62.5%,23.4%,0,0,0,0%,0%,0%,6.3%,0.0%,9.1%,18.8%,20.0%,18.2%,93.8%,80.0%,100.0%
+midland credit management inc,7,1,6,12.7%,12.5%,12.8%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,28.6%,0.0%,33.3%,100.0%,100.0%,100.0%
+portfolio recovery associates llc,4,0,4,7.3%,0.0%,8.5%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,25.0%,0%,25.0%,100.0%,0%,100.0%
+simmons bank,3,0,3,5.5%,0.0%,6.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,33.3%,0%,33.3%,66.7%,0%,66.7%
+freeman health system,3,0,3,5.5%,0.0%,6.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,66.7%,0%,66.7%
+bank of america na,3,0,3,5.5%,0.0%,6.4%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,33.3%,0%,33.3%,66.7%,0%,66.7%
+midland funding llc,3,0,3,5.5%,0.0%,6.4%,0,0,0,0%,0%,0%,33.3%,0%,33.3%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cavalry spv i llc,2,0,2,3.6%,0.0%,4.3%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,50.0%,0%,50.0%,100.0%,0%,100.0%
+southwest baptist university,2,1,1,3.6%,12.5%,2.1%,0,0,0,0%,0%,0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%
+jp morgan chase bank na,1,0,1,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cach llc,1,0,1,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,100.0%,0%,100.0%,100.0%,0%,100.0%
+citibank na,1,0,1,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+absolute resolutions investments llc,1,0,1,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+td bank usa na,1,0,1,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+commerce bank a mo banking corp,1,0,1,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+capital one bank (usa) na,1,0,1,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+meek lumber yard inc dba/ meeks building center mt. vernon,1,0,1,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jefferson capital system llc,1,0,1,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+midland credit management inc - 974 73rd st w des moines ia,1,1,0,1.8%,12.5%,0.0%,0,0,0,0%,0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%,100.0%,100.0%,0%
+crown asset management llc,1,0,1,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+freeman neosho hospital,1,0,1,1.8%,0.0%,2.1%,0,0,0,0%,0%,0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%

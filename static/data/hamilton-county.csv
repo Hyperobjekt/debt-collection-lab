@@ -1,564 +1,546 @@
-collector,count,percent_total,dollar_amount,count21,percent_total21,dollar_amount21,count20,percent_total20,dollar_amount20
-lvnv funding llc,577,12.0%,924.21,386,14.5%,924.21,191,8.9%,0
-midland credit management inc,561,11.7%,2525.04,297,11.2%,1001.03,264,12.3%,1524.01
-portfolio recovery associates llc,442,9.2%,4617.2300000000005,175,6.6%,3394.78,267,12.4%,1222.45
-capital one bank usa na,252,5.2%,0,167,6.3%,0,85,4.0%,0
-jefferson capital systems llc,165,3.4%,0,64,2.4%,0,101,4.7%,0
-cavalry spv i llc,163,3.4%,3931.48,87,3.3%,0,76,3.5%,3931.48
-discover bank,122,2.5%,212,95,3.6%,212,27,1.3%,0
-american express national bank,116,2.4%,424,87,3.3%,424,29,1.3%,0
-citibank na,109,2.3%,0,49,1.8%,0,60,2.8%,0
-crown asset management llc,104,2.2%,4467.46,52,2.0%,424,52,2.4%,4043.46
-bank of america na,102,2.1%,0,48,1.8%,0,54,2.5%,0
-discover bank c/o discover products inc,92,1.9%,0,50,1.9%,0,42,2.0%,0
-no plaintiff found,90,1.9%,233480.11,52,2.0%,25,38,1.8%,233455.11
-synchrony bank,76,1.6%,0,69,2.6%,0,7,0.3%,0
-onemain financial group llc,74,1.5%,212,41,1.5%,212,33,1.5%,0
-midland funding llc,66,1.4%,2097.13,5,0.2%,0,61,2.8%,2097.13
-mariner finance llc,54,1.1%,23696.97,38,1.4%,17113.1,16,0.7%,6583.87
-new world collections inc,53,1.1%,0,23,0.9%,0,30,1.4%,0
-td bank usa na,51,1.1%,0,49,1.8%,0,2,0.1%,0
-unifund ccr llc,46,1.0%,0,6,0.2%,0,40,1.9%,0
-capital one bank (usa) n.a.,46,1.0%,2799.17,46,1.7%,2799.17,0,0.0%,0
-forum credit union,45,0.9%,0,28,1.1%,0,17,0.8%,0
-second round sub llc,40,0.8%,0,12,0.5%,0,28,1.3%,0
-velocity investments llc,40,0.8%,0,38,1.4%,0,2,0.1%,0
-mariner finance llc successor in interest to personal finance company llc,36,0.7%,13386.259999999998,13,0.5%,0,23,1.1%,13386.259999999998
-eagle finance company,35,0.7%,0,17,0.6%,0,18,0.8%,0
-cavalry spv i llc as assignee of citibank na,35,0.7%,0,12,0.5%,0,23,1.1%,0
-city of westfield fire dept,35,0.7%,0,18,0.7%,0,17,0.8%,0
-absolute resolutions investments llc,35,0.7%,0,11,0.4%,0,24,1.1%,0
-credit corp solutions inc,22,0.5%,0,10,0.4%,0,12,0.6%,0
-capital one bank (usa) na,21,0.4%,0,21,0.8%,0,0,0.0%,0
-bank of america n.a.,18,0.4%,0,17,0.6%,0,1,0.0%,0
-dnf associates llc,17,0.4%,424,11,0.4%,424,6,0.3%,0
-oliphant financial llc,17,0.4%,0,9,0.3%,0,8,0.4%,0
-heights finance corporation,16,0.3%,0,6,0.2%,0,10,0.5%,0
-the morris plan company of terre haute inc,15,0.3%,10916.87,4,0.2%,0,11,0.5%,10916.87
-citibank n.a.,14,0.3%,212,12,0.5%,212,2,0.1%,0
-heritage acceptance corporation,14,0.3%,0,7,0.3%,0,7,0.3%,0
-accelerated inventory management llc,14,0.3%,0,10,0.4%,0,4,0.2%,0
-financial center first credit union,13,0.3%,0,7,0.3%,0,6,0.3%,0
-creditmax inc,12,0.2%,9364.26,10,0.4%,9364.26,2,0.1%,0
-pca acquisitions v llc,12,0.2%,0,5,0.2%,0,7,0.3%,0
-goldman sachs bank usa,12,0.2%,0,11,0.4%,0,1,0.0%,0
-persolve recoveries llc,12,0.2%,0,12,0.5%,0,0,0.0%,0
-ford motor credit company llc,11,0.2%,6720.58,8,0.3%,0,3,0.1%,6720.58
-td bank usa n.a.,11,0.2%,0,11,0.4%,0,0,0.0%,0
-credit acceptance corporation,11,0.2%,0,11,0.4%,0,0,0.0%,0
-wells fargo bank na,10,0.2%,0,7,0.3%,0,3,0.1%,0
-absolute resolutions,10,0.2%,0,7,0.3%,0,3,0.1%,0
-portfolio recovery associatesllc,10,0.2%,0,0,0.0%,0,10,0.5%,0
-first portfolio ventures i llc,10,0.2%,0,2,0.1%,0,8,0.4%,0
-cks prime investments llc,9,0.2%,0,7,0.3%,0,2,0.1%,0
-cavalry spv i llc as assignee of citibank n.a.,8,0.2%,0,7,0.3%,0,1,0.0%,0
-credit acceptance corp,8,0.2%,0,5,0.2%,0,3,0.1%,0
-gateway financial solutions,8,0.2%,0,4,0.2%,0,4,0.2%,0
-galaxy international purchasing llc,8,0.2%,0,4,0.2%,0,4,0.2%,0
-first national bank of omaha,8,0.2%,0,7,0.3%,0,1,0.0%,0
-barclays bank delaware,7,0.1%,0,0,0.0%,0,7,0.3%,0
-cavalry spv i llc as assignee of synchrony bank,7,0.1%,0,0,0.0%,0,7,0.3%,0
-discover bank co discover products inc,7,0.1%,0,5,0.2%,0,2,0.1%,0
-credit acceptance corp.,7,0.1%,212,4,0.2%,212,3,0.1%,0
-joe's auto sales inc,7,0.1%,0,4,0.2%,0,3,0.1%,0
-midland credit managment inc,7,0.1%,0,0,0.0%,0,7,0.3%,0
-us bank national association,7,0.1%,0,5,0.2%,0,2,0.1%,0
-velocity investments llc assignee of lendingclub corporation assignee of webbank,7,0.1%,0,4,0.2%,0,3,0.1%,0
-teachers credit union,7,0.1%,0,2,0.1%,0,5,0.2%,0
-second round lp,7,0.1%,0,2,0.1%,0,5,0.2%,0
-jh met subsidiary b liquidating trust,7,0.1%,0,3,0.1%,0,4,0.2%,0
-td bank usa na as successor in interest to target national bank,7,0.1%,0,7,0.3%,0,0,0.0%,0
-midland credit managementinc,6,0.1%,0,0,0.0%,0,6,0.3%,0
-evansville teachers federal credit union,6,0.1%,6780.92,2,0.1%,0,4,0.2%,6780.92
-american express national bank fka fsb,6,0.1%,0,3,0.1%,0,3,0.1%,0
-autovest l.l.c of indiana,6,0.1%,0,6,0.2%,0,0,0.0%,0
-national collegiate student loan trust 2007-1,5,0.1%,0,1,0.0%,0,4,0.2%,0
-bender and rocap educational services,5,0.1%,0,1,0.0%,0,4,0.2%,0
-creditone llc,5,0.1%,0,3,0.1%,0,2,0.1%,0
-lapel stony creek twp fire terr board,5,0.1%,0,3,0.1%,0,2,0.1%,0
-department stores national bank,5,0.1%,0,2,0.1%,0,3,0.1%,0
-cvi sgp-co acquisition trust,5,0.1%,0,0,0.0%,0,5,0.2%,0
-three rivers federal credit union,5,0.1%,0,4,0.2%,0,1,0.0%,0
-autovest l.l.c. of indiana,5,0.1%,0,3,0.1%,0,2,0.1%,0
-security credit services llc,5,0.1%,0,5,0.2%,0,0,0.0%,0
-capital one na,5,0.1%,0,5,0.2%,0,0,0.0%,0
-randall & roberts funeral home,4,0.1%,0,1,0.0%,0,3,0.1%,0
-national collegiate student loan trust 2004-2,4,0.1%,0,0,0.0%,0,4,0.2%,0
-tbf financial llc,4,0.1%,0,0,0.0%,0,4,0.2%,0
-national collegiate student loan trust 2006-1,4,0.1%,0,0,0.0%,0,4,0.2%,0
-purdue federal credit union,4,0.1%,0,3,0.1%,0,1,0.0%,0
-sac finance inc,4,0.1%,0,3,0.1%,0,1,0.0%,0
-jhpde finance 1 llc,4,0.1%,0,4,0.2%,0,0,0.0%,0
-reliable auto finance,4,0.1%,0,4,0.2%,0,0,0.0%,0
-world finance company of indiana llc,4,0.1%,0,4,0.2%,0,0,0.0%,0
-resurgent receivables llc,4,0.1%,0,4,0.2%,0,0,0.0%,0
-communitywide federal credit union,3,0.1%,0,0,0.0%,0,3,0.1%,0
-elgin water care,3,0.1%,0,0,0.0%,0,3,0.1%,0
-foursight capital llc,3,0.1%,0,2,0.1%,0,1,0.0%,0
-transcend orthotics & prothetics,3,0.1%,0,1,0.0%,0,2,0.1%,0
-national collegiate student loan trust 2005-3,3,0.1%,0,2,0.1%,0,1,0.0%,0
-coots henke & wheeler pc,3,0.1%,3828.25,0,0.0%,0,3,0.1%,3828.25
-regional acceptance corp,3,0.1%,12624.89,1,0.0%,0,2,0.1%,12624.89
-ncb management services inc,3,0.1%,0,2,0.1%,0,1,0.0%,0
-brite financial services llc,3,0.1%,0,1,0.0%,0,2,0.1%,0
-indianapolis martial arts club llc,3,0.1%,2419.2,1,0.0%,0,2,0.1%,2419.2
-indiana members credit union,3,0.1%,0,0,0.0%,0,3,0.1%,0
-wayne twp fire dept hamilton county,3,0.1%,0,1,0.0%,0,2,0.1%,0
-national collegiate student loan trust 2007-2,3,0.1%,0,0,0.0%,0,3,0.1%,0
-national collegiate student loan trust 2006-3,3,0.1%,0,0,0.0%,0,3,0.1%,0
-northwest radiology network pc,3,0.1%,691.51,0,0.0%,0,3,0.1%,691.51
-professional financial services of indiana llc,3,0.1%,4588.62,2,0.1%,0,1,0.0%,4588.62
-city of westfield,3,0.1%,0,0,0.0%,0,3,0.1%,0
-portfolio recover associates llc,3,0.1%,0,1,0.0%,0,2,0.1%,0
-orbit leasing inc,3,0.1%,0,1,0.0%,0,2,0.1%,0
-limestone springs condominium owners association inc,3,0.1%,0,2,0.1%,0,1,0.0%,0
-link federal credit union,3,0.1%,0,2,0.1%,0,1,0.0%,0
-american express national bank fka aecb,3,0.1%,0,3,0.1%,0,0,0.0%,0
-wells fargo bank n.a.,3,0.1%,0,3,0.1%,0,0,0.0%,0
-ally financial inc,3,0.1%,0,3,0.1%,0,0,0.0%,0
-madison county federal credit union,3,0.1%,0,3,0.1%,0,0,0.0%,0
-td bank usa n.a. as successor in interest to target national bank,3,0.1%,0,3,0.1%,0,0,0.0%,0
-mercedes-benz financial services usa llc,3,0.1%,0,3,0.1%,0,0,0.0%,0
-u.s. bank national association,3,0.1%,0,3,0.1%,0,0,0.0%,0
-capital one bank  na,3,0.1%,0,3,0.1%,0,0,0.0%,0
-uhg i llc,3,0.1%,0,3,0.1%,0,0,0.0%,0
-citibank n a,3,0.1%,0,3,0.1%,0,0,0.0%,0
-indiana members credit union of indpls. in d/b/a indiana members credit union,3,0.1%,0,3,0.1%,0,0,0.0%,0
-jh met subsidiary b liquidating trust assignee of jh portfolio,3,0.1%,0,3,0.1%,0,0,0.0%,0
-autovest l.l.c.,2,0.0%,0,0,0.0%,0,2,0.1%,0
-avid acceptance llc,2,0.0%,0,1,0.0%,0,1,0.0%,0
-lycoming auto trust,2,0.0%,0,0,0.0%,0,2,0.1%,0
-cicero place apartments llc dba grissom estates apartments,2,0.0%,0,1,0.0%,0,1,0.0%,0
-national collegiate student loan trust 2006-4,2,0.0%,0,1,0.0%,0,1,0.0%,0
-discover products inc,2,0.0%,0,0,0.0%,0,2,0.1%,0
-travelers property casualty company of america,2,0.0%,0,0,0.0%,0,2,0.1%,0
-pnc bank national association,2,0.0%,0,1,0.0%,0,1,0.0%,0
-mishawaka utilities,2,0.0%,0,0,0.0%,0,2,0.1%,0
-national collegiate student loan trust 2007-4,2,0.0%,0,0,0.0%,0,2,0.1%,0
-c&f finance company,2,0.0%,0,0,0.0%,0,2,0.1%,0
-baxter credit union,2,0.0%,0,1,0.0%,0,1,0.0%,0
-national collegiate student loan trust 2005-2,2,0.0%,0,0,0.0%,0,2,0.1%,0
-hartman dental associates,2,0.0%,0,0,0.0%,0,2,0.1%,0
-adlp investments llc series 1,2,0.0%,0,1,0.0%,0,1,0.0%,0
-pnc equipment finance llc,2,0.0%,0,1,0.0%,0,1,0.0%,0
-westlake services llc,2,0.0%,0,0,0.0%,0,2,0.1%,0
-prestige financial services,2,0.0%,0,1,0.0%,0,1,0.0%,0
-fortress federal credit union,2,0.0%,23543.13,0,0.0%,0,2,0.1%,23543.13
-reliable auto finance inc,2,0.0%,0,0,0.0%,0,2,0.1%,0
-metropolitan fishers,2,0.0%,0,0,0.0%,0,2,0.1%,0
-first portfolio ventuers i llc,2,0.0%,0,0,0.0%,0,2,0.1%,0
-atlas collections inc,2,0.0%,0,1,0.0%,0,1,0.0%,0
-autovest llc,2,0.0%,0,0,0.0%,0,2,0.1%,0
-professional & business collections llc,2,0.0%,18599.17,0,0.0%,0,2,0.1%,18599.17
-equipment solutions llc,2,0.0%,0,1,0.0%,0,1,0.0%,0
-keybank national association,2,0.0%,0,1,0.0%,0,1,0.0%,0
-dbc holdings llc,2,0.0%,0,0,0.0%,0,2,0.1%,0
-american builders & contractors supply company inc,2,0.0%,0,1,0.0%,0,1,0.0%,0
-university of kentucky,2,0.0%,0,0,0.0%,0,2,0.1%,0
-mitchell law group,2,0.0%,0,1,0.0%,0,1,0.0%,0
-lake castleton apartments llc,2,0.0%,0,0,0.0%,0,2,0.1%,0
-park tudor foundation inc,2,0.0%,0,1,0.0%,0,1,0.0%,0
-cvi sgp acquisition trust,2,0.0%,0,0,0.0%,0,2,0.1%,0
-toyota motor credit corporation,2,0.0%,0,1,0.0%,0,1,0.0%,0
-first merchants bank,2,0.0%,0,0,0.0%,0,2,0.1%,0
-regional acceptance corp.,2,0.0%,0,1,0.0%,0,1,0.0%,0
-parke county ems,2,0.0%,0,0,0.0%,0,2,0.1%,0
-national collegiate student loan trust 2003-1,2,0.0%,0,1,0.0%,0,1,0.0%,0
-dealer auto outlet inc,2,0.0%,0,1,0.0%,0,1,0.0%,0
-swift financial llc as servicing agent for webbank,2,0.0%,0,0,0.0%,0,2,0.1%,0
-the jameson,2,0.0%,0,1,0.0%,0,1,0.0%,0
-capital one bank  usa na,2,0.0%,0,1,0.0%,0,1,0.0%,0
-fifth third bank na,2,0.0%,0,2,0.1%,0,0,0.0%,0
-ambulance management services ltd,2,0.0%,0,2,0.1%,0,0,0.0%,0
-national collegiate student loan trust 2007-3,2,0.0%,0,2,0.1%,0,0,0.0%,0
-jhpde finance i llc,2,0.0%,0,2,0.1%,0,0,0.0%,0
-velocity investments llc assignee of prosper funding llc assignee of webbank,2,0.0%,0,2,0.1%,0,0,0.0%,0
-onemain financial group  llc,2,0.0%,0,2,0.1%,0,0,0.0%,0
-hs financial group llc,2,0.0%,0,2,0.1%,0,0,0.0%,0
-autovest llc of indiana,2,0.0%,0,2,0.1%,0,0,0.0%,0
-wood finance inc dba premier acceptance,2,0.0%,0,2,0.1%,0,0,0.0%,0
-jh cx liquidating trust assignee of jh portfolio debt equities llc,2,0.0%,0,2,0.1%,0,0,0.0%,0
-bmo harris bank na,2,0.0%,0,2,0.1%,0,0,0.0%,0
-biggs hansen orthodontics pc,2,0.0%,0,2,0.1%,0,0,0.0%,0
-nicholas financial inc,2,0.0%,0,2,0.1%,0,0,0.0%,0
-cavalry spv i llc as assignee of department stores national bank,2,0.0%,0,2,0.1%,0,0,0.0%,0
-acuity,2,0.0%,0,2,0.1%,0,0,0.0%,0
-rlw accounts llc,2,0.0%,0,2,0.1%,0,0,0.0%,0
-stone creek financial inc,2,0.0%,0,2,0.1%,0,0,0.0%,0
-state of indiana ex rel. indiana utility regulatory commission,2,0.0%,0,2,0.1%,0,0,0.0%,0
-communitywide fcu,2,0.0%,0,2,0.1%,0,0,0.0%,0
-navy federal credit union,2,0.0%,0,2,0.1%,0,0,0.0%,0
-byrider finance llc d/b/a cnac,2,0.0%,0,2,0.1%,0,0,0.0%,0
-cavalry spv i llc as assignee of comenity bank,2,0.0%,0,2,0.1%,0,0,0.0%,0
-receivables management partnersllc fka imc credit services llc,2,0.0%,0,2,0.1%,0,0,0.0%,0
-cach llc,2,0.0%,0,2,0.1%,0,0,0.0%,0
-proscape property maintenance llc,2,0.0%,0,2,0.1%,0,0,0.0%,0
-harbin llc as assignee of aaron's inc,2,0.0%,0,2,0.1%,0,0,0.0%,0
-national collegiate master student loan trust i,2,0.0%,0,2,0.1%,0,0,0.0%,0
-citizens bank,1,0.0%,0,0,0.0%,0,1,0.0%,0
-fishers trade shoppes llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-nbt bank national association,1,0.0%,0,0,0.0%,0,1,0.0%,0
-bone dry roofing inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-sysco corporate,1,0.0%,0,0,0.0%,0,1,0.0%,0
-weihe engineers inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-runyon equipment rental inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-frost jonathan ernest,1,0.0%,0,0,0.0%,0,1,0.0%,0
-central indiana podiatry,1,0.0%,0,0,0.0%,0,1,0.0%,0
-slm private education loan trust 2010-a,1,0.0%,0,0,0.0%,0,1,0.0%,0
-slm private credit student loan trust 2006-c,1,0.0%,0,0,0.0%,0,1,0.0%,0
-credibly of arizona llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-jay r beagle dds msd,1,0.0%,0,0,0.0%,0,1,0.0%,0
-credit adjustments inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-park 421 llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-american builders & contractors supply co inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-warsaw health system llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-personal finance company,1,0.0%,0,0,0.0%,0,1,0.0%,0
-canterbury school,1,0.0%,0,0,0.0%,0,1,0.0%,0
-krg hamilton crossing llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-the retreat homeowners association inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-national collegiate student loan trust 2005-1,1,0.0%,0,0,0.0%,0,1,0.0%,0
-new word collections inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-adair rebecca,1,0.0%,0,0,0.0%,0,1,0.0%,0
-emswiller williams noland & clark p.c.,1,0.0%,0,0,0.0%,0,1,0.0%,0
-our lady of grace catholic school,1,0.0%,0,0,0.0%,0,1,0.0%,0
-underwood rory,1,0.0%,0,0,0.0%,0,1,0.0%,0
-potfolio recovery associates llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-prairie lakes dental care,1,0.0%,0,0,0.0%,0,1,0.0%,0
-u s bearing and power transmission corporation a west virginia corporation,1,0.0%,0,0,0.0%,0,1,0.0%,0
-bgbc partners llp,1,0.0%,0,0,0.0%,0,1,0.0%,0
-limestone springs condominium ownes association inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-natural stone and tile inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-snider leasing corporation,1,0.0%,0,0,0.0%,0,1,0.0%,0
-med-1 solutions,1,0.0%,0,0,0.0%,0,1,0.0%,0
-marian university,1,0.0%,0,0,0.0%,0,1,0.0%,0
-wilson village condominium association inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-clark quinn moses scott& grahn llp,1,0.0%,0,0,0.0%,0,1,0.0%,0
-the huntington national bank na,1,0.0%,0,0,0.0%,0,1,0.0%,0
-adler attorneys,1,0.0%,0,0,0.0%,0,1,0.0%,0
-clark quinn moses scott and grahn llp,1,0.0%,0,0,0.0%,0,1,0.0%,0
-midland funding  llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-navient credit finance corporation,1,0.0%,0,0,0.0%,0,1,0.0%,0
-center for diagnostic imaging,1,0.0%,0,0,0.0%,0,1,0.0%,0
-basey custom homes llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-troll suzanne r,1,0.0%,0,0,0.0%,0,1,0.0%,0
-star financial bank,1,0.0%,0,0,0.0%,0,1,0.0%,0
-m block and sons inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-velocity investments llc assigne of lendingclub corporation assignee of webbank,1,0.0%,0,0,0.0%,0,1,0.0%,0
-newland brittney,1,0.0%,10325,0,0.0%,0,1,0.0%,10325
-pondurance llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-the bluffs association inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-riverview hospital,1,0.0%,0,0,0.0%,0,1,0.0%,0
-riverview hospital dba riverview health,1,0.0%,0,0,0.0%,0,1,0.0%,0
-taylor home improvement inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-alliance chiropractic llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-discover bank discover products inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-city of westfield fire department,1,0.0%,0,0,0.0%,0,1,0.0%,0
-synergy real estate partners llc,1,0.0%,17147.83,0,0.0%,0,1,0.0%,17147.83
-huntington insurance inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-lendmark financial services llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-one advantage llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-cavalry spv i,1,0.0%,0,0,0.0%,0,1,0.0%,0
-first financial bank,1,0.0%,0,0,0.0%,0,1,0.0%,0
-sac finance,1,0.0%,0,0,0.0%,0,1,0.0%,0
-promedica health system inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-creative outdoor living llc,1,0.0%,2303.4,0,0.0%,0,1,0.0%,2303.4
-eagle accounts group,1,0.0%,0,0,0.0%,0,1,0.0%,0
-friendly finance corporation,1,0.0%,0,0,0.0%,0,1,0.0%,0
-primetrust financial federal credit union,1,0.0%,0,0,0.0%,0,1,0.0%,0
+collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
+lvnv funding llc,569,378,191,11.9%,14.4%,8.9%,924,924,0,0.2%,1.9%,0.0%,3.3%,4.0%,2.1%,0.0%,0.0%,0.0%,29.7%,30.7%,27.7%
+midland credit management inc,557,293,264,11.7%,11.2%,12.3%,2525,1001,1524,0.5%,2.1%,0.3%,2.5%,3.1%,1.9%,0.2%,0.0%,0.4%,43.6%,29.4%,59.5%
+portfolio recovery associates llc,442,175,267,9.3%,6.7%,12.4%,4617,3395,1222,0.9%,7.0%,0.3%,2.0%,2.9%,1.5%,0.0%,0.0%,0.0%,52.7%,34.3%,64.8%
+capital one bank usa na,251,165,86,5.3%,6.3%,4.0%,0,0,0,0.0%,0.0%,0.0%,5.6%,5.5%,5.8%,0.0%,0.0%,0.0%,43.4%,35.2%,59.3%
+discover bank,214,145,69,4.5%,5.5%,3.2%,212,212,0,0.0%,0.4%,0.0%,13.6%,13.8%,13.0%,0.0%,0.0%,0.0%,43.5%,36.6%,58.0%
+cavalry spv i llc,163,87,76,3.4%,3.3%,3.5%,3931,0,3931,0.8%,0.0%,0.9%,6.1%,2.3%,10.5%,0.0%,0.0%,0.0%,52.1%,34.5%,72.4%
+jefferson capital systems llc,161,60,101,3.4%,2.3%,4.7%,0,0,0,0.0%,0.0%,0.0%,1.2%,1.7%,1.0%,0.0%,0.0%,0.0%,46.6%,36.7%,52.5%
+citibank na,123,61,62,2.6%,2.3%,2.9%,212,212,0,0.0%,0.4%,0.0%,16.3%,8.2%,24.2%,0.0%,0.0%,0.0%,53.7%,41.0%,66.1%
+bank of america na,120,65,55,2.5%,2.5%,2.6%,0,0,0,0.0%,0.0%,0.0%,14.2%,7.7%,21.8%,0.0%,0.0%,0.0%,60.0%,46.2%,76.4%
+american express national bank,113,84,29,2.4%,3.2%,1.3%,424,424,0,0.1%,0.9%,0.0%,15.0%,15.5%,13.8%,0.0%,0.0%,0.0%,41.6%,39.3%,48.3%
+crown asset management llc,99,47,52,2.1%,1.8%,2.4%,4467,424,4043,0.9%,0.9%,0.9%,9.1%,2.1%,15.4%,0.0%,0.0%,0.0%,65.7%,48.9%,80.8%
+no plaintiff found,89,51,38,1.9%,1.9%,1.8%,233480,25,233455,46.0%,0.1%,50.8%,13.5%,9.8%,18.4%,0.0%,0.0%,0.0%,39.3%,23.5%,60.5%
+onemain financial group llc,76,43,33,1.6%,1.6%,1.5%,212,212,0,0.0%,0.4%,0.0%,2.6%,2.3%,3.0%,0.0%,0.0%,0.0%,40.8%,37.2%,45.5%
+synchrony bank,76,69,7,1.6%,2.6%,0.3%,0,0,0,0.0%,0.0%,0.0%,13.2%,13.0%,14.3%,0.0%,0.0%,0.0%,35.5%,30.4%,85.7%
+midland funding llc,67,5,62,1.4%,0.2%,2.9%,2097,0,2097,0.4%,0.0%,0.5%,3.0%,0.0%,3.2%,0.0%,0.0%,0.0%,76.1%,40.0%,79.0%
+capital one bank (usa) na,67,67,0,1.4%,2.6%,0.0%,2799,2799,0,0.6%,5.8%,0.0%,7.5%,7.5%,0%,0.0%,0.0%,0%,52.2%,52.2%,0%
+td bank usa na,62,60,2,1.3%,2.3%,0.1%,0,0,0,0.0%,0.0%,0.0%,4.8%,5.0%,0.0%,0.0%,0.0%,0.0%,33.9%,33.3%,50.0%
+mariner finance llc,55,39,16,1.2%,1.5%,0.7%,23697,17113,6584,4.7%,35.3%,1.4%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,38.2%,28.2%,62.5%
+new world collections inc,54,24,30,1.1%,0.9%,1.4%,0,0,0,0.0%,0.0%,0.0%,1.9%,4.2%,0.0%,0.0%,0.0%,0.0%,61.1%,37.5%,80.0%
+unifund ccr llc,46,6,40,1.0%,0.2%,1.9%,0,0,0,0.0%,0.0%,0.0%,2.2%,0.0%,2.5%,0.0%,0.0%,0.0%,52.2%,0.0%,60.0%
+forum credit union,45,28,17,0.9%,1.1%,0.8%,0,0,0,0.0%,0.0%,0.0%,6.7%,7.1%,5.9%,0.0%,0.0%,0.0%,44.4%,28.6%,70.6%
+cavalry spv i llc as assignee of citibank na,43,19,24,0.9%,0.7%,1.1%,0,0,0,0.0%,0.0%,0.0%,9.3%,10.5%,8.3%,0.0%,0.0%,0.0%,72.1%,57.9%,83.3%
+second round sub llc,40,12,28,0.8%,0.5%,1.3%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,65.0%,16.7%,85.7%
+velocity investments llc,40,38,2,0.8%,1.4%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,22.5%,18.4%,100.0%
+mariner finance llc successor in interest to personal finance company llc,36,13,23,0.8%,0.5%,1.1%,13386,0,13386,2.6%,0.0%,2.9%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,44.4%,38.5%,47.8%
+eagle finance company,35,17,18,0.7%,0.6%,0.8%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,20.0%,11.8%,27.8%
+absolute resolutions investments llc,35,11,24,0.7%,0.4%,1.1%,0,0,0,0.0%,0.0%,0.0%,20.0%,18.2%,20.8%,0.0%,0.0%,0.0%,57.1%,81.8%,45.8%
+city of westfield fire dept,34,17,17,0.7%,0.6%,0.8%,0,0,0,0.0%,0.0%,0.0%,2.9%,5.9%,0.0%,0.0%,0.0%,0.0%,61.8%,58.8%,64.7%
+credit corp solutions inc,22,10,12,0.5%,0.4%,0.6%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,54.5%,30.0%,75.0%
+dnf associates llc,17,11,6,0.4%,0.4%,0.3%,424,424,0,0.1%,0.9%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,52.9%,45.5%,66.7%
+oliphant financial llc,17,9,8,0.4%,0.3%,0.4%,0,0,0,0.0%,0.0%,0.0%,17.6%,22.2%,12.5%,0.0%,0.0%,0.0%,47.1%,33.3%,62.5%
+heights finance corporation,16,6,10,0.3%,0.2%,0.5%,0,0,0,0.0%,0.0%,0.0%,6.3%,0.0%,10.0%,0.0%,0.0%,0.0%,43.8%,33.3%,50.0%
+the morris plan company of terre haute inc,15,4,11,0.3%,0.2%,0.5%,10917,0,10917,2.2%,0.0%,2.4%,6.7%,0.0%,9.1%,0.0%,0.0%,0.0%,46.7%,50.0%,45.5%
+heritage acceptance corporation,14,7,7,0.3%,0.3%,0.3%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,35.7%,28.6%,42.9%
+accelerated inventory management llc,14,10,4,0.3%,0.4%,0.2%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,21.4%,10.0%,50.0%
+wells fargo bank na,13,10,3,0.3%,0.4%,0.1%,0,0,0,0.0%,0.0%,0.0%,30.8%,20.0%,66.7%,0.0%,0.0%,0.0%,15.4%,10.0%,33.3%
+creditmax inc,12,10,2,0.3%,0.4%,0.1%,9364,9364,0,1.8%,19.3%,0.0%,16.7%,20.0%,0.0%,0.0%,0.0%,0.0%,58.3%,60.0%,50.0%
+persolve recoveries llc,12,12,0,0.3%,0.5%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,8.3%,8.3%,0%
+financial center first credit union,11,5,6,0.2%,0.2%,0.3%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,36.4%,0.0%,66.7%
+pca acquisitions v llc,11,4,7,0.2%,0.2%,0.3%,0,0,0,0.0%,0.0%,0.0%,9.1%,0.0%,14.3%,0.0%,0.0%,0.0%,63.6%,25.0%,85.7%
+ford motor credit company llc,11,8,3,0.2%,0.3%,0.1%,6721,0,6721,1.3%,0.0%,1.5%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,36.4%,37.5%,33.3%
+credit acceptance corporation,11,11,0,0.2%,0.4%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,45.5%,45.5%,0%
+absolute resolutions,10,7,3,0.2%,0.3%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,10.0%,0.0%,33.3%
+portfolio recovery associatesllc,10,0,10,0.2%,0.0%,0.5%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,20.0%,0%,20.0%
+first portfolio ventures i llc,10,2,8,0.2%,0.1%,0.4%,0,0,0,0.0%,0.0%,0.0%,10.0%,0.0%,12.5%,0.0%,0.0%,0.0%,70.0%,0.0%,87.5%
+goldman sachs bank usa,10,9,1,0.2%,0.3%,0.0%,0,0,0,0.0%,0.0%,0.0%,20.0%,11.1%,100.0%,0.0%,0.0%,0.0%,10.0%,11.1%,0.0%
+td bank usa na as successor in interest to target national bank,10,10,0,0.2%,0.4%,0.0%,0,0,0,0.0%,0.0%,0.0%,10.0%,10.0%,0%,0.0%,0.0%,0%,60.0%,60.0%,0%
+cks prime investments llc,9,7,2,0.2%,0.3%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,55.6%,42.9%,100.0%
+credit acceptance corp,8,5,3,0.2%,0.2%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,37.5%,20.0%,66.7%
+galaxy international purchasing llc,8,4,4,0.2%,0.2%,0.2%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%
+first national bank of omaha,8,7,1,0.2%,0.3%,0.0%,0,0,0,0.0%,0.0%,0.0%,12.5%,0.0%,100.0%,0.0%,0.0%,0.0%,50.0%,42.9%,100.0%
+barclays bank delaware,7,0,7,0.1%,0.0%,0.3%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,85.7%,0%,85.7%
+cavalry spv i llc as assignee of synchrony bank,7,0,7,0.1%,0.0%,0.3%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,42.9%,0%,42.9%
+discover bank co discover products inc,7,5,2,0.1%,0.2%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,42.9%,20.0%,100.0%
+credit acceptance corp.,7,4,3,0.1%,0.2%,0.1%,212,212,0,0.0%,0.4%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,28.6%,0.0%,66.7%
+joe's auto sales inc,7,4,3,0.1%,0.2%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,85.7%,75.0%,100.0%
+midland credit managment inc,7,0,7,0.1%,0.0%,0.3%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,71.4%,0%,71.4%
+us bank national association,7,5,2,0.1%,0.2%,0.1%,0,0,0,0.0%,0.0%,0.0%,28.6%,40.0%,0.0%,0.0%,0.0%,0.0%,28.6%,0.0%,100.0%
+gateway financial solutions,7,3,4,0.1%,0.1%,0.2%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,28.6%,0.0%,50.0%
+velocity investments llc assignee of lendingclub corporation assignee of webbank,7,4,3,0.1%,0.2%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,28.6%,0.0%,66.7%
+teachers credit union,7,2,5,0.1%,0.1%,0.2%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,85.7%,50.0%,100.0%
+second round lp,7,2,5,0.1%,0.1%,0.2%,0,0,0,0.0%,0.0%,0.0%,14.3%,50.0%,0.0%,0.0%,0.0%,0.0%,71.4%,50.0%,80.0%
+jh met subsidiary b liquidating trust,7,3,4,0.1%,0.1%,0.2%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%
+autovest llc of indiana,7,5,2,0.1%,0.2%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,57.1%,60.0%,50.0%
+midland credit managementinc,6,0,6,0.1%,0.0%,0.3%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+evansville teachers federal credit union,6,2,4,0.1%,0.1%,0.2%,6781,0,6781,1.3%,0.0%,1.5%,16.7%,0.0%,25.0%,0.0%,0.0%,0.0%,66.7%,0.0%,100.0%
+american express national bank fka fsb,6,3,3,0.1%,0.1%,0.1%,0,0,0,0.0%,0.0%,0.0%,33.3%,33.3%,33.3%,0.0%,0.0%,0.0%,50.0%,33.3%,66.7%
+autovest l.l.c of indiana,6,6,0,0.1%,0.2%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,33.3%,33.3%,0%
+capital one na,6,6,0,0.1%,0.2%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,66.7%,66.7%,0%
+national collegiate student loan trust 2007-1,5,1,4,0.1%,0.0%,0.2%,0,0,0,0.0%,0.0%,0.0%,20.0%,0.0%,25.0%,0.0%,0.0%,0.0%,60.0%,0.0%,75.0%
+bender and rocap educational services,5,1,4,0.1%,0.0%,0.2%,0,0,0,0.0%,0.0%,0.0%,20.0%,0.0%,25.0%,0.0%,0.0%,0.0%,60.0%,0.0%,75.0%
+creditone llc,5,3,2,0.1%,0.1%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,40.0%,0.0%,100.0%
+lapel stony creek twp fire terr board,5,3,2,0.1%,0.1%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,80.0%,66.7%,100.0%
+department stores national bank,5,2,3,0.1%,0.1%,0.1%,0,0,0,0.0%,0.0%,0.0%,20.0%,50.0%,0.0%,0.0%,0.0%,0.0%,40.0%,0.0%,66.7%
+cvi sgp-co acquisition trust,5,0,5,0.1%,0.0%,0.2%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,20.0%,0%,20.0%
+three rivers federal credit union,5,4,1,0.1%,0.2%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,40.0%,25.0%,100.0%
+autovest llc,4,0,4,0.1%,0.0%,0.2%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+randall & roberts funeral home,4,1,3,0.1%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+national collegiate student loan trust 2004-2,4,0,4,0.1%,0.0%,0.2%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,75.0%,0%,75.0%
+tbf financial llc,4,0,4,0.1%,0.0%,0.2%,0,0,0,0.0%,0.0%,0.0%,50.0%,0%,50.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+national collegiate student loan trust 2006-1,4,0,4,0.1%,0.0%,0.2%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+sac finance inc,4,3,1,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,25.0%,33.3%,0.0%
+jhpde finance 1 llc,4,4,0,0.1%,0.2%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,75.0%,75.0%,0%
+reliable auto finance,4,4,0,0.1%,0.2%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+world finance company of indiana llc,4,4,0,0.1%,0.2%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+security credit services llc,4,4,0,0.1%,0.2%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,50.0%,50.0%,0%
+resurgent receivables llc,4,4,0,0.1%,0.2%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,50.0%,50.0%,0%
+communitywide federal credit union,3,0,3,0.1%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,33.3%,0%,33.3%
+elgin water care,3,0,3,0.1%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,66.7%,0%,66.7%
+foursight capital llc,3,2,1,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,33.3%,50.0%,0.0%,0.0%,0.0%,0.0%,33.3%,0.0%,100.0%
+transcend orthotics & prothetics,3,1,2,0.1%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+national collegiate student loan trust 2005-3,3,2,1,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,33.3%,50.0%,0.0%,0.0%,0.0%,0.0%,33.3%,0.0%,100.0%
+coots henke & wheeler pc,3,0,3,0.1%,0.0%,0.1%,3828,0,3828,0.8%,0.0%,0.8%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+regional acceptance corp,3,1,2,0.1%,0.0%,0.1%,12625,0,12625,2.5%,0.0%,2.7%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,66.7%,100.0%,50.0%
+ncb management services inc,3,2,1,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,33.3%,0.0%,100.0%
+brite financial services llc,3,1,2,0.1%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,33.3%,0.0%,50.0%
+indianapolis martial arts club llc,3,1,2,0.1%,0.0%,0.1%,2419,0,2419,0.5%,0.0%,0.5%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,66.7%,0.0%,100.0%
+indiana members credit union,3,0,3,0.1%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,33.3%,0%,33.3%
+wayne twp fire dept hamilton county,3,1,2,0.1%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,66.7%,0.0%,100.0%
+national collegiate student loan trust 2007-2,3,0,3,0.1%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,33.3%,0%,33.3%,0.0%,0%,0.0%,66.7%,0%,66.7%
+national collegiate student loan trust 2006-3,3,0,3,0.1%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,33.3%,0%,33.3%,0.0%,0%,0.0%,66.7%,0%,66.7%
+northwest radiology network pc,3,0,3,0.1%,0.0%,0.1%,692,0,692,0.1%,0.0%,0.2%,0.0%,0%,0.0%,0.0%,0%,0.0%,66.7%,0%,66.7%
+professional financial services of indiana llc,3,2,1,0.1%,0.1%,0.0%,4589,0,4589,0.9%,0.0%,1.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,33.3%,0.0%,100.0%
+purdue federal credit union,3,2,1,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%
+city of westfield,3,0,3,0.1%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,33.3%,0%,33.3%,0.0%,0%,0.0%,0.0%,0%,0.0%
+portfolio recover associates llc,3,1,2,0.1%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%
+orbit leasing inc,3,1,2,0.1%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,33.3%,0.0%,50.0%
+limestone springs condominium owners association inc,3,2,1,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,66.7%,50.0%,100.0%
+link federal credit union,3,2,1,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%
+american express national bank fka aecb,3,3,0,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,33.3%,33.3%,0%,0.0%,0.0%,0%,33.3%,33.3%,0%
+fifth third bank na,3,3,0,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,33.3%,33.3%,0%,0.0%,0.0%,0%,66.7%,66.7%,0%
+ally financial inc,3,3,0,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+madison county federal credit union,3,3,0,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,33.3%,33.3%,0%
+mercedes-benz financial services usa llc,3,3,0,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+u.s. bank national association,3,3,0,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,33.3%,33.3%,0%
+capital one bank na,3,3,0,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,33.3%,33.3%,0%,0.0%,0.0%,0%,33.3%,33.3%,0%
+uhg i llc,3,3,0,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,33.3%,33.3%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+citibank n a,3,3,0,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,33.3%,33.3%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+indiana members credit union of indpls. in d/b/a indiana members credit union,3,3,0,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+jh met subsidiary b liquidating trust assignee of jh portfolio,3,3,0,0.1%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,66.7%,66.7%,0%
+avid acceptance llc,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%
+lycoming auto trust,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+cicero place apartments llc dba grissom estates apartments,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%
+national collegiate student loan trust 2006-4,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%
+discover products inc,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,50.0%,0%,50.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+travelers property casualty company of america,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,50.0%,0%,50.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+pnc bank national association,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+mishawaka utilities,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+national collegiate student loan trust 2007-4,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+c&f finance company,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+baxter credit union,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%
+national collegiate student loan trust 2005-2,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+hartman dental associates,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+adlp investments llc series 1,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,100.0%,0.0%
+pnc equipment finance llc,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,50.0%,100.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%
+westlake services llc,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+prestige financial services,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%
+fortress federal credit union,2,0,2,0.0%,0.0%,0.1%,23543,0,23543,4.6%,0.0%,5.1%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+reliable auto finance inc,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,50.0%,0%,50.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+metropolitan fishers,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+first portfolio ventuers i llc,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+atlas collections inc,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%
+professional & business collections llc,2,0,2,0.0%,0.0%,0.1%,18599,0,18599,3.7%,0.0%,4.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+equipment solutions llc,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,50.0%,100.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%
+keybank national association,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%
+dbc holdings llc,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+american builders & contractors supply company inc,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%
+university of kentucky,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+mitchell law group,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%
+lake castleton apartments llc,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+park tudor foundation inc,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,100.0%,0.0%
+cvi sgp acquisition trust,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+toyota motor credit corporation,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%
+first merchants bank,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+regional acceptance corp.,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%
+parke county ems,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+national collegiate student loan trust 2003-1,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,100.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%
+dealer auto outlet inc,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%
+swift financial llc as servicing agent for webbank,2,0,2,0.0%,0.0%,0.1%,0,0,0,0.0%,0.0%,0.0%,50.0%,0%,50.0%,0.0%,0%,0.0%,50.0%,0%,50.0%
+the jameson,2,1,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,0.0%,100.0%
+ambulance management services ltd,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,50.0%,50.0%,0%
+national collegiate student loan trust 2007-3,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,50.0%,50.0%,0%
+jhpde finance i llc,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,50.0%,50.0%,0%
+velocity investments llc assignee of prosper funding llc assignee of webbank,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+hs financial group llc,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,50.0%,50.0%,0%
+wood finance inc dba premier acceptance,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+jh cx liquidating trust assignee of jh portfolio debt equities llc,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,50.0%,50.0%,0%
+nicholas financial inc,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+acuity,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,50.0%,50.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+rlw accounts llc,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+stone creek financial inc,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+state of indiana ex rel. indiana utility regulatory commission,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,50.0%,50.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+communitywide fcu,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+navy federal credit union,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+byrider finance llc d/b/a cnac,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+cavalry spv i llc as assignee of comenity bank,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+receivables management partnersllc fka imc credit services llc,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+cach llc,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,50.0%,50.0%,0%
+proscape property maintenance llc,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,50.0%,50.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+harbin llc as assignee of aaron's inc,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,50.0%,50.0%,0%
+national collegiate master student loan trust i,2,2,0,0.0%,0.1%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+citizens bank,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+fishers trade shoppes llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+nbt bank national association,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+bone dry roofing inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+sysco corporate,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+weihe engineers inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+runyon equipment rental inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+frost jonathan ernest,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+central indiana podiatry,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+slm private education loan trust 2010-a,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+slm private credit student loan trust 2006-c,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+credibly of arizona llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jay r beagle dds msd,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+credit adjustments inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+park 421 llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+american builders & contractors supply co inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+warsaw health system llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+personal finance company,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+canterbury school,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+krg hamilton crossing llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+the retreat homeowners association inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+national collegiate student loan trust 2005-1,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+new word collections inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+adair rebecca,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+emswiller williams noland & clark p.c.,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+our lady of grace catholic school,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+underwood rory,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+potfolio recovery associates llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+prairie lakes dental care,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+u s bearing and power transmission corporation a west virginia corporation,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+bgbc partners llp,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+limestone springs condominium ownes association inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+natural stone and tile inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+snider leasing corporation,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+med-1 solutions,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+marian university,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+wilson village condominium association inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+clark quinn moses scott& grahn llp,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+the huntington national bank na,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+adler attorneys,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+clark quinn moses scott and grahn llp,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+navient credit finance corporation,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+center for diagnostic imaging,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+basey custom homes llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+troll suzanne r,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+star financial bank,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+m block and sons inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+velocity investments llc assigne of lendingclub corporation assignee of webbank,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+newland brittney,1,0,1,0.0%,0.0%,0.0%,10325,0,10325,2.0%,0.0%,2.2%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+pondurance llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+the bluffs association inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+riverview hospital,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+riverview hospital dba riverview health,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+taylor home improvement inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+alliance chiropractic llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+discover bank discover products inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+city of westfield fire department,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+synergy real estate partners llc,1,0,1,0.0%,0.0%,0.0%,17148,0,17148,3.4%,0.0%,3.7%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+huntington insurance inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+lendmark financial services llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+one advantage llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cavalry spv i,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+first financial bank,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+sac finance,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+promedica health system inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+creative outdoor living llc,1,0,1,0.0%,0.0%,0.0%,2303,0,2303,0.5%,0.0%,0.5%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+eagle accounts group,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+friendly finance corporation,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+primetrust financial federal credit union,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
 fortress federal credit union
 
-                                
-                                    (other),1,0.0%,10192.9,0,0.0%,0,1,0.0%,10192.9
-jack laurie floors llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-boland sean,1,0.0%,0,0,0.0%,0,1,0.0%,0
-national collegiate student loan trust 2006-2,1,0.0%,0,0,0.0%,0,1,0.0%,0
-national collegiate studen loan trust 2007-2,1,0.0%,0,0,0.0%,0,1,0.0%,0
-carter lumber company,1,0.0%,0,0,0.0%,0,1,0.0%,0
-hollingsworth & zivitz pc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-concrete & contractor supply llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-ozark capital corporation,1,0.0%,0,0,0.0%,0,1,0.0%,0
-halstead richard,1,0.0%,0,0,0.0%,0,1,0.0%,0
-republic services,1,0.0%,0,0,0.0%,0,1,0.0%,0
-paradigm dkd group llc d/b/a paradigm tax group a nevada llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-bridgecrest acceptance corporation,1,0.0%,0,0,0.0%,0,1,0.0%,0
-evapar inc,1,0.0%,11435.21,0,0.0%,0,1,0.0%,11435.21
-city of mishawaka,1,0.0%,0,0,0.0%,0,1,0.0%,0
-appel service company inc d/b/a appel heating & air conditioning,1,0.0%,0,0,0.0%,0,1,0.0%,0
-jiffy lube of indiana,1,0.0%,3384.89,0,0.0%,0,1,0.0%,3384.89
-simon property group lp,1,0.0%,0,0,0.0%,0,1,0.0%,0
-enerbank usa,1,0.0%,9019.43,0,0.0%,0,1,0.0%,9019.43
-e & b paving inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-tcf equipment finance inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-suntrust bank,1,0.0%,0,0,0.0%,0,1,0.0%,0
-associated orthodontists of indiana inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-indianapolis business journal,1,0.0%,0,0,0.0%,0,1,0.0%,0
-first technology federal credit union,1,0.0%,0,0,0.0%,0,1,0.0%,0
-united consumer financial services co inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-calvary spv i llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-tabor machine company llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-sargeant shatony,1,0.0%,0,0,0.0%,0,1,0.0%,0
-regency park apartments,1,0.0%,0,0,0.0%,0,1,0.0%,0
-plaza services llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-seymour pediatrics,1,0.0%,0,0,0.0%,0,1,0.0%,0
-velocity investments llc assignee of lendingclub corporation assignee of webban,1,0.0%,0,0,0.0%,0,1,0.0%,0
-westlake services,1,0.0%,0,0,0.0%,0,1,0.0%,0
-consolidated insurance company,1,0.0%,0,0,0.0%,0,1,0.0%,0
-cavalry spv i llc formerly known as cavalry portfolio services llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-capital  one  bank,1,0.0%,0,0,0.0%,0,1,0.0%,0
-live nation worldwide inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-ivy way llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-technology insurance company an amtrust financial company,1,0.0%,0,0,0.0%,0,1,0.0%,0
-oneamerica financial partners inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-triton barn systems,1,0.0%,0,0,0.0%,0,1,0.0%,0
-service plus heating cooling and plumbing,1,0.0%,2295.29,0,0.0%,0,1,0.0%,2295.29
-f. e. moran security solutions llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-regional acceptance copr,1,0.0%,8711.16,0,0.0%,0,1,0.0%,8711.16
-mougeotte publishing inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-driven to goals llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-enk andrea d,1,0.0%,0,0,0.0%,0,1,0.0%,0
-waterside 400 llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-portfolio recovery associates,1,0.0%,0,0,0.0%,0,1,0.0%,0
-consumer financial services,1,0.0%,0,0,0.0%,0,1,0.0%,0
-klc realty llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-carmel health & living community,1,0.0%,0,0,0.0%,0,1,0.0%,0
-wagoner casie m,1,0.0%,0,0,0.0%,0,1,0.0%,0
-parkdale center llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-affordable housing of indy llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-j & j property services llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-nationwide cassel llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-ambulance management services ltd.,1,0.0%,0,0,0.0%,0,1,0.0%,0
-barton solvents inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-shelby gravel inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-kingsley homeowners' association inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-regions bank,1,0.0%,0,0,0.0%,0,1,0.0%,0
-dura-overhead door inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-pc lake crest llc,1,0.0%,2501.22,0,0.0%,0,1,0.0%,2501.22
-c & f finance company,1,0.0%,0,0,0.0%,0,1,0.0%,0
-kitch acceptance corp.,1,0.0%,0,0,0.0%,0,1,0.0%,0
-velocity investments llc assignee of upstart network inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-nar inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-extra space storage inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-sheehan property management inc as m/a for jefferson place apartments,1,0.0%,1531,0,0.0%,0,1,0.0%,1531
-delta mu chapter of alpha phi,1,0.0%,0,0,0.0%,0,1,0.0%,0
-university high school,1,0.0%,0,0,0.0%,0,1,0.0%,0
-firefighters credit union,1,0.0%,0,0,0.0%,0,1,0.0%,0
-mark dimmich's cars to go,1,0.0%,0,0,0.0%,0,1,0.0%,0
-estate of anton n kojouharov,1,0.0%,0,0,0.0%,0,1,0.0%,0
-far east imports inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-icon equities llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-mayde beauty inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-parr richey frandsen patterson kruse llp,1,0.0%,6703.15,0,0.0%,0,1,0.0%,6703.15
-acuity a mutual insurance company,1,0.0%,0,0,0.0%,0,1,0.0%,0
-energy plus credit union,1,0.0%,0,0,0.0%,0,1,0.0%,0
-argo managing agency limited,1,0.0%,0,0,0.0%,0,1,0.0%,0
-quad graphics inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-esquire solutions llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-locke law firm llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-truist bank,1,0.0%,0,0,0.0%,0,1,0.0%,0
-culver-union ambulance svc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-monticello fire dept,1,0.0%,0,0,0.0%,0,1,0.0%,0
-exeter finance llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-miller richard g,1,0.0%,0,0,0.0%,0,1,0.0%,0
-carmel estates,1,0.0%,0,0,0.0%,0,1,0.0%,0
-wanzer-edwards pc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-envision laboratories inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-k & b rentals inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-weber design inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-s-mart petroleum inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-yardley court homeowners association inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-indiana bell telephone co. d/b/a at&t indiana,1,0.0%,0,0,0.0%,0,1,0.0%,0
-blackbeagle,1,0.0%,0,0,0.0%,0,1,0.0%,0
-edge investments group llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-receivables management partners llc fka imc credit services llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-numark credit union,1,0.0%,0,0,0.0%,0,1,0.0%,0
-solidarity community federal credit union,1,0.0%,16804.09,0,0.0%,0,1,0.0%,16804.09
-conner creek homeowners association inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-dearborn view apartments,1,0.0%,0,0,0.0%,0,1,0.0%,0
-equity trust company,1,0.0%,0,0,0.0%,0,1,0.0%,0
-city of westfield city of westfield fire dept,1,0.0%,0,0,0.0%,0,1,0.0%,0
-midwest academy inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-smithers quality assessments inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-st joseph regional medical center plymouth campus inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-brebeuf jesuit preparatory school,1,0.0%,0,0,0.0%,0,1,0.0%,0
-fc marketplace llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-sofi lending corp as attorney-in-fact for wilmington savings fund society et al.,1,0.0%,0,0,0.0%,0,1,0.0%,0
-horizon bank,1,0.0%,0,0,0.0%,0,1,0.0%,0
-john r kirkpatrick dds,1,0.0%,0,0,0.0%,0,1,0.0%,0
-the business backer llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-becker robert c,1,0.0%,0,0,0.0%,0,1,0.0%,0
-prestige podiatry,1,0.0%,0,0,0.0%,0,1,0.0%,0
-snap-on credit llc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-blue street awards inc,1,0.0%,0,0,0.0%,0,1,0.0%,0
-mister quik electric,1,0.0%,0,0,0.0%,0,1,0.0%,0
-oaks of kraus square homeowners association inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-money elizabeth,1,0.0%,0,1,0.0%,0,0,0.0%,0
-lincoln business park holdings llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-velocity investments,1,0.0%,0,1,0.0%,0,0,0.0%,0
-hall lavreen,1,0.0%,0,1,0.0%,0,0,0.0%,0
-partners 1st federal credit union,1,0.0%,0,1,0.0%,0,0,0.0%,0
-b & j mechanical inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-united holding group,1,0.0%,0,1,0.0%,0,0,0.0%,0
-portfolio recovery asssociates llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-ultimate auto deals inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-glen oaks community college,1,0.0%,0,1,0.0%,0,0,0.0%,0
-business consulting and collection services llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-lcs capital llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-a place to float llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-wilmington savings fund society,1,0.0%,0,1,0.0%,0,0,0.0%,0
-first financial bank na,1,0.0%,0,1,0.0%,0,0,0.0%,0
-salander enterprises llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-leslie thomas,1,0.0%,0,1,0.0%,0,0,0.0%,0
-biggs-hansen orthodontics pc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-kj's construction llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-mac city holdings llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-silver diana,1,0.0%,0,1,0.0%,0,0,0.0%,0
-sofi lending corp as attorney in fact for wilmington trust et al,1,0.0%,0,1,0.0%,0,0,0.0%,0
-sofi lending corp as attorney,1,0.0%,0,1,0.0%,0,0,0.0%,0
-muir woods homeowners association inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-the sagamore club l.l.c. d/b/a the sagamore club,1,0.0%,0,1,0.0%,0,0,0.0%,0
-the sagamore club llc dba the sagamore club,1,0.0%,0,1,0.0%,0,0,0.0%,0
-american builders & contractors supply company inc d/b/a abc supply co. inc.,1,0.0%,0,1,0.0%,0,0,0.0%,0
-society insurance,1,0.0%,0,1,0.0%,0,0,0.0%,0
-westlake services llc dba westlake financial services,1,0.0%,0,1,0.0%,0,0,0.0%,0
-scs credit corp.,1,0.0%,0,1,0.0%,0,0,0.0%,0
-boldens carpet & upholstery cleaning inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-grow financial federal credit union,1,0.0%,0,1,0.0%,0,0,0.0%,0
-merideth bail bonds,1,0.0%,0,1,0.0%,0,0,0.0%,0
-aci-delta asphalt & concrete inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-indiana members credit union of indpls in dba indiana members credit union,1,0.0%,0,1,0.0%,0,0,0.0%,0
-white brenda l,1,0.0%,0,1,0.0%,0,0,0.0%,0
-ford motor credit company llc d/b/a lincoln automotive financial services,1,0.0%,0,1,0.0%,0,0,0.0%,0
-wfc limited partnership dba world finance corporation,1,0.0%,0,1,0.0%,0,0,0.0%,0
-estate of miriam loretta petit by bruce petit personal representative,1,0.0%,241,1,0.0%,241,0,0.0%,0
-j&n construction,1,0.0%,0,1,0.0%,0,0,0.0%,0
-emswiller williams noland & clark pc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-velocity investments llc assignee of lendingclub corporation assignee of webba,1,0.0%,0,1,0.0%,0,0,0.0%,0
-security credit union,1,0.0%,0,1,0.0%,0,0,0.0%,0
-truist bank  successor by merger to suntrust bank,1,0.0%,0,1,0.0%,0,0,0.0%,0
-upgrade grantor certificate tr,1,0.0%,0,1,0.0%,0,0,0.0%,0
-d.j. davis,1,0.0%,0,1,0.0%,0,0,0.0%,0
-united auto credit corporation,1,0.0%,0,1,0.0%,0,0,0.0%,0
-uc health llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-express services inc dba express employment professionals,1,0.0%,0,1,0.0%,0,0,0.0%,0
-general electric credit union,1,0.0%,0,1,0.0%,0,0,0.0%,0
-walgreens co,1,0.0%,0,1,0.0%,0,0,0.0%,0
-vetcheck pet urgent care center,1,0.0%,0,1,0.0%,0,0,0.0%,0
-beacon roofing supply inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-educap inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-new world  collections inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-day tonya,1,0.0%,158,1,0.0%,158,0,0.0%,0
-capital one bank usa  na,1,0.0%,0,1,0.0%,0,0,0.0%,0
-the maples of carmel condominum owners association inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-pyod llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-roto-rooter services co,1,0.0%,0,1,0.0%,0,0,0.0%,0
-ac equity partners llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-millers health systems inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
+                               
+                                    (other),1,0,1,0.0%,0.0%,0.0%,10193,0,10193,2.0%,0.0%,2.2%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+jack laurie floors llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+boland sean,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+national collegiate student loan trust 2006-2,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+national collegiate studen loan trust 2007-2,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+carter lumber company,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+hollingsworth & zivitz pc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+concrete & contractor supply llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+ozark capital corporation,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+halstead richard,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+republic services,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+paradigm dkd group llc d/b/a paradigm tax group a nevada llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+bridgecrest acceptance corporation,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+evapar inc,1,0,1,0.0%,0.0%,0.0%,11435,0,11435,2.3%,0.0%,2.5%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+city of mishawaka,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+appel service company inc d/b/a appel heating & air conditioning,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+jiffy lube of indiana,1,0,1,0.0%,0.0%,0.0%,3385,0,3385,0.7%,0.0%,0.7%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+simon property group lp,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+enerbank usa,1,0,1,0.0%,0.0%,0.0%,9019,0,9019,1.8%,0.0%,2.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+e & b paving inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+tcf equipment finance inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+suntrust bank,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+associated orthodontists of indiana inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+indianapolis business journal,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+first technology federal credit union,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+united consumer financial services co inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+calvary spv i llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+tabor machine company llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+sargeant shatony,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+regency park apartments,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+plaza services llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+seymour pediatrics,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+velocity investments llc assignee of lendingclub corporation assignee of webban,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+westlake services,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+consolidated insurance company,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+cavalry spv i llc formerly known as cavalry portfolio services llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+capital one  bank,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+live nation worldwide inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+ivy way llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+technology insurance company an amtrust financial company,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+oneamerica financial partners inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+triton barn systems,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+service plus heating cooling and plumbing,1,0,1,0.0%,0.0%,0.0%,2295,0,2295,0.5%,0.0%,0.5%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+f. e. moran security solutions llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+regional acceptance copr,1,0,1,0.0%,0.0%,0.0%,8711,0,8711,1.7%,0.0%,1.9%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+mougeotte publishing inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+driven to goals llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+enk andrea d,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+waterside 400 llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+portfolio recovery associates,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+consumer financial services,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+klc realty llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+carmel health & living community,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+wagoner casie m,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+parkdale center llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+affordable housing of indy llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+j & j property services llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+nationwide cassel llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+ambulance management services ltd.,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+barton solvents inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+shelby gravel inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+kingsley homeowners' association inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+regions bank,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+dura-overhead door inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+pc lake crest llc,1,0,1,0.0%,0.0%,0.0%,2501,0,2501,0.5%,0.0%,0.5%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+c & f finance company,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+kitch acceptance corp.,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+velocity investments llc assignee of upstart network inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+nar inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+extra space storage inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+sheehan property management inc as m/a for jefferson place apartments,1,0,1,0.0%,0.0%,0.0%,1531,0,1531,0.3%,0.0%,0.3%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+delta mu chapter of alpha phi,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+university high school,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+firefighters credit union,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+mark dimmich's cars to go,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+estate of anton n kojouharov,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+far east imports inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+icon equities llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+mayde beauty inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+parr richey frandsen patterson kruse llp,1,0,1,0.0%,0.0%,0.0%,6703,0,6703,1.3%,0.0%,1.5%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+acuity a mutual insurance company,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+energy plus credit union,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+argo managing agency limited,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+quad graphics inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+esquire solutions llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+locke law firm llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+truist bank,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+culver-union ambulance svc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+monticello fire dept,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+exeter finance llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+miller richard g,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+carmel estates,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+wanzer-edwards pc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+envision laboratories inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+k & b rentals inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+weber design inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+s-mart petroleum inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+yardley court homeowners association inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+indiana bell telephone co. d/b/a at&t indiana,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+blackbeagle,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+edge investments group llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+receivables management partners llc fka imc credit services llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+numark credit union,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+solidarity community federal credit union,1,0,1,0.0%,0.0%,0.0%,16804,0,16804,3.3%,0.0%,3.7%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+conner creek homeowners association inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+dearborn view apartments,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+equity trust company,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+city of westfield city of westfield fire dept,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+midwest academy inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+smithers quality assessments inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,0%,100.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+st joseph regional medical center plymouth campus inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+brebeuf jesuit preparatory school,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+fc marketplace llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+sofi lending corp as attorney-in-fact for wilmington savings fund society et al.,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+horizon bank,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+john r kirkpatrick dds,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+the business backer llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+becker robert c,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+prestige podiatry,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+snap-on credit llc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%
+blue street awards inc,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+mister quik electric,1,0,1,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,100.0%,0%,100.0%
+oaks of kraus square homeowners association inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+money elizabeth,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+lincoln business park holdings llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+velocity investments,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+hall lavreen,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+partners 1st federal credit union,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+b & j mechanical inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+united holding group,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+portfolio recovery asssociates llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+ultimate auto deals inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+glen oaks community college,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+business consulting and collection services llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+lcs capital llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+a place to float llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+wilmington savings fund society,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+first financial bank na,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+salander enterprises llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+leslie thomas,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+biggs-hansen orthodontics pc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+kj's construction llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+mac city holdings llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+silver diana,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+sofi lending corp as attorney in fact for wilmington trust et al,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+sofi lending corp as attorney,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+muir woods homeowners association inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+the sagamore club llc d/b/a the sagamore club,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+the sagamore club llc dba the sagamore club,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+american builders & contractors supply company inc d/b/a abc supply co. inc.,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+society insurance,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+westlake services llc dba westlake financial services,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+scs credit corp.,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+boldens carpet & upholstery cleaning inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+grow financial federal credit union,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+merideth bail bonds,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+aci-delta asphalt & concrete inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+indiana members credit union of indpls in dba indiana members credit union,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+white brenda l,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+ford motor credit company llc d/b/a lincoln automotive financial services,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+wfc limited partnership dba world finance corporation,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+estate of miriam loretta petit by bruce petit personal representative,1,1,0,0.0%,0.0%,0.0%,241,241,0,0.0%,0.5%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+j&n construction,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+emswiller williams noland & clark pc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+velocity investments llc assignee of lendingclub corporation assignee of webba,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+security credit union,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+truist bank successor by merger to suntrust bank,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+upgrade grantor certificate tr,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+d.j. davis,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+united auto credit corporation,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+uc health llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+express services inc dba express employment professionals,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+general electric credit union,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+walgreens co,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+vetcheck pet urgent care center,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+beacon roofing supply inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+educap inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+day tonya,1,1,0,0.0%,0.0%,0.0%,158,158,0,0.0%,0.3%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+the maples of carmel condominum owners association inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+pyod llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+roto-rooter services co,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+ac equity partners llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+millers health systems inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
 discover bank
 
-                                
-                                    (other),1,0.0%,0,1,0.0%,0,0,0.0%,0
-national collegiate student loan trust 2004 1,1,0.0%,0,1,0.0%,0,0,0.0%,0
-patrick chavis iv attorney at law,1,0.0%,0,1,0.0%,0,0,0.0%,0
-32 union apartments,1,0.0%,0,1,0.0%,0,0,0.0%,0
-strouse roll-offs inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-today's dentistry pc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-edward rose development co llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-sherlock bones animal hospital,1,0.0%,0,1,0.0%,0,0,0.0%,0
-tidewater finance company,1,0.0%,0,1,0.0%,0,0,0.0%,0
-kumar rajinder,1,0.0%,0,1,0.0%,0,0,0.0%,0
-winston phillip d,1,0.0%,0,1,0.0%,0,0,0.0%,0
-the townhomes of fishers pointe homeowners association inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-wallace construction group llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-davison nicholas,1,0.0%,0,1,0.0%,0,0,0.0%,0
-eagle accounts group inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-commerce bank,1,0.0%,0,1,0.0%,0,0,0.0%,0
-ed melzer inc dba honda of fishers,1,0.0%,0,1,0.0%,0,0,0.0%,0
-synchony bank,1,0.0%,0,1,0.0%,0,0,0.0%,0
-great moon inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-monachno william j,1,0.0%,0,1,0.0%,0,0,0.0%,0
-power little & little attorneys at law,1,0.0%,0,1,0.0%,0,0,0.0%,0
-capital one bank,1,0.0%,0,1,0.0%,0,0,0.0%,0
-bureaus investment group portfolio no 15 llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-lei home enhancements,1,0.0%,0,1,0.0%,0,0,0.0%,0
-noblesville fire department,1,0.0%,0,1,0.0%,0,0,0.0%,0
-byrider finance llc dba cnac,1,0.0%,0,1,0.0%,0,0,0.0%,0
-rtn federal credit union,1,0.0%,0,1,0.0%,0,0,0.0%,0
-old national bank,1,0.0%,0,1,0.0%,0,0,0.0%,0
-in receivables inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-merrick place,1,0.0%,0,1,0.0%,0,0,0.0%,0
-wood finance inc doing business as pemier acceptance,1,0.0%,0,1,0.0%,0,0,0.0%,0
-volvo financial services,1,0.0%,0,1,0.0%,0,0,0.0%,0
-the architecture studio inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-cascade capital funding llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-bcg equities llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-jkj financial services llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-siteone landscape supply llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-in receivables inc .,1,0.0%,0,1,0.0%,0,0,0.0%,0
-capital one bank n a,1,0.0%,0,1,0.0%,0,0,0.0%,0
-td auto finance llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-duncan adrian,1,0.0%,0,1,0.0%,0,0,0.0%,0
-old oakland golf club,1,0.0%,0,1,0.0%,0,0,0.0%,0
-syncrony bank,1,0.0%,0,1,0.0%,0,0,0.0%,0
-ubs bank usa,1,0.0%,0,1,0.0%,0,0,0.0%,0
-bay finance company llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-together credit union,1,0.0%,0,1,0.0%,0,0,0.0%,0
-accesslex institute,1,0.0%,0,1,0.0%,0,0,0.0%,0
-schiedel darrell,1,0.0%,0,1,0.0%,0,0,0.0%,0
-bayside woods homeowners association inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-olivewood construction llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-st theodore guerin catholic high school,1,0.0%,0,1,0.0%,0,0,0.0%,0
-citizens bank n a,1,0.0%,0,1,0.0%,0,0,0.0%,0
-parkshore property owners association inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-purdue university,1,0.0%,10586.22,1,0.0%,10586.22,0,0.0%,0
-bank of america n a,1,0.0%,0,1,0.0%,0,0,0.0%,0
-allstate property & casualty a/s/o tonya walden,1,0.0%,0,1,0.0%,0,0,0.0%,0
-luckett kelly w,1,0.0%,0,1,0.0%,0,0,0.0%,0
-prairie lakes condominium association inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-woodland springs inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-the farmers bank frankfort indiana,1,0.0%,0,1,0.0%,0,0,0.0%,0
-finance system of richmond inc,1,0.0%,212,1,0.0%,212,0,0.0%,0
-ford motor credit company llc dba lincoln automotive financial services,1,0.0%,212,1,0.0%,212,0,0.0%,0
-furbee properties,1,0.0%,212,1,0.0%,212,0,0.0%,0
-u.s. metals inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-heartland dental,1,0.0%,0,1,0.0%,0,0,0.0%,0
-jh met subsidiary a liquidating trust assignee of jh portfolio,1,0.0%,0,1,0.0%,0,0,0.0%,0
-pritchett orthodontics p.c.,1,0.0%,0,1,0.0%,0,0,0.0%,0
-collins asset group llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-prestige financial services inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-burns michael,1,0.0%,70,1,0.0%,70,0,0.0%,0
-american express national bamk,1,0.0%,0,1,0.0%,0,0,0.0%,0
-butt nasir,1,0.0%,0,1,0.0%,0,0,0.0%,0
-fifth third bank n.a.,1,0.0%,0,1,0.0%,0,0,0.0%,0
-trilogy health services llc d/b/a bethany pointe health campus,1,0.0%,0,1,0.0%,0,0,0.0%,0
-harbin llc as assignee of aarons inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-indianapolis neurosurgical group pc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-the lakes of hazel dell homeowners association inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-majestic rental properties llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-bridge wf nv estates at westernaire llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-cathedral trustees inc dba cathedral high school,1,0.0%,0,1,0.0%,0,0,0.0%,0
-vectren/centerpoint energy,1,0.0%,0,1,0.0%,0,0,0.0%,0
-merchants acceptance corp.,1,0.0%,0,1,0.0%,0,0,0.0%,0
-schulhof marketing group d/b/a re/max realty services,1,0.0%,0,1,0.0%,0,0,0.0%,0
-barrett eye care llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-american express national bank fka,1,0.0%,0,1,0.0%,0,0,0.0%,0
-timber creek homeowners association of carmel inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-capital one n.a.,1,0.0%,0,1,0.0%,0,0,0.0%,0
-truist bank successor by merger to suntrust bank dba lightstream,1,0.0%,0,1,0.0%,0,0,0.0%,0
-patterson mark,1,0.0%,0,1,0.0%,0,0,0.0%,0
-td auto finance,1,0.0%,0,1,0.0%,0,0,0.0%,0
-beacon sales acquisition inc d/b/a beacon roofing supply & beacon bldg product,1,0.0%,0,1,0.0%,0,0,0.0%,0
-laboratory corporation of america,1,0.0%,0,1,0.0%,0,0,0.0%,0
-department stores,1,0.0%,0,1,0.0%,0,0,0.0%,0
-trihealth inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-crane credit union,1,0.0%,0,1,0.0%,0,0,0.0%,0
-truist bank successor by merger to suntrust bank d/b/a lightstream,1,0.0%,0,1,0.0%,0,0,0.0%,0
-hr services and consulting llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-cavalry spv i inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-cherry hill farms homeowners association inc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-ray skillman performance ford,1,0.0%,0,1,0.0%,0,0,0.0%,0
-cross glazier reed burroughs p.c.,1,0.0%,0,1,0.0%,0,0,0.0%,0
-c&b dog training llc d/b/a sit means sit,1,0.0%,0,1,0.0%,0,0,0.0%,0
-farm bureau bank,1,0.0%,0,1,0.0%,0,0,0.0%,0
-new world collections,1,0.0%,0,1,0.0%,0,0,0.0%,0
-mariner finance  llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
-one main financial group llc,1,0.0%,0,1,0.0%,0,0,0.0%,0
+                               
+                                    (other),1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+national collegiate student loan trust 2004 1,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+patrick chavis iv attorney at law,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+32 union apartments,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+bmo harris bank na,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+biggs hansen orthodontics pc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+strouse roll-offs inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+today's dentistry pc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+cavalry spv i llc as assignee of department stores national bank,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+edward rose development co llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+sherlock bones animal hospital,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+tidewater finance company,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+kumar rajinder,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+winston phillip d,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+the townhomes of fishers pointe homeowners association inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+wallace construction group llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+davison nicholas,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+eagle accounts group inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+commerce bank,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+ed melzer inc dba honda of fishers,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+synchony bank,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+great moon inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+monachno william j,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+power little & little attorneys at law,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+capital one bank,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+bureaus investment group portfolio no 15 llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+lei home enhancements,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+noblesville fire department,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+byrider finance llc dba cnac,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+rtn federal credit union,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+old national bank,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+in receivables inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+merrick place,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+wood finance inc doing business as pemier acceptance,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+volvo financial services,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+the architecture studio inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+cascade capital funding llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+bcg equities llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+jkj financial services llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+siteone landscape supply llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+in receivables inc .,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+capital one bank n a,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+td auto finance llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+duncan adrian,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+old oakland golf club,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+syncrony bank,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+ubs bank usa,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+bay finance company llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+together credit union,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+accesslex institute,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+schiedel darrell,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+bayside woods homeowners association inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+olivewood construction llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+st theodore guerin catholic high school,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+citizens bank n a,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+parkshore property owners association inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+purdue university,1,1,0,0.0%,0.0%,0.0%,10586,10586,0,2.1%,21.9%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+bank of america n a,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+allstate property & casualty a/s/o tonya walden,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+luckett kelly w,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+prairie lakes condominium association inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+woodland springs inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+the farmers bank frankfort indiana,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+finance system of richmond inc,1,1,0,0.0%,0.0%,0.0%,212,212,0,0.0%,0.4%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+ford motor credit company llc dba lincoln automotive financial services,1,1,0,0.0%,0.0%,0.0%,212,212,0,0.0%,0.4%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+furbee properties,1,1,0,0.0%,0.0%,0.0%,212,212,0,0.0%,0.4%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+u.s. metals inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+heartland dental,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+jh met subsidiary a liquidating trust assignee of jh portfolio,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+pritchett orthodontics p.c.,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+collins asset group llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+prestige financial services inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+burns michael,1,1,0,0.0%,0.0%,0.0%,70,70,0,0.0%,0.1%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+american express national bamk,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+butt nasir,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+trilogy health services llc d/b/a bethany pointe health campus,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+harbin llc as assignee of aarons inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+indianapolis neurosurgical group pc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+the lakes of hazel dell homeowners association inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+majestic rental properties llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+bridge wf nv estates at westernaire llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+cathedral trustees inc dba cathedral high school,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+vectren/centerpoint energy,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+merchants acceptance corp.,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+schulhof marketing group d/b/a re/max realty services,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+barrett eye care llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+american express national bank fka,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+timber creek homeowners association of carmel inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+truist bank successor by merger to suntrust bank dba lightstream,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+patterson mark,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+td auto finance,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+beacon sales acquisition inc d/b/a beacon roofing supply & beacon bldg product,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+laboratory corporation of america,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+department stores,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+trihealth inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
+crane credit union,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+truist bank successor by merger to suntrust bank d/b/a lightstream,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+hr services and consulting llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+cavalry spv i inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+cherry hill farms homeowners association inc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+ray skillman performance ford,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+cross glazier reed burroughs p.c.,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+c&b dog training llc d/b/a sit means sit,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+farm bureau bank,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,100.0%,100.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+new world collections,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,0.0%,0.0%,0%
+one main financial group llc,1,1,0,0.0%,0.0%,0.0%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0%,0.0%,0.0%,0%,100.0%,100.0%,0%
