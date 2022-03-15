@@ -46,19 +46,19 @@ function aggregateLawsuits(data, region) {
   // shape top 10 debt collectors
   const lawsuitsByCollectorRaw = d3.groups(data, (d) =>
     d.plaintiff
-      .toLowerCase()
+      .toUpperCase()
       .replace(/"/g, "")
       .replace(/,/g, "")
-      .replace("inc.", "inc")
-      .replace("llc.", "llc")
-      .replace("l.l.c.", "llc")
-      .replace("n.a.", "na")
-      .replace("st. louis", "st louis")
+      .replace("INC.", "INC")
+      .replace("LLC.", "LLC")
+      .replace("L.L.C.", "LLC")
+      .replace("N.A.", "NA")
+      .replace("ST. LOUIS", "ST LOUIS")
       .replace("  ", " ")
-      .replace(" assignee of credit one bank n.a.", "")
-      .replace(" c/o discover products inc", "")
-      .replace(/lvnv funding llc.*/, "lvnv funding llc")
-      .replace("midland credit management llc", "midland credit management inc")
+      .replace(" ASSIGNEE OF CREDIT ONE BANK N.A.", "")
+      .replace(" C/O DISCOVER PRODUCTS INC", "")
+      .replace(/LVNV FUNDING LLC.*/, "LVNV FUNDING LLC")
+      .replace("MIDLAND CREDIT MANAGEMENT LLC", "MIDLAND CREDIT MANAGEMENT INC")
   );
 
   if (CSV_DOWNLOAD_REGIONS.includes(region)) {
