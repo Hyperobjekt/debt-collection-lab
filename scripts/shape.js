@@ -3,7 +3,12 @@ if (!globalThis.fetch) {
   globalThis.fetch = require("node-fetch");
 }
 const d3 = require("d3");
-const { loadCsv, writeFile, slugify } = require("./utils");
+const {
+  loadCsv,
+  writeFile,
+  getStateNameForFips,
+  getCsvFileName,
+} = require("./utils");
 
 const CSV_DOWNLOAD_REGIONS = ["states", "counties"];
 
@@ -46,23 +51,26 @@ function aggregateLawsuits(data, region) {
   // shape top 10 debt collectors
   const lawsuitsByCollectorRaw = d3.groups(data, (d) =>
     d.plaintiff
-      .toUpperCase()
+      .toLowerCase()
       .replace(/"/g, "")
       .replace(/,/g, "")
-      .replace("INC.", "INC")
-      .replace("LLC.", "LLC")
-      .replace("L.L.C.", "LLC")
-      .replace("N.A.", "NA")
-      .replace("ST. LOUIS", "ST LOUIS")
+      .replace("inc.", "inc")
+      .replace("llc.", "llc")
+      .replace("l.l.c.", "llc")
+      .replace("n.a.", "na")
+      .replace("st. louis", "st louis")
       .replace("  ", " ")
-      .replace(" ASSIGNEE OF CREDIT ONE BANK N.A.", "")
-      .replace(" C/O DISCOVER PRODUCTS INC", "")
-      .replace(/LVNV FUNDING LLC.*/, "LVNV FUNDING LLC")
-      .replace("MIDLAND CREDIT MANAGEMENT LLC", "MIDLAND CREDIT MANAGEMENT INC")
+      .replace(" assignee of credit one bank n.a.", "")
+      .replace(" c/o discover products inc", "")
+      .replace(/lvnv funding llc.*/, "lvnv funding llc")
+      .replace("midland credit management llc", "midland credit management inc")
   );
 
   if (CSV_DOWNLOAD_REGIONS.includes(region)) {
-    createCsvForRegion(name, lawsuitsByCollectorRaw);
+    const stateName =
+      region === "states" ? null : getStateNameForFips(data[0].id);
+    const fileName = getCsvFileName(name, stateName);
+    createCsvForRegion(lawsuitsByCollectorRaw, fileName);
   }
 
   const lawsuitsByCollector = lawsuitsByCollectorRaw.map(
@@ -78,22 +86,6 @@ function aggregateLawsuits(data, region) {
     .slice(0, 10)
     .map((d) => d.join(";"))
     .join("|");
-  // if (slugify(name) === 'st-louis-county') {
-  //   console.log("HHH", lawsuitsByCollector, lawsuitsByCollector.length, lawsuitsByCollector[0])
-  //   console.log(
-  //     "JJJ",
-  //     lawsuitsByCollector
-  //       .slice(0, 10)
-  //   );
-  //   console.log(
-  //     "KK",
-  //     lawsuitsByCollector
-  //       .sort((a, b) => b[1] - a[1])
-  //       .slice(0, 10)
-  //   );
-  //   console.log("MMM", lawsuitsByCollector.slice(0,10))
-  //   console.log("OOO", topCollectors, topCollectors.length, topCollectors[0])
-  // }
   return {
     id: data[0].id,
     name,
@@ -213,7 +205,7 @@ const jsonToCsv = (jsonData) => {
   return [headers, ...data].join("\n");
 };
 
-function createCsvForRegion(name, lawsuitsByCollector) {
+function createCsvForRegion(lawsuitsByCollector, fileName) {
   const D21 = new Date("1/1/2021");
   const regionalTotalsMap = lawsuitsByCollector.reduce(
     (totals, [collector, lawsuits]) => {
@@ -243,7 +235,7 @@ function createCsvForRegion(name, lawsuitsByCollector) {
   // show NaN as 0.0% (many dollar_amount totals are 0, resulting in division by 0)
   const percent_formatter = d3.formatLocale({ nan: "0.0" }).format(".1%");
   const processedLawsuits = lawsuitsByCollector
-    .map(([collector, lawsuits]) => {
+    .map(([collector, lawsuits], i) => {
       const lawsuits20 = lawsuits.filter((l) => l.date < D21);
       const lawsuits21 = lawsuits.filter((l) => l.date >= D21);
 
@@ -256,7 +248,7 @@ function createCsvForRegion(name, lawsuitsByCollector) {
       const dollar_amount21 = d3.sum(lawsuits21, (d) => d.amount);
 
       return {
-        collector,
+        collector: collector.toUpperCase(),
 
         count: collectorCount,
         count21: collectorCount21,
@@ -318,8 +310,8 @@ function createCsvForRegion(name, lawsuitsByCollector) {
       };
     })
     .sort((a, b) => b.count - a.count);
-  // console.log(region, name, i, lawsuitsByCollectorRaw);
-  writeFile(jsonToCsv(processedLawsuits), `./static/data/${slugify(name)}.csv`);
+
+  writeFile(jsonToCsv(processedLawsuits), fileName);
 }
 
 async function shapeFullData() {
@@ -337,8 +329,8 @@ async function shapeFullData() {
     };
   };
 
-  const csvData = await loadCsv(path, parser);
-  // const csvData = await loadCsv("./static/data/lawsuit_data-5.csv", parser);
+  // const csvData = await loadCsv(path, parser);
+  const csvData = await loadCsv("./static/data/lawsuit_data-5.csv", parser);
   const data = csvData
     .filter((d) => d.id && d.id !== "NA")
 

@@ -482,9 +482,19 @@ function slugify(text) {
     .replace(/-+$/, ""); // Trim - from end of text
 }
 
+function getCsvFileName(name, stateName) {
+  // stateName only added for counties
+  const fileName =
+    !stateName || slugify(stateName) === slugify(name)
+      ? slugify(name)
+      : slugify(`${stateName}-${name}`);
+  return `./static/data/${fileName}.csv`;
+}
+
 module.exports = {
   getStateNameForFips,
   loadCsv,
   writeFile,
-  slugify
-}
+  slugify,
+  getCsvFileName,
+};

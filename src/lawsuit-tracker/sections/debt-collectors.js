@@ -5,7 +5,7 @@ import TwoColBlock from "../../components/sections/two-col-block";
 import { formatInt, formatPercent } from "../utils";
 import DonutChart from "../charts/donut-chart";
 import Mustache from "mustache";
-import { slugify } from "../../utils";
+import { getCsvFileName } from "../../utils";
 
 const SectionBlock = withStyles((theme) => ({
   root: {
@@ -106,7 +106,13 @@ const TopCollectorsChart = ({ data }) => {
   );
 };
 
-const DebtCollectorsSection = ({ content, data, children, ...props }) => {
+const DebtCollectorsSection = ({
+  content,
+  data,
+  stateName,
+  children,
+  ...props
+}) => {
   const classes = useStyles();
   const context = {
     name: data.name,
@@ -125,7 +131,7 @@ const DebtCollectorsSection = ({ content, data, children, ...props }) => {
         {Mustache.render(content.DESCRIPTION, context)}
       </Typography>
       <Button
-        href={`/data/${slugify(context.name)}.csv`}
+        href={getCsvFileName(context.name, stateName)}
         download
         target="_blank"
       >
