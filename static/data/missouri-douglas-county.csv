@@ -1,4 +1,4 @@
 collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
-MIDLAND CREDIT MANAGEMENT INC,1,0,1,33.3%,0.0%,33.3%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,0.0%,100.0%
-LESTER E COX MEDICAL CENTERS,1,0,1,33.3%,0.0%,33.3%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,0.0%,100.0%
-PROFESSIONAL CREDIT MANAGEMENT INC,1,0,1,33.3%,0.0%,33.3%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,0.0%,100.0%
+MIDLAND CREDIT MANAGEMENT INC,1,0,1,0.33,0.0,0.33,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0
+LESTER E COX MEDICAL CENTERS,1,0,1,0.33,0.0,0.33,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0
+PROFESSIONAL CREDIT MANAGEMENT INC,1,0,1,0.33,0.0,0.33,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0

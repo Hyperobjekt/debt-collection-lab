@@ -1,7 +1,7 @@
 collector,count,count21,count20,percent_total,percent_total21,percent_total20,dollar_amount,dollar_amount21,dollar_amount20,dollar_percent_total,dollar_percent_total21,dollar_percent_total20,percent_with_representation,percent_with_representation21,percent_with_representation20,percent_default_judgement,percent_default_judgement21,percent_default_judgement20,percent_case_completed,percent_case_completed21,percent_case_completed20
-PROFESSIONAL CREDIT MANAGEMENT INC,3,0,3,33.3%,0.0%,33.3%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,0.0%,100.0%
-HEIGHTS FINANCE CORPORATION,2,0,2,22.2%,0.0%,22.2%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,50.0%,0.0%,50.0%,100.0%,0.0%,100.0%
-WASINGER PARHAM LC,1,0,1,11.1%,0.0%,11.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,0.0%,100.0%,100.0%,0.0%,100.0%
-PROFESSIONAL CREDIT MANAGEMENT INC PETITIONER,1,0,1,11.1%,0.0%,11.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,0.0%,100.0%,100.0%,0.0%,100.0%
-LVNV FUNDING LLC,1,0,1,11.1%,0.0%,11.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,0.0%,100.0%
-CHAS C MEEK LUMBER CO OF BRANSON D/B/A MEEKS BUILDING CENTER,1,0,1,11.1%,0.0%,11.1%,0,0,0,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,0.0%,100.0%,0.0%,100.0%
+PROFESSIONAL CREDIT MANAGEMENT INC,3,0,3,0.33,0.0,0.33,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0
+HEIGHTS FINANCE CORPORATION,2,0,2,0.22,0.0,0.22,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.50,0.0,0.50,1.0,0.0,1.0
+WASINGER PARHAM LC,1,0,1,0.11,0.0,0.11,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0
+PROFESSIONAL CREDIT MANAGEMENT INC PETITIONER,1,0,1,0.11,0.0,0.11,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0
+LVNV FUNDING LLC,1,0,1,0.11,0.0,0.11,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0
+CHAS C MEEK LUMBER CO OF BRANSON D/B/A MEEKS BUILDING CENTER,1,0,1,0.11,0.0,0.11,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0

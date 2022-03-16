@@ -14,7 +14,8 @@
     "build:data": "node ./scripts/shape.js",
     "build:all": "export BUILD_IMAGES=1 && node ./scripts/shape.js && gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "format": "prettier --write static/images/**.{js,jsx,svg}"
   },
   "dependencies": {
     "@hyperobjekt/material-ui-website": "^1.0.21",

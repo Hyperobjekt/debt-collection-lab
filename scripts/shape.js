@@ -233,7 +233,7 @@ function createCsvForRegion(lawsuitsByCollector, fileName) {
   );
 
   // show NaN as 0.0% (many dollar_amount totals are 0, resulting in division by 0)
-  const percent_formatter = d3.formatLocale({ nan: "0.0" }).format(".1%");
+  const percent_formatter = d3.formatLocale({ nan: "0.0" }).format(".2r");
   const processedLawsuits = lawsuitsByCollector
     .map(([collector, lawsuits], i) => {
       const lawsuits20 = lawsuits.filter((l) => l.date < D21);
