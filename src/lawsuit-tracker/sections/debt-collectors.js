@@ -1,11 +1,34 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Typography from "../../components/typography";
-import { Button, makeStyles, withStyles } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  List,
+  ListItem,
+  makeStyles,
+  useMediaQuery,
+  useTheme,
+  withStyles,
+} from "@material-ui/core";
 import TwoColBlock from "../../components/sections/two-col-block";
 import { formatInt, formatPercent } from "../utils";
 import DonutChart from "../charts/donut-chart";
 import Mustache from "mustache";
 import { getCsvFileName } from "../../utils";
+
+const colors = [
+  "#6A9A83",
+  "#BC5421",
+  "#BFDCE0",
+  "#DEAC4E",
+  "#888494",
+  "#6897c7",
+  "#df9376",
+  "#aba94a",
+  "#bb8aa5",
+  "#94671a",
+  "#C7C0A9",
+];
 
 const SectionBlock = withStyles((theme) => ({
   root: {
@@ -24,85 +47,109 @@ const useStyles = makeStyles((theme) => ({
 const useChartStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+    // flexDirection: "column",
     alignItems: "center",
-    [theme.breakpoints.up("sm")]: {
-      flexDirection: "row",
-      justifyContent: "space-around",
-    },
+    justifyContent: "space-around",
+    // background: "red",
+    // [theme.breakpoints.up("md")]: {
+    //   // flexDirection: "row",
+    //   justifyContent: "flex-start",
+    //   // background: "green",
+    // },
+    // [theme.breakpoints.up("md")]: {
+    //   justifyContent: "flex-start",
+    //   // background: "blue",
+    // },
+    // [theme.breakpoints.up("lg")]: {
+    //   justifyContent: "space-around",
+    //   // background: "yellow",
+    // },
     "& .chart__body": {
       flex: 0,
     },
     "& .chart__legend": {
-      flex: 0,
-      minWidth: 280,
-      flexDirection: "column",
-      alignItems: "flex-start",
-      justifyContent: "center",
-      // overflowY: "scroll",
-      // overflowX: "hidden",
-      // maxHeight: 320,
+      display: "none", // using our own to style the Top 10
     },
-    "& .legend .legend__item": {
-      alignItems: "flex-start",
-      flexGrow: 0,
-      marginBottom: theme.spacing(1),
+  },
+  legend: {
+    display: "flex",
+    flexFlow: "row wrap",
+  },
+  itemDetails: {},
+  legendItem: {
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: `calc(50% - ${theme.spacing(1)})`,
+      "&:nth-child(odd)": {
+        marginRight: theme.spacing(1),
+      },
     },
-    "& .legend .legend__label": {
-      fontSize: theme.typography.pxToRem(14),
+    padding: 0,
+    marginBottom: theme.spacing(1),
+    "& svg": {
+      width: 16,
+      flex: "16px 0 0",
+      marginRight: theme.spacing(1),
     },
-    "& .legend .legend__color": {
-      marginTop: 2,
-      borderRadius: "100%",
+    "& $itemDetails": {
+      // alignItems: "flex-start",
+      // flexGrow: 0,
     },
   },
 }));
 
-const TopCollectorsChart = ({ data }) => {
-  const labelFormatter = (label, chart) => {
-    const value = data.find((d) => d.group === label);
-    return (
-      <>
-        <Typography component="span" weight="bold" variant="legendLabel">
-          {label}
-        </Typography>
-        <br />
-        {formatInt(value.lawsuits)} lawsuits ({formatPercent(value.value)})
-      </>
-    );
-  };
+const Legend = ({ data }) => {
   const classes = useChartStyles();
   return (
-    <>
-      <DonutChart
-        className={classes.root}
-        data={data}
-        width={320}
-        height={320}
-        theme={{
-          background: "transparent",
-          frame: { stroke: "none" },
-          colors: [
-            "#6A9A83",
-            "#BC5421",
-            "#BFDCE0",
-            "#DEAC4E",
-            "#888494",
-            "#6897c7",
-            "#df9376",
-            "#aba94a",
-            "#bb8aa5",
-            "#94671a",
-            "#C7C0A9",
-          ],
-        }}
-        labelFormatter={labelFormatter}
-        options={{
-          margin: [0, 32, 0, 0],
-        }}
-      />
-    </>
+    <List className={classes.legend}>
+      {data.map(({ group, value, lawsuits }, i) => (
+        <ListItem
+          className={classes.legendItem}
+          disableGutters={true}
+          key={group}
+        >
+          <svg
+            viewBox="0 0 10 10"
+            xmlns="http://www.w3.org/2000/svg"
+            fill={colors[i]}
+          >
+            <circle cx="5" cy="5" r="5" />
+          </svg>
+          <Box className={classes.itemDetails}>
+            <Typography component="span" weight="bold" variant="legendLabel">
+              {group}
+            </Typography>
+            <br />
+            {formatInt(lawsuits)} lawsuits ({formatPercent(value)})
+          </Box>
+        </ListItem>
+      ))}
+    </List>
+  );
+};
+
+const TopCollectorsChart = ({ data }) => {
+  const classes = useChartStyles();
+  // const theme = useTheme();
+  // const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  // const size = isTablet ? 320 : 210;
+  return (
+    <DonutChart
+      className={classes.root}
+      data={data}
+      width={210}
+      height={210}
+      theme={{
+        background: "transparent",
+        frame: { stroke: "none" },
+        colors,
+      }}
+      options={{
+        margin: [0, 0, 0, 22],
+        // myWidth: size,
+        // myHeight: size,
+      }}
+    />
   );
 };
 
@@ -114,6 +161,10 @@ const DebtCollectorsSection = ({
   ...props
 }) => {
   const classes = useStyles();
+  // const theme = useTheme();
+  // const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  // const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+
   const context = {
     name: data.name,
     collectorTotal: formatInt(data.collector_total),
@@ -130,25 +181,26 @@ const DebtCollectorsSection = ({
       <Typography paragraph>
         {Mustache.render(content.DESCRIPTION, context)}
       </Typography>
-      <Button
+      {children}
+      <TopCollectorsChart data={data.chartData} />
+    </>
+  );
+  const rightContent = (
+    <>
+      <Legend data={data.chartData} />
+      {/* UNCOMMENT BELOW TO EXPOSE DATA DOWNLOAD */}
+      {/* <Button
         href={getCsvFileName(context.name, stateName)}
         download
         target="_blank"
       >
         Get the data
         <img className={classes.getDataIcon} src="/images/open-new.svg" />
-      </Button>
-      {children}
+      </Button> */}
     </>
   );
 
-  return (
-    <SectionBlock
-      left={leftContent}
-      right={<TopCollectorsChart data={data.chartData} />}
-      {...props}
-    />
-  );
+  return <SectionBlock left={leftContent} right={rightContent} {...props} />;
 };
 
 export default DebtCollectorsSection;

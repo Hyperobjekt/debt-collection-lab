@@ -49,22 +49,30 @@ function aggregateLawsuits(data, region) {
   const name = getName(data[0].id, data[0].name);
 
   // shape top 10 debt collectors
-  const lawsuitsByCollectorRaw = d3.groups(data, (d) =>
-    d.plaintiff
-      .toLowerCase()
-      .replace(/"/g, "")
-      .replace(/,/g, "")
-      .replace("inc.", "inc")
-      .replace("llc.", "llc")
-      .replace("l.l.c.", "llc")
-      .replace("n.a.", "na")
-      .replace("st. louis", "st louis")
-      .replace("  ", " ")
-      .replace(" assignee of credit one bank n.a.", "")
-      .replace(" c/o discover products inc", "")
-      .replace(/lvnv funding llc.*/, "lvnv funding llc")
-      .replace("midland credit management llc", "midland credit management inc")
-  );
+  const lawsuitsByCollectorRaw = d3
+    .groups(data, (d) =>
+      d.plaintiff
+        .toLowerCase()
+        // standardize some common spelling variations to facilitate proper accumulation
+        .replace(/"/g, "")
+        .replace(/,/g, "")
+        .replace(/\n+/g, " ") // swap newlines for a space
+        .replace(/\s\s+/g, " ") // swap multiple spaces for a single
+        .replace("inc.", "inc")
+        .replace("llc.", "llc")
+        .replace("l.l.c.", "llc")
+        .replace("n.a.", "na")
+        .replace("st. louis", "st louis")
+        .replace(" assignee of credit one bank n.a.", "")
+        .replace(" c/o discover products inc", "")
+        .replace(/lvnv funding llc.*/, "lvnv funding llc")
+        .replace(/conn appliances inc.*/, "conn appliances inc")
+        .replace(
+          "midland credit management llc",
+          "midland credit management inc"
+        )
+    )
+    .filter(([collector, lawsuits]) => !collector.includes("added in error"));
 
   if (CSV_DOWNLOAD_REGIONS.includes(region)) {
     const stateName =
@@ -329,8 +337,8 @@ async function shapeFullData() {
     };
   };
 
-  // const csvData = await loadCsv(path, parser);
-  const csvData = await loadCsv("./static/data/lawsuit_data-5.csv", parser);
+  const csvData = await loadCsv(path, parser);
+  // const csvData = await loadCsv("./static/data/raw_temp.csv", parser);
   const data = csvData
     .filter((d) => d.id && d.id !== "NA")
 
