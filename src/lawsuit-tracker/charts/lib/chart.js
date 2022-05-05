@@ -56,12 +56,13 @@ function Chart(rootEl, data, options) {
   this.data = data;
   options = options || {};
   options.margin = getMargin(options.margin);
-  // TODO: should 210 come from width/height set on DonutChart?
-  console.log(rect.width, rect.height);
   this.options = Object.assign(
     {
-      width: Math.max(rect.width, 210),
-      height: Math.max(rect.height, 210),
+      width: rect.width,
+      height: rect.height,
+      // TODO: do we need a fallback? where is 320 coming from?
+      // width: Math.max(rect.width, options.myWidth || 320),
+      // height: Math.max(rect.height, options.myHeight || 320),
     },
     this.defaultOptions,
     options

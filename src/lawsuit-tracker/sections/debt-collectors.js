@@ -130,15 +130,17 @@ const Legend = ({ data }) => {
 
 const TopCollectorsChart = ({ data }) => {
   const classes = useChartStyles();
-  // const theme = useTheme();
-  // const isTablet = useMediaQuery(theme.breakpoints.down("md"));
-  // const size = isTablet ? 320 : 210;
+  const theme = useTheme();
+  const isSmaller = useMediaQuery(theme.breakpoints.down("sm"));
+  // donut more prominent (centered) on smaller screens
+  const size = isSmaller ? 300 : 210;
   return (
     <DonutChart
+      key={size} // forces rerender when size changes
       className={classes.root}
       data={data}
-      width={210}
-      height={210}
+      width={size}
+      height={size}
       theme={{
         background: "transparent",
         frame: { stroke: "none" },
@@ -161,10 +163,6 @@ const DebtCollectorsSection = ({
   ...props
 }) => {
   const classes = useStyles();
-  // const theme = useTheme();
-  // const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
-  // const isTablet = useMediaQuery(theme.breakpoints.down("md"));
-
   const context = {
     name: data.name,
     collectorTotal: formatInt(data.collector_total),
