@@ -473,13 +473,13 @@ export const getTopCollectorsData = (data) => {
 export const renderTemplate = (lang, keys) => {
   let contentArr = [];
   const splitLang = lang.split(/\{{(.*?)\}}/);
-  console.log(splitLang)
+  // console.log(splitLang)
   if (keys) {
     splitLang.forEach((item) => {
       keys[item] ? contentArr.push(keys[item]) : contentArr.push(item);
     });
   } else {
-    contentArr.push(lang)
+    contentArr.push(lang);
   }
   return contentArr;
 }
