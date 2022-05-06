@@ -148,8 +148,8 @@ const TopCollectorsChart = ({ data }) => {
       }}
       options={{
         margin: [0, 0, 0, 22],
-        // myWidth: size,
-        // myHeight: size,
+        myWidth: size,
+        myHeight: size,
       }}
     />
   );

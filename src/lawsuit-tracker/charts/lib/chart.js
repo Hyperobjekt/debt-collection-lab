@@ -58,11 +58,11 @@ function Chart(rootEl, data, options) {
   options.margin = getMargin(options.margin);
   this.options = Object.assign(
     {
-      width: rect.width,
-      height: rect.height,
-      // TODO: do we need a fallback? where is 320 coming from?
-      // width: Math.max(rect.width, options.myWidth || 320),
-      // height: Math.max(rect.height, options.myHeight || 320),
+      // width: rect.width,
+      // height: rect.height,
+      // TODO: is there a simpler way? do we need a fallback? do we need the 210 fallback?
+      width: Math.max(rect.width, options.myWidth || 210),
+      height: Math.max(rect.height, options.myHeight || 210),
     },
     this.defaultOptions,
     options

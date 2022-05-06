@@ -226,6 +226,7 @@ const Chart = ({
   children,
   ...props
 }) => {
+  // console.log({ options });
   const elRef = useRef(null);
   const chartRef = useRef(null);
   const [legendLabels, setLegendLabels] = useState([]);
