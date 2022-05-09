@@ -72,18 +72,17 @@ const useChartStyles = makeStyles((theme) => ({
     },
   },
   legend: {
-    display: "flex",
-    flexFlow: "row wrap",
+    [theme.breakpoints.up("sm")]: {
+      columnCount: 2,
+      columnGap: theme.spacing(2),
+      "& $legendItem": {
+        breakInside: "avoid",
+      },
+    },
   },
   itemDetails: {},
   legendItem: {
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: `calc(50% - ${theme.spacing(1)})`,
-      "&:nth-child(odd)": {
-        marginRight: theme.spacing(1),
-      },
-    },
+    // width: "auto",
     padding: 0,
     marginBottom: theme.spacing(1),
     "& svg": {
@@ -91,9 +90,8 @@ const useChartStyles = makeStyles((theme) => ({
       flex: "16px 0 0",
       marginRight: theme.spacing(1),
     },
-    "& $itemDetails": {
-      // alignItems: "flex-start",
-      // flexGrow: 0,
+    "& .MuiTypography-root": {
+      lineHeight: 1,
     },
   },
 }));
