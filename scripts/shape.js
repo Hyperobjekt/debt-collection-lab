@@ -3,7 +3,14 @@ if (!globalThis.fetch) {
   globalThis.fetch = require("node-fetch");
 }
 const d3 = require("d3");
-const { loadCsv, writeFile } = require("./utils");
+const {
+  loadCsv,
+  writeFile,
+  getStateNameForFips,
+  getCsvFileName,
+} = require("./utils");
+
+const CSV_DOWNLOAD_REGIONS = ["states", "counties"];
 
 // only pull data for these states
 const VALID_STATE_FIPS = ["09", "48", "38", "18", "29"];
@@ -31,7 +38,7 @@ function getName(id, name) {
   return name.split(",")[0].trim();
 }
 
-function aggregateLawsuits(data) {
+function aggregateLawsuits(data, region) {
   // shape lawsuit history
   const lawsuitsByMonth = d3.group(data, (d) => d.date);
   const monthDates = Array.from(lawsuitsByMonth.keys()).sort((a, b) => a - b);
@@ -39,34 +46,57 @@ function aggregateLawsuits(data) {
     .map((v) => [DATE_FORMAT(v), lawsuitsByMonth.get(v).length].join(";"))
     .join("|");
 
-  // shape top 5 debt collectors
-  const lawsuitsByCollector = d3
+  const name = getName(data[0].id, data[0].name);
+
+  // shape top 10 debt collectors
+  const lawsuitsByCollectorRaw = d3
     .groups(data, (d) =>
       d.plaintiff
         .toLowerCase()
+        // standardize some common spelling variations to facilitate proper accumulation
         .replace(/"/g, "")
         .replace(/,/g, "")
+        .replace(/\n+/g, " ") // swap newlines for a space
+        .replace(/\s\s+/g, " ") // swap multiple spaces for a single
         .replace("inc.", "inc")
         .replace("llc.", "llc")
+        .replace("l.l.c.", "llc")
+        .replace("n.a.", "na")
+        .replace("st. louis", "st louis")
         .replace(" assignee of credit one bank n.a.", "")
+        .replace(" c/o discover products inc", "")
+        .replace(/lvnv funding llc.*/, "lvnv funding llc")
+        .replace(/conn appliances inc.*/, "conn appliances inc")
+        .replace(
+          "midland credit management llc",
+          "midland credit management inc"
+        )
     )
-    .map(([collector, lawsuits]) => [
+    .filter(([collector, lawsuits]) => !collector.includes("added in error"));
+
+  if (CSV_DOWNLOAD_REGIONS.includes(region)) {
+    const stateName =
+      region === "states" ? null : getStateNameForFips(data[0].id);
+    const fileName = getCsvFileName(name, stateName);
+    createCsvForRegion(lawsuitsByCollectorRaw, fileName);
+  }
+
+  const lawsuitsByCollector = lawsuitsByCollectorRaw.map(
+    ([collector, lawsuits]) => [
       `'${collector}'`,
       lawsuits.length,
       d3.sum(lawsuits, (d) => d.amount),
-    ]);
-
-  const collectorTotal = lawsuitsByCollector.length;
+    ]
+  );
 
   const topCollectors = lawsuitsByCollector
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 5)
+    .slice(0, 10)
     .map((d) => d.join(";"))
     .join("|");
-
   return {
     id: data[0].id,
-    name: getName(data[0].id, data[0].name),
+    name,
     lawsuits: data.length,
     // NOTE: some d_j cases are erroneously marked as not complete (per email from Jeff)
     completed_lawsuits: data.filter(
@@ -75,7 +105,7 @@ function aggregateLawsuits(data) {
     lawsuits_date: DATE_FORMAT(monthDates[monthDates.length - 1]),
     lawsuit_history: values,
     collectors: `"${topCollectors}"`,
-    collector_total: collectorTotal,
+    collector_total: lawsuitsByCollector.length,
     amount: d3.sum(data, (d) => d.amount),
     default_judgement: data.filter((d) => d.default_judgement === 1).length,
     no_rep_percent: data.filter((d) => !d.representation).length / data.length,
@@ -123,7 +153,7 @@ const aggregateByRegion = (data, region) => {
   console.log(`SHAPING DATA FOR REGION: ${region}`);
   console.log("-----");
   const selector = getSelectorForRegion(region);
-  const result = aggregateBySelector(data, selector);
+  const result = aggregateBySelector(data, selector, region);
   console.log("done shaping states");
   return result;
 };
@@ -133,14 +163,14 @@ const aggregateByRegion = (data, region) => {
  * @param {*} id
  * @param {*} data
  */
-function aggregateBySelector(data, selector = (d) => d.id) {
+function aggregateBySelector(data, selector = (d) => d.id, region) {
   const reshapedIdData = data
     .map((d) => ({ ...d, id: selector(d) }))
     .filter((d) => Boolean(d.id)) // remove rows where valid id was not returned
     .filter(filterInvalidLocation);
   const groups = d3.groups(reshapedIdData, (d) => d.id);
-  return groups.reduce((result, current) => {
-    result.push(aggregateLawsuits(current[1]));
+  return groups.reduce((result, current, i) => {
+    result.push(aggregateLawsuits(current[1], region, i));
     return result;
   }, []);
 }
@@ -169,6 +199,115 @@ const jsonToCsv = (jsonData) => {
   return [headers, ...data].join("\n");
 };
 
+function createCsvForRegion(lawsuitsByCollector, fileName) {
+  const D21 = new Date("1/1/2021");
+  const regionalTotalsMap = lawsuitsByCollector.reduce(
+    (totals, [collector, lawsuits]) => {
+      const lawsuits20 = lawsuits.filter((l) => l.date < D21);
+      const lawsuits21 = lawsuits.filter((l) => l.date >= D21);
+
+      totals.count += lawsuits.length;
+      totals.count20 += lawsuits20.length;
+      totals.count21 += lawsuits21.length;
+
+      totals.dollar_amount += d3.sum(lawsuits, (d) => d.amount);
+      totals.dollar_amount20 += d3.sum(lawsuits20, (d) => d.amount);
+      totals.dollar_amount21 += d3.sum(lawsuits21, (d) => d.amount);
+
+      return totals;
+    },
+    {
+      count: 0,
+      count20: 0,
+      count21: 0,
+      dollar_amount: 0,
+      dollar_amount20: 0,
+      dollar_amount21: 0,
+    }
+  );
+
+  // show NaN as 0.0% (many dollar_amount totals are 0, resulting in division by 0)
+  const percent_formatter = d3.formatLocale({ nan: "0.0" }).format(".2r");
+  const processedLawsuits = lawsuitsByCollector
+    .map(([collector, lawsuits], i) => {
+      const lawsuits20 = lawsuits.filter((l) => l.date < D21);
+      const lawsuits21 = lawsuits.filter((l) => l.date >= D21);
+
+      const collectorCount = lawsuits.length;
+      const collectorCount20 = lawsuits20.length;
+      const collectorCount21 = lawsuits21.length;
+
+      const dollar_amount = d3.sum(lawsuits, (d) => d.amount);
+      const dollar_amount20 = d3.sum(lawsuits20, (d) => d.amount);
+      const dollar_amount21 = d3.sum(lawsuits21, (d) => d.amount);
+
+      return {
+        collector: collector.toUpperCase(),
+
+        count: collectorCount,
+        count21: collectorCount21,
+        count20: collectorCount20,
+
+        percent_total: percent_formatter(
+          collectorCount / regionalTotalsMap.count
+        ),
+        percent_total21: percent_formatter(
+          collectorCount21 / regionalTotalsMap.count21
+        ),
+        percent_total20: percent_formatter(
+          collectorCount20 / regionalTotalsMap.count20
+        ),
+
+        dollar_amount: Math.round(dollar_amount),
+        dollar_amount21: Math.round(dollar_amount21),
+        dollar_amount20: Math.round(dollar_amount20),
+
+        dollar_percent_total: percent_formatter(
+          dollar_amount / regionalTotalsMap.dollar_amount
+        ),
+        dollar_percent_total21: percent_formatter(
+          dollar_amount21 / regionalTotalsMap.dollar_amount21
+        ),
+        dollar_percent_total20: percent_formatter(
+          dollar_amount20 / regionalTotalsMap.dollar_amount20
+        ),
+
+        percent_with_representation: percent_formatter(
+          d3.sum(lawsuits, (d) => d.representation) / collectorCount
+        ),
+        percent_with_representation21: percent_formatter(
+          d3.sum(lawsuits21, (d) => d.representation) / collectorCount21
+        ),
+        percent_with_representation20: percent_formatter(
+          d3.sum(lawsuits20, (d) => d.representation) / collectorCount20
+        ),
+
+        percent_default_judgement: percent_formatter(
+          d3.sum(lawsuits, (d) => d.default_judgement) / collectorCount
+        ),
+        percent_default_judgement21: percent_formatter(
+          d3.sum(lawsuits21, (d) => d.default_judgement) / collectorCount21
+        ),
+        percent_default_judgement20: percent_formatter(
+          d3.sum(lawsuits20, (d) => d.default_judgement) / collectorCount20
+        ),
+
+        percent_case_completed: percent_formatter(
+          d3.sum(lawsuits, (d) => d.case_completed) / collectorCount
+        ),
+        percent_case_completed21: percent_formatter(
+          d3.sum(lawsuits21, (d) => d.case_completed) / collectorCount21
+        ),
+        percent_case_completed20: percent_formatter(
+          d3.sum(lawsuits20, (d) => d.case_completed) / collectorCount20
+        ),
+      };
+    })
+    .sort((a, b) => b.count - a.count);
+
+  writeFile(jsonToCsv(processedLawsuits), fileName);
+}
+
 async function shapeFullData() {
   const path = "https://debtcases.s3.us-east-2.amazonaws.com/lawsuit_data.csv";
   const parser = (d) => {
@@ -183,7 +322,9 @@ async function shapeFullData() {
       case_completed: Number(d.case_completed),
     };
   };
+
   const csvData = await loadCsv(path, parser);
+  // const csvData = await loadCsv("./static/data/raw_temp.csv", parser);
   const data = csvData
     .filter((d) => d.id && d.id !== "NA")
 
