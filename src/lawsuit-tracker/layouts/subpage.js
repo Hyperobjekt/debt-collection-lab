@@ -52,6 +52,7 @@ export default function SubpageLayout({
       <DebtCollectorsSection
         content={content[type].collectors}
         data={getTopCollectorsData(data)}
+        stateName={data.state}
       />
       <LawsuitsChartSection
         content={content[type].lawsuits}

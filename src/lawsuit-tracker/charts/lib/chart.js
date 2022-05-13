@@ -58,8 +58,11 @@ function Chart(rootEl, data, options) {
   options.margin = getMargin(options.margin);
   this.options = Object.assign(
     {
-      width: Math.max(rect.width, 320),
-      height: Math.max(rect.height, 320),
+      // width: rect.width,
+      // height: rect.height,
+      // TODO: is there a simpler way? do we need a fallback? do we need the 210 fallback?
+      width: Math.max(rect.width, options.myWidth || 210),
+      height: Math.max(rect.height, options.myHeight || 210),
     },
     this.defaultOptions,
     options
@@ -1405,7 +1408,7 @@ Chart.prototype.addDonut = function (overrides) {
       .range(options.colors);
     const pie = d3
       .pie()
-      .padAngle(0.005)
+      .padAngle(0.016) // padding between donut arcs
       .sort(null)
       .value((d) => d.value);
     const radius = Math.min(chart.getInnerWidth(), chart.getInnerHeight()) / 2;
@@ -1434,6 +1437,7 @@ Chart.prototype.addDonut = function (overrides) {
       .transition()
       .duration(1000)
       .attrTween("d", function (d) {
+        // console.log({ d };
         var i = d3.interpolate(d.startAngle + 0.01, d.endAngle);
         return function (t) {
           d.endAngle = i(t);
