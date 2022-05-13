@@ -20,3 +20,12 @@ export const slugify = (text) => {
     .replace(/^-+/, "") // Trim - from start of text
     .replace(/-+$/, ""); // Trim - from end of text
 };
+
+export const getCsvFileName = (name, stateName) => {
+  // stateName only added for counties
+  const fileName =
+    !stateName || slugify(stateName) === slugify(name)
+      ? slugify(name)
+      : slugify(`${stateName}-${name}`);
+  return `/data/${fileName}.csv`;
+};
