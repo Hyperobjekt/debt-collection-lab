@@ -57,16 +57,16 @@ const useChartStyles = makeStyles((theme) => ({
       display: "none", // using our own to style the Top 10
     },
   },
+  itemDetails: {},
   legend: {
     [theme.breakpoints.up("sm")]: {
       columnCount: 2,
       columnGap: theme.spacing(2),
-      "& $legendItem": {
+      "& $legendItem, & $itemDetails": {
         breakInside: "avoid",
       },
     },
   },
-  itemDetails: {},
   legendItem: {
     // width: "auto",
     padding: 0,
